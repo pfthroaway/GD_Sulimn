@@ -1,0 +1,57 @@
+[
+    {
+       "Name": "Beef",
+       "Description": "A prime cut of beef.",
+       "RestoreHealth": "40",
+       "RestoreMagic": "0",
+       "Cures": "False",
+       "Value": "200",
+       "Weight": "2",
+       "CanSell": "True",
+       "IsSold": "True"
+    },
+    {
+       "Name": "Bread",
+       "Description": "A slice of bread.",
+       "RestoreHealth": "10",
+       "RestoreMagic": "0",
+       "Cures": "False",
+       "Value": "50",
+       "Weight": "0",
+       "CanSell": "True",
+       "IsSold": "True"
+    },
+    {
+       "Name": "Chicken",
+       "Description": "A piece of grilled chicken.",
+       "RestoreHealth": "30",
+       "RestoreMagic": "0",
+       "Cures": "False",
+       "Value": "150",
+       "Weight": "2",
+       "CanSell": "True",
+       "IsSold": "True"
+    },
+    {
+       "Name": "Cracker",
+       "Description": "A cracker.",
+       "RestoreHealth": "5",
+       "RestoreMagic": "0",
+       "Cures": "False",
+       "Value": "25",
+       "Weight": "0",
+       "CanSell": "True",
+       "IsSold": "True"
+    },
+    {
+       "Name": "Soup",
+       "Description": "A small container of soup.",
+       "RestoreHealth": "15",
+       "RestoreMagic": "0",
+       "Cures": "False",
+       "Value": "75",
+       "Weight": "2",
+       "CanSell": "True",
+       "IsSold": "True"
+    }
+ ]

@@ -1,0 +1,86 @@
+[
+    {
+       "Name": "Cloth Gloves",
+       "Description": "A plain pair of gloves, made of cloth.",
+       "Defense": "2",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "0",
+       "Weight": "1",
+       "CanSell": "False",
+       "IsSold": "False",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Leather Gloves",
+       "Description": "An unadorned pair of gloves made of leather.",
+       "Defense": "5",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "150",
+       "Weight": "2",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Studded Leather Gloves",
+       "Description": "A pair of leather gloves lined with metal studs.",
+       "Defense": "8",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "240",
+       "Weight": "4",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Chain Gauntlets",
+       "Description": "A pair of gauntlets made of chainmail.",
+       "Defense": "12",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "360",
+       "Weight": "8",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Silk Gauntlets",
+       "Description": "Gauntlets made of silk of strong tensile strength.",
+       "Defense": "17",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "510",
+       "Weight": "3",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Plate Gauntlets",
+       "Description": "Gauntlets made of sturdy steel.",
+       "Defense": "20",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "600",
+       "Weight": "12",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Diamond Gauntlets",
+       "Description": "An extraordinarily strong pair of gauntlets made of interlocking pieces of diamond.",
+       "Defense": "30",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "1,500",
+       "Weight": "10",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    }
+ ]

@@ -1,0 +1,119 @@
+[
+    {
+       "Name": "Cure",
+       "Description": "This spell cures any diseases you may encounter.",
+       "RequiredLevel": "5",
+       "MagicCost": "10",
+       "Amount": "25",
+       "Type": "Damage",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Energy Barrier",
+       "Description": "This spell creates a strong magical shield around your character, protecting them from a large amount of incoming damage.",
+       "RequiredLevel": "15",
+       "MagicCost": "30",
+       "Amount": "125",
+       "Type": "Shield",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Energy Blast",
+       "Description": "This spell launches a blast of pure magical energy at your opponent.",
+       "RequiredLevel": "8",
+       "MagicCost": "15",
+       "Amount": "75",
+       "Type": "Damage",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Fire Bolt",
+       "Description": "This spell launches magical fire at your opponent.",
+       "RequiredLevel": "1",
+       "MagicCost": "5",
+       "Amount": "30",
+       "Type": "Damage",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Fireball",
+       "Description": "This spell launches a large ball of magical fire at your opponent.",
+       "RequiredLevel": "15",
+       "MagicCost": "30",
+       "Amount": "125",
+       "Type": "Damage",
+       "AllowedClasses": "Wizard"
+    },
+    {
+       "Name": "Heal Major Wounds",
+       "Description": "This spell restores a large amount of health to your character.",
+       "RequiredLevel": "20",
+       "MagicCost": "40",
+       "Amount": "150",
+       "Type": "Healing",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Heal Medium Wounds",
+       "Description": "This spell restores a medium amount of health to your character.",
+       "RequiredLevel": "10",
+       "MagicCost": "20",
+       "Amount": "75",
+       "Type": "Healing",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Heal Self",
+       "Description": "This spell heals your character.",
+       "RequiredLevel": "1",
+       "MagicCost": "5",
+       "Amount": "30",
+       "Type": "Healing",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Ice Bolt",
+       "Description": "This spell launches magical ice at your opponent.",
+       "RequiredLevel": "3",
+       "MagicCost": "10",
+       "Amount": "60",
+       "Type": "Damage",
+       "AllowedClasses": "Wizard"
+    },
+    {
+       "Name": "Lightning Bolt",
+       "Description": "This spell blasts a bolt of lightning at your opponent.",
+       "RequiredLevel": "12",
+       "MagicCost": "20",
+       "Amount": "90",
+       "Type": "Damage",
+       "AllowedClasses": "Wizard"
+    },
+    {
+       "Name": "Shield",
+       "Description": "This spell creates a magical shield around your character, protecting them from some incoming damage.",
+       "RequiredLevel": "5",
+       "MagicCost": "15",
+       "Amount": "50",
+       "Type": "Shield",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Smite",
+       "Description": "This spell deals holy magic damage against your opponent.",
+       "RequiredLevel": "5",
+       "MagicCost": "10",
+       "Amount": "60",
+       "Type": "Damage",
+       "AllowedClasses": "Cleric"
+    },
+    {
+       "Name": "Triple Arrow",
+       "Description": "This spell creates 3 magical arrows which fly at your target.",
+       "RequiredLevel": "5",
+       "MagicCost": "10",
+       "Amount": "60",
+       "Type": "Damage",
+       "AllowedClasses": "Rogue"
+    }
+ ]

@@ -1,0 +1,110 @@
+[
+    {
+       "Name": "Cloth Pants",
+       "Description": "A plain pair of pants made of cloth.",
+       "Defense": "4",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "0",
+       "Weight": "10",
+       "CanSell": "False",
+       "IsSold": "False",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Robe Leggings",
+       "Description": "A robe's lower half, made of a strong fabric.",
+       "Defense": "14",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "0",
+       "Weight": "5",
+       "CanSell": "False",
+       "IsSold": "False",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Necromancer Robe Leggings",
+       "Description": "Robes of a Necromancer.",
+       "Defense": "20",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "0",
+       "Weight": "10",
+       "CanSell": "False",
+       "IsSold": "False",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Leather Pants",
+       "Description": "An unadorned pair of pants made of leather.",
+       "Defense": "10",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "300",
+       "Weight": "12",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Studded Leather Pants",
+       "Description": "A pair of leather pants lined with metal studs.",
+       "Defense": "15",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "450",
+       "Weight": "16",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Chain Leggings",
+       "Description": "A pair of leggings made of chainmail.",
+       "Defense": "22",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "660",
+       "Weight": "24",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Silk Leggings",
+       "Description": "Leggings made of silk of strong tensile strength.",
+       "Defense": "27",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "810",
+       "Weight": "10",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Plate Leggings",
+       "Description": "Leggings made of sturdy steel.",
+       "Defense": "30",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "1,500",
+       "Weight": "27",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Diamond Leggings",
+       "Description": "An extraordinarily strong pair of leggings made of interlocking pieces of diamond.",
+       "Defense": "45",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "2,250",
+       "Weight": "15",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    }
+ ]

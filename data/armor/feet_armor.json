@@ -1,0 +1,86 @@
+[
+    {
+       "Name": "Cloth Shoes",
+       "Description": "A plain pair of shoes made of cloth.",
+       "Defense": "2",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "0",
+       "Weight": "5",
+       "CanSell": "False",
+       "IsSold": "False",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Leather Shoes",
+       "Description": "An unadorned pair of shoes made of leather.",
+       "Defense": "5",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "150",
+       "Weight": "8",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Studded Leather Boots",
+       "Description": "A pair of leather boots lined with metal studs.",
+       "Defense": "8",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "240",
+       "Weight": "10",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Chain Boots",
+       "Description": "A pair of boots made of chainmail.",
+       "Defense": "12",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "360",
+       "Weight": "15",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Silk Boots",
+       "Description": "Boots made of silk of strong tensile strength.",
+       "Defense": "17",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "510",
+       "Weight": "6",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Plate Boots",
+       "Description": "Boots made of sturdy steel.",
+       "Defense": "20",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "600",
+       "Weight": "20",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    },
+    {
+       "Name": "Diamond Boots",
+       "Description": "An extraordinarily strong pair of boots made of interlocking pieces of diamond.",
+       "Defense": "30",
+       "Durability": "0",
+       "MinimumLevel": "0",
+       "Value": "1,500",
+       "Weight": "10",
+       "CanSell": "True",
+       "IsSold": "True",
+       "AllowedClasses": []
+    }
+ ]
