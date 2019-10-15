@@ -1,9 +1,9 @@
 ﻿using Sodium;
 
-namespace Extensions.Encryption
+namespace Sulimn.Classes.Extensions
 {
     /// <summary>Provides an extension into the libsodium Argon2 hashing scheme.</summary>
-    public static class Argon2
+    public static class Argon2Helper
     {
         /// <summary>Hashes a password using the Argon2 hashing scheme.</summary>
         /// <param name="password">Password to be hashed</param>

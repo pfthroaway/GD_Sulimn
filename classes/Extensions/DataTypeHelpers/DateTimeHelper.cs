@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Extensions.DataTypeHelpers
+namespace Sulimn.Classes.Extensions.DataTypeHelpers
 {
     /// <summary>Extension class to more easily parse DateTimes.</summary>
     public static class DateTimeHelper

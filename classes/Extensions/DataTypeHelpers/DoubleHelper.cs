@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Extensions.DataTypeHelpers
+namespace Sulimn.Classes.Extensions.DataTypeHelpers
 {
     /// <summary>Extension class to more easily parse Doubles.</summary>
     public static class DoubleHelper

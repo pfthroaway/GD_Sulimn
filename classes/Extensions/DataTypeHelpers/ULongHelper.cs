@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace ExtensionsCore.DataTypeHelpers
+namespace Sulimn.Classes.ExtensionsCore.DataTypeHelpers
 {
     /// <summary>Extension class to more easily parse ulongs.</summary>
     public static class ULongHelper

@@ -130,7 +130,7 @@ namespace Sulimn.Classes.HeroParts
         public int Value => RequiredLevel * 200;
 
         /// <summary>Value of the Spell, with preceding text.</summary>
-        public string ValueToString => Value.ToString("N0", GameState.CurrentCulture);
+        public string ValueToString => Value.ToString("N0");
 
         /// <summary>Value of the Spell, with thousands separator and preceding text.</summary>
         public string ValueToStringWithText => !string.IsNullOrWhiteSpace(Name) ? $"Value: {ValueToString}" : "";

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Extensions
+namespace Sulimn.Classes.Extensions
 {
     /// <summary>Extension class which provides a more stable (and random) random number generator.</summary>
     public static class ThreadSafeRandom

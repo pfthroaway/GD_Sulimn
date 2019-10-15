@@ -47,13 +47,13 @@ namespace Sulimn.Classes.HeroParts
         #region Helper Properties
 
         /// <summary>Gold the Hero has in the bank, formatted.</summary>
-        public string GoldInBankToString => GoldInBank.ToString("N0", GameState.CurrentCulture);
+        public string GoldInBankToString => GoldInBank.ToString("N0");
 
         /// <summary>Gold the Hero has available on loan, formatted.</summary>
-        public string LoanAvailableToString => LoanAvailable.ToString("N0", GameState.CurrentCulture);
+        public string LoanAvailableToString => LoanAvailable.ToString("N0");
 
         /// <summary>Gold the Hero has taken out on loan, formatted.</summary>
-        public string LoanTakenToString => LoanTaken.ToString("N0", GameState.CurrentCulture);
+        public string LoanTakenToString => LoanTaken.ToString("N0");
 
         #endregion Helper Properties
 

@@ -2,7 +2,7 @@
 using System;
 using System.Globalization;
 
-namespace Extensions.DataTypeHelpers
+namespace Sulimn.Classes.Extensions.DataTypeHelpers
 {
     /// <summary>Extension class to more easily parse Booleans.</summary>
     public static class BoolHelper

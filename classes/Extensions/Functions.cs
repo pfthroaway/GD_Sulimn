@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Extensions
+namespace Sulimn.Classes.Extensions
 {
     /// <summary>Represents a collection of useful reusable methods.</summary>
     public static class Functions

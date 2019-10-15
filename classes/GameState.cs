@@ -1,23 +1,20 @@
-﻿using Extensions;
-using Extensions.Encryption;
-//using Sulimn.Classes.Database;
 using Sulimn.Classes.Entities;
+using Sulimn.Classes.Extensions;
 using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 
 namespace Sulimn.Classes
 {
     /// <summary>Represents the current state of the game.</summary>
     internal static class GameState
-    {        
-        internal static CultureInfo CurrentCulture = new CultureInfo("en-US"); 
-        //internal static JSONInteraction JSONInteraction = new JSONInteraction();    
+    {
+        //internal static JSONInteraction JSONInteraction = new JSONInteraction();
         internal static Hero CurrentHero = new Hero();
+
         internal static Enemy CurrentEnemy = new Enemy();
         internal static List<Enemy> AllEnemies = new List<Enemy>();
         internal static List<Item> AllItems = new List<Item>();
@@ -50,7 +47,7 @@ namespace Sulimn.Classes
             Hero checkHero = AllHeroes.Find(hero => string.Equals(hero.Name, username, StringComparison.InvariantCultureIgnoreCase));
             if (checkHero != null && checkHero != new Hero())
             {
-                if (Argon2.ValidatePassword(checkHero.Password, password))
+                if (Argon2Helper.ValidatePassword(checkHero.Password, password))
                 {
                     CurrentHero = checkHero;
                     return true;
@@ -78,7 +75,7 @@ namespace Sulimn.Classes
         /// <summary>Loads almost everything from the database.</summary>
         internal static void LoadAll()
         {
-            FileManagement();            
+            FileManagement();
             // AllClasses = JSONInteraction.LoadClasses();
             // AllHeadArmor = JSONInteraction.LoadHeadArmor();
             // AllBodyArmor = JSONInteraction.LoadBodyArmor();
@@ -366,13 +363,13 @@ namespace Sulimn.Classes
         /// <summary>Displays a new Notification in a thread-safe way.</summary>
         /// <param name="message">Message to be displayed</param>
         /// <param name="title">Title of the Notification window</param>
-        internal static void DisplayNotification(string message, string title) {}
+        internal static void DisplayNotification(string message, string title) { }
 
         /// <summary>Displays a new Notification in a thread-safe way and retrieves a boolean result upon its closing.</summary>
         /// <param name="message">Message to be displayed</param>
         /// <param name="title">Title of the Notification window</param>
         /// <returns>Returns value of clicked button on Notification.</returns>
-        internal static bool YesNoNotification(string message, string title) =>true;
+        internal static bool YesNoNotification(string message, string title) => true;
 
         #endregion Notification Management
     }

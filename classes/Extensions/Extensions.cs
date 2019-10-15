@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Extensions
+namespace Sulimn.Classes.Extensions
 {
     public static class MyExtensions
     {
@@ -120,6 +120,5 @@ namespace Extensions
 
             return tcs.Task;
         }
-
     }
 }

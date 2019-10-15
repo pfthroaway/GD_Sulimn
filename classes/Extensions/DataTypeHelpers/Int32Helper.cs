@@ -2,7 +2,7 @@
 using System;
 using System.Globalization;
 
-namespace Extensions.DataTypeHelpers
+namespace Sulimn.Classes.Extensions.DataTypeHelpers
 {
     /// <summary>Extension class to more easily parse Integers.</summary>
     public static class Int32Helper
