@@ -117,7 +117,6 @@ margin_right = 220.0
 margin_bottom = 177.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
-items = [ "Quincy", null, false, "Has", null, false, "A", null, false, "Big", null, false, "Dick!", null, false ]
 max_text_lines = 5
 auto_height = true
 

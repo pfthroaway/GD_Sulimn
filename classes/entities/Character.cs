@@ -1,106 +1,39 @@
 ﻿using Sulimn.Classes.HeroParts;
-using System.ComponentModel;
 
 namespace Sulimn.Classes.Entities
 {
     /// <summary>Represents living entities in Sulimn.</summary>
-    internal abstract class Character : ICharacter, INotifyPropertyChanged
+    internal abstract class Character : ICharacter
     {
-        private Attributes _attributes = new Attributes();
-        private Equipment _equipment = new Equipment();
-        private int _level, _experience, _gold;
-        private string _name;
-        private Statistics _statistics = new Statistics();
-
         #region Modifying Properties
 
         /// <summary>Name of character</summary>
-        public string Name
-        {
-            get => _name;
-            set
-            {
-                _name = value;
-                OnPropertyChanged("Name");
-            }
-        }
+        public string Name { get; set; }
 
         /// <summary>Level of character</summary>
-        public int Level
-        {
-            get => _level;
-            set
-            {
-                _level = value;
-                OnPropertyChanged("Level");
-                OnPropertyChanged("LevelAndClassToString");
-            }
-        }
+        public int Level { get; set; }
 
         /// <summary>Name of character</summary>
-        public int Experience
-        {
-            get => _experience;
-            set
-            {
-                _experience = value;
-                OnPropertyChanged("ExperienceToString");
-                OnPropertyChanged("ExperienceToStringWithText");
-            }
-        }
+        public int Experience { get; set; }
 
         /// <summary>Amount of Gold in the inventory.</summary>
-        public int Gold
-        {
-            get => _gold;
-            set
-            {
-                _gold = value;
-                OnPropertyChanged("Gold");
-                OnPropertyChanged("GoldToString");
-                OnPropertyChanged("GoldToStringWithText");
-            }
-        }
+        public int Gold { get; set; }
 
         /// <summary>Attributes of character</summary>
-        public Attributes Attributes
-        {
-            get => _attributes;
-            set
-            {
-                _attributes = value;
-                OnPropertyChanged("Attributes");
-            }
-        }
+        public Attributes Attributes { get; set; }
 
         /// <summary>Statistics of character</summary>
-        public Statistics Statistics
-        {
-            get => _statistics;
-            set
-            {
-                _statistics = value;
-                OnPropertyChanged("Statistics");
-            }
-        }
+        public Statistics Statistics { get; set; }
 
         /// <summary>Equipment of character</summary>
-        public Equipment Equipment
-        {
-            get => _equipment;
-            set
-            {
-                _equipment = value;
-                OnPropertyChanged("Equipment");
-            }
-        }
+        public Equipment Equipment { get; set; }
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
         /// <summary>The experience the Hero has gained this level alongside how much is needed to level up</summary>
-        public string ExperienceToString => $"{Experience:N0} / {_level * 100:N0}";
+        public string ExperienceToString => $"{Experience:N0} / {Level * 100:N0}";
 
         /// <summary>The experience the Hero has gained this level alongside how much is needed to level up with preceding text</summary>
         public string ExperienceToStringWithText => $"Experience: {ExperienceToString}";
@@ -124,14 +57,5 @@ namespace Sulimn.Classes.Entities
         public int TotalWisdom => Attributes.Wisdom + Equipment.BonusWisdom;
 
         #endregion Helper Properties
-
-        #region Data-Binding
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string property) => PropertyChanged?.Invoke(this,
-            new PropertyChangedEventArgs(property));
-
-        #endregion Data-Binding
     }
 }

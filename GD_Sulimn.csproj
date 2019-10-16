@@ -48,6 +48,9 @@
       <HintPath>$(ProjectDir)\.mono\assemblies\GodotSharpEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Sodium, Version=0.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\libsodium-net.0.10.0\lib\Net40\Sodium.dll</HintPath>
     </Reference>
@@ -56,6 +59,8 @@
   <ItemGroup>
     <Compile Include="classes\Card\Card.cs" />
     <Compile Include="classes\Card\Hand.cs" />
+    <Compile Include="classes\Database\JSONInteraction.cs" />
+    <Compile Include="classes\Database\XMLinteraction.cs" />
     <Compile Include="classes\entities\Character.cs" />
     <Compile Include="classes\entities\Enemy.cs" />
     <Compile Include="classes\entities\Hero.cs" />
@@ -107,17 +112,29 @@
     <Compile Include="scenes\MainScene.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="classes\HeroParts\Progression" />
-    <None Include="classes\HeroParts\Spell" />
+    <None Include="data\armor\body_armor.json" />
+    <None Include="data\armor\feet_armor.json" />
+    <None Include="data\armor\hand_armor.json" />
+    <None Include="data\armor\head_armor.json" />
+    <None Include="data\armor\leg_armor.json" />
+    <None Include="data\classes\classes.json" />
+    <None Include="data\drinks\drinks.json" />
+    <None Include="data\enemies\enemies.json" />
+    <None Include="data\food\food.json" />
+    <None Include="data\potions\potions.json" />
+    <None Include="data\rings\rings.json" />
+    <None Include="data\spells\spells.json" />
+    <None Include="data\weapons\weapons.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="classes\Extensions\functions\" />
   </ItemGroup>
   <ItemGroup>
-        <PackageReference Include="Baseclass.Contrib.Nuget.Output.2.4.3"/>
-        <PackageReference Include="libsodium-net"/>
-    </ItemGroup>
+    <PackageReference Include="Baseclass.Contrib.Nuget.Output.2.4.3" />
+    <PackageReference Include="libsodium-net" />
+    <PackageReference Include="Newtonsoft.Json" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets" Condition="Exists('packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

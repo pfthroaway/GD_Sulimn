@@ -12,12 +12,7 @@ namespace Sulimn.Classes.Entities
     /// <summary>Represents a Hero from Sulimn.</summary>
     internal class Hero : Character, IEnumerable<Item>
     {
-        private HeroClass _class;
-        private int _skillPoints;
-        private Spellbook _spellbook = new Spellbook();
         private List<Item> _inventory = new List<Item>();
-        private Bank _bank = new Bank();
-        private bool _hardcore;
 
         /// <summary>Updates the Hero's Statistics.</summary>
         internal void UpdateStatistics()
@@ -37,11 +32,6 @@ namespace Sulimn.Classes.Entities
                 Statistics.CurrentMagic += diff;
                 Statistics.MaximumMagic += diff;
             }
-
-            OnPropertyChanged("TotalStrength");
-            OnPropertyChanged("TotalVitality");
-            OnPropertyChanged("TotalDexterity");
-            OnPropertyChanged("TotalWisdom");
         }
 
         #region Modifying Properties
@@ -50,63 +40,22 @@ namespace Sulimn.Classes.Entities
         public string Password { get; set; }
 
         /// <summary>The HeroClass of the Hero</summary>
-        public HeroClass Class
-        {
-            get => _class;
-            set
-            {
-                _class = value;
-                OnPropertyChanged("Class");
-            }
-        }
+        public HeroClass Class { get; set; }
 
         /// <summary>The amount of available skill points the Hero has</summary>
-        public int SkillPoints
-        {
-            get => _skillPoints;
-            set
-            {
-                _skillPoints = value;
-                OnPropertyChanged("SkillPoints");
-                OnPropertyChanged("SkillPointsToString");
-            }
-        }
+        public int SkillPoints { get; set; }
 
         /// <summary>The progress the Hero has made.</summary>
         public Progression Progression { get; set; }
 
         /// <summary>The list of Spells the Hero currently knows</summary>
-        public Spellbook Spellbook
-        {
-            get => _spellbook;
-            private set
-            {
-                _spellbook = value;
-                OnPropertyChanged("Spellbook");
-            }
-        }
+        public Spellbook Spellbook { get; set; }
 
         /// <summary>The <see cref="Hero"/>'s <see cref="HeroParts.Bank"/>. </summary>
-        public Bank Bank
-        {
-            get => _bank;
-            set
-            {
-                _bank = value;
-                OnPropertyChanged("Bank");
-            }
-        }
+        public Bank Bank { get; set; }
 
         /// <summary>Will the player be deleted on death?</summary>
-        public bool Hardcore
-        {
-            get => _hardcore; set
-            {
-                _hardcore = value;
-                OnPropertyChanged("Hardcore");
-                OnPropertyChanged("HardcoreToString");
-            }
-        }
+        public bool Hardcore { get; set; }
 
         #endregion Modifying Properties
 
@@ -210,16 +159,11 @@ namespace Sulimn.Classes.Entities
         {
             _inventory.Add(item);
             _inventory = Inventory.OrderBy(itm => itm.Name).ToList();
-            OnPropertyChanged("Inventory");
         }
 
         /// <summary>Removes an Item from the inventory.</summary>
         /// <param name="item">Item to be removed</param>
-        internal void RemoveItem(Item item)
-        {
-            _inventory.Remove(item);
-            OnPropertyChanged("Inventory");
-        }
+        internal void RemoveItem(Item item) => _inventory.Remove(item);
 
         /// <summary>Equips an Item into a Hero's Equipment.</summary>
         /// <param name="item">Item to be equipped</param>

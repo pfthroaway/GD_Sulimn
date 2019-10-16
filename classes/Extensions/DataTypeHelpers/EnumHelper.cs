@@ -1,5 +1,3 @@
-using System;
-
 namespace Sulimn.Classes.Extensions.DataTypeHelpers
 {
     /// <summary>Extension class to more easily parse Enums.</summary>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Linq;
 
 namespace Sulimn.Classes.Items
@@ -6,106 +7,63 @@ namespace Sulimn.Classes.Items
     /// <summary>Represents a Ring worn on an entity's finger.</summary>
     internal class Ring : Item, IEquatable<Ring>
     {
-        private int _damage, _defense, _strength, _vitality, _dexterity, _wisdom;
-
         #region Modifying Properties
 
         /// <summary>How much bonus damage the Ring inflicts</summary>
-        public int Damage
-        {
-            get => _damage;
-            private set
-            {
-                _damage = value;
-                OnPropertyChanged("DamageToString");
-                OnPropertyChanged("DamageToStringWithText");
-            }
-        }
+        public int Damage { get; set; }
 
         /// <summary>How much bonus damage the Ring can defend against</summary>
-        public int Defense
-        {
-            get => _defense;
-            private set
-            {
-                _defense = value;
-                OnPropertyChanged("DefenseToString");
-                OnPropertyChanged("DefenseToStringWithText");
-            }
-        }
+        public int Defense { get; set; }
 
         /// <summary>How much bonus Strength the Ring grants</summary>
-        public int Strength
-        {
-            get => _strength;
-            private set
-            {
-                _strength = value;
-                OnPropertyChanged("Strength");
-            }
-        }
+        public int Strength { get; set; }
 
         /// <summary>How much bonus Vitality the Ring grants</summary>
-        public int Vitality
-        {
-            get => _vitality;
-            private set
-            {
-                _vitality = value;
-                OnPropertyChanged("Vitality");
-            }
-        }
+        public int Vitality { get; set; }
 
         /// <summary>How much bonus Dexterity the Ring grants</summary>
-        public int Dexterity
-        {
-            get => _dexterity;
-            private set
-            {
-                _dexterity = value;
-                OnPropertyChanged("Dexterity");
-            }
-        }
+        public int Dexterity { get; set; }
 
         /// <summary>How much bonus Wisdom the Ring grants</summary>
-        public int Wisdom
-        {
-            get => _wisdom;
-            private set
-            {
-                _wisdom = value;
-                OnPropertyChanged("Wisdom");
-            }
-        }
+        public int Wisdom { get; set; }
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
+        [JsonIgnore]
         /// <summary>Returns the damage with a comma separating thousands.</summary>
         public string DamageToString => Damage.ToString("N0");
 
+        [JsonIgnore]
         /// <summary>Returns the damage with a comma separating thousands and preceding text.</summary>
         public string DamageToStringWithText => Damage > 0 ? $"Damage: {DamageToString}" : "";
 
+        [JsonIgnore]
         /// <summary>Returns the defense with a comma separating thousands.</summary>
         public string DefenseToString => Defense.ToString("N0");
 
+        [JsonIgnore]
         /// <summary>Returns the defense with a comma separating thousands and preceding text.</summary>
         public string DefenseToStringWithText => Defense > 0 ? $"Defense: {DefenseToString}" : "";
 
+        [JsonIgnore]
         /// <summary>Returns the Strength and preceding text.</summary>
         public string StrengthToString => Strength > 0 ? $"Strength: {Strength}" : "";
 
+        [JsonIgnore]
         /// <summary>Returns the Vitality and preceding text.</summary>
         public string VitalityToString => Vitality > 0 ? $"Vitality: {Vitality}" : "";
 
+        [JsonIgnore]
         /// <summary>Returns the Dexterity and preceding text.</summary>
         public string DexterityToString => Dexterity > 0 ? $"Dexterity: {Dexterity}" : "";
 
+        [JsonIgnore]
         /// <summary>Returns the Wisdom and preceding text.</summary>
         public string WisdomToString => Wisdom > 0 ? $"Wisdom: {Wisdom}" : "";
 
+        [JsonIgnore]
         /// <summary>Returns all bonuses in string format.</summary>
         public string BonusToString
         {

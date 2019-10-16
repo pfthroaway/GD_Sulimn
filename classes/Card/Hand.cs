@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 namespace Sulimn.Classes.Card
 {
     /// <summary>Represents a hand of playing cards.</summary>
-    internal class Hand : INotifyPropertyChanged
+    internal class Hand
     {
         private List<Card> _cardList = new List<Card>();
 
@@ -20,46 +19,24 @@ namespace Sulimn.Classes.Card
         #region Properties
 
         /// <summary>List of cards in the hand.</summary>
-        public List<Card> CardList
-        {
-            get => _cardList;
-            private set
-            {
-                _cardList = value;
-                UpdateProperties();
-            }
-        }
+        public List<Card> CardList { get; set; }
 
         /// <summary>Current value of the Hand.</summary>
         public string Value => $"Total: {TotalValue}";
 
         #endregion Properties
 
-        #region Data-Binding
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string property) => PropertyChanged?.Invoke(this,
-            new PropertyChangedEventArgs(property));
-
-        #endregion Data-Binding
-
         #region Hand Management
 
         /// <summary>Adds a Card to the Hand.</summary>
         /// <param name="newCard">Card to be added.</param>
-        internal void AddCard(Card newCard)
-        {
-            CardList.Add(newCard);
-            UpdateProperties();
-        }
+        internal void AddCard(Card newCard) => CardList.Add(newCard);
 
         /// <summary>Clears the Hidden state of all Cards in the Hand.</summary>
         internal void ClearHidden()
         {
             foreach (Card card in CardList)
                 card.Hidden = false;
-            UpdateProperties();
         }
 
         /// <summary>Converts an 11-valued Ace to be valued at 1.</summary>
@@ -71,15 +48,6 @@ namespace Sulimn.Classes.Card
                     card.Value = 1;
                     break;
                 }
-            UpdateProperties();
-        }
-
-        /// <summary>Updates the 3 important Properties of the Hand.</summary>
-        private void UpdateProperties()
-        {
-            OnPropertyChanged("CardList");
-            OnPropertyChanged("TotalValue");
-            OnPropertyChanged("Value");
         }
 
         #endregion Hand Management

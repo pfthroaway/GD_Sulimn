@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Sulimn.Classes;
 
 public class MainScene : Control
 {
@@ -11,11 +11,7 @@ public class MainScene : Control
     public override void _Ready()
     {
         OS.WindowMaximized = true;
-    }
-
-    private void _on_BtnNewHero_pressed()
-    {
-        GetTree().ChangeScene("scenes/NewHero.tscn");
+        GameState.LoadAll();
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

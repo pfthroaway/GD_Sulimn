@@ -1,108 +1,37 @@
 ﻿using Sulimn.Classes.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents a Spell a Hero can cast.</summary>
-    public class Spell : INotifyPropertyChanged, IEquatable<Spell>
+    public class Spell : IEquatable<Spell>
     {
-        private string _name, _description;
-        private int _requiredLevel, _magicCost, _amount;
-        private SpellType _type;
         private List<HeroClass> _allowedClasses = new List<HeroClass>();
-
-        #region Data-Binding
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string property) => PropertyChanged?.Invoke(this,
-            new PropertyChangedEventArgs(property));
-
-        #endregion Data-Binding
 
         #region Modifying Properties
 
         /// <summary>Name of the Spell.</summary>
-        public string Name
-        {
-            get => _name;
-            private set
-            {
-                _name = value;
-                OnPropertyChanged("Name");
-            }
-        }
+        public string Name { get; set; }
 
         /// <summary>Description of the Spell.</summary>
-        public string Description
-        {
-            get => _description;
-            set
-            {
-                _description = value;
-                OnPropertyChanged("Description");
-            }
-        }
+        public string Description { get; set; }
 
         /// <summary>Type of the Spell.</summary>
-        public SpellType Type
-        {
-            get => _type;
-            private set
-            {
-                _type = value;
-                OnPropertyChanged("Type");
-                OnPropertyChanged("TypeAmount");
-            }
-        }
+        public SpellType Type { get; set; }
 
         /// <summary><see cref="HeroClass"/>es allowed to use the Spell.</summary>
-        public List<HeroClass> AllowedClasses
-        {
-            get => _allowedClasses;
-            private set
-            {
-                _allowedClasses = value;
-                OnPropertyChanged("RequiredClass");
-            }
-        }
+        public List<HeroClass> AllowedClasses { get; set; }
 
         /// <summary>Required Level of the Spell.</summary>
-        public int RequiredLevel
-        {
-            get => _requiredLevel;
-            private set
-            {
-                _requiredLevel = value;
-                OnPropertyChanged("RequiredLevel");
-            }
-        }
+        public int RequiredLevel { get; set; }
 
         /// <summary>Magic cost of the Spell.</summary>
-        public int MagicCost
-        {
-            get => _magicCost;
-            private set
-            {
-                _magicCost = value;
-                OnPropertyChanged("MagicCost");
-            }
-        }
+        public int MagicCost { get; set; }
 
         /// <summary>Amount of the Spell.</summary>
-        public int Amount
-        {
-            get => _amount;
-            private set
-            {
-                _amount = value;
-                OnPropertyChanged("Amount");
-                OnPropertyChanged("TypeAmount");
-            }
-        }
+        public int Amount { get; set; }
 
         #endregion Modifying Properties
 

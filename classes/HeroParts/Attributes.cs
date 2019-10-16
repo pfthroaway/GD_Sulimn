@@ -1,66 +1,21 @@
-﻿using System.ComponentModel;
-
-namespace Sulimn.Classes.HeroParts
+﻿namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents the attributes an entity has.</summary>
-    internal class Attributes : INotifyPropertyChanged
+    internal class Attributes
     {
-        private int _strength, _vitality, _dexterity, _wisdom;
-
-        #region Data-Binding
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string property) => PropertyChanged?.Invoke(this,
-            new PropertyChangedEventArgs(property));
-
-        #endregion Data-Binding
-
         #region Modifying Properties
 
         /// <summary>How strong an entity is.</summary>
-        public int Strength
-        {
-            get => _strength;
-            set
-            {
-                _strength = value;
-                OnPropertyChanged("Strength");
-            }
-        }
+        public int Strength { get; set; }
 
         /// <summary>How much health an entity can have.</summary>
-        public int Vitality
-        {
-            get => _vitality;
-            set
-            {
-                _vitality = value;
-                OnPropertyChanged("Vitality");
-            }
-        }
+        public int Vitality { get; set; }
 
         /// <summary>How fast an entity can move.</summary>
-        public int Dexterity
-        {
-            get => _dexterity;
-            set
-            {
-                _dexterity = value;
-                OnPropertyChanged("Dexterity");
-            }
-        }
+        public int Dexterity { get; set; }
 
         /// <summary>How magically-inclined an entity is.</summary>
-        public int Wisdom
-        {
-            get => _wisdom;
-            set
-            {
-                _wisdom = value;
-                OnPropertyChanged("Wisdom");
-            }
-        }
+        public int Wisdom { get; set; }
 
         #endregion Modifying Properties
 

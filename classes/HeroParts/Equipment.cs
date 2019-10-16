@@ -1,10 +1,9 @@
 ﻿using Sulimn.Classes.Items;
-using System.ComponentModel;
 
 namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents pieces of equipment an entity is using.</summary>
-    internal class Equipment : INotifyPropertyChanged
+    internal class Equipment
     {
         private BodyArmor _body = new BodyArmor();
         private FeetArmor _feet = new FeetArmor();
@@ -15,104 +14,31 @@ namespace Sulimn.Classes.HeroParts
         private Ring _rightRing = new Ring();
         private Weapon _weapon = new Weapon();
 
-        #region Data-Binding
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string property) => PropertyChanged?.Invoke(this,
-            new PropertyChangedEventArgs(property));
-
-        #endregion Data-Binding
-
         #region Modifying Properties
 
         /// <summary>The Weapon an entity is using.</summary>
-        public Weapon Weapon
-        {
-            get => _weapon;
-            set
-            {
-                _weapon = value;
-                OnPropertyChanged("Weapon");
-            }
-        }
+        public Weapon Weapon { get; set; }
 
         /// <summary>The Head Armor an entity is wearing.</summary>
-        public HeadArmor Head
-        {
-            get => _head;
-            set
-            {
-                _head = value;
-                OnPropertyChanged("Head");
-            }
-        }
+        public HeadArmor Head { get; set; }
 
         /// <summary>The Body Armor an entity is wearing.</summary>
-        public BodyArmor Body
-        {
-            get => _body;
-            set
-            {
-                _body = value;
-                OnPropertyChanged("Body");
-            }
-        }
+        public BodyArmor Body { get; set; }
 
         /// <summary>The Hand Armor an entity is wearing.</summary>
-        public HandArmor Hands
-        {
-            get => _hands;
-            set
-            {
-                _hands = value;
-                OnPropertyChanged("Hands");
-            }
-        }
+        public HandArmor Hands { get; set; }
 
         /// <summary>The Leg Armor an entity is wearing.</summary>
-        public LegArmor Legs
-        {
-            get => _legs;
-            set
-            {
-                _legs = value;
-                OnPropertyChanged("Legs");
-            }
-        }
+        public LegArmor Legs { get; set; }
 
         /// <summary>The Feet Armor an entity is wearing.</summary>
-        public FeetArmor Feet
-        {
-            get => _feet;
-            set
-            {
-                _feet = value;
-                OnPropertyChanged("Feet");
-            }
-        }
+        public FeetArmor Feet { get; set; }
 
         /// <summary>The Ring an entity is wearing on its left hand.</summary>
-        public Ring LeftRing
-        {
-            get => _leftRing;
-            set
-            {
-                _leftRing = value;
-                OnPropertyChanged("LeftRing");
-            }
-        }
+        public Ring LeftRing { get; set; }
 
         /// <summary>The Ring an entity is wearing on its right hand.</summary>
-        public Ring RightRing
-        {
-            get => _rightRing;
-            set
-            {
-                _rightRing = value;
-                OnPropertyChanged("RightRing");
-            }
-        }
+        public Ring RightRing { get; set; }
 
         #endregion Modifying Properties
 

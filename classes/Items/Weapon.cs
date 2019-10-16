@@ -1,4 +1,5 @@
-﻿using Sulimn.Classes.Enums;
+﻿using Newtonsoft.Json;
+using Sulimn.Classes.Enums;
 using System;
 
 namespace Sulimn.Classes.Items
@@ -6,45 +7,27 @@ namespace Sulimn.Classes.Items
     /// <summary>Represents a Weapon an entity can attack with.</summary>
     internal class Weapon : Item, IEquatable<Weapon>
     {
-        private int _damage;
-        private WeaponTypes _weaponType;
-
         #region Properties
 
         /// <summary>Type of Weapon</summary>
-        public WeaponTypes WeaponType
-        {
-            get => _weaponType;
-            private set
-            {
-                _weaponType = value;
-                OnPropertyChanged("WeaponType");
-                OnPropertyChanged("WeaponTypeToString");
-            }
-        }
+        public WeaponTypes WeaponType { get; set; }
 
         /// <summary>Damage the weapon inflicts</summary>
-        public int Damage
-        {
-            get => _damage;
-            private set
-            {
-                _damage = value;
-                OnPropertyChanged("DamageToString");
-                OnPropertyChanged("DamageToStringWithText");
-            }
-        }
+        public int Damage { get; set; }
 
         #endregion Properties
 
         #region Helper Properties
 
+        [JsonIgnore]
         /// <summary>Damage the weapon inflicts, formatted.</summary>
         public string DamageToString => Damage.ToString("N0");
 
+        [JsonIgnore]
         /// <summary>Damage the weapon inflicts, formatted, with preceding text.</summary>
         public string DamageToStringWithText => Damage > 0 ? $"Damage: {DamageToString}" : "";
 
+        [JsonIgnore]
         /// <summary>Type of Weapon to string.</summary>
         public string WeaponTypeToString => !string.IsNullOrWhiteSpace(Name) ? WeaponType.ToString() : "";
 

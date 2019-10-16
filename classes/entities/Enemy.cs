@@ -6,8 +6,6 @@ namespace Sulimn.Classes.Entities
     /// <summary>Represents an Enemy who opposes the Hero.</summary>
     internal class Enemy : Character
     {
-        private string _type;
-
         /// <summary>The Enemy takes Damage.</summary>
         /// <param name="damage">Amount damaged</param>
         /// <returns>Text saying the Enemy took damage</returns>
@@ -25,15 +23,7 @@ namespace Sulimn.Classes.Entities
         #region Modifying Properties
 
         /// <summary>Type of the Enemy</summary>
-        public string Type
-        {
-            get => _type;
-            set
-            {
-                _type = value;
-                OnPropertyChanged("Type");
-            }
-        }
+        public string Type { get; set; }
 
         #endregion Modifying Properties
 

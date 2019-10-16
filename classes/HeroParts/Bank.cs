@@ -1,46 +1,18 @@
-﻿using System.ComponentModel;
-
-namespace Sulimn.Classes.HeroParts
+﻿namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents an account at the Bank.</summary>
-    public class Bank : INotifyPropertyChanged
+    public class Bank
     {
-        private int _goldInBank, _loanAvailable, _loanTaken;
-
         #region Modifying Properties
 
         /// <summary>Gold the Hero has in the bank.</summary>
-        public int GoldInBank
-        {
-            get => _goldInBank;
-            set
-            {
-                _goldInBank = value;
-                OnPropertyChanged("GoldInBankToString");
-            }
-        }
+        public int GoldInBank { get; set; }
 
         /// <summary>Gold the Hero has available on loan.</summary>
-        public int LoanAvailable
-        {
-            get => _loanAvailable;
-            set
-            {
-                _loanAvailable = value;
-                OnPropertyChanged("LoanAvailableToString");
-            }
-        }
+        public int LoanAvailable { get; set; }
 
         /// <summary>Gold the Hero has taken out on loan.</summary>
-        public int LoanTaken
-        {
-            get => _loanTaken;
-            set
-            {
-                _loanTaken = value;
-                OnPropertyChanged("LoanTakenToString");
-            }
-        }
+        public int LoanTaken { get; set; }
 
         #endregion Modifying Properties
 
@@ -56,15 +28,6 @@ namespace Sulimn.Classes.HeroParts
         public string LoanTakenToString => LoanTaken.ToString("N0");
 
         #endregion Helper Properties
-
-        #region Data-Binding
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string property) => PropertyChanged?.Invoke(this,
-            new PropertyChangedEventArgs(property));
-
-        #endregion Data-Binding
 
         #region Constructors
 

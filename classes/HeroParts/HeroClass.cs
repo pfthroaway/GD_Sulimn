@@ -1,69 +1,26 @@
-﻿using System;
-using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents the Class of a Hero.</summary>
-    public class HeroClass : IEquatable<HeroClass>, INotifyPropertyChanged
+    public class HeroClass : IEquatable<HeroClass>
     {
-        private string _name, _description;
-
-        private int _skillPoints, _strength, _vitality, _dexterity, _wisdom, _currentHealth, _maximumHealth, _currentMagic, _maximumMagic;
-
-        #region Data-Binding
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string property) => PropertyChanged?.Invoke(this,
-            new PropertyChangedEventArgs(property));
-
-        #endregion Data-Binding
+        private int _vitality, _wisdom;
 
         #region Modifying Properties
 
         /// <summary>Name of the Class.</summary>
-        public string Name
-        {
-            get => _name;
-            private set
-            {
-                _name = value;
-                OnPropertyChanged("Name");
-            }
-        }
+        public string Name { get; set; }
 
         /// <summary>Description of the Class.</summary>
-        public string Description
-        {
-            get => _description;
-            set
-            {
-                _description = value;
-                OnPropertyChanged("Description");
-            }
-        }
+        public string Description { get; set; }
 
         /// <summary>Maximum number of skill points a Class can have when initially being assigned.</summary>
-        public int SkillPoints
-        {
-            get => _skillPoints;
-            set
-            {
-                _skillPoints = value;
-                OnPropertyChanged("SkillPointsToString");
-            }
-        }
+        public int SkillPoints { get; set; }
 
         /// <summary>Amount of Strength the Class has by default.</summary>
-        public int Strength
-        {
-            get => _strength;
-            set
-            {
-                _strength = value;
-                OnPropertyChanged("Strength");
-            }
-        }
+        public int Strength { get; set; }
 
         /// <summary>Amount of Vitality the Class has by default.</summary>
         public int Vitality
@@ -74,20 +31,11 @@ namespace Sulimn.Classes.HeroParts
                 _vitality = value;
                 CurrentHealth = Vitality * 5;
                 MaximumHealth = Vitality * 5;
-                OnPropertyChanged("Vitality");
             }
         }
 
         /// <summary>Amount of Dexterity the Class has by default.</summary>
-        public int Dexterity
-        {
-            get => _dexterity;
-            set
-            {
-                _dexterity = value;
-                OnPropertyChanged("Dexterity");
-            }
-        }
+        public int Dexterity { get; set; }
 
         /// <summary>Amount of Wisdom the Class has by default.</summary>
         public int Wisdom
@@ -98,65 +46,39 @@ namespace Sulimn.Classes.HeroParts
                 _wisdom = value;
                 CurrentMagic = Wisdom * 5;
                 MaximumMagic = Wisdom * 5;
-                OnPropertyChanged("Wisdom");
             }
         }
 
+        [JsonIgnore]
         /// <summary>Amount of current health the Class has.</summary>
-        public int CurrentHealth
-        {
-            get => _currentHealth;
-            private set
-            {
-                _currentHealth = value;
-                OnPropertyChanged("HealthToString");
-            }
-        }
+        public int CurrentHealth { get; set; }
 
+        [JsonIgnore]
         /// <summary>Amount of maximum health the Class has.</summary>
-        public int MaximumHealth
-        {
-            get => _maximumHealth;
-            private set
-            {
-                _maximumHealth = value;
-                OnPropertyChanged("HealthToString");
-            }
-        }
+        public int MaximumHealth { get; set; }
 
+        [JsonIgnore]
         /// <summary>Amount of current magic the Class has.</summary>
-        public int CurrentMagic
-        {
-            get => _currentMagic;
-            private set
-            {
-                _currentMagic = value;
-                OnPropertyChanged("MagicToString");
-            }
-        }
+        public int CurrentMagic { get; set; }
 
+        [JsonIgnore]
         /// <summary>Amount of maximum magic the Class has.</summary>
-        public int MaximumMagic
-        {
-            get => _maximumMagic;
-            private set
-            {
-                _maximumMagic = value;
-                OnPropertyChanged("MagicToString");
-            }
-        }
+        public int MaximumMagic { get; set; }
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
+        [JsonIgnore]
         /// <summary>Maximum number of skill points a Class can have when initially being assigned, with thousands separator.</summary>
         /// <summary>The amount of skill points the Hero has available to spend</summary>
         public string SkillPointsToString => SkillPoints != 1 ? $"{SkillPoints:N0} Skill Points Available" : $"{SkillPoints:N0} Skill Point Available";
 
+        [JsonIgnore]
         /// <summary>Amount of health the Class has, formatted.</summary>
         public string HealthToString => $"{CurrentHealth:N0} / {MaximumHealth:N0}";
 
+        [JsonIgnore]
         /// <summary>Amount of magic the Class has, formatted.</summary>
         public string MagicToString => $"{CurrentMagic:N0} / {MaximumMagic:N0}";
 

@@ -1,169 +1,89 @@
-﻿using Sulimn.Classes.HeroParts;
+﻿using Newtonsoft.Json;
+using Sulimn.Classes.HeroParts;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace Sulimn.Classes.Items
 {
-    internal class Item : INotifyPropertyChanged, IItem
+    internal class Item : IItem
     {
-        private string _name, _description;
-        private bool _canSell, _isSold;
-        private int _currentDurability, _maximumDurability, _minimumLevel, _value, _weight;
-        private List<HeroClass> _allowedClasses = new List<HeroClass>();
         //TODO Implement durability and other new features, maybe weapon/armor smiths.
-
-        #region Data-Binding
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string property) => PropertyChanged?.Invoke(this,
-            new PropertyChangedEventArgs(property));
-
-        #endregion Data-Binding
 
         #region Modifying Properties
 
         /// <summary>Name of the <see cref="Item"/></summary>
-        public string Name
-        {
-            get => _name;
-            set
-            {
-                _name = value;
-                OnPropertyChanged("Name");
-            }
-        }
+        public string Name { get; set; }
 
         /// <summary>Description of the <see cref="Item"/></summary>
-        public string Description
-        {
-            get => _description;
-            set
-            {
-                _description = value;
-                OnPropertyChanged("Description");
-            }
-        }
+        public string Description { get; set; }
 
         /// <summary>How much the <see cref="Item"/> weighs.</summary>
-        public int Weight
-        {
-            get => _weight;
-            set
-            {
-                _weight = value;
-                OnPropertyChanged("Weight");
-            }
-        }
+        public int Weight { get; set; }
 
         /// <summary>How much the <see cref="Item"/> is worth</summary>
-        public int Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-                OnPropertyChanged("Value");
-            }
-        }
+        public int Value { get; set; }
 
         /// <summary>The current durability of an <see cref="Item"/>.</summary>
-        public int CurrentDurability
-        {
-            get => _currentDurability; set
-            {
-                _currentDurability = value;
-                OnPropertyChanged("CurrentDurability");
-            }
-        }
+        public int CurrentDurability { get; set; }
 
         /// <summary>The maximum durability of an <see cref="Item"/>.</summary>
-        public int MaximumDurability
-        {
-            get => _maximumDurability;
-            set
-            {
-                _maximumDurability = value;
-                OnPropertyChanged("MaximumDurability");
-            }
-        }
+        public int MaximumDurability { get; set; }
 
+        [JsonIgnore]
         /// <summary>The minimum level a <see cref="Hero"/> is required to be to use the <see cref="Item"/>.</summary>
-        public int MinimumLevel
-        {
-            get => _minimumLevel;
-            set
-            {
-                _minimumLevel = value;
-                OnPropertyChanged("MinimumLevel");
-            }
-        }
+        public int MinimumLevel { get; set; }
 
         /// <summary>Can the <see cref="Item"/> be sold to a shop?</summary>
-        public bool CanSell
-        {
-            get => _canSell;
-            set
-            {
-                _canSell = value;
-                OnPropertyChanged("CanSell");
-            }
-        }
+        public bool CanSell { get; set; }
 
         /// <summary>Can the <see cref="Item"/> be sold in a shop?</summary>
-        public bool IsSold
-        {
-            get => _isSold;
-            set
-            {
-                _isSold = value;
-                OnPropertyChanged("IsSold");
-            }
-        }
+        public bool IsSold { get; set; }
 
+        [JsonIgnore]
         /// <summary>Classes permitted to use this <see cref="Item"/>.</summary>
-        public List<HeroClass> AllowedClasses
-        {
-            get => _allowedClasses;
-            set
-            {
-                _allowedClasses = value;
-                OnPropertyChanged("AllowedClasses");
-            }
-        }
+        public List<HeroClass> AllowedClasses { get; set; }
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
+        [JsonIgnore]
         /// <summary>The current durability of an <see cref="Item"/>, with thousands separators.</summary>
         public string CurrentDurabilityToString => CurrentDurability.ToString("N0");
 
+        [JsonIgnore]
         /// <summary>The maximum durability of an <see cref="Item"/>, with thousands separators.</summary>
         public string MaximumDurabilityToString => MaximumDurability.ToString("N0");
 
+        [JsonIgnore]
         /// <summary>The durability of an <see cref="Item"/>, formatted.</summary>
         public string Durability => $"{CurrentDurabilityToString} / {MaximumDurabilityToString}";
 
+        [JsonIgnore]
         /// <summary>The value of the <see cref="Item"/> with thousands separators.</summary>
         public string ValueToString => Value.ToString("N0");
 
+        [JsonIgnore]
         /// <summary>The value of the <see cref="Item"/> with thousands separators and preceding text.</summary>
         public string ValueToStringWithText => !string.IsNullOrWhiteSpace(Name) ? $"Value: {ValueToString}" : "";
 
+        [JsonIgnore]
         /// <summary>The value of the Item.</summary>
         public int SellValue => Value / 2;
 
+        [JsonIgnore]
         /// <summary>The sell value of the <see cref="Item"/> with thousands separators.</summary>
         public string SellValueToString => SellValue.ToString("N0");
 
+        [JsonIgnore]
         /// <summary>The sell value of the <see cref="Item"/> with thousands separators with preceding text.</summary>
         public string SellValueToStringWithText => !string.IsNullOrWhiteSpace(Name) ? $"Sell Value: {SellValueToString}" : "";
 
+        [JsonIgnore]
         /// <summary>Returns text relating to the sellability of the <see cref="Item"/>.</summary>
         public string CanSellToString => !string.IsNullOrWhiteSpace(Name) ? (CanSell ? "Sellable" : "Not Sellable") : "";
 
+        [JsonIgnore]
         public string AllowedClassesToString => String.Join(",", AllowedClasses);
 
         #endregion Helper Properties

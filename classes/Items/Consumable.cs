@@ -1,60 +1,38 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Sulimn.Classes.Items
 {
     internal abstract class Consumable : Item, IEquatable<Consumable>
     {
-        private int _restoreHealth, _restoreMagic;
-        private bool _cures;
-
         #region Modifying Properties
 
         /// <summary>Amount of health this <see cref="Consumable"/> restores.</summary>
-        public int RestoreHealth
-        {
-            get => _restoreHealth;
-            set
-            {
-                _restoreHealth = value;
-                OnPropertyChanged("RestoreHealth");
-            }
-        }
+        public int RestoreHealth { get; set; }
 
         /// <summary>Amount of health this <see cref="Consumable"/> restores.</summary>
-        public int RestoreMagic
-        {
-            get => _restoreMagic;
-            set
-            {
-                _restoreMagic = value;
-                OnPropertyChanged("RestoreMagic");
-            }
-        }
+        public int RestoreMagic { get; set; }
 
         /// <summary>Does this <see cref="Consumable"/> cure?</summary>
-        public bool Cures
-        {
-            get => _cures;
-            set
-            {
-                _cures = value;
-                OnPropertyChanged("Cures");
-            }
-        }
+        public bool Cures { get; set; }
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
+        [JsonIgnore]
         /// <summary>Returns text relating to the amount of Health restored by the <see cref="Consumable"/>.</summary>
         public string RestoreHealthToString => RestoreHealth > 0 ? $"Restores {RestoreHealth:N0} Health." : "";
 
+        [JsonIgnore]
         /// <summary>Returns text relating to the amount of Magic restored by the <see cref="Consumable"/>.</summary>
         public string RestoreMagicToString => RestoreMagic > 0 ? $"Restores {RestoreMagic:N0} Magic." : "";
 
+        [JsonIgnore]
         /// <summary>Returns text regarding if the <see cref="Consumable"/> can heal the user.</summary>
         public string CuresToString => Cures ? $"Cures ailments." : "";
 
+        [JsonIgnore]
         /// <summary>Returns text regarding all effects this <see cref="Consumable"/> will induce.</summary>
         public string EffectsToString
         {

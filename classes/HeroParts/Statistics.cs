@@ -1,12 +1,8 @@
-﻿using System.ComponentModel;
-
-namespace Sulimn.Classes.HeroParts
+﻿namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents the statistics of an entity.</summary>
-    internal class Statistics : INotifyPropertyChanged
+    internal class Statistics
     {
-        private int _currentHealth, _maximumHealth, _currentMagic, _maximumMagic;
-
         /// <summary>Restores magic to the Hero.</summary>
         /// <param name="restoreAmount">Amount of Magic to be restored.</param>
         /// <returns>String saying magic was restored</returns>
@@ -21,64 +17,19 @@ namespace Sulimn.Classes.HeroParts
             return $"You restore {restoreAmount:N0} magic.";
         }
 
-        #region Data-Binding
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string property) => PropertyChanged?.Invoke(this,
-            new PropertyChangedEventArgs(property));
-
-        #endregion Data-Binding
-
         #region Modifying Properties
 
         /// <summary>Amount of current health the Class has.</summary>
-        public int CurrentHealth
-        {
-            get => _currentHealth;
-            set
-            {
-                _currentHealth = value;
-                OnPropertyChanged("HealthToString");
-                OnPropertyChanged("HealthToStringWithText");
-            }
-        }
+        public int CurrentHealth { get; set; }
 
         /// <summary>Amount of maximum health the Class has.</summary>
-        public int MaximumHealth
-        {
-            get => _maximumHealth;
-            set
-            {
-                _maximumHealth = value;
-                OnPropertyChanged("HealthToString");
-                OnPropertyChanged("HealthToStringWithText");
-            }
-        }
+        public int MaximumHealth { get; set; }
 
         /// <summary>Amount of current magic the Class has.</summary>
-        public int CurrentMagic
-        {
-            get => _currentMagic;
-            set
-            {
-                _currentMagic = value;
-                OnPropertyChanged("MagicToString");
-                OnPropertyChanged("MagicToStringWithText");
-            }
-        }
+        public int CurrentMagic { get; set; }
 
         /// <summary>Amount of maximum magic the Class has.</summary>
-        public int MaximumMagic
-        {
-            get => _maximumMagic;
-            set
-            {
-                _maximumMagic = value;
-                OnPropertyChanged("MagicToString");
-                OnPropertyChanged("MagicToStringWithText");
-            }
-        }
+        public int MaximumMagic { get; set; }
 
         #endregion Modifying Properties
 
