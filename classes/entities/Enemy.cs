@@ -1,4 +1,5 @@
-﻿using Sulimn.Classes.HeroParts;
+﻿using Newtonsoft.Json;
+using Sulimn.Classes.HeroParts;
 using System;
 
 namespace Sulimn.Classes.Entities
@@ -22,6 +23,7 @@ namespace Sulimn.Classes.Entities
 
         #region Modifying Properties
 
+        [JsonProperty(Order = -4)]
         /// <summary>Type of the Enemy</summary>
         public string Type { get; set; }
 
@@ -29,6 +31,7 @@ namespace Sulimn.Classes.Entities
 
         #region Helper Properties
 
+        [JsonIgnore]
         /// <summary>Returns the Enemy's level with preceding text.</summary>
         public string LevelToString => $"Level {Level}";
 

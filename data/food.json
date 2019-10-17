@@ -1,0 +1,72 @@
+[
+  {
+    "Name": "Beef",
+    "Description": "A prime cut of beef.",
+    "Weight": 2,
+    "Value": 200,
+    "RestoreHealth": 40,
+    "RestoreMagic": 0,
+    "Cures": false,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Bread",
+    "Description": "A slice of bread.",
+    "Weight": 0,
+    "Value": 50,
+    "RestoreHealth": 10,
+    "RestoreMagic": 0,
+    "Cures": false,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Chicken",
+    "Description": "A piece of grilled chicken.",
+    "Weight": 2,
+    "Value": 150,
+    "RestoreHealth": 30,
+    "RestoreMagic": 0,
+    "Cures": false,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Cracker",
+    "Description": "A cracker.",
+    "Weight": 0,
+    "Value": 25,
+    "RestoreHealth": 5,
+    "RestoreMagic": 0,
+    "Cures": false,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Soup",
+    "Description": "A small container of soup.",
+    "Weight": 2,
+    "Value": 75,
+    "RestoreHealth": 15,
+    "RestoreMagic": 0,
+    "Cures": false,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  }
+]

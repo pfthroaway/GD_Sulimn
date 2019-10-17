@@ -2,6 +2,7 @@
 using Sulimn.Classes.HeroParts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sulimn.Classes.Items
 {
@@ -11,21 +12,27 @@ namespace Sulimn.Classes.Items
 
         #region Modifying Properties
 
+        [JsonProperty(Order = -6)]
         /// <summary>Name of the <see cref="Item"/></summary>
         public string Name { get; set; }
 
+        [JsonProperty(Order = -5)]
         /// <summary>Description of the <see cref="Item"/></summary>
         public string Description { get; set; }
 
+        [JsonProperty(Order = -3)]
         /// <summary>How much the <see cref="Item"/> weighs.</summary>
         public int Weight { get; set; }
 
+        [JsonProperty(Order = -2)]
         /// <summary>How much the <see cref="Item"/> is worth</summary>
         public int Value { get; set; }
 
+        [JsonProperty(Order = -1)]
         /// <summary>The current durability of an <see cref="Item"/>.</summary>
         public int CurrentDurability { get; set; }
 
+        [JsonProperty(Order = -0)]
         /// <summary>The maximum durability of an <see cref="Item"/>.</summary>
         public int MaximumDurability { get; set; }
 
@@ -33,15 +40,33 @@ namespace Sulimn.Classes.Items
         /// <summary>The minimum level a <see cref="Hero"/> is required to be to use the <see cref="Item"/>.</summary>
         public int MinimumLevel { get; set; }
 
+        [JsonProperty(Order = 3)]
         /// <summary>Can the <see cref="Item"/> be sold to a shop?</summary>
         public bool CanSell { get; set; }
 
+        [JsonProperty(Order = 4)]
         /// <summary>Can the <see cref="Item"/> be sold in a shop?</summary>
         public bool IsSold { get; set; }
 
         [JsonIgnore]
         /// <summary>Classes permitted to use this <see cref="Item"/>.</summary>
         public List<HeroClass> AllowedClasses { get; set; }
+
+        [JsonProperty(Order = 5)]
+        /// <summary><see cref="HeroClass"/>es allowed to use the Spell, set up to import from JSON.</summary>
+        public string AllowedClassesJson
+        {
+            get => AllowedClasses?.Count > 0 ? string.Join(",", AllowedClasses) : "";
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    AllowedClasses = new List<HeroClass>();
+                    AllowedClasses.AddRange(from string heroClass in value.Split(',')
+                                            select GameState.AllClasses.Find(cls => cls.Name == heroClass));
+                }
+            }
+        }
 
         #endregion Modifying Properties
 

@@ -8,6 +8,7 @@ namespace Sulimn.Classes.Items
     {
         #region Modifying Properties
 
+        [JsonProperty(Order = -4)]
         /// <summary>How much damage the armor can defend against</summary>
         public int Defense { get; set; }
 

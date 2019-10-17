@@ -79,8 +79,16 @@ namespace Sulimn.Classes.HeroParts
         public string HealthToString => $"{CurrentHealth:N0} / {MaximumHealth:N0}";
 
         [JsonIgnore]
+        /// <summary>Amount of health the Class has, formatted with preceding text.</summary>
+        public string HealthToStringWithText => $"Health: {HealthToString}";
+
+        [JsonIgnore]
         /// <summary>Amount of magic the Class has, formatted.</summary>
         public string MagicToString => $"{CurrentMagic:N0} / {MaximumMagic:N0}";
+
+        [JsonIgnore]
+        /// <summary>Amount of magic the Class has, formatted with preceding text.</summary>
+        public string MagicToStringWithText => $"Magic: {MagicToString}";
 
         #endregion Helper Properties
 

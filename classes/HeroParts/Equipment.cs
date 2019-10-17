@@ -1,75 +1,180 @@
-﻿using Sulimn.Classes.Items;
+﻿using Newtonsoft.Json;
+using Sulimn.Classes.Items;
 
 namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents pieces of equipment an entity is using.</summary>
     internal class Equipment
     {
-        private BodyArmor _body = new BodyArmor();
-        private FeetArmor _feet = new FeetArmor();
-        private HandArmor _hands = new HandArmor();
-        private HeadArmor _head = new HeadArmor();
-        private Ring _leftRing = new Ring();
-        private LegArmor _legs = new LegArmor();
-        private Ring _rightRing = new Ring();
-        private Weapon _weapon = new Weapon();
-
         #region Modifying Properties
 
-        /// <summary>The Weapon an entity is using.</summary>
+        [JsonIgnore]
+        /// <summary>The <see cref="Weapon"/> an entity is using.</summary>
         public Weapon Weapon { get; set; }
 
+        [JsonProperty(Order = 1)]
+        /// <summary>The <see cref="Weapon"/> an entity is using, set up to import from JSON.</summary>
+        public string WeaponString
+        {
+            get => Weapon?.Name;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    Weapon = GameState.AllWeapons.Find(o => o.Name == value);
+            }
+        }
+
+        [JsonIgnore]
         /// <summary>The Head Armor an entity is wearing.</summary>
         public HeadArmor Head { get; set; }
 
+        [JsonProperty(Order = 2)]
+        /// <summary>The <see cref="HeadArmor"/> an entity is using, set up to import from JSON.</summary>
+        public string HeadArmorString
+        {
+            get => Head?.Name;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    Head = GameState.AllHeadArmor.Find(o => o.Name == value);
+            }
+        }
+
+        [JsonIgnore]
         /// <summary>The Body Armor an entity is wearing.</summary>
         public BodyArmor Body { get; set; }
 
+        [JsonProperty(Order = 3)]
+        /// <summary>The <see cref="BodyArmor"/> an entity is using, set up to import from JSON.</summary>
+        public string BodyArmorString
+        {
+            get => Body?.Name;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    Body = GameState.AllBodyArmor.Find(o => o.Name == value);
+            }
+        }
+
+        [JsonIgnore]
         /// <summary>The Hand Armor an entity is wearing.</summary>
         public HandArmor Hands { get; set; }
 
+        [JsonProperty(Order = 4)]
+        /// <summary>The <see cref="HandArmor"/> an entity is using, set up to import from JSON.</summary>
+        public string HandArmorString
+        {
+            get => Hands?.Name;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    Hands = GameState.AllHandArmor.Find(o => o.Name == value);
+            }
+        }
+
+        [JsonIgnore]
         /// <summary>The Leg Armor an entity is wearing.</summary>
         public LegArmor Legs { get; set; }
 
+        [JsonProperty(Order = 5)]
+        /// <summary>The <see cref="LegArmor"/> an entity is using, set up to import from JSON.</summary>
+        public string LegsArmorString
+        {
+            get => Legs?.Name;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    Legs = GameState.AllLegArmor.Find(o => o.Name == value);
+            }
+        }
+
+        [JsonIgnore]
         /// <summary>The Feet Armor an entity is wearing.</summary>
         public FeetArmor Feet { get; set; }
 
+        [JsonProperty(Order = 6)]
+        /// <summary>The <see cref="FeetArmor"/> an entity is using, set up to import from JSON.</summary>
+        public string FeetArmorString
+        {
+            get => Feet?.Name;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    Feet = GameState.AllFeetArmor.Find(o => o.Name == value);
+            }
+        }
+
+        [JsonIgnore]
         /// <summary>The Ring an entity is wearing on its left hand.</summary>
         public Ring LeftRing { get; set; }
 
+        [JsonProperty(Order = 7)]
+        /// <summary>The <see cref="LeftRing"/> an entity is using, set up to import from JSON.</summary>
+        public string LeftRingString
+        {
+            get => LeftRing?.Name;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    LeftRing = GameState.AllRings.Find(o => o.Name == value);
+            }
+        }
+
+        [JsonIgnore]
         /// <summary>The Ring an entity is wearing on its right hand.</summary>
         public Ring RightRing { get; set; }
+
+        [JsonProperty(Order = 8)]
+        /// <summary>The <see cref="RightRing"/> an entity is using, set up to import from JSON.</summary>
+        public string RightRingString
+        {
+            get => RightRing?.Name;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    RightRing = GameState.AllRings.Find(o => o.Name == value);
+            }
+        }
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
+        [JsonIgnore]
         /// <summary>Weight of all the Equipment currently equipped.</summary>
         public int TotalWeight => Weapon.Weight + Body.Weight + Head.Weight + Body.Weight + Hands.Weight + Legs.Weight
                                   + Feet.Weight;
 
+        [JsonIgnore]
         /// <summary>Returns the total damage produced by the current set of equipment.</summary>
         public int TotalDamage => Weapon.Damage + LeftRing.Damage + RightRing.Damage;
 
+        [JsonIgnore]
         /// <summary>Returns the total defense produced by the current set of equipment.</summary>
         public int TotalDefense => Head.Defense + Body.Defense + Hands.Defense + Legs.Defense + Feet.Defense + LeftRing.Defense
         + RightRing.Defense;
 
+        [JsonIgnore]
         /// <summary>Returns the total damage produced by the current set of equipment with thousand separators.</summary>
         public string TotalDefenseToString => TotalDefense.ToString("N0");
 
+        [JsonIgnore]
         /// <summary>Returns the total damage produced by the current set of equipment with thousand separators and preceding text.</summary>
         public string TotalDefenseToStringWithText => $"Defense: {TotalDefense:N0}";
 
+        [JsonIgnore]
         /// <summary>Returns the total Strength bonus produced by the current set of equipment.</summary>
         public int BonusStrength => LeftRing.Strength + RightRing.Strength;
 
+        [JsonIgnore]
         /// <summary>Returns the total Vitality bonus produced by the current set of equipment.</summary>
         public int BonusVitality => LeftRing.Vitality + RightRing.Vitality;
 
+        [JsonIgnore]
         /// <summary>Returns the total Dexterity bonus produced by the current set of equipment.</summary>
         public int BonusDexterity => LeftRing.Dexterity + RightRing.Dexterity;
 
+        [JsonIgnore]
         /// <summary>Returns the total Wisdom bonus produced by the current set of equipment.</summary>
         public int BonusWisdom => LeftRing.Wisdom + RightRing.Wisdom;
 

@@ -1,4 +1,5 @@
-﻿using Sulimn.Classes.Enums;
+﻿using Newtonsoft.Json;
+using Sulimn.Classes.Enums;
 using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
 using System;
@@ -10,9 +11,110 @@ using System.Linq;
 namespace Sulimn.Classes.Entities
 {
     /// <summary>Represents a Hero from Sulimn.</summary>
-    internal class Hero : Character, IEnumerable<Item>
+    internal class Hero : Character
     {
         private List<Item> _inventory = new List<Item>();
+
+        #region Modifying Properties
+
+        [JsonProperty(Order = -4)]
+        /// <summary>The hashed password of the Hero</summary>
+        public string Password { get; set; }
+
+        [JsonIgnore]
+        /// <summary>The HeroClass of the Hero, set up to import from JSON.</summary>
+        public HeroClass Class { get; set; }
+
+        [JsonProperty(Order = -3)]
+        /// <summary>The HeroClass of the Hero</summary>
+        public string ClassString
+        {
+            get => Class.Name;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    Class = GameState.AllClasses.Find(o => o.Name == value);
+            }
+        }
+
+        [JsonProperty(Order = -1)]
+        /// <summary>The amount of available skill points the Hero has</summary>
+        public int SkillPoints { get; set; }
+
+        [JsonProperty(Order = 7)]
+        /// <summary>The progress the Hero has made.</summary>
+        public Progression Progression { get; set; }
+
+        [JsonProperty(Order = 8)]
+        /// <summary>The list of Spells the Hero currently knows</summary>
+        public Spellbook Spellbook { get; set; }
+
+        [JsonProperty(Order = 9)]
+        /// <summary>The <see cref="Hero"/>'s <see cref="HeroParts.Bank"/>. </summary>
+        public Bank Bank { get; set; }
+
+        [JsonProperty(Order = -2)]
+        /// <summary>Will the player be deleted on death?</summary>
+        public bool Hardcore { get; set; }
+
+        #endregion Modifying Properties
+
+        #region Helper Properties
+
+        [JsonIgnore]
+        /// <summary>List of Items in the inventory.</summary>
+        public ReadOnlyCollection<Item> Inventory => new ReadOnlyCollection<Item>(_inventory);
+
+        [JsonIgnore]
+        /// <summary>List of Items in the inventory, formatted.</summary>
+        public string InventoryToString => string.Join(",", Inventory);
+
+        [JsonProperty(Order = 10)]
+        /// <summary>List of Items in the inventory, set up to import from JSON.</summary>
+        public string InventoryJson
+        {
+            get => InventoryToString;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    _inventory.AddRange(from string item in value.Split(',')
+                                        select GameState.AllItems.Find(itm => itm.Name == item));
+                }
+            }
+        }
+
+        [JsonIgnore]
+        /// <summary>Combined weight of all Items in a Hero's Inventory.</summary>
+        public int CarryingWeight => Inventory.Count > 0 ? Inventory.Sum(itm => itm.Weight) : 0;
+
+        [JsonIgnore]
+
+        /// <summary>Combined weight of all Items in a Hero's Inventory and all the Equipment currently equipped.</summary>
+        public int TotalWeight => CarryingWeight + Equipment.TotalWeight;
+
+        [JsonIgnore]
+
+        /// <summary>Maximum weight a Hero can carry.</summary>
+        public int MaximumWeight => TotalStrength * 10;
+
+        [JsonIgnore]
+        /// <summary>Is the Hero carrying more than they should be able to?</summary>
+        public bool Overweight => TotalWeight > MaximumWeight;
+
+        [JsonIgnore]
+        /// <summary>Will the player be deleted on death?</summary>
+        public string HardcoreToString => Hardcore ? "Hardcore" : "Softcore";
+
+        [JsonIgnore]
+        /// <summary>The level and class of the Hero</summary>
+        public string LevelAndClassToString => $"Level {Level} {Class.Name}";
+
+        [JsonIgnore]
+        /// <summary>The amount of skill points the Hero has available to spend</summary>
+        public string SkillPointsToString => SkillPoints != 1 ? $"{SkillPoints:N0} Skill Points Available" : $"{SkillPoints:N0} Skill Point Available";
+
+        #endregion Helper Properties
 
         /// <summary>Updates the Hero's Statistics.</summary>
         internal void UpdateStatistics()
@@ -33,62 +135,6 @@ namespace Sulimn.Classes.Entities
                 Statistics.MaximumMagic += diff;
             }
         }
-
-        #region Modifying Properties
-
-        /// <summary>The hashed password of the Hero</summary>
-        public string Password { get; set; }
-
-        /// <summary>The HeroClass of the Hero</summary>
-        public HeroClass Class { get; set; }
-
-        /// <summary>The amount of available skill points the Hero has</summary>
-        public int SkillPoints { get; set; }
-
-        /// <summary>The progress the Hero has made.</summary>
-        public Progression Progression { get; set; }
-
-        /// <summary>The list of Spells the Hero currently knows</summary>
-        public Spellbook Spellbook { get; set; }
-
-        /// <summary>The <see cref="Hero"/>'s <see cref="HeroParts.Bank"/>. </summary>
-        public Bank Bank { get; set; }
-
-        /// <summary>Will the player be deleted on death?</summary>
-        public bool Hardcore { get; set; }
-
-        #endregion Modifying Properties
-
-        #region Helper Properties
-
-        /// <summary>List of Items in the inventory.</summary>
-        public ReadOnlyCollection<Item> Inventory => new ReadOnlyCollection<Item>(_inventory);
-
-        /// <summary>Combined weight of all Items in a Hero's Inventory.</summary>
-        public int CarryingWeight => Inventory.Count > 0 ? Inventory.Sum(itm => itm.Weight) : 0;
-
-        /// <summary>Combined weight of all Items in a Hero's Inventory and all the Equipment currently equipped.</summary>
-        public int TotalWeight => CarryingWeight + Equipment.TotalWeight;
-
-        /// <summary>Maximum weight a Hero can carry.</summary>
-        public int MaximumWeight => TotalStrength * 10;
-
-        /// <summary>Is the Hero carrying more than they should be able to?</summary>
-        public bool Overweight => TotalWeight > MaximumWeight;
-
-        /// <summary>List of Items in the inventory, formatted.</summary>
-        public string InventoryToString => string.Join(",", Inventory);
-
-        /// <summary>Will the player be deleted on death?</summary>
-        public string HardcoreToString => Hardcore ? "Hardcore" : "Softcore";
-
-        /// <summary>The level and class of the Hero</summary>
-        public string LevelAndClassToString => $"Level {Level} {Class.Name}";
-
-        /// <summary>The amount of skill points the Hero has available to spend</summary>
-        public string SkillPointsToString => SkillPoints != 1 ? $"{SkillPoints:N0} Skill Points Available" : $"{SkillPoints:N0} Skill Point Available";
-
-        #endregion Helper Properties
 
         #region Experience Manipulation
 
@@ -299,14 +345,6 @@ namespace Sulimn.Classes.Entities
         internal List<T> GetItemsOfType<T>() => Inventory.OfType<T>().ToList();
 
         #endregion Inventory Management
-
-        #region Enumerator
-
-        public IEnumerator<Item> GetEnumerator() => Inventory.GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-        #endregion Enumerator
 
         #region Override Operators
 

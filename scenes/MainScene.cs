@@ -14,6 +14,11 @@ public class MainScene : Control
         GameState.LoadAll();
     }
 
+    private void _on_BtnNewHero_pressed()
+    {
+        GetTree().ChangeScene("scenes/NewHero.tscn");
+    }
+
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)
     //  {

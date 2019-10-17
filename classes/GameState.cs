@@ -13,7 +13,6 @@ namespace Sulimn.Classes
     /// <summary>Represents the current state of the game.</summary>
     internal static class GameState
     {
-        internal static JSONInteraction JSONInteraction = new JSONInteraction();
         internal static Hero CurrentHero = new Hero();
 
         internal static Enemy CurrentEnemy = new Enemy();
@@ -62,36 +61,32 @@ namespace Sulimn.Classes
         /// <summary>Loads almost everything from the database.</summary>
         internal static void LoadAll()
         {
-            AllClasses = JSONInteraction.LoadClasses();
-            //JSONInteraction.WriteHeadArmor();
-            AllHeadArmor = JSONInteraction.LoadArmor<HeadArmor>("head");
-            AllBodyArmor = JSONInteraction.LoadArmor<BodyArmor>("body");
-            AllHandArmor = JSONInteraction.LoadArmor<HandArmor>("hand");
-            AllLegArmor = JSONInteraction.LoadArmor<LegArmor>("leg");
-            AllFeetArmor = JSONInteraction.LoadArmor<FeetArmor>("feet");
-            // AllRings = JSONInteraction.LoadRings();
-            // AllDrinks = JSONInteraction.LoadDrinks();
-            // AllFood = JSONInteraction.LoadFood();
-            // AllPotions = JSONInteraction.LoadPotions();
-            // AllSpells = JSONInteraction.LoadSpells();
-            // AllWeapons = JSONInteraction.LoadWeapons();
-            // AllItems.AddRanges(AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllFood, AllDrinks, AllPotions, AllWeapons);
-            // AllEnemies = JSONInteraction.LoadEnemies();
-            // AllHeroes = JSONInteraction.LoadHeroes();
-            //MaximumStatsHero = await DatabaseInteraction.LoadMaxHeroStats();
+            AllClasses = JSONInteraction.LoadClasses().OrderBy(o => o.Name).ToList();
+            AllHeadArmor = JSONInteraction.LoadArmor<HeadArmor>("head").OrderBy(o => o.Name).ToList();
+            AllBodyArmor = JSONInteraction.LoadArmor<BodyArmor>("body").OrderBy(o => o.Name).ToList();
+            AllHandArmor = JSONInteraction.LoadArmor<HandArmor>("hand").OrderBy(o => o.Name).ToList();
+            AllLegArmor = JSONInteraction.LoadArmor<LegArmor>("leg").OrderBy(o => o.Name).ToList();
+            AllFeetArmor = JSONInteraction.LoadArmor<FeetArmor>("feet").OrderBy(o => o.Name).ToList();
+            AllRings = JSONInteraction.LoadRings().OrderBy(o => o.Name).ToList();
+            AllWeapons = JSONInteraction.LoadWeapons().OrderBy(o => o.Name).ToList();
+            AllDrinks = JSONInteraction.LoadDrinks().OrderBy(o => o.Name).ToList();
+            AllFood = JSONInteraction.LoadFood().OrderBy(o => o.Name).ToList();
+            AllPotions = JSONInteraction.LoadPotions().OrderBy(o => o.Name).ToList();
+            AllSpells = JSONInteraction.LoadSpells().OrderBy(o => o.Name).ToList();
+            AllEnemies = JSONInteraction.LoadEnemies().OrderBy(o => o.Name).ToList();
 
-            //AllItems = AllItems.OrderBy(item => item.Name).ToList();
-            //AllEnemies = AllEnemies.OrderBy(enemy => enemy.Name).ToList();
-            //AllSpells = AllSpells.OrderBy(spell => spell.Name).ToList();
-            //AllClasses = AllClasses.OrderBy(heroClass => heroClass.Name).ToList();
-            //AllRings = AllRings.OrderBy(ring => ring.Name).ToList();
+            //JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
 
-            //DefaultWeapon = AllWeapons.Find(weapon => weapon.Name == "Fists");
-            //DefaultHead = AllHeadArmor.Find(armor => armor.Name == "Cloth Helmet");
-            //DefaultBody = AllBodyArmor.Find(armor => armor.Name == "Cloth Shirt");
-            //DefaultHands = AllHandArmor.Find(armor => armor.Name == "Cloth Gloves");
-            //DefaultLegs = AllLegArmor.Find(armor => armor.Name == "Cloth Pants");
-            //DefaultFeet = AllFeetArmor.Find(armor => armor.Name == "Cloth Shoes");
+            AllItems.AddRanges(AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllFood, AllDrinks, AllPotions, AllWeapons);
+
+            DefaultWeapon = AllWeapons.Find(weapon => weapon.Name == "Fists");
+            DefaultHead = AllHeadArmor.Find(armor => armor.Name == "Cloth Helmet");
+            DefaultBody = AllBodyArmor.Find(armor => armor.Name == "Cloth Shirt");
+            DefaultHands = AllHandArmor.Find(armor => armor.Name == "Cloth Gloves");
+            DefaultLegs = AllLegArmor.Find(armor => armor.Name == "Cloth Pants");
+            DefaultFeet = AllFeetArmor.Find(armor => armor.Name == "Cloth Shoes");
+
+            AllHeroes = JSONInteraction.LoadHeroes().OrderBy(o => o.Name).ToList();
         }
 
         /// <summary>Gets a specific Enemy based on its name.</summary>

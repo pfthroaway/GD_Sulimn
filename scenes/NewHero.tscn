@@ -12,6 +12,7 @@ __meta__ = {
 }
 
 [node name="Info" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 230.0
@@ -114,33 +115,40 @@ valign = 1
 [node name="ItemList" type="ItemList" parent="Class"]
 margin_top = 33.0
 margin_right = 220.0
-margin_bottom = 177.0
+margin_bottom = 165.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 max_text_lines = 5
 auto_height = true
 
 [node name="TextEdit" type="TextEdit" parent="Class"]
-margin_top = 187.0
+margin_top = 175.0
 margin_right = 220.0
-margin_bottom = 312.0
+margin_bottom = 300.0
 rect_min_size = Vector2( 220, 125 )
 readonly = true
 wrap_enabled = true
 
-[node name="Attributes" type="HBoxContainer" parent="."]
+[node name="Column3" type="VBoxContainer" parent="."]
 margin_left = 490.0
 margin_top = 10.0
 margin_right = 710.0
 margin_bottom = 440.0
 custom_constants/separation = 20
 
-[node name="TextLabels" type="VBoxContainer" parent="Attributes"]
+[node name="Attributes" type="HBoxContainer" parent="Column3"]
+editor/display_folded = true
+margin_right = 220.0
+margin_bottom = 182.0
+custom_constants/separation = 20
+
+[node name="TextLabels" type="VBoxContainer" parent="Column3/Attributes"]
+editor/display_folded = true
 margin_right = 62.0
-margin_bottom = 430.0
+margin_bottom = 182.0
 custom_constants/separation = 30
 
-[node name="Label4" type="Label" parent="Attributes/TextLabels"]
+[node name="Label4" type="Label" parent="Column3/Attributes/TextLabels"]
 margin_right = 62.0
 margin_bottom = 23.0
 size_flags_vertical = 1
@@ -149,7 +157,7 @@ text = "Strength"
 align = 1
 valign = 1
 
-[node name="Label6" type="Label" parent="Attributes/TextLabels"]
+[node name="Label6" type="Label" parent="Column3/Attributes/TextLabels"]
 margin_top = 53.0
 margin_right = 62.0
 margin_bottom = 76.0
@@ -159,7 +167,7 @@ text = "Vitality"
 align = 1
 valign = 1
 
-[node name="Label5" type="Label" parent="Attributes/TextLabels"]
+[node name="Label5" type="Label" parent="Column3/Attributes/TextLabels"]
 margin_top = 106.0
 margin_right = 62.0
 margin_bottom = 129.0
@@ -169,7 +177,7 @@ text = "Dexterity"
 align = 1
 valign = 1
 
-[node name="Label7" type="Label" parent="Attributes/TextLabels"]
+[node name="Label7" type="Label" parent="Column3/Attributes/TextLabels"]
 margin_top = 159.0
 margin_right = 62.0
 margin_bottom = 182.0
@@ -179,20 +187,21 @@ text = "Wisdom"
 align = 1
 valign = 1
 
-[node name="MinusButtons" type="VBoxContainer" parent="Attributes"]
+[node name="MinusButtons" type="VBoxContainer" parent="Column3/Attributes"]
+editor/display_folded = true
 margin_left = 82.0
 margin_right = 111.0
-margin_bottom = 430.0
+margin_bottom = 182.0
 custom_constants/separation = 22
 
-[node name="BtnStrengthMinus2" type="Button" parent="Attributes/MinusButtons"]
+[node name="BtnStrengthMinus2" type="Button" parent="Column3/Attributes/MinusButtons"]
 margin_right = 29.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 29, 29 )
 custom_fonts/font = ExtResource( 2 )
 text = "-"
 
-[node name="BtnVitalityMinus" type="Button" parent="Attributes/MinusButtons"]
+[node name="BtnVitalityMinus" type="Button" parent="Column3/Attributes/MinusButtons"]
 margin_top = 51.0
 margin_right = 29.0
 margin_bottom = 80.0
@@ -200,7 +209,7 @@ rect_min_size = Vector2( 29, 29 )
 custom_fonts/font = ExtResource( 2 )
 text = "-"
 
-[node name="BtDexterityMinus" type="Button" parent="Attributes/MinusButtons"]
+[node name="BtDexterityMinus" type="Button" parent="Column3/Attributes/MinusButtons"]
 margin_top = 102.0
 margin_right = 29.0
 margin_bottom = 131.0
@@ -208,7 +217,7 @@ rect_min_size = Vector2( 29, 29 )
 custom_fonts/font = ExtResource( 2 )
 text = "-"
 
-[node name="BtnWisdomMinus" type="Button" parent="Attributes/MinusButtons"]
+[node name="BtnWisdomMinus" type="Button" parent="Column3/Attributes/MinusButtons"]
 margin_top = 153.0
 margin_right = 29.0
 margin_bottom = 182.0
@@ -216,13 +225,14 @@ rect_min_size = Vector2( 29, 29 )
 custom_fonts/font = ExtResource( 2 )
 text = "-"
 
-[node name="AttributeValues" type="VBoxContainer" parent="Attributes"]
+[node name="AttributeValues" type="VBoxContainer" parent="Column3/Attributes"]
+editor/display_folded = true
 margin_left = 131.0
 margin_right = 140.0
-margin_bottom = 430.0
+margin_bottom = 182.0
 custom_constants/separation = 30
 
-[node name="LblStrength" type="Label" parent="Attributes/AttributeValues"]
+[node name="LblStrength" type="Label" parent="Column3/Attributes/AttributeValues"]
 margin_right = 9.0
 margin_bottom = 23.0
 size_flags_vertical = 1
@@ -231,7 +241,7 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="LblVitality" type="Label" parent="Attributes/AttributeValues"]
+[node name="LblVitality" type="Label" parent="Column3/Attributes/AttributeValues"]
 margin_top = 53.0
 margin_right = 9.0
 margin_bottom = 76.0
@@ -241,7 +251,7 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="LblDexterity" type="Label" parent="Attributes/AttributeValues"]
+[node name="LblDexterity" type="Label" parent="Column3/Attributes/AttributeValues"]
 margin_top = 106.0
 margin_right = 9.0
 margin_bottom = 129.0
@@ -251,7 +261,7 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="LblWisdom" type="Label" parent="Attributes/AttributeValues"]
+[node name="LblWisdom" type="Label" parent="Column3/Attributes/AttributeValues"]
 margin_top = 159.0
 margin_right = 9.0
 margin_bottom = 182.0
@@ -261,20 +271,21 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="PlusButtons" type="VBoxContainer" parent="Attributes"]
+[node name="PlusButtons" type="VBoxContainer" parent="Column3/Attributes"]
+editor/display_folded = true
 margin_left = 160.0
 margin_right = 189.0
-margin_bottom = 430.0
+margin_bottom = 182.0
 custom_constants/separation = 22
 
-[node name="BtnStrengthPlus2" type="Button" parent="Attributes/PlusButtons"]
+[node name="BtnStrengthPlus2" type="Button" parent="Column3/Attributes/PlusButtons"]
 margin_right = 29.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 29, 29 )
 custom_fonts/font = ExtResource( 2 )
 text = "+"
 
-[node name="BtnVitalityPlus" type="Button" parent="Attributes/PlusButtons"]
+[node name="BtnVitalityPlus" type="Button" parent="Column3/Attributes/PlusButtons"]
 margin_top = 51.0
 margin_right = 29.0
 margin_bottom = 80.0
@@ -282,7 +293,7 @@ rect_min_size = Vector2( 29, 29 )
 custom_fonts/font = ExtResource( 2 )
 text = "+"
 
-[node name="BtnDexterityPlus2" type="Button" parent="Attributes/PlusButtons"]
+[node name="BtnDexterityPlus2" type="Button" parent="Column3/Attributes/PlusButtons"]
 margin_top = 102.0
 margin_right = 29.0
 margin_bottom = 131.0
@@ -290,13 +301,47 @@ rect_min_size = Vector2( 29, 29 )
 custom_fonts/font = ExtResource( 2 )
 text = "+"
 
-[node name="BtnWisdomPlus" type="Button" parent="Attributes/PlusButtons"]
+[node name="BtnWisdomPlus" type="Button" parent="Column3/Attributes/PlusButtons"]
 margin_top = 153.0
 margin_right = 29.0
 margin_bottom = 182.0
 rect_min_size = Vector2( 29, 29 )
 custom_fonts/font = ExtResource( 2 )
 text = "+"
+
+[node name="Statistics" type="CenterContainer" parent="Column3"]
+margin_top = 202.0
+margin_right = 220.0
+margin_bottom = 331.0
+
+[node name="TextLabels" type="VBoxContainer" parent="Column3/Statistics"]
+margin_left = 110.0
+margin_right = 110.0
+margin_bottom = 129.0
+custom_constants/separation = 30
+
+[node name="LblHealth" type="Label" parent="Column3/Statistics/TextLabels"]
+margin_bottom = 23.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+align = 1
+valign = 1
+
+[node name="LblMagic" type="Label" parent="Column3/Statistics/TextLabels"]
+margin_top = 53.0
+margin_bottom = 76.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+align = 1
+valign = 1
+
+[node name="LblSkillPoints" type="Label" parent="Column3/Statistics/TextLabels"]
+margin_top = 106.0
+margin_bottom = 129.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+align = 1
+valign = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_left = 190.0
@@ -305,6 +350,7 @@ margin_right = 490.0
 margin_bottom = 30.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+editor/display_folded = true
 margin_right = 340.0
 margin_bottom = 30.0
 custom_constants/separation = 20

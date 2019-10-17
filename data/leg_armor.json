@@ -1,0 +1,110 @@
+[
+  {
+    "Name": "Chain Leggings",
+    "Description": "A pair of leggings made of chainmail.",
+    "Defense": 22,
+    "Weight": 24,
+    "Value": 660,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Cloth Pants",
+    "Description": "A plain pair of pants made of cloth.",
+    "Defense": 4,
+    "Weight": 10,
+    "Value": 0,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": false,
+    "IsSold": false,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Diamond Leggings",
+    "Description": "An extraordinarily strong pair of leggings made of interlocking pieces of diamond.",
+    "Defense": 45,
+    "Weight": 15,
+    "Value": 2250,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Leather Pants",
+    "Description": "An unadorned pair of pants made of leather.",
+    "Defense": 10,
+    "Weight": 12,
+    "Value": 300,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Necromancer Robe Leggings",
+    "Description": "Robes of a Necromancer.",
+    "Defense": 20,
+    "Weight": 10,
+    "Value": 0,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": false,
+    "IsSold": false,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Plate Leggings",
+    "Description": "Leggings made of sturdy steel.",
+    "Defense": 30,
+    "Weight": 27,
+    "Value": 1500,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Robe Leggings",
+    "Description": "A robe's lower half, made of a strong fabric.",
+    "Defense": 14,
+    "Weight": 5,
+    "Value": 0,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": false,
+    "IsSold": false,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Silk Leggings",
+    "Description": "Leggings made of silk of strong tensile strength.",
+    "Defense": 27,
+    "Weight": 10,
+    "Value": 810,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Studded Leather Pants",
+    "Description": "A pair of leather pants lined with metal studs.",
+    "Defense": 15,
+    "Weight": 16,
+    "Value": 450,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  }
+]

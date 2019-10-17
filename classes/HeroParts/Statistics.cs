@@ -1,4 +1,6 @@
-﻿namespace Sulimn.Classes.HeroParts
+﻿using Newtonsoft.Json;
+
+namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents the statistics of an entity.</summary>
     internal class Statistics
@@ -19,15 +21,19 @@
 
         #region Modifying Properties
 
+        [JsonProperty(Order = 1)]
         /// <summary>Amount of current health the Class has.</summary>
         public int CurrentHealth { get; set; }
 
+        [JsonProperty(Order = 2)]
         /// <summary>Amount of maximum health the Class has.</summary>
         public int MaximumHealth { get; set; }
 
+        [JsonProperty(Order = 3)]
         /// <summary>Amount of current magic the Class has.</summary>
         public int CurrentMagic { get; set; }
 
+        [JsonProperty(Order = 4)]
         /// <summary>Amount of maximum magic the Class has.</summary>
         public int MaximumMagic { get; set; }
 
@@ -35,15 +41,19 @@
 
         #region Helper Properties
 
+        [JsonIgnore]
         /// <summary>Amount of health the Class has, formatted.</summary>
         public string HealthToString => $"{CurrentHealth:N0} / {MaximumHealth:N0}";
 
+        [JsonIgnore]
         /// <summary>Amount of health the Class has, formatted.</summary>
         public string HealthToStringWithText => $"Health: {HealthToString}";
 
+        [JsonIgnore]
         /// <summary>Amount of magic the Class has, formatted with preceding text.</summary>
         public string MagicToString => $"{CurrentMagic:N0} / {MaximumMagic:N0}";
 
+        [JsonIgnore]
         /// <summary>Amount of magic the Class has, formatted with preceding text.</summary>
         public string MagicToStringWithText => $"Magic: {MagicToString}";
 

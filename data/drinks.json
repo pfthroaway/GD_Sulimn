@@ -1,0 +1,72 @@
+[
+  {
+    "Name": "Ale",
+    "Description": "A small cup of ale.",
+    "Weight": 2,
+    "Value": 100,
+    "RestoreHealth": 0,
+    "RestoreMagic": 20,
+    "Cures": false,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Beer",
+    "Description": "A small cup of beer.",
+    "Weight": 2,
+    "Value": 25,
+    "RestoreHealth": 0,
+    "RestoreMagic": 5,
+    "Cures": false,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Grog",
+    "Description": "A small cup of grog.",
+    "Weight": 2,
+    "Value": 50,
+    "RestoreHealth": 0,
+    "RestoreMagic": 10,
+    "Cures": false,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Tea",
+    "Description": "A small cup of tea.",
+    "Weight": 2,
+    "Value": 200,
+    "RestoreHealth": 0,
+    "RestoreMagic": 40,
+    "Cures": false,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Water",
+    "Description": "A small cup of water.",
+    "Weight": 2,
+    "Value": 150,
+    "RestoreHealth": 0,
+    "RestoreMagic": 30,
+    "Cures": false,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  }
+]

@@ -1,0 +1,872 @@
+[
+  {
+    "Name": "Adventurer",
+    "Type": "Human",
+    "Level": 16,
+    "Experience": 400,
+    "Gold": 400,
+    "Attributes": {
+      "Strength": 20,
+      "Vitality": 20,
+      "Dexterity": 20,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 100,
+      "MaximumHealth": 100,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Long Sword",
+      "HeadArmorString": "Studded Leather Helmet",
+      "BodyArmorString": "Studded Leather Doublet",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Studded Leather Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Bear",
+    "Type": "Animal",
+    "Level": 10,
+    "Experience": 250,
+    "Gold": 0,
+    "Attributes": {
+      "Strength": 18,
+      "Vitality": 18,
+      "Dexterity": 12,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 90,
+      "MaximumHealth": 90,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Sharp Fangs",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Beggar",
+    "Type": "Human",
+    "Level": 1,
+    "Experience": 25,
+    "Gold": 75,
+    "Attributes": {
+      "Strength": 10,
+      "Vitality": 10,
+      "Dexterity": 10,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 50,
+      "MaximumHealth": 50,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Club",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Butcher",
+    "Type": "Human",
+    "Level": 6,
+    "Experience": 150,
+    "Gold": 225,
+    "Attributes": {
+      "Strength": 16,
+      "Vitality": 12,
+      "Dexterity": 12,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 60,
+      "MaximumHealth": 60,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Cleaver",
+      "HeadArmorString": "Cloth Helmet",
+      "BodyArmorString": "Leather Shirt",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Cloth Shoes",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Chicken",
+    "Type": "Animal",
+    "Level": 2,
+    "Experience": 50,
+    "Gold": 0,
+    "Attributes": {
+      "Strength": 10,
+      "Vitality": 10,
+      "Dexterity": 12,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 50,
+      "MaximumHealth": 50,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Beak",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Crazed Miner",
+    "Type": "Human",
+    "Level": 15,
+    "Experience": 375,
+    "Gold": 375,
+    "Attributes": {
+      "Strength": 22,
+      "Vitality": 18,
+      "Dexterity": 18,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 90,
+      "MaximumHealth": 90,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Pickaxe",
+      "HeadArmorString": "Miner's Helmet",
+      "BodyArmorString": "Leather Shirt",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Leather Shoes",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Dark Priest",
+    "Type": "Human",
+    "Level": 20,
+    "Experience": 600,
+    "Gold": 600,
+    "Attributes": {
+      "Strength": 23,
+      "Vitality": 26,
+      "Dexterity": 24,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 130,
+      "MaximumHealth": 130,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Pike",
+      "HeadArmorString": "Studded Leather Helmet",
+      "BodyArmorString": "Chain Mail Chestplate",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Chain Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Dion the Necromancer",
+    "Type": "Boss",
+    "Level": 25,
+    "Experience": 1100,
+    "Gold": 1100,
+    "Attributes": {
+      "Strength": 35,
+      "Vitality": 35,
+      "Dexterity": 33,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 175,
+      "MaximumHealth": 175,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Necromancer Staff",
+      "HeadArmorString": "Necromancer Robe Hood",
+      "BodyArmorString": "Necromancer Robes",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Studded Leather Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Evil Knight",
+    "Type": "Human",
+    "Level": 22,
+    "Experience": 800,
+    "Gold": 800,
+    "Attributes": {
+      "Strength": 30,
+      "Vitality": 30,
+      "Dexterity": 25,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 150,
+      "MaximumHealth": 150,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Pike",
+      "HeadArmorString": "Chain Helmet",
+      "BodyArmorString": "Chain Mail Chestplate",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Chain Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Giant Bat",
+    "Type": "Animal",
+    "Level": 10,
+    "Experience": 250,
+    "Gold": 0,
+    "Attributes": {
+      "Strength": 14,
+      "Vitality": 14,
+      "Dexterity": 20,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 70,
+      "MaximumHealth": 70,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Fangs",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Giant Spider",
+    "Type": "Animal",
+    "Level": 12,
+    "Experience": 275,
+    "Gold": 0,
+    "Attributes": {
+      "Strength": 16,
+      "Vitality": 16,
+      "Dexterity": 20,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 80,
+      "MaximumHealth": 80,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Spider Fangs",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Gladiator",
+    "Type": "Human",
+    "Level": 13,
+    "Experience": 325,
+    "Gold": 325,
+    "Attributes": {
+      "Strength": 22,
+      "Vitality": 20,
+      "Dexterity": 20,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 100,
+      "MaximumHealth": 100,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Long Sword",
+      "HeadArmorString": null,
+      "BodyArmorString": "Studded Leather Doublet",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Studded Leather Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "John the Priest",
+    "Type": "Boss",
+    "Level": 15,
+    "Experience": 375,
+    "Gold": 375,
+    "Attributes": {
+      "Strength": 22,
+      "Vitality": 18,
+      "Dexterity": 18,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 90,
+      "MaximumHealth": 90,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Long Sword",
+      "HeadArmorString": "Studded Leather Helmet",
+      "BodyArmorString": "Studded Leather Doublet",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Studded Leather Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Knave",
+    "Type": "Human",
+    "Level": 5,
+    "Experience": 125,
+    "Gold": 200,
+    "Attributes": {
+      "Strength": 13,
+      "Vitality": 13,
+      "Dexterity": 12,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 65,
+      "MaximumHealth": 65,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Short Sword",
+      "HeadArmorString": null,
+      "BodyArmorString": "Leather Shirt",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Cloth Shoes",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Knight",
+    "Type": "Human",
+    "Level": 16,
+    "Experience": 400,
+    "Gold": 400,
+    "Attributes": {
+      "Strength": 20,
+      "Vitality": 22,
+      "Dexterity": 18,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 110,
+      "MaximumHealth": 110,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Great Sword",
+      "HeadArmorString": "Leather Helmet",
+      "BodyArmorString": "Studded Leather Doublet",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Studded Leather Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Leon the Knave",
+    "Type": "Human",
+    "Level": 5,
+    "Experience": 125,
+    "Gold": 200,
+    "Attributes": {
+      "Strength": 13,
+      "Vitality": 13,
+      "Dexterity": 12,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 65,
+      "MaximumHealth": 65,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Short Sword",
+      "HeadArmorString": null,
+      "BodyArmorString": "Leather Shirt",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Cloth Shoes",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Lion",
+    "Type": "Animal",
+    "Level": 14,
+    "Experience": 350,
+    "Gold": 0,
+    "Attributes": {
+      "Strength": 18,
+      "Vitality": 18,
+      "Dexterity": 20,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 90,
+      "MaximumHealth": 90,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Sharp Fangs",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Mangy Dog",
+    "Type": "Animal",
+    "Level": 3,
+    "Experience": 75,
+    "Gold": 0,
+    "Attributes": {
+      "Strength": 12,
+      "Vitality": 10,
+      "Dexterity": 12,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 50,
+      "MaximumHealth": 50,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Fangs",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Minotaur",
+    "Type": "Animal",
+    "Level": 20,
+    "Experience": 600,
+    "Gold": 600,
+    "Attributes": {
+      "Strength": 25,
+      "Vitality": 28,
+      "Dexterity": 20,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 140,
+      "MaximumHealth": 140,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Minotaur Horns",
+      "HeadArmorString": null,
+      "BodyArmorString": "Chain Mail Chestplate",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Studded Leather Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Monk",
+    "Type": "Human",
+    "Level": 14,
+    "Experience": 350,
+    "Gold": 350,
+    "Attributes": {
+      "Strength": 20,
+      "Vitality": 16,
+      "Dexterity": 20,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 80,
+      "MaximumHealth": 80,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Bo Staff",
+      "HeadArmorString": "Robe Hood",
+      "BodyArmorString": "Robe",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Studded Leather Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Necromancer",
+    "Type": "Human",
+    "Level": 22,
+    "Experience": 800,
+    "Gold": 800,
+    "Attributes": {
+      "Strength": 25,
+      "Vitality": 40,
+      "Dexterity": 20,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 200,
+      "MaximumHealth": 200,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Necromancer Staff",
+      "HeadArmorString": "Necromancer Robe Hood",
+      "BodyArmorString": "Necromancer Robes",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Studded Leather Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Priest",
+    "Type": "Human",
+    "Level": 12,
+    "Experience": 300,
+    "Gold": 300,
+    "Attributes": {
+      "Strength": 18,
+      "Vitality": 18,
+      "Dexterity": 16,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 90,
+      "MaximumHealth": 90,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Long Sword",
+      "HeadArmorString": "Cloth Helmet",
+      "BodyArmorString": "Studded Leather Doublet",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Leather Shoes",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Rabbit",
+    "Type": "Animal",
+    "Level": 1,
+    "Experience": 25,
+    "Gold": 0,
+    "Attributes": {
+      "Strength": 11,
+      "Vitality": 6,
+      "Dexterity": 13,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 30,
+      "MaximumHealth": 30,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Teeth",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Snake",
+    "Type": "Animal",
+    "Level": 3,
+    "Experience": 75,
+    "Gold": 0,
+    "Attributes": {
+      "Strength": 10,
+      "Vitality": 10,
+      "Dexterity": 14,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 50,
+      "MaximumHealth": 50,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Fangs",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Squire",
+    "Type": "Human",
+    "Level": 8,
+    "Experience": 200,
+    "Gold": 250,
+    "Attributes": {
+      "Strength": 16,
+      "Vitality": 15,
+      "Dexterity": 13,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 75,
+      "MaximumHealth": 75,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Short Sword",
+      "HeadArmorString": "Cloth Helmet",
+      "BodyArmorString": "Leather Shirt",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Leather Shoes",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Tennyson the Dark Priest",
+    "Type": "Boss",
+    "Level": 20,
+    "Experience": 600,
+    "Gold": 600,
+    "Attributes": {
+      "Strength": 23,
+      "Vitality": 26,
+      "Dexterity": 24,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 130,
+      "MaximumHealth": 130,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Pike",
+      "HeadArmorString": "Studded Leather Helmet",
+      "BodyArmorString": "Chain Mail Chestplate",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Chain Boots",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Theon the Squire",
+    "Type": "Boss",
+    "Level": 10,
+    "Experience": 250,
+    "Gold": 275,
+    "Attributes": {
+      "Strength": 18,
+      "Vitality": 16,
+      "Dexterity": 14,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 80,
+      "MaximumHealth": 80,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Long Sword",
+      "HeadArmorString": null,
+      "BodyArmorString": "Leather Shirt",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": "Leather Shoes",
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Thief",
+    "Type": "Human",
+    "Level": 2,
+    "Experience": 50,
+    "Gold": 150,
+    "Attributes": {
+      "Strength": 8,
+      "Vitality": 10,
+      "Dexterity": 14,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 50,
+      "MaximumHealth": 50,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Stone Dagger",
+      "HeadArmorString": null,
+      "BodyArmorString": "Cloth Shirt",
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Wild Boar",
+    "Type": "Animal",
+    "Level": 4,
+    "Experience": 100,
+    "Gold": 0,
+    "Attributes": {
+      "Strength": 12,
+      "Vitality": 12,
+      "Dexterity": 12,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 60,
+      "MaximumHealth": 60,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Tusks",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  },
+  {
+    "Name": "Wolf",
+    "Type": "Animal",
+    "Level": 5,
+    "Experience": 125,
+    "Gold": 0,
+    "Attributes": {
+      "Strength": 10,
+      "Vitality": 13,
+      "Dexterity": 15,
+      "Wisdom": 0
+    },
+    "Statistics": {
+      "CurrentHealth": 65,
+      "MaximumHealth": 65,
+      "CurrentMagic": 0,
+      "MaximumMagic": 0
+    },
+    "Equipment": {
+      "WeaponString": "Fangs",
+      "HeadArmorString": null,
+      "BodyArmorString": null,
+      "HandArmorString": null,
+      "LegsArmorString": null,
+      "FeetArmorString": null,
+      "LeftRingString": null,
+      "RightRingString": null
+    }
+  }
+]

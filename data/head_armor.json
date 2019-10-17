@@ -1,0 +1,122 @@
+[
+  {
+    "Name": "Chain Helmet",
+    "Description": "A helmet made of chainmail.",
+    "Defense": 24,
+    "Weight": 15,
+    "Value": 720,
+    "CurrentDurability": 100,
+    "MaximumDurability": 100,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Cloth Helmet",
+    "Description": "A plain helmet made of cloth.",
+    "Defense": 4,
+    "Weight": 5,
+    "Value": 0,
+    "CurrentDurability": 100,
+    "MaximumDurability": 100,
+    "CanSell": false,
+    "IsSold": false,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Diamond Helmet",
+    "Description": "An extraordinarily strong helmet made of interlocking pieces of diamond.",
+    "Defense": 50,
+    "Weight": 12,
+    "Value": 2500,
+    "CurrentDurability": 100,
+    "MaximumDurability": 100,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Leather Helmet",
+    "Description": "An unadorned helmet made of leather.",
+    "Defense": 10,
+    "Weight": 8,
+    "Value": 300,
+    "CurrentDurability": 100,
+    "MaximumDurability": 100,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Miner's Helmet",
+    "Description": "A helmet designed for people working in mines.",
+    "Defense": 20,
+    "Weight": 10,
+    "Value": 600,
+    "CurrentDurability": 100,
+    "MaximumDurability": 100,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Necromancer Robe Hood",
+    "Description": "Hood of Necromancer's Robes.",
+    "Defense": 0,
+    "Weight": 0,
+    "Value": 0,
+    "CurrentDurability": 100,
+    "MaximumDurability": 100,
+    "CanSell": false,
+    "IsSold": false,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Plate Helmet",
+    "Description": "A helmet made of sturdy steel.",
+    "Defense": 35,
+    "Weight": 20,
+    "Value": 1750,
+    "CurrentDurability": 100,
+    "MaximumDurability": 100,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Robe Hood",
+    "Description": "A robe's hood, made of a strong fabric.",
+    "Defense": 12,
+    "Weight": 5,
+    "Value": 0,
+    "CurrentDurability": 100,
+    "MaximumDurability": 100,
+    "CanSell": false,
+    "IsSold": false,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Silk Helmet",
+    "Description": "A helmet made of silk of strong tensile strength.",
+    "Defense": 30,
+    "Weight": 8,
+    "Value": 1500,
+    "CurrentDurability": 100,
+    "MaximumDurability": 100,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Studded Leather Helmet",
+    "Description": "A leather helmet lined with metal studs.",
+    "Defense": 15,
+    "Weight": 10,
+    "Value": 450,
+    "CurrentDurability": 100,
+    "MaximumDurability": 100,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  }
+]

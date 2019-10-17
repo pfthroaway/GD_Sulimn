@@ -9,9 +9,11 @@ namespace Sulimn.Classes.Items
     {
         #region Properties
 
+        [JsonProperty(Order = 3)]
         /// <summary>Type of Weapon</summary>
         public WeaponTypes WeaponType { get; set; }
 
+        [JsonProperty(Order = -4)]
         /// <summary>Damage the weapon inflicts</summary>
         public int Damage { get; set; }
 

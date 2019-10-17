@@ -1,39 +1,60 @@
-﻿namespace Sulimn.Classes.HeroParts
+﻿using Newtonsoft.Json;
+
+namespace Sulimn.Classes.HeroParts
 {
     /// <summary>This class represents a Hero's progression through the game.</summary>
-    internal class Progression
+    public class Progression
     {
         #region Modifying Properties
 
+        [JsonProperty(Order = 0)]
         /// <summary>Has the Hero completed Fields?</summary>
-        internal bool Fields { get; set; }
+        public bool Fields { get; set; }
+
+        [JsonProperty(Order = 1)]
 
         /// <summary>Has the Hero completed Forest?</summary>
-        internal bool Forest { get; set; }
+        public bool Forest { get; set; }
+
+        [JsonProperty(Order = 2)]
 
         /// <summary>Has the Hero completed Cathedral?</summary>
-        internal bool Cathedral { get; set; }
+        public bool Cathedral { get; set; }
+
+        [JsonProperty(Order = 3)]
 
         /// <summary>Has the Hero completed Mines?</summary>
-        internal bool Mines { get; set; }
+        public bool Mines { get; set; }
+
+        [JsonProperty(Order = 4)]
 
         /// <summary>Has the Hero completed Catacombs?</summary>
-        internal bool Catacombs { get; set; }
+        public bool Catacombs { get; set; }
+
+        [JsonProperty(Order = 5)]
 
         /// <summary>Has the Hero completed Courtyard?</summary>
-        internal bool Courtyard { get; set; }
+        public bool Courtyard { get; set; }
+
+        [JsonProperty(Order = 6)]
 
         /// <summary>Has the Hero completed Battlements?</summary>
-        internal bool Battlements { get; set; }
+        public bool Battlements { get; set; }
+
+        [JsonProperty(Order = 7)]
 
         /// <summary>Has the Hero completed Armoury?</summary>
-        internal bool Armoury { get; set; }
+        public bool Armoury { get; set; }
+
+        [JsonProperty(Order = 8)]
 
         /// <summary>Has the Hero completed Spire?</summary>
-        internal bool Spire { get; set; }
+        public bool Spire { get; set; }
+
+        [JsonProperty(Order = 9)]
 
         /// <summary>Has the Hero completed ThroneRoom?</summary>
-        internal bool ThroneRoom { get; set; }
+        public bool ThroneRoom { get; set; }
 
         #endregion Modifying Properties
 

@@ -110,22 +110,25 @@
     <Compile Include="scenes/NewHero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scenes\MainScene.cs" />
+    <Compile Include="scenes\NewHero.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\armor\body_armor.json" />
-    <None Include="data\armor\feet_armor.json" />
-    <None Include="data\armor\hand_armor.json" />
-    <None Include="data\armor\head_armor.json" />
-    <None Include="data\armor\leg_armor.json" />
-    <None Include="data\classes\classes.json" />
-    <None Include="data\drinks\drinks.json" />
-    <None Include="data\enemies\enemies.json" />
-    <None Include="data\food\food.json" />
-    <None Include="data\potions\potions.json" />
-    <None Include="data\rings\rings.json" />
-    <None Include="data\spells\spells.json" />
-    <None Include="data\weapons\weapons.json" />
+    <None Include="data\body_armor.json" />
+    <None Include="data\classes.json" />
+    <None Include="data\drinks.json" />
+    <None Include="data\enemies.json" />
+    <None Include="data\feet_armor.json" />
+    <None Include="data\food.json" />
+    <None Include="data\hand_armor.json" />
+    <None Include="data\head_armor.json" />
+    <None Include="data\leg_armor.json" />
+    <None Include="data\potions.json" />
+    <None Include="data\rings.json" />
+    <None Include="data\spells.json" />
+    <None Include="data\weapons.json" />
     <None Include="packages.config" />
+    <None Include="scenes\MainScene.tscn" />
+    <None Include="scenes\NewHero.tscn" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="classes\Extensions\functions\" />

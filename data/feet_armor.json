@@ -1,0 +1,86 @@
+[
+  {
+    "Name": "Chain Boots",
+    "Description": "A pair of boots made of chainmail.",
+    "Defense": 12,
+    "Weight": 15,
+    "Value": 360,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Cloth Shoes",
+    "Description": "A plain pair of shoes made of cloth.",
+    "Defense": 2,
+    "Weight": 5,
+    "Value": 0,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": false,
+    "IsSold": false,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Diamond Boots",
+    "Description": "An extraordinarily strong pair of boots made of interlocking pieces of diamond.",
+    "Defense": 30,
+    "Weight": 10,
+    "Value": 1500,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Leather Shoes",
+    "Description": "An unadorned pair of shoes made of leather.",
+    "Defense": 5,
+    "Weight": 8,
+    "Value": 150,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Plate Boots",
+    "Description": "Boots made of sturdy steel.",
+    "Defense": 20,
+    "Weight": 20,
+    "Value": 600,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Silk Boots",
+    "Description": "Boots made of silk of strong tensile strength.",
+    "Defense": 17,
+    "Weight": 6,
+    "Value": 510,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  },
+  {
+    "Name": "Studded Leather Boots",
+    "Description": "A pair of leather boots lined with metal studs.",
+    "Defense": 8,
+    "Weight": 10,
+    "Value": 240,
+    "CurrentDurability": 0,
+    "MaximumDurability": 0,
+    "CanSell": true,
+    "IsSold": true,
+    "AllowedClassesJson": ""
+  }
+]
