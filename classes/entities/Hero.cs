@@ -3,7 +3,6 @@ using Sulimn.Classes.Enums;
 using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -272,7 +271,7 @@ namespace Sulimn.Classes.Entities
                     break;
 
                 default:
-                    GameState.DisplayNotification("You have attempted to equip an Item which doesn't fit a current type of item to be equipped.", "Sulimn");
+                    //GameState.DisplayNotification("You have attempted to equip an Item which doesn't fit a current type of item to be equipped.", "Sulimn");
                     break;
             }
 

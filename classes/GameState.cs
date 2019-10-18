@@ -45,16 +45,11 @@ namespace Sulimn.Classes
         internal static bool CheckLogin(string username, string password)
         {
             Hero checkHero = AllHeroes.Find(hero => string.Equals(hero.Name, username, StringComparison.InvariantCultureIgnoreCase));
-            if (checkHero != null && checkHero != new Hero())
+            if (checkHero != null && checkHero != new Hero() && PBKDF2.ValidatePassword(password, checkHero.Password))
             {
-                if (Argon2Helper.ValidatePassword(checkHero.Password, password))
-                {
-                    CurrentHero = checkHero;
-                    return true;
-                }
+                CurrentHero = checkHero;
+                return true;
             }
-
-            DisplayNotification("Invalid login.", "Sulimn");
             return false;
         }
 
@@ -105,53 +100,6 @@ namespace Sulimn.Classes
         /// <typeparam name="T">Type</typeparam>
         /// <returns>List of specified Type.</returns>
         public static List<T> GetItemsOfType<T>() => AllItems.OfType<T>().ToList();
-
-        /// <summary>Sets allowed <see cref="HeroClass"/>es based on a string.</summary>
-        /// <param name="classes">AllowedClasses to be converted</param>
-        /// <returns>List of allowed <see cref="HeroClass"/>es</returns>
-        internal static List<HeroClass> SetAllowedClasses(string classes)
-        {
-            List<HeroClass> newAllowedClasses = new List<HeroClass>();
-
-            if (classes.Length > 0)
-            {
-                string[] arrAllowedClasses = classes.Split(',');
-                newAllowedClasses.AddRange(arrAllowedClasses.Select(str => AllClasses.Find(x => x.Name == str.Trim())));
-            }
-            return newAllowedClasses;
-        }
-
-        /// <summary>Sets the Hero's inventory.</summary>
-        /// <param name="inventory">Inventory to be converted</param>
-        /// <returns>Inventory List</returns>
-        internal static List<Item> SetInventory(string inventory)
-        {
-            List<Item> newInventory = new List<Item>();
-
-            if (inventory.Length > 0)
-            {
-                string[] arrInventory = inventory.Split(',');
-                newInventory.AddRange(arrInventory.Select(str => AllItems.Find(x => x.Name == str.Trim())));
-            }
-            return newInventory;
-        }
-
-        /// <summary>Sets the list of the Hero's known spells.</summary>
-        /// <param name="spells">String list of spells</param>
-        /// <returns>List of known Spells</returns>
-        internal static Spellbook SetSpellbook(string spells)
-        {
-            List<Spell> spellList = new List<Spell>();
-
-            if (spells.Length > 0)
-            {
-                string[] arrSpell = spells.Split(',');
-
-                foreach (string str in arrSpell)
-                    spellList.Add(AllSpells.Find(x => x.Name == str.Trim()));
-            }
-            return new Spellbook(spellList);
-        }
 
         #endregion Item Management
 
@@ -224,7 +172,7 @@ namespace Sulimn.Classes
             for (int i = 0; i < 3; i++)
                 newHero.AddItem(AllPotions.Find(itm => itm.Name == "Minor Healing Potion"));
 
-            //JSONInteraction.SaveHero(newHero);
+            JSONInteraction.SaveHero(newHero);
             AllHeroes.Add(newHero);
         }
 
@@ -339,20 +287,5 @@ namespace Sulimn.Classes
         }
 
         #endregion Exploration Events
-
-        #region Notification Management
-
-        /// <summary>Displays a new Notification in a thread-safe way.</summary>
-        /// <param name="message">Message to be displayed</param>
-        /// <param name="title">Title of the Notification window</param>
-        internal static void DisplayNotification(string message, string title) { }
-
-        /// <summary>Displays a new Notification in a thread-safe way and retrieves a boolean result upon its closing.</summary>
-        /// <param name="message">Message to be displayed</param>
-        /// <param name="title">Title of the Notification window</param>
-        /// <returns>Returns value of clicked button on Notification.</returns>
-        internal static bool YesNoNotification(string message, string title) => true;
-
-        #endregion Notification Management
     }
 }
