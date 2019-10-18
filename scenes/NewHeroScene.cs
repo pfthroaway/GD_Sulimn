@@ -20,6 +20,17 @@ public class NewHeroScene : Control
 
     #region Load Scene
 
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventKey eventKey && eventKey.Pressed)
+        {
+            if (eventKey.Scancode == (int)KeyList.Enter || (eventKey.Scancode == (int)KeyList.KpEnter && (!BtnCreate.Disabled)))
+                _on_BtnCreate_pressed();
+            else if (eventKey.Scancode == (int)KeyList.Escape)
+                GetTree().Quit();
+        }
+    }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -81,6 +92,7 @@ public class NewHeroScene : Control
         PswdPassword.Clear();
         PswdConfirm.Clear();
         ChkHardcore.Pressed = false;
+        LblError.Text = "";
         CheckSkillPoints();
         DisableMinus();
         TogglePlus(false);
@@ -128,12 +140,6 @@ public class NewHeroScene : Control
     #endregion Display Manipulation
 
     #region Attribute Modification
-
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape)
-            GetTree().Quit();
-    }
 
     /// <summary>Increases specified Attribute.</summary>
     /// <param name="attribute">Attribute to be increased.</param>

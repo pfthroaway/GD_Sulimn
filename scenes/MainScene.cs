@@ -9,6 +9,17 @@ public class MainScene : Control
 
     #region Load
 
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventKey eventKey && eventKey.Pressed)
+        {
+            if (eventKey.Scancode == (int)KeyList.Enter || (eventKey.Scancode == (int)KeyList.KpEnter && (!BtnLogin.Disabled)))
+                _on_BtnLogin_pressed();
+            else if (eventKey.Scancode == (int)KeyList.Escape)
+                GetTree().Quit();
+        }
+    }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {

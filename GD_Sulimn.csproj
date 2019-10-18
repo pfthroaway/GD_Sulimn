@@ -51,9 +51,6 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Sodium, Version=0.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\libsodium-net.0.10.0\lib\Net40\Sodium.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -72,7 +69,6 @@
     <Compile Include="classes\Enums\SpellTypes.cs" />
     <Compile Include="classes\Enums\Status.cs" />
     <Compile Include="classes\Enums\WeaponTypes.cs" />
-    <Compile Include="classes\Extensions\Argon2Helper.cs" />
     <Compile Include="classes\Extensions\DataTypeHelpers\BoolHelper.cs" />
     <Compile Include="classes\Extensions\DataTypeHelpers\DateTimeHelper.cs" />
     <Compile Include="classes\Extensions\DataTypeHelpers\DecimalHelper.cs" />
@@ -126,7 +122,6 @@
     <None Include="data\rings.json" />
     <None Include="data\spells.json" />
     <None Include="data\weapons.json" />
-    <None Include="libraries\sodium.dll.config" />
     <None Include="packages.config" />
     <None Include="scenes\MainScene.tscn" />
     <None Include="scenes\NewHeroScene.tscn" />
@@ -135,20 +130,12 @@
     <Folder Include="classes\Extensions\functions\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Baseclass.Contrib.Nuget.Output.2.4.3" />
-    <PackageReference Include="libsodium-net" />
     <PackageReference Include="Newtonsoft.Json" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="libraries\libsodium-64.dll" />
-    <Content Include="libraries\libsodium.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets" Condition="Exists('packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets'))" />
   </Target>
 </Project>
