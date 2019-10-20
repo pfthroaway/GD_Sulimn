@@ -19,8 +19,11 @@ namespace Sulimn.Classes.HeroParts
             set
             {
                 _spells = new List<Spell>();
-                foreach (string spell in value.Split(','))
-                    LearnSpell(GameState.AllSpells.Find(spl => spl.Name == spell));
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    foreach (string spell in value.Split(','))
+                        LearnSpell(GameState.AllSpells.Find(spl => spl.Name == spell));
+                }
             }
         }
 

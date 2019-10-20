@@ -42,14 +42,14 @@ public class NewHeroScene : Control
     /// <summary>Assigns all controls to something usable in code.</summary>
     private void AssignControls()
     {
-        BtnStrengthMinus = (Button)GetNode("Column3/Attributes/MinusButtons/BtnStrengthMinus");
-        BtnVitalityMinus = (Button)GetNode("Column3/Attributes/MinusButtons/BtnVitalityMinus");
-        BtnDexterityMinus = (Button)GetNode("Column3/Attributes/MinusButtons/BtnDexterityMinus");
-        BtnWisdomMinus = (Button)GetNode("Column3/Attributes/MinusButtons/BtnWisdomMinus");
-        BtnStrengthPlus = (Button)GetNode("Column3/Attributes/PlusButtons/BtnStrengthPlus");
-        BtnVitalityPlus = (Button)GetNode("Column3/Attributes/PlusButtons/BtnVitalityPlus");
-        BtnDexterityPlus = (Button)GetNode("Column3/Attributes/PlusButtons/BtnDexterityPlus");
-        BtnWisdomPlus = (Button)GetNode("Column3/Attributes/PlusButtons/BtnWisdomPlus");
+        BtnStrengthMinus = (Button)GetNode("Vitals/Attributes/MinusButtons/BtnStrengthMinus");
+        BtnVitalityMinus = (Button)GetNode("Vitals/Attributes/MinusButtons/BtnVitalityMinus");
+        BtnDexterityMinus = (Button)GetNode("Vitals/Attributes/MinusButtons/BtnDexterityMinus");
+        BtnWisdomMinus = (Button)GetNode("Vitals/Attributes/MinusButtons/BtnWisdomMinus");
+        BtnStrengthPlus = (Button)GetNode("Vitals/Attributes/PlusButtons/BtnStrengthPlus");
+        BtnVitalityPlus = (Button)GetNode("Vitals/Attributes/PlusButtons/BtnVitalityPlus");
+        BtnDexterityPlus = (Button)GetNode("Vitals/Attributes/PlusButtons/BtnDexterityPlus");
+        BtnWisdomPlus = (Button)GetNode("Vitals/Attributes/PlusButtons/BtnWisdomPlus");
         BtnCreate = (Button)GetNode("Bottom/Buttons/BtnCreate");
         BtnReset = (Button)GetNode("Bottom/Buttons/BtnReset");
         BtnCancel = (Button)GetNode("Bottom/Buttons/BtnCancel");
@@ -59,13 +59,13 @@ public class NewHeroScene : Control
         PswdConfirm = (LineEdit)GetNode("Info/ConfirmPassword");
         TxtDescription = (TextEdit)GetNode("Class/TxtDescription");
         LstClasses = (ItemList)GetNode("Class/ItemList");
-        LblStrength = (Label)GetNode("Column3/Attributes/AttributeValues/LblStrength");
-        LblVitality = (Label)GetNode("Column3/Attributes/AttributeValues/LblVitality");
-        LblDexterity = (Label)GetNode("Column3/Attributes/AttributeValues/LblDexterity");
-        LblWisdom = (Label)GetNode("Column3/Attributes/AttributeValues/LblWisdom");
-        LblHealth = (Label)GetNode("Column3/Statistics/TextLabels/LblHealth");
-        LblMagic = (Label)GetNode("Column3/Statistics/TextLabels/LblMagic");
-        LblSkillPoints = (Label)GetNode("Column3/Statistics/TextLabels/LblSkillPoints");
+        LblStrength = (Label)GetNode("Vitals/Attributes/AttributeValues/LblStrength");
+        LblVitality = (Label)GetNode("Vitals/Attributes/AttributeValues/LblVitality");
+        LblDexterity = (Label)GetNode("Vitals/Attributes/AttributeValues/LblDexterity");
+        LblWisdom = (Label)GetNode("Vitals/Attributes/AttributeValues/LblWisdom");
+        LblHealth = (Label)GetNode("Vitals/Statistics/TextLabels/LblHealth");
+        LblMagic = (Label)GetNode("Vitals/Statistics/TextLabels/LblMagic");
+        LblSkillPoints = (Label)GetNode("Vitals/Statistics/TextLabels/LblSkillPoints");
         LblError = (Label)GetNode("LblError");
     }
 

@@ -168,15 +168,15 @@ namespace Sulimn.Classes.HeroParts
 
         [JsonIgnore]
         /// <summary>Returns the total Vitality bonus produced by the current set of equipment.</summary>
-        public int BonusVitality => LeftRing.Vitality + RightRing.Vitality;
+        public int BonusVitality => LeftRing != null && RightRing != null ? LeftRing.Vitality + RightRing.Vitality : 0;
 
         [JsonIgnore]
         /// <summary>Returns the total Dexterity bonus produced by the current set of equipment.</summary>
-        public int BonusDexterity => LeftRing.Dexterity + RightRing.Dexterity;
+        public int BonusDexterity => LeftRing != null && RightRing != null ? LeftRing.Dexterity + RightRing.Dexterity : 0;
 
         [JsonIgnore]
         /// <summary>Returns the total Wisdom bonus produced by the current set of equipment.</summary>
-        public int BonusWisdom => LeftRing.Wisdom + RightRing.Wisdom;
+        public int BonusWisdom => LeftRing != null && RightRing != null ? LeftRing.Wisdom + RightRing.Wisdom : 0;
 
         #endregion Helper Properties
 
