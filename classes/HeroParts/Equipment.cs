@@ -10,7 +10,7 @@ namespace Sulimn.Classes.HeroParts
 
         [JsonIgnore]
         /// <summary>The <see cref="Weapon"/> an entity is using.</summary>
-        public Weapon Weapon { get; set; }
+        public Weapon Weapon { get; set; } = new Weapon();
 
         [JsonProperty(Order = 1)]
         /// <summary>The <see cref="Weapon"/> an entity is using, set up to import from JSON.</summary>
@@ -26,7 +26,7 @@ namespace Sulimn.Classes.HeroParts
 
         [JsonIgnore]
         /// <summary>The Head Armor an entity is wearing.</summary>
-        public HeadArmor Head { get; set; }
+        public HeadArmor Head { get; set; } = new HeadArmor();
 
         [JsonProperty(Order = 2)]
         /// <summary>The <see cref="HeadArmor"/> an entity is using, set up to import from JSON.</summary>
@@ -42,7 +42,7 @@ namespace Sulimn.Classes.HeroParts
 
         [JsonIgnore]
         /// <summary>The Body Armor an entity is wearing.</summary>
-        public BodyArmor Body { get; set; }
+        public BodyArmor Body { get; set; } = new BodyArmor();
 
         [JsonProperty(Order = 3)]
         /// <summary>The <see cref="BodyArmor"/> an entity is using, set up to import from JSON.</summary>
@@ -58,7 +58,7 @@ namespace Sulimn.Classes.HeroParts
 
         [JsonIgnore]
         /// <summary>The Hand Armor an entity is wearing.</summary>
-        public HandArmor Hands { get; set; }
+        public HandArmor Hands { get; set; } = new HandArmor();
 
         [JsonProperty(Order = 4)]
         /// <summary>The <see cref="HandArmor"/> an entity is using, set up to import from JSON.</summary>
@@ -74,7 +74,7 @@ namespace Sulimn.Classes.HeroParts
 
         [JsonIgnore]
         /// <summary>The Leg Armor an entity is wearing.</summary>
-        public LegArmor Legs { get; set; }
+        public LegArmor Legs { get; set; } = new LegArmor();
 
         [JsonProperty(Order = 5)]
         /// <summary>The <see cref="LegArmor"/> an entity is using, set up to import from JSON.</summary>
@@ -90,7 +90,7 @@ namespace Sulimn.Classes.HeroParts
 
         [JsonIgnore]
         /// <summary>The Feet Armor an entity is wearing.</summary>
-        public FeetArmor Feet { get; set; }
+        public FeetArmor Feet { get; set; } = new FeetArmor();
 
         [JsonProperty(Order = 6)]
         /// <summary>The <see cref="FeetArmor"/> an entity is using, set up to import from JSON.</summary>
@@ -106,7 +106,7 @@ namespace Sulimn.Classes.HeroParts
 
         [JsonIgnore]
         /// <summary>The Ring an entity is wearing on its left hand.</summary>
-        public Ring LeftRing { get; set; }
+        public Ring LeftRing { get; set; } = new Ring();
 
         [JsonProperty(Order = 7)]
         /// <summary>The <see cref="LeftRing"/> an entity is using, set up to import from JSON.</summary>
@@ -122,7 +122,7 @@ namespace Sulimn.Classes.HeroParts
 
         [JsonIgnore]
         /// <summary>The Ring an entity is wearing on its right hand.</summary>
-        public Ring RightRing { get; set; }
+        public Ring RightRing { get; set; } = new Ring();
 
         [JsonProperty(Order = 8)]
         /// <summary>The <see cref="RightRing"/> an entity is using, set up to import from JSON.</summary>
