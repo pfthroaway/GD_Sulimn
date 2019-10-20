@@ -164,7 +164,7 @@ namespace Sulimn.Classes.HeroParts
 
         [JsonIgnore]
         /// <summary>Returns the total Strength bonus produced by the current set of equipment.</summary>
-        public int BonusStrength => LeftRing.Strength + RightRing.Strength;
+        public int BonusStrength => LeftRing != null && RightRing != null ? LeftRing.Strength + RightRing.Strength : 0;
 
         [JsonIgnore]
         /// <summary>Returns the total Vitality bonus produced by the current set of equipment.</summary>
