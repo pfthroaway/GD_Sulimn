@@ -4,5 +4,5 @@
 font_path = "res://Fonts/segoeui.ttf"
 
 [resource]
-size = 36
+size = 28
 font_data = SubResource( 1 )

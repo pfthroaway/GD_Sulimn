@@ -87,7 +87,7 @@ public class MainScene : Control
     private void Login()
     {
         ClearInput();
-        GetTree().ChangeScene("scenes/CharacterScene.tscn");
+        GetTree().ChangeScene("scenes/city/CityScene.tscn");
     }
 
     #endregion Login

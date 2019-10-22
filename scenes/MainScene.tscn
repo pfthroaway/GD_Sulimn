@@ -16,10 +16,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VB" type="VBoxContainer" parent="CC"]
-margin_left = 500.0
-margin_top = 231.0
-margin_right = 865.0
-margin_bottom = 537.0
+margin_left = 777.0
+margin_top = 387.0
+margin_right = 1142.0
+margin_bottom = 693.0
 custom_constants/separation = 15
 
 [node name="Label" type="Label" parent="CC/VB"]

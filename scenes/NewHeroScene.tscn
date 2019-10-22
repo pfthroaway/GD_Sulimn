@@ -19,18 +19,19 @@ __meta__ = {
 }
 
 [node name="Info" type="VBoxContainer" parent="."]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 230.0
-margin_bottom = 269.0
-rect_min_size = Vector2( 365, 0 )
+editor/display_folded = true
+margin_left = 150.0
+margin_top = 289.0
+margin_right = 575.0
+margin_bottom = 789.0
+rect_min_size = Vector2( 425, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="Info"]
-margin_right = 365.0
-margin_bottom = 44.0
+margin_right = 425.0
+margin_bottom = 49.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "Hero Name:"
@@ -38,16 +39,16 @@ align = 1
 valign = 1
 
 [node name="HeroName" type="LineEdit" parent="Info"]
-margin_top = 54.0
-margin_right = 365.0
-margin_bottom = 108.0
+margin_top = 59.0
+margin_right = 425.0
+margin_bottom = 118.0
 custom_fonts/font = ExtResource( 2 )
 align = 1
 
 [node name="Label2" type="Label" parent="Info"]
-margin_top = 118.0
-margin_right = 365.0
-margin_bottom = 162.0
+margin_top = 128.0
+margin_right = 425.0
+margin_bottom = 177.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "Password:"
@@ -55,17 +56,17 @@ align = 1
 valign = 1
 
 [node name="Password" type="LineEdit" parent="Info"]
-margin_top = 172.0
-margin_right = 365.0
-margin_bottom = 226.0
+margin_top = 187.0
+margin_right = 425.0
+margin_bottom = 246.0
 custom_fonts/font = ExtResource( 2 )
 align = 1
 secret = true
 
 [node name="Label3" type="Label" parent="Info"]
-margin_top = 236.0
-margin_right = 365.0
-margin_bottom = 280.0
+margin_top = 256.0
+margin_right = 425.0
+margin_bottom = 305.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "Confirm Password:"
@@ -73,41 +74,40 @@ align = 1
 valign = 1
 
 [node name="ConfirmPassword" type="LineEdit" parent="Info"]
-margin_top = 290.0
-margin_right = 365.0
-margin_bottom = 344.0
+margin_top = 315.0
+margin_right = 425.0
+margin_bottom = 374.0
 custom_fonts/font = ExtResource( 2 )
 align = 1
 secret = true
 
 [node name="Label4" type="Label" parent="Info"]
-margin_top = 354.0
-margin_right = 365.0
-margin_bottom = 398.0
+margin_top = 384.0
+margin_right = 425.0
+margin_bottom = 433.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "Hardcore:"
 align = 1
 valign = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="Info"]
-margin_top = 408.0
-margin_right = 365.0
-margin_bottom = 460.0
-
-[node name="ChkHardcore" type="CheckButton" parent="Info/CenterContainer"]
-margin_left = 144.0
-margin_right = 220.0
-margin_bottom = 52.0
+[node name="ChkHardcore" type="CheckButton" parent="."]
+margin_left = 290.0
+margin_top = 692.0
+margin_right = 366.0
+margin_bottom = 749.0
+rect_scale = Vector2( 2, 2 )
+size_flags_horizontal = 6
 custom_fonts/font = ExtResource( 2 )
 
 [node name="Class" type="VBoxContainer" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 473.0
-margin_top = 10.0
-margin_right = -493.0
-margin_bottom = -135.0
+margin_left = 650.0
+margin_top = 203.0
+margin_right = -670.0
+margin_bottom = -223.0
 size_flags_vertical = 0
 custom_constants/separation = 10
 __meta__ = {
@@ -115,27 +115,33 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="Class"]
-margin_right = 400.0
-margin_bottom = 44.0
+margin_right = 600.0
+margin_bottom = 49.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "Select a Class:"
 align = 1
 valign = 1
 
-[node name="ItemList" type="ItemList" parent="Class"]
-margin_top = 54.0
-margin_right = 400.0
-margin_bottom = 303.0
-rect_min_size = Vector2( 400, 249 )
+[node name="Center" type="CenterContainer" parent="Class"]
+margin_top = 59.0
+margin_right = 600.0
+margin_bottom = 324.0
+
+[node name="ItemList" type="ItemList" parent="Class/Center"]
+margin_left = 100.0
+margin_right = 500.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 400, 265 )
+size_flags_horizontal = 0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 max_text_lines = 5
 
 [node name="TxtDescription" type="TextEdit" parent="Class"]
-margin_top = 313.0
-margin_right = 400.0
-margin_bottom = 633.0
+margin_top = 334.0
+margin_right = 600.0
+margin_bottom = 654.0
 rect_min_size = Vector2( 220, 320 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 2 )
@@ -146,26 +152,26 @@ override_selected_font_color = true
 wrap_enabled = true
 
 [node name="Vitals" type="VBoxContainer" parent="."]
-margin_left = 1000.0
-margin_top = 10.0
-margin_right = 1347.0
-margin_bottom = 536.0
+margin_left = 1381.0
+margin_top = 249.0
+margin_right = 1744.0
+margin_bottom = 810.0
 custom_constants/separation = 20
 
 [node name="Attributes" type="HBoxContainer" parent="Vitals"]
-margin_right = 347.0
-margin_bottom = 266.0
+margin_right = 363.0
+margin_bottom = 286.0
 custom_constants/separation = 20
 
 [node name="TextLabels" type="VBoxContainer" parent="Vitals/Attributes"]
 editor/display_folded = true
-margin_right = 127.0
-margin_bottom = 266.0
-custom_constants/separation = 30
+margin_right = 143.0
+margin_bottom = 286.0
+custom_constants/separation = 28
 
 [node name="Label4" type="Label" parent="Vitals/Attributes/TextLabels"]
-margin_right = 127.0
-margin_bottom = 44.0
+margin_right = 143.0
+margin_bottom = 49.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "Strength"
@@ -173,9 +179,9 @@ align = 1
 valign = 1
 
 [node name="Label6" type="Label" parent="Vitals/Attributes/TextLabels"]
-margin_top = 74.0
-margin_right = 127.0
-margin_bottom = 118.0
+margin_top = 77.0
+margin_right = 143.0
+margin_bottom = 126.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "Vitality"
@@ -183,9 +189,9 @@ align = 1
 valign = 1
 
 [node name="Label5" type="Label" parent="Vitals/Attributes/TextLabels"]
-margin_top = 148.0
-margin_right = 127.0
-margin_bottom = 192.0
+margin_top = 154.0
+margin_right = 143.0
+margin_bottom = 203.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "Dexterity"
@@ -193,9 +199,9 @@ align = 1
 valign = 1
 
 [node name="Label7" type="Label" parent="Vitals/Attributes/TextLabels"]
-margin_top = 222.0
-margin_right = 127.0
-margin_bottom = 266.0
+margin_top = 231.0
+margin_right = 143.0
+margin_bottom = 280.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "Wisdom"
@@ -203,56 +209,56 @@ align = 1
 valign = 1
 
 [node name="MinusButtons" type="VBoxContainer" parent="Vitals/Attributes"]
-margin_left = 147.0
-margin_right = 197.0
-margin_bottom = 266.0
+margin_left = 163.0
+margin_right = 213.0
+margin_bottom = 286.0
 custom_constants/separation = 22
 
 [node name="BtnStrengthMinus" type="Button" parent="Vitals/Attributes/MinusButtons"]
 margin_right = 50.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "-"
 
 [node name="BtnVitalityMinus" type="Button" parent="Vitals/Attributes/MinusButtons"]
-margin_top = 72.0
+margin_top = 77.0
 margin_right = 50.0
-margin_bottom = 122.0
+margin_bottom = 132.0
 rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "-"
 
 [node name="BtnDexterityMinus" type="Button" parent="Vitals/Attributes/MinusButtons"]
-margin_top = 144.0
+margin_top = 154.0
 margin_right = 50.0
-margin_bottom = 194.0
+margin_bottom = 209.0
 rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "-"
 
 [node name="BtnWisdomMinus" type="Button" parent="Vitals/Attributes/MinusButtons"]
-margin_top = 216.0
+margin_top = 231.0
 margin_right = 50.0
-margin_bottom = 266.0
+margin_bottom = 286.0
 rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "-"
 
 [node name="AttributeValues" type="VBoxContainer" parent="Vitals/Attributes"]
-margin_left = 217.0
-margin_right = 277.0
-margin_bottom = 266.0
+margin_left = 233.0
+margin_right = 293.0
+margin_bottom = 286.0
 rect_min_size = Vector2( 60, 0 )
-custom_constants/separation = 30
+custom_constants/separation = 28
 
 [node name="LblStrength" type="Label" parent="Vitals/Attributes/AttributeValues"]
 margin_right = 60.0
-margin_bottom = 44.0
+margin_bottom = 49.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "0"
@@ -260,9 +266,9 @@ align = 1
 valign = 1
 
 [node name="LblVitality" type="Label" parent="Vitals/Attributes/AttributeValues"]
-margin_top = 74.0
+margin_top = 77.0
 margin_right = 60.0
-margin_bottom = 118.0
+margin_bottom = 126.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "0"
@@ -270,9 +276,9 @@ align = 1
 valign = 1
 
 [node name="LblDexterity" type="Label" parent="Vitals/Attributes/AttributeValues"]
-margin_top = 148.0
+margin_top = 154.0
 margin_right = 60.0
-margin_bottom = 192.0
+margin_bottom = 203.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "0"
@@ -280,9 +286,9 @@ align = 1
 valign = 1
 
 [node name="LblWisdom" type="Label" parent="Vitals/Attributes/AttributeValues"]
-margin_top = 222.0
+margin_top = 231.0
 margin_right = 60.0
-margin_bottom = 266.0
+margin_bottom = 280.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "0"
@@ -290,83 +296,84 @@ align = 1
 valign = 1
 
 [node name="PlusButtons" type="VBoxContainer" parent="Vitals/Attributes"]
-margin_left = 297.0
-margin_right = 347.0
-margin_bottom = 266.0
+margin_left = 313.0
+margin_right = 363.0
+margin_bottom = 286.0
 custom_constants/separation = 22
 
 [node name="BtnStrengthPlus" type="Button" parent="Vitals/Attributes/PlusButtons"]
 margin_right = 50.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "+"
 
 [node name="BtnVitalityPlus" type="Button" parent="Vitals/Attributes/PlusButtons"]
-margin_top = 72.0
+margin_top = 77.0
 margin_right = 50.0
-margin_bottom = 122.0
+margin_bottom = 132.0
 rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "+"
 
 [node name="BtnDexterityPlus" type="Button" parent="Vitals/Attributes/PlusButtons"]
-margin_top = 144.0
+margin_top = 154.0
 margin_right = 50.0
-margin_bottom = 194.0
+margin_bottom = 209.0
 rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "+"
 
 [node name="BtnWisdomPlus" type="Button" parent="Vitals/Attributes/PlusButtons"]
-margin_top = 216.0
+margin_top = 231.0
 margin_right = 50.0
-margin_bottom = 266.0
+margin_bottom = 286.0
 rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "+"
 
 [node name="Label" type="Label" parent="Vitals"]
-margin_top = 286.0
-margin_right = 347.0
-margin_bottom = 314.0
+margin_top = 306.0
+margin_right = 363.0
+margin_bottom = 334.0
 custom_fonts/font = ExtResource( 3 )
 text = "Hold Shift to change by up to 5."
 align = 2
 
 [node name="Statistics" type="CenterContainer" parent="Vitals"]
-margin_top = 334.0
-margin_right = 347.0
-margin_bottom = 526.0
+editor/display_folded = true
+margin_top = 354.0
+margin_right = 363.0
+margin_bottom = 561.0
 
 [node name="TextLabels" type="VBoxContainer" parent="Vitals/Statistics"]
-margin_left = 173.0
-margin_right = 173.0
-margin_bottom = 192.0
+margin_left = 181.0
+margin_right = 181.0
+margin_bottom = 207.0
 custom_constants/separation = 30
 
 [node name="LblHealth" type="Label" parent="Vitals/Statistics/TextLabels"]
-margin_bottom = 44.0
+margin_bottom = 49.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 align = 1
 valign = 1
 
 [node name="LblMagic" type="Label" parent="Vitals/Statistics/TextLabels"]
-margin_top = 74.0
-margin_bottom = 118.0
+margin_top = 79.0
+margin_bottom = 128.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 align = 1
 valign = 1
 
 [node name="LblSkillPoints" type="Label" parent="Vitals/Statistics/TextLabels"]
-margin_top = 148.0
-margin_bottom = 192.0
+margin_top = 158.0
+margin_bottom = 207.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 align = 1
@@ -374,9 +381,9 @@ valign = 1
 
 [node name="LblError" type="Label" parent="."]
 margin_left = 10.0
-margin_top = 648.0
-margin_right = 1356.0
-margin_bottom = 698.0
+margin_top = 950.0
+margin_right = 1910.0
+margin_bottom = 1000.0
 rect_min_size = Vector2( 0, 23 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
@@ -384,19 +391,21 @@ align = 1
 valign = 2
 
 [node name="Bottom" type="CenterContainer" parent="."]
-margin_left = 391.0
-margin_top = 708.0
-margin_right = 490.0
-margin_bottom = 30.0
+editor/display_folded = true
+margin_left = 650.0
+margin_top = 1015.0
+margin_right = 1250.0
+margin_bottom = 1070.0
 
 [node name="Buttons" type="HBoxContainer" parent="Bottom"]
-margin_right = 565.0
-margin_bottom = 50.0
+margin_left = 17.0
+margin_right = 582.0
+margin_bottom = 55.0
 custom_constants/separation = 20
 
 [node name="BtnCreate" type="Button" parent="Bottom/Buttons"]
 margin_right = 175.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 175, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Create"
@@ -404,7 +413,7 @@ text = "Create"
 [node name="BtnReset" type="Button" parent="Bottom/Buttons"]
 margin_left = 195.0
 margin_right = 370.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 175, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Reset"
@@ -412,7 +421,7 @@ text = "Reset"
 [node name="BtnCancel" type="Button" parent="Bottom/Buttons"]
 margin_left = 390.0
 margin_right = 565.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 175, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Cancel"
@@ -425,10 +434,10 @@ text = "Cancel"
 [connection signal="focus_entered" from="Info/ConfirmPassword" to="." method="_on_ConfirmPassword_focus_entered"]
 [connection signal="focus_exited" from="Info/ConfirmPassword" to="." method="_on_ConfirmPassword_focus_exited"]
 [connection signal="text_changed" from="Info/ConfirmPassword" to="." method="_on_ConfirmPassword_text_changed"]
-[connection signal="item_selected" from="Class/ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="item_selected" from="Class/Center/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="Vitals/Attributes/MinusButtons/BtnStrengthMinus" to="." method="_on_BtnStrengthMinus_pressed"]
 [connection signal="pressed" from="Vitals/Attributes/MinusButtons/BtnVitalityMinus" to="." method="_on_BtnVitalityMinus_pressed"]
-[connection signal="pressed" from="Vitals/Attributes/MinusButtons/BtnDexterityMinus" to="." method="_on_BtDexterityMinus_pressed"]
+[connection signal="pressed" from="Vitals/Attributes/MinusButtons/BtnDexterityMinus" to="." method="_on_BtnDexterityMinus_pressed"]
 [connection signal="pressed" from="Vitals/Attributes/MinusButtons/BtnWisdomMinus" to="." method="_on_BtnWisdomMinus_pressed"]
 [connection signal="pressed" from="Vitals/Attributes/PlusButtons/BtnStrengthPlus" to="." method="_on_BtnStrengthPlus_pressed"]
 [connection signal="pressed" from="Vitals/Attributes/PlusButtons/BtnVitalityPlus" to="." method="_on_BtnVitalityPlus_pressed"]

@@ -17,6 +17,7 @@ public class NewHeroScene : Control
     private TextEdit TxtDescription;
     private Label LblStrength, LblVitality, LblDexterity, LblWisdom, LblHealth, LblMagic, LblSkillPoints, LblError;
     private CheckButton ChkHardcore;
+    //private Node vitals = GD.Load<PackedScene>("res://scenes/info/Vitals.tscn").Instance();
 
     #region Load Scene
 
@@ -55,10 +56,10 @@ public class NewHeroScene : Control
         BtnCancel = (Button)GetNode("Bottom/Buttons/BtnCancel");
         TxtHeroName = (LineEdit)GetNode("Info/HeroName");
         PswdPassword = (LineEdit)GetNode("Info/Password");
-        ChkHardcore = (CheckButton)GetNode("Info/CenterContainer/ChkHardcore");
+        ChkHardcore = (CheckButton)GetNode("ChkHardcore");
         PswdConfirm = (LineEdit)GetNode("Info/ConfirmPassword");
         TxtDescription = (TextEdit)GetNode("Class/TxtDescription");
-        LstClasses = (ItemList)GetNode("Class/ItemList");
+        LstClasses = (ItemList)GetNode("Class/Center/ItemList");
         LblStrength = (Label)GetNode("Vitals/Attributes/AttributeValues/LblStrength");
         LblVitality = (Label)GetNode("Vitals/Attributes/AttributeValues/LblVitality");
         LblDexterity = (Label)GetNode("Vitals/Attributes/AttributeValues/LblDexterity");
