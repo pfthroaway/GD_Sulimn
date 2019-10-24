@@ -181,7 +181,7 @@ namespace Sulimn.Classes
         /// <returns>Returns true if successfully saved</returns>
         internal static bool SaveHero(Hero saveHero)
         {
-            //JSONInteraction.SaveHero(saveHero);
+            JSONInteraction.SaveHero(saveHero);
 
             int index = AllHeroes.FindIndex(hero => hero.Name == saveHero.Name);
             AllHeroes[index] = saveHero;

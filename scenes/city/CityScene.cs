@@ -1,10 +1,21 @@
 using Godot;
+using Sulimn.Classes;
 using System;
+using Sulimn.Classes.Entities;
 
 public class CityScene : Control
 {
     private Info info;
     private CharacterScene characterScene;
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape)
+        {
+            GetTree().ChangeScene("scenes/MainScene.tscn");
+            GameState.CurrentHero = new Hero();
+        }
+    }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -13,19 +24,7 @@ public class CityScene : Control
         info.Visible = true;
         info.DisplayStats();
         characterScene = (CharacterScene)GetNode("/root/CharacterScene");
-        characterScene.Visible = true;
-        characterScene.UpdateLabels();
-        //Control ctrl = (Control)characterScene.GetNode("Info");
-        //GD.Print(ctrl.GetFocusMode());
-        //ctrl.SetFocusMode(FocusModeEnum.All);
-        //GD.Print(ctrl.GetFocusMode());
-        //GD.Print(ctrl.HasFocus());
-        //ctrl.GrabFocus();
-        //GD.Print(ctrl.HasFocus());
-        //characterScene.SetFocusMode(FocusModeEnum.All);
-        //characterScene.GrabFocus();
-        //characterScene.GrabClickFocus();
-        //characterScene.
+        characterScene.Scale = new Vector2(1, 1);
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -50,7 +50,7 @@ public class MainScene : Control
             LblError.Text = "Invalid credentials.";
     }
 
-    private void _on_BtnNewHero_pressed() => GetTree().ChangeScene("scenes/NewHeroScene.tscn");
+    private void _on_BtnNewHero_pressed() => GetTree().ChangeScene("scenes/character/NewHeroScene.tscn");
 
     #endregion Click
 

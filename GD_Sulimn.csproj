@@ -104,11 +104,12 @@
     <Compile Include="classes\Items\Ring.cs" />
     <Compile Include="classes\Items\Weapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="scenes\CharacterScene.cs" />
+    <Compile Include="scenes\character\CharacterScene.cs" />
+    <Compile Include="scenes\character\InventoryScene.cs" />
     <Compile Include="scenes\city\CityScene.cs" />
     <Compile Include="scenes\info\Info.cs" />
     <Compile Include="scenes\MainScene.cs" />
-    <Compile Include="scenes\NewHeroScene.cs" />
+    <Compile Include="scenes\character\NewHeroScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\body_armor.json" />
@@ -125,12 +126,12 @@
     <None Include="data\spells.json" />
     <None Include="data\weapons.json" />
     <None Include="packages.config" />
-    <None Include="scenes\CharacterScene.tscn" />
+    <None Include="scenes\character\CharacterScene.tscn" />
     <None Include="scenes\city\CityScene.tscn" />
     <None Include="scenes\info\Info.tscn" />
     <None Include="scenes\info\ProgressBar.tscn" />
     <None Include="scenes\MainScene.tscn" />
-    <None Include="scenes\NewHeroScene.tscn" />
+    <None Include="scenes\character\NewHeroScene.tscn" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="classes\Extensions\functions\" />
