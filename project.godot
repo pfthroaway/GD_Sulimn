@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+CharacterScene="*res://scenes/CharacterScene.tscn"
 Info="*res://scenes/info/Info.tscn"
 
 [display]

@@ -391,38 +391,36 @@ align = 1
 valign = 2
 
 [node name="Bottom" type="CenterContainer" parent="."]
-editor/display_folded = true
-margin_left = 650.0
+margin_left = 625.0
 margin_top = 1015.0
-margin_right = 1250.0
+margin_right = 1265.0
 margin_bottom = 1070.0
 
 [node name="Buttons" type="HBoxContainer" parent="Bottom"]
-margin_left = 17.0
-margin_right = 582.0
+margin_right = 640.0
 margin_bottom = 55.0
 custom_constants/separation = 20
 
 [node name="BtnCreate" type="Button" parent="Bottom/Buttons"]
-margin_right = 175.0
+margin_right = 200.0
 margin_bottom = 55.0
-rect_min_size = Vector2( 175, 50 )
+rect_min_size = Vector2( 200, 55 )
 custom_fonts/font = ExtResource( 2 )
 text = "Create"
 
 [node name="BtnReset" type="Button" parent="Bottom/Buttons"]
-margin_left = 195.0
-margin_right = 370.0
+margin_left = 220.0
+margin_right = 420.0
 margin_bottom = 55.0
-rect_min_size = Vector2( 175, 50 )
+rect_min_size = Vector2( 200, 55 )
 custom_fonts/font = ExtResource( 2 )
 text = "Reset"
 
 [node name="BtnCancel" type="Button" parent="Bottom/Buttons"]
-margin_left = 390.0
-margin_right = 565.0
+margin_left = 440.0
+margin_right = 640.0
 margin_bottom = 55.0
-rect_min_size = Vector2( 175, 50 )
+rect_min_size = Vector2( 200, 55 )
 custom_fonts/font = ExtResource( 2 )
 text = "Cancel"
 [connection signal="focus_entered" from="Info/HeroName" to="." method="_on_HeroName_focus_entered"]

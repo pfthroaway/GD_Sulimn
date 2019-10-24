@@ -17,7 +17,6 @@ public class NewHeroScene : Control
     private TextEdit TxtDescription;
     private Label LblStrength, LblVitality, LblDexterity, LblWisdom, LblHealth, LblMagic, LblSkillPoints, LblError;
     private CheckButton ChkHardcore;
-    //private Node vitals = GD.Load<PackedScene>("res://scenes/info/Vitals.tscn").Instance();
 
     #region Load Scene
 
@@ -28,7 +27,7 @@ public class NewHeroScene : Control
             if (eventKey.Scancode == (int)KeyList.Enter || (eventKey.Scancode == (int)KeyList.KpEnter && (!BtnCreate.Disabled)))
                 _on_BtnCreate_pressed();
             else if (eventKey.Scancode == (int)KeyList.Escape)
-                GetTree().Quit();
+                GetTree().ChangeScene("scenes/MainScene.tscn");
         }
     }
 
@@ -353,7 +352,7 @@ public class NewHeroScene : Control
         CheckSkillPoints();
     }
 
-    private void _on_BtDexterityMinus_pressed()
+    private void _on_BtnDexterityMinus_pressed()
     {
         _selectedClass.Dexterity = DecreaseAttribute(_selectedClass.Dexterity, _compareClass.Dexterity);
         BtnDexterityMinus.Disabled = _selectedClass.Dexterity == _compareClass.Dexterity;

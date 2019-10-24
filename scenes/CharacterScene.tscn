@@ -1,28 +1,45 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/CharacterScene.cs" type="Script" id=1]
 [ext_resource path="res://SegoeUI.tres" type="DynamicFont" id=2]
 [ext_resource path="res://SegoeUISMall.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "slide_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, 10 ), Vector2( 0, 10 ) ]
+}
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 10.0
-margin_right = -516.0
+margin_right = -1490.0
 margin_bottom = -10.0
 script = ExtResource( 1 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/slide_out = SubResource( 1 )
+
 [node name="Info" type="VBoxContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -430.0
-margin_bottom = 160.0
+margin_right = -5.0
 custom_constants/separation = 15
 
 [node name="LblName" type="Label" parent="Info"]
-margin_right = 964.0
+margin_right = 415.0
 margin_bottom = 49.0
 custom_fonts/font = ExtResource( 2 )
 align = 1
@@ -30,7 +47,7 @@ valign = 1
 
 [node name="LblLevel" type="Label" parent="Info"]
 margin_top = 64.0
-margin_right = 964.0
+margin_right = 415.0
 margin_bottom = 113.0
 custom_fonts/font = ExtResource( 2 )
 align = 1
@@ -38,7 +55,7 @@ valign = 1
 
 [node name="LblExperience" type="Label" parent="Info"]
 margin_top = 128.0
-margin_right = 964.0
+margin_right = 415.0
 margin_bottom = 177.0
 custom_fonts/font = ExtResource( 2 )
 align = 1
@@ -46,7 +63,7 @@ valign = 1
 
 [node name="LblSkillPoints" type="Label" parent="Info"]
 margin_top = 192.0
-margin_right = 964.0
+margin_right = 415.0
 margin_bottom = 241.0
 custom_fonts/font = ExtResource( 2 )
 align = 1
@@ -54,7 +71,7 @@ valign = 1
 
 [node name="LblHardcore" type="Label" parent="Info"]
 margin_top = 256.0
-margin_right = 964.0
+margin_right = 415.0
 margin_bottom = 305.0
 custom_fonts/font = ExtResource( 2 )
 align = 1
@@ -62,33 +79,31 @@ valign = 1
 
 [node name="LblGold" type="Label" parent="Info"]
 margin_top = 320.0
-margin_right = 964.0
+margin_right = 415.0
 margin_bottom = 369.0
 custom_fonts/font = ExtResource( 2 )
 align = 1
 valign = 1
 
-[node name="Vitals" type="VBoxContainer" parent="."]
-editor/display_folded = true
-margin_left = 430.0
-margin_top = 10.0
-margin_right = 762.0
-margin_bottom = 495.0
+[node name="Vitals" type="VBoxContainer" parent="Info"]
+margin_top = 384.0
+margin_right = 415.0
+margin_bottom = 904.0
 custom_constants/separation = 10
 
-[node name="Attributes" type="HBoxContainer" parent="Vitals"]
+[node name="Attributes" type="HBoxContainer" parent="Info/Vitals"]
 editor/display_folded = true
-margin_right = 348.0
+margin_right = 415.0
 margin_bottom = 265.0
 custom_constants/separation = 15
 
-[node name="TextLabels" type="VBoxContainer" parent="Vitals/Attributes"]
+[node name="TextLabels" type="VBoxContainer" parent="Info/Vitals/Attributes"]
 editor/display_folded = true
 margin_right = 143.0
 margin_bottom = 265.0
 custom_constants/separation = 22
 
-[node name="Label4" type="Label" parent="Vitals/Attributes/TextLabels"]
+[node name="Label4" type="Label" parent="Info/Vitals/Attributes/TextLabels"]
 margin_right = 143.0
 margin_bottom = 49.0
 size_flags_vertical = 1
@@ -97,7 +112,7 @@ text = "Strength"
 align = 1
 valign = 1
 
-[node name="Label6" type="Label" parent="Vitals/Attributes/TextLabels"]
+[node name="Label6" type="Label" parent="Info/Vitals/Attributes/TextLabels"]
 margin_top = 71.0
 margin_right = 143.0
 margin_bottom = 120.0
@@ -107,7 +122,7 @@ text = "Vitality"
 align = 1
 valign = 1
 
-[node name="Label5" type="Label" parent="Vitals/Attributes/TextLabels"]
+[node name="Label5" type="Label" parent="Info/Vitals/Attributes/TextLabels"]
 margin_top = 142.0
 margin_right = 143.0
 margin_bottom = 191.0
@@ -117,7 +132,7 @@ text = "Dexterity"
 align = 1
 valign = 1
 
-[node name="Label7" type="Label" parent="Vitals/Attributes/TextLabels"]
+[node name="Label7" type="Label" parent="Info/Vitals/Attributes/TextLabels"]
 margin_top = 213.0
 margin_right = 143.0
 margin_bottom = 262.0
@@ -127,7 +142,7 @@ text = "Wisdom"
 align = 1
 valign = 1
 
-[node name="MinusButtons" type="VBoxContainer" parent="Vitals/Attributes"]
+[node name="MinusButtons" type="VBoxContainer" parent="Info/Vitals/Attributes"]
 editor/display_folded = true
 margin_left = 158.0
 margin_right = 208.0
@@ -135,7 +150,7 @@ margin_bottom = 265.0
 rect_min_size = Vector2( 50, 50 )
 custom_constants/separation = 15
 
-[node name="BtnStrengthMinus" type="Button" parent="Vitals/Attributes/MinusButtons"]
+[node name="BtnStrengthMinus" type="Button" parent="Info/Vitals/Attributes/MinusButtons"]
 margin_right = 50.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 50, 50 )
@@ -143,7 +158,7 @@ custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "-"
 
-[node name="BtnVitalityMinus" type="Button" parent="Vitals/Attributes/MinusButtons"]
+[node name="BtnVitalityMinus" type="Button" parent="Info/Vitals/Attributes/MinusButtons"]
 margin_top = 70.0
 margin_right = 50.0
 margin_bottom = 125.0
@@ -152,7 +167,7 @@ custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "-"
 
-[node name="BtnDexterityMinus" type="Button" parent="Vitals/Attributes/MinusButtons"]
+[node name="BtnDexterityMinus" type="Button" parent="Info/Vitals/Attributes/MinusButtons"]
 margin_top = 140.0
 margin_right = 50.0
 margin_bottom = 195.0
@@ -161,7 +176,7 @@ custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "-"
 
-[node name="BtnWisdomMinus" type="Button" parent="Vitals/Attributes/MinusButtons"]
+[node name="BtnWisdomMinus" type="Button" parent="Info/Vitals/Attributes/MinusButtons"]
 margin_top = 210.0
 margin_right = 50.0
 margin_bottom = 265.0
@@ -170,7 +185,7 @@ custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "-"
 
-[node name="AttributeValues" type="VBoxContainer" parent="Vitals/Attributes"]
+[node name="AttributeValues" type="VBoxContainer" parent="Info/Vitals/Attributes"]
 editor/display_folded = true
 margin_left = 223.0
 margin_right = 283.0
@@ -178,7 +193,7 @@ margin_bottom = 265.0
 rect_min_size = Vector2( 60, 0 )
 custom_constants/separation = 22
 
-[node name="LblStrength" type="Label" parent="Vitals/Attributes/AttributeValues"]
+[node name="LblStrength" type="Label" parent="Info/Vitals/Attributes/AttributeValues"]
 margin_right = 60.0
 margin_bottom = 49.0
 size_flags_vertical = 1
@@ -187,7 +202,7 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="LblVitality" type="Label" parent="Vitals/Attributes/AttributeValues"]
+[node name="LblVitality" type="Label" parent="Info/Vitals/Attributes/AttributeValues"]
 margin_top = 71.0
 margin_right = 60.0
 margin_bottom = 120.0
@@ -197,7 +212,7 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="LblDexterity" type="Label" parent="Vitals/Attributes/AttributeValues"]
+[node name="LblDexterity" type="Label" parent="Info/Vitals/Attributes/AttributeValues"]
 margin_top = 142.0
 margin_right = 60.0
 margin_bottom = 191.0
@@ -207,7 +222,7 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="LblWisdom" type="Label" parent="Vitals/Attributes/AttributeValues"]
+[node name="LblWisdom" type="Label" parent="Info/Vitals/Attributes/AttributeValues"]
 margin_top = 213.0
 margin_right = 60.0
 margin_bottom = 262.0
@@ -217,14 +232,14 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="PlusButtons" type="VBoxContainer" parent="Vitals/Attributes"]
+[node name="PlusButtons" type="VBoxContainer" parent="Info/Vitals/Attributes"]
 editor/display_folded = true
 margin_left = 298.0
 margin_right = 348.0
 margin_bottom = 265.0
 custom_constants/separation = 15
 
-[node name="BtnStrengthPlus" type="Button" parent="Vitals/Attributes/PlusButtons"]
+[node name="BtnStrengthPlus" type="Button" parent="Info/Vitals/Attributes/PlusButtons"]
 margin_right = 50.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 50, 50 )
@@ -232,7 +247,7 @@ custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "+"
 
-[node name="BtnVitalityPlus" type="Button" parent="Vitals/Attributes/PlusButtons"]
+[node name="BtnVitalityPlus" type="Button" parent="Info/Vitals/Attributes/PlusButtons"]
 margin_top = 70.0
 margin_right = 50.0
 margin_bottom = 125.0
@@ -241,7 +256,7 @@ custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "+"
 
-[node name="BtnDexterityPlus" type="Button" parent="Vitals/Attributes/PlusButtons"]
+[node name="BtnDexterityPlus" type="Button" parent="Info/Vitals/Attributes/PlusButtons"]
 margin_top = 140.0
 margin_right = 50.0
 margin_bottom = 195.0
@@ -250,7 +265,7 @@ custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "+"
 
-[node name="BtnWisdomPlus" type="Button" parent="Vitals/Attributes/PlusButtons"]
+[node name="BtnWisdomPlus" type="Button" parent="Info/Vitals/Attributes/PlusButtons"]
 margin_top = 210.0
 margin_right = 50.0
 margin_bottom = 265.0
@@ -259,34 +274,34 @@ custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "+"
 
-[node name="Label" type="Label" parent="Vitals"]
+[node name="Label" type="Label" parent="Info/Vitals"]
 margin_top = 275.0
-margin_right = 348.0
+margin_right = 415.0
 margin_bottom = 303.0
 custom_fonts/font = ExtResource( 3 )
 text = "Hold Shift to change by up to 5."
-align = 2
+align = 1
 
-[node name="Statistics" type="CenterContainer" parent="Vitals"]
+[node name="Statistics" type="CenterContainer" parent="Info/Vitals"]
 margin_top = 313.0
-margin_right = 348.0
+margin_right = 415.0
 margin_bottom = 520.0
 
-[node name="TextLabels" type="VBoxContainer" parent="Vitals/Statistics"]
+[node name="TextLabels" type="VBoxContainer" parent="Info/Vitals/Statistics"]
 editor/display_folded = true
-margin_left = 174.0
-margin_right = 174.0
+margin_left = 207.0
+margin_right = 207.0
 margin_bottom = 207.0
 custom_constants/separation = 30
 
-[node name="LblHealth" type="Label" parent="Vitals/Statistics/TextLabels"]
+[node name="LblHealth" type="Label" parent="Info/Vitals/Statistics/TextLabels"]
 margin_bottom = 49.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 align = 1
 valign = 1
 
-[node name="LblMagic" type="Label" parent="Vitals/Statistics/TextLabels"]
+[node name="LblMagic" type="Label" parent="Info/Vitals/Statistics/TextLabels"]
 margin_top = 79.0
 margin_bottom = 128.0
 size_flags_vertical = 1
@@ -294,7 +309,7 @@ custom_fonts/font = ExtResource( 2 )
 align = 1
 valign = 1
 
-[node name="LblSkillPoints" type="Label" parent="Vitals/Statistics/TextLabels"]
+[node name="LblSkillPoints" type="Label" parent="Info/Vitals/Statistics/TextLabels"]
 margin_top = 158.0
 margin_bottom = 207.0
 size_flags_vertical = 1
@@ -302,53 +317,66 @@ custom_fonts/font = ExtResource( 2 )
 align = 1
 valign = 1
 
-[node name="Buttons" type="HBoxContainer" parent="."]
-margin_left = 10.0
-margin_top = 693.0
-margin_right = 826.0
-margin_bottom = 743.0
+[node name="Buttons" type="HBoxContainer" parent="Info"]
+margin_top = 919.0
+margin_right = 415.0
+margin_bottom = 1044.0
 custom_constants/separation = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+[node name="Buttons" type="VBoxContainer" parent="Info/Buttons"]
+margin_right = 415.0
+margin_bottom = 125.0
+custom_constants/separation = 15
+
+[node name="Top" type="HBoxContainer" parent="Info/Buttons/Buttons"]
+margin_right = 415.0
 margin_bottom = 55.0
 custom_constants/separation = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Buttons/VBoxContainer"]
-custom_constants/separation = 15
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Buttons/VBoxContainer"]
-margin_top = 15.0
-margin_bottom = 15.0
-custom_constants/separation = 15
-
-[node name="BtnInventory" type="Button" parent="Buttons"]
-margin_left = 15.0
-margin_right = 185.0
+[node name="BtnInventory" type="Button" parent="Info/Buttons/Buttons/Top"]
+margin_right = 200.0
 margin_bottom = 55.0
-rect_min_size = Vector2( 170, 50 )
+rect_min_size = Vector2( 200, 55 )
 custom_fonts/font = ExtResource( 2 )
 text = "Inventory"
 
-[node name="BtnCastSpell" type="Button" parent="Buttons"]
-margin_left = 200.0
-margin_right = 370.0
+[node name="BtnCastSpell" type="Button" parent="Info/Buttons/Buttons/Top"]
+margin_left = 215.0
+margin_right = 415.0
 margin_bottom = 55.0
-rect_min_size = Vector2( 170, 50 )
+rect_min_size = Vector2( 200, 55 )
 custom_fonts/font = ExtResource( 2 )
 text = "Cast Spell"
 
-[node name="BtnReset" type="Button" parent="Buttons"]
-margin_left = 385.0
-margin_right = 555.0
+[node name="Bottom" type="HBoxContainer" parent="Info/Buttons/Buttons"]
+margin_top = 70.0
+margin_right = 415.0
+margin_bottom = 125.0
+custom_constants/separation = 15
+
+[node name="BtnReset" type="Button" parent="Info/Buttons/Buttons/Bottom"]
+margin_right = 200.0
 margin_bottom = 55.0
-rect_min_size = Vector2( 170, 50 )
+rect_min_size = Vector2( 200, 55 )
 custom_fonts/font = ExtResource( 2 )
 text = "Reset"
 
-[node name="BtnClose" type="Button" parent="Buttons"]
-margin_left = 570.0
-margin_right = 740.0
+[node name="BtnClose" type="Button" parent="Info/Buttons/Buttons/Bottom"]
+margin_left = 215.0
+margin_right = 415.0
 margin_bottom = 55.0
-rect_min_size = Vector2( 170, 50 )
+rect_min_size = Vector2( 200, 55 )
 custom_fonts/font = ExtResource( 2 )
 text = "Close"
+
+[node name="BtnCharacter" type="Button" parent="."]
+margin_left = 470.0
+margin_top = 380.0
+margin_right = 770.0
+margin_bottom = 435.0
+rect_min_size = Vector2( 300, 55 )
+rect_rotation = 90.0
+custom_fonts/font = ExtResource( 2 )
+text = "CHARACTER"
+[connection signal="focus_entered" from="." to="." method="_on_Control_focus_entered"]
+[connection signal="pressed" from="BtnCharacter" to="." method="_on_BtnCharacter_pressed"]

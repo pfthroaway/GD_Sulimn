@@ -125,9 +125,12 @@ namespace Sulimn.Classes.Database
         /// <returns>List of <see cref="Hero"/>es</returns>
         internal static List<Hero> LoadHeroes()
         {
+            string dirPath = "user://save/";
             List<Hero> heroes = new List<Hero>();
             Directory dir = new Directory();
-            if (dir.Open("user://save/") != Error.CantOpen)
+            if (!dir.DirExists(dirPath))
+                dir.MakeDir(dirPath);
+            if (dir.Open(dirPath) != Error.CantOpen)
             {
                 dir.ListDirBegin();
                 string file = dir.GetNext();
@@ -136,7 +139,7 @@ namespace Sulimn.Classes.Database
                     if (!dir.CurrentIsDir())
                     {
                         File newFile = new File();
-                        newFile.Open($"user://save/{file}", 1);
+                        newFile.Open(dirPath + file, 1);
                         string contents = newFile.GetAsText();
                         newFile.Close();
                         heroes.Add(JsonConvert.DeserializeObject<Hero>(contents));

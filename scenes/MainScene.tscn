@@ -16,63 +16,63 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VB" type="VBoxContainer" parent="CC"]
-margin_left = 777.0
-margin_top = 387.0
-margin_right = 1142.0
-margin_bottom = 693.0
+margin_left = 750.0
+margin_top = 374.0
+margin_right = 1170.0
+margin_bottom = 705.0
 custom_constants/separation = 15
 
 [node name="Label" type="Label" parent="CC/VB"]
-margin_right = 365.0
-margin_bottom = 44.0
+margin_right = 420.0
+margin_bottom = 49.0
 custom_fonts/font = ExtResource( 2 )
 text = "Hero Name:"
 align = 1
 
 [node name="HeroName" type="LineEdit" parent="CC/VB"]
-margin_top = 59.0
-margin_right = 365.0
-margin_bottom = 113.0
+margin_top = 64.0
+margin_right = 420.0
+margin_bottom = 123.0
 rect_min_size = Vector2( 365, 54 )
 custom_fonts/font = ExtResource( 2 )
 align = 1
 
 [node name="Label2" type="Label" parent="CC/VB"]
-margin_top = 128.0
-margin_right = 365.0
-margin_bottom = 172.0
+margin_top = 138.0
+margin_right = 420.0
+margin_bottom = 187.0
 custom_fonts/font = ExtResource( 2 )
 text = "Password:"
 align = 1
 
 [node name="Password" type="LineEdit" parent="CC/VB"]
-margin_top = 187.0
-margin_right = 365.0
-margin_bottom = 241.0
+margin_top = 202.0
+margin_right = 420.0
+margin_bottom = 261.0
 rect_min_size = Vector2( 365, 54 )
 custom_fonts/font = ExtResource( 2 )
 align = 1
 secret = true
 
 [node name="Buttons" type="HBoxContainer" parent="CC/VB"]
-margin_top = 256.0
-margin_right = 365.0
-margin_bottom = 306.0
-custom_constants/separation = 15
+margin_top = 276.0
+margin_right = 420.0
+margin_bottom = 331.0
+custom_constants/separation = 20
 
 [node name="BtnLogin" type="Button" parent="CC/VB/Buttons"]
-margin_right = 175.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 175, 50 )
+margin_right = 200.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 200, 55 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "Log In"
 
 [node name="BtnNewHero" type="Button" parent="CC/VB/Buttons"]
-margin_left = 190.0
-margin_right = 365.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 175, 50 )
+margin_left = 220.0
+margin_right = 420.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 200, 55 )
 custom_fonts/font = ExtResource( 2 )
 text = "New Hero"
 
