@@ -7,6 +7,7 @@ public class CityScene : Control
 {
     private Info info;
     private CharacterScene characterScene;
+    private InventoryScene inventoryScene;
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -24,7 +25,9 @@ public class CityScene : Control
         info.Visible = true;
         info.DisplayStats();
         characterScene = (CharacterScene)GetNode("/root/CharacterScene");
+        inventoryScene = (InventoryScene)GetNode("/root/InventoryScene");
         characterScene.Scale = new Vector2(1, 1);
+        inventoryScene.Scale = new Vector2(1, 1);
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

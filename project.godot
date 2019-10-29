@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 Info="*res://scenes/info/Info.tscn"
 CharacterScene="*res://scenes/character/CharacterScene.tscn"
+InventoryScene="*res://scenes/character/InventoryScene.tscn"
 
 [display]
 
