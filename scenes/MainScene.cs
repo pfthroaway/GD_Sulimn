@@ -3,6 +3,9 @@ using Sulimn.Classes;
 
 public class MainScene : Control
 {
+    private Info info;
+    private CharacterScene characterScene;
+    private InventoryScene inventoryScene;
     private Button BtnLogin;
     private LineEdit TxtHeroName, PswdPassword;
     private Label LblError;
@@ -32,6 +35,12 @@ public class MainScene : Control
     /// <summary>Assigns all controls to something usable in code.</summary>
     private void AssignControls()
     {
+        info = (Info)GetNode("/root/Info");
+        info.Visible = false;
+        characterScene = (CharacterScene)GetNode("/root/CharacterScene");
+        characterScene.Scale = new Vector2(0, 0);
+        inventoryScene = (InventoryScene)GetNode("/root/InventoryScene");
+        inventoryScene.Scale = new Vector2(0, 0);
         BtnLogin = (Button)GetNode("CC/VB/Buttons/BtnLogin");
         TxtHeroName = (LineEdit)GetNode("CC/VB/HeroName");
         PswdPassword = (LineEdit)GetNode("CC/VB/Password");

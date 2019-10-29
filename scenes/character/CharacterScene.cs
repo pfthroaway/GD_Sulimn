@@ -30,7 +30,6 @@ public class CharacterScene : CanvasLayer
     {
         AssignControls();
         SlideIn();
-        this.Scale = new Vector2(0, 0);
     }
 
     /// <summary>Assigns all controls to something usable in code.</summary>

@@ -93,7 +93,7 @@ namespace Sulimn.Classes.Items
         public List<HeroClass> AllowedClasses { get; set; } = new List<HeroClass>();
 
         [JsonProperty(Order = 20)]
-        /// <summary><see cref="HeroClass"/>es allowed to use the Spell, set up to import from JSON.</summary>
+        /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Item"/>, set up to import from JSON.</summary>
         public string AllowedClassesJson
         {
             get => AllowedClasses?.Count > 0 ? string.Join(",", AllowedClasses) : "";
@@ -113,23 +113,19 @@ namespace Sulimn.Classes.Items
         #region Helper Properties
 
         [JsonIgnore]
-        /// <summary>Damage the weapon inflicts, formatted.</summary>
+        /// <summary>Damage the <see cref="Item"/> inflicts, formatted.</summary>
         public string DamageToString => Damage.ToString("N0");
 
         [JsonIgnore]
-        /// <summary>Damage the weapon inflicts, formatted, with preceding text.</summary>
+        /// <summary>Damage the <see cref="Item"/> inflicts, formatted, with preceding text.</summary>
         public string DamageToStringWithText => Damage > 0 ? $"Damage: {DamageToString}" : "";
 
         [JsonIgnore]
-        /// <summary>Type of Weapon to string.</summary>
-        public string WeaponTypeToString => Type == ItemType.MeleeWeapon ? "Melee" : Type == ItemType.MeleeWeapon ? "Ranged" : "";
-
-        [JsonIgnore]
-        /// <summary>Returns the defense with a comma separating thousands.</summary>
+        /// <summary>Amount of damage the <see cref="Item"/> can defend against, formatted.</summary>
         public string DefenseToString => Defense.ToString("N0");
 
         [JsonIgnore]
-        /// <summary>Returns the defense with a comma separating thousands and preceding text.</summary>
+        /// <summary>Amount of damage the <see cref="Item"/> can defend against, formatted, with preceding text.</summary>
         public string DefenseToStringWithText => Defense > 0 ? $"Defense: {DefenseToString}" : "";
 
         [JsonIgnore]
@@ -139,6 +135,10 @@ namespace Sulimn.Classes.Items
         [JsonIgnore]
         /// <summary>Returns text relating to the amount of Magic restored by the <see cref="Consumable"/>.</summary>
         public string RestoreMagicToString => RestoreMagic > 0 ? $"Restores {RestoreMagic:N0} Magic." : "";
+
+        [JsonIgnore]
+        /// <summary>Minimum level the <see cref="Hero"/> need to be to use the <see cref="Item"/>, with preceding text.</summary>
+        public string MinimumLevelToString => $"Minimum Level: {MinimumLevel}";
 
         [JsonIgnore]
         /// <summary>Returns text regarding if the <see cref="Consumable"/> can heal the user.</summary>
@@ -185,12 +185,24 @@ namespace Sulimn.Classes.Items
         public string Durability => $"{CurrentDurabilityToString} / {MaximumDurabilityToString}";
 
         [JsonIgnore]
+        /// <summary>The durability of an <see cref="Item"/>, formatted.</summary>
+        public string DurabilityString => $"Durability: {Durability}";
+
+        [JsonIgnore]
+        /// <summary>The weight of the <see cref="Item"/> with thousands separators.</summary>
+        public string WeightToString => Weight.ToString("N0");
+
+        [JsonIgnore]
+        /// <summary>The weight of the <see cref="Item"/> with thousands separators and preceding text.</summary>
+        public string WeightToStringWithText => $"Weight: {WeightToString}";
+
+        [JsonIgnore]
         /// <summary>The value of the <see cref="Item"/> with thousands separators.</summary>
         public string ValueToString => Value.ToString("N0");
 
         [JsonIgnore]
         /// <summary>The value of the <see cref="Item"/> with thousands separators and preceding text.</summary>
-        public string ValueToStringWithText => !string.IsNullOrWhiteSpace(Name) ? $"Value: {ValueToString}" : "";
+        public string ValueToStringWithText => $"Value: {ValueToString}";
 
         [JsonIgnore]
         /// <summary>The value of the Item.</summary>
@@ -202,11 +214,11 @@ namespace Sulimn.Classes.Items
 
         [JsonIgnore]
         /// <summary>The sell value of the <see cref="Item"/> with thousands separators with preceding text.</summary>
-        public string SellValueToStringWithText => !string.IsNullOrWhiteSpace(Name) ? $"Sell Value: {SellValueToString}" : "";
+        public string SellValueToStringWithText => $"Sell Value: {SellValueToString}";
 
         [JsonIgnore]
         /// <summary>Returns text relating to the sellability of the <see cref="Item"/>.</summary>
-        public string CanSellToString => !string.IsNullOrWhiteSpace(Name) ? (CanSell ? "Sellable" : "Not Sellable") : "";
+        public string CanSellToString => CanSell ? "Sellable" : "Not Sellable";
 
         [JsonIgnore]
         /// <summary>Returns the Strength and preceding text.</summary>
@@ -232,15 +244,67 @@ namespace Sulimn.Classes.Items
             {
                 string[] bonuses =
                 {
-                    DamageToStringWithText, DefenseToStringWithText, StrengthToString, VitalityToString,
+                    StrengthToString, VitalityToString,
                     DexterityToString, WisdomToString
                 };
 
-                return string.Join(", ", bonuses.Where(bonus => bonus.Length > 0));
+                return string.Join("\n", bonuses.Where(bonus => bonus.Length > 0));
+            }
+        }
+
+        /// <summary>Displays the Type of the <see cref="Item"/>, formatted.</summary>
+        public string TypeToString
+        {
+            get
+            {
+                switch (Type)
+                {
+                    case ItemType.MeleeWeapon:
+                        return "Melee Weapon";
+
+                    case ItemType.RangedWeapon:
+                        return "Ranged Weapon";
+
+                    case ItemType.HeadArmor:
+                        return "Head Armor";
+
+                    case ItemType.BodyArmor:
+                        return "Body Armor";
+
+                    case ItemType.HandArmor:
+                        return "Hand Armor";
+
+                    case ItemType.LegArmor:
+                        return "Leg Armor";
+
+                    case ItemType.FeetArmor:
+                        return "Feet Armor";
+
+                    default:
+                        return Type.ToString();
+                }
             }
         }
 
         [JsonIgnore]
+        /// <summary>Text to be displayed when hovering over an <see cref="Item"/>.</summary>
+        public string TooltipText => this != new Item()
+                    ? Name + "\n"
+                        + Description + "\n"
+                        + TypeToString + "\n"
+                        + ((Damage > 0) ? DamageToStringWithText + "\n" : "")
+                        + ((Defense > 0) ? DefenseToStringWithText + "\n" : "")
+                        + ((Weight > 0) ? WeightToStringWithText + "\n" : "")
+                        + ValueToStringWithText + "\n"
+                        + DurabilityString + "\n"
+                        + (EffectsToString.Length > 0 ? EffectsToString + "\n" : "")
+                        + (MinimumLevel > 1 ? MinimumLevelToString + "\n" : "")
+                        + (AllowedClasses.Count > 0 ? AllowedClassesToString + "\n" : "")
+                        + BonusToString
+                    : "";
+
+        [JsonIgnore]
+        /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Item"/>, formatted</summary>
         public string AllowedClassesToString => String.Join(",", AllowedClasses);
 
         #endregion Helper Properties

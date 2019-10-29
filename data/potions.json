@@ -2,7 +2,7 @@
   {
     "Name": "Curing Potion",
     "Description": "A potion which can cure many ailments.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,
@@ -24,7 +24,7 @@
   {
     "Name": "Greater Healing Potion",
     "Description": "A strong healing potion.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,
@@ -46,7 +46,7 @@
   {
     "Name": "Greater Magic Potion",
     "Description": "A strong magical potion.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,
@@ -68,7 +68,7 @@
   {
     "Name": "Healing Potion",
     "Description": "A healing potion.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,
@@ -90,7 +90,7 @@
   {
     "Name": "Light Healing Potion",
     "Description": "A weak healing potion.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,
@@ -112,7 +112,7 @@
   {
     "Name": "Light Magic Potion",
     "Description": "A weak magic potion.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,
@@ -134,7 +134,7 @@
   {
     "Name": "Magic Potion",
     "Description": "A magic potion.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,
@@ -156,7 +156,7 @@
   {
     "Name": "Minor Healing Potion",
     "Description": "A very weak healing potion.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,
@@ -178,7 +178,7 @@
   {
     "Name": "Minor Magic Potion",
     "Description": "A very weak magic potion.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,
@@ -200,7 +200,7 @@
   {
     "Name": "Super Healing Potion",
     "Description": "A very strong healing potion.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,
@@ -222,7 +222,7 @@
   {
     "Name": "Super Magic Potion",
     "Description": "A very strong magic potion.",
-    "Type": 0,
+    "Type": 7,
     "Damage": 0,
     "Defense": 0,
     "Weight": 5,

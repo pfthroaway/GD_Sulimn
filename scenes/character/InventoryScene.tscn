@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/character/InventoryScene.cs" type="Script" id=1]
-[ext_resource path="res://assets/inventory/Head.png" type="Texture" id=2]
-[ext_resource path="res://assets/inventory/Body.png" type="Texture" id=3]
-[ext_resource path="res://assets/inventory/Hands.png" type="Texture" id=4]
-[ext_resource path="res://assets/inventory/Legs.png" type="Texture" id=5]
-[ext_resource path="res://assets/inventory/Feet.png" type="Texture" id=6]
-[ext_resource path="res://assets/inventory/Weapon.png" type="Texture" id=7]
-[ext_resource path="res://assets/inventory/LeftRing.png" type="Texture" id=8]
-[ext_resource path="res://assets/inventory/RightRing.png" type="Texture" id=9]
-[ext_resource path="res://SegoeUI.tres" type="DynamicFont" id=10]
+[ext_resource path="res://scenes/character/TextureRect.tres" type="Theme" id=2]
+[ext_resource path="res://assets/inventory/Head.png" type="Texture" id=3]
+[ext_resource path="res://assets/inventory/Body.png" type="Texture" id=4]
+[ext_resource path="res://assets/inventory/Hands.png" type="Texture" id=5]
+[ext_resource path="res://assets/inventory/Legs.png" type="Texture" id=6]
+[ext_resource path="res://assets/inventory/Feet.png" type="Texture" id=7]
+[ext_resource path="res://assets/inventory/Weapon.png" type="Texture" id=8]
+[ext_resource path="res://assets/inventory/LeftRing.png" type="Texture" id=9]
+[ext_resource path="res://assets/inventory/RightRing.png" type="Texture" id=10]
+[ext_resource path="res://SegoeUI.tres" type="DynamicFont" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "slide"
@@ -33,68 +34,73 @@ offset = Vector2( -1138, 0 )
 transform = Transform2D( 1, 0, 0, 1, -1138, 0 )
 script = ExtResource( 1 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Inventory" type="HBoxContainer" parent="."]
 margin_right = 1052.0
 margin_bottom = 128.0
 custom_constants/separation = 16
 
-[node name="Head" type="TextureRect" parent="HBoxContainer"]
+[node name="Head" type="TextureRect" parent="Inventory"]
 margin_right = 128.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
-hint_tooltip = "Cloth Hat
-Defense: 2
-Value: 200"
-texture = ExtResource( 2 )
+theme = ExtResource( 2 )
+texture = ExtResource( 3 )
 
-[node name="Body" type="TextureRect" parent="HBoxContainer"]
+[node name="Body" type="TextureRect" parent="Inventory"]
 margin_left = 144.0
 margin_right = 272.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 3 )
+theme = ExtResource( 2 )
+texture = ExtResource( 4 )
 
-[node name="Hands" type="TextureRect" parent="HBoxContainer"]
+[node name="Hands" type="TextureRect" parent="Inventory"]
 margin_left = 288.0
 margin_right = 416.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 4 )
+theme = ExtResource( 2 )
+texture = ExtResource( 5 )
 
-[node name="Legs" type="TextureRect" parent="HBoxContainer"]
+[node name="Legs" type="TextureRect" parent="Inventory"]
 margin_left = 432.0
 margin_right = 560.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 5 )
-
-[node name="Feet" type="TextureRect" parent="HBoxContainer"]
-margin_left = 576.0
-margin_right = 704.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 128 )
+theme = ExtResource( 2 )
 texture = ExtResource( 6 )
 
-[node name="Weapon" type="TextureRect" parent="HBoxContainer"]
+[node name="Feet" type="TextureRect" parent="Inventory"]
+margin_left = 578.65
+margin_right = 706.65
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+theme = ExtResource( 2 )
+texture = ExtResource( 7 )
+
+[node name="Weapon" type="TextureRect" parent="Inventory"]
 margin_left = 720.0
 margin_right = 848.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 7 )
+theme = ExtResource( 2 )
+texture = ExtResource( 8 )
 
-[node name="LeftRing" type="TextureRect" parent="HBoxContainer"]
+[node name="LeftRing" type="TextureRect" parent="Inventory"]
 margin_left = 864.0
 margin_right = 992.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 8 )
+theme = ExtResource( 2 )
+texture = ExtResource( 9 )
 
-[node name="RightRing" type="TextureRect" parent="HBoxContainer"]
+[node name="RightRing" type="TextureRect" parent="Inventory"]
 margin_left = 1008.0
 margin_right = 1136.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 9 )
+theme = ExtResource( 2 )
+texture = ExtResource( 10 )
 
 [node name="Button" type="Button" parent="."]
 margin_left = 1186.0
@@ -103,7 +109,7 @@ margin_right = 1386.0
 margin_bottom = 203.0
 rect_min_size = Vector2( 300, 55 )
 rect_rotation = 90.0
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "INVENTORY"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

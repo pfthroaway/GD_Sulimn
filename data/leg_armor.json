@@ -2,7 +2,7 @@
   {
     "Name": "Chain Leggings",
     "Description": "A pair of leggings made of chainmail.",
-    "Type": 0,
+    "Type": 3,
     "Damage": 0,
     "Defense": 22,
     "Weight": 24,
@@ -24,7 +24,7 @@
   {
     "Name": "Cloth Pants",
     "Description": "A plain pair of pants made of cloth.",
-    "Type": 0,
+    "Type": 3,
     "Damage": 0,
     "Defense": 4,
     "Weight": 10,
@@ -46,7 +46,7 @@
   {
     "Name": "Diamond Leggings",
     "Description": "An extraordinarily strong pair of leggings made of interlocking pieces of diamond.",
-    "Type": 0,
+    "Type": 3,
     "Damage": 0,
     "Defense": 45,
     "Weight": 15,
@@ -68,7 +68,7 @@
   {
     "Name": "Leather Pants",
     "Description": "An unadorned pair of pants made of leather.",
-    "Type": 0,
+    "Type": 3,
     "Damage": 0,
     "Defense": 10,
     "Weight": 12,
@@ -90,7 +90,7 @@
   {
     "Name": "Necromancer Robe Leggings",
     "Description": "Robes of a Necromancer.",
-    "Type": 0,
+    "Type": 3,
     "Damage": 0,
     "Defense": 20,
     "Weight": 10,
@@ -112,7 +112,7 @@
   {
     "Name": "Plate Leggings",
     "Description": "Leggings made of sturdy steel.",
-    "Type": 0,
+    "Type": 3,
     "Damage": 0,
     "Defense": 30,
     "Weight": 27,
@@ -134,7 +134,7 @@
   {
     "Name": "Robe Leggings",
     "Description": "A robe's lower half, made of a strong fabric.",
-    "Type": 0,
+    "Type": 3,
     "Damage": 0,
     "Defense": 14,
     "Weight": 5,
@@ -156,7 +156,7 @@
   {
     "Name": "Silk Leggings",
     "Description": "Leggings made of silk of strong tensile strength.",
-    "Type": 0,
+    "Type": 3,
     "Damage": 0,
     "Defense": 27,
     "Weight": 10,
@@ -178,7 +178,7 @@
   {
     "Name": "Studded Leather Pants",
     "Description": "A pair of leather pants lined with metal studs.",
-    "Type": 0,
+    "Type": 3,
     "Damage": 0,
     "Defense": 15,
     "Weight": 16,

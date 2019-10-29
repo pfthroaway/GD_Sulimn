@@ -2,7 +2,7 @@
   {
     "Name": "Furious Ring",
     "Description": "A ring which boosts its wearer's damage by 5 and Strength by 1.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 5,
     "Defense": 0,
     "Weight": 0,
@@ -24,7 +24,7 @@
   {
     "Name": "Rainbow Ring",
     "Description": "A ring which boosts all the wearer's primary attributes by 1.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 0,
     "Weight": 0,
@@ -46,7 +46,7 @@
   {
     "Name": "Ring of Destruction +1",
     "Description": "A ring which boosts its wearer's damage by 5.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 5,
     "Defense": 0,
     "Weight": 0,
@@ -68,7 +68,7 @@
   {
     "Name": "Ring of Destruction +2",
     "Description": "A ring which boosts its wearer's damage by 10.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 10,
     "Defense": 0,
     "Weight": 0,
@@ -90,7 +90,7 @@
   {
     "Name": "Ring of Dexterity +1",
     "Description": "A ring which boosts its wearer's Dexterity by 1.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 0,
     "Weight": 0,
@@ -112,7 +112,7 @@
   {
     "Name": "Ring of Dexterity +2",
     "Description": "A ring which boosts its wearer's Dexterity by 2.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 0,
     "Weight": 0,
@@ -134,7 +134,7 @@
   {
     "Name": "Ring of Heartiness",
     "Description": "A ring which boosts its wearer's Strength and Vitality by 1.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 0,
     "Weight": 0,
@@ -156,7 +156,7 @@
   {
     "Name": "Ring of Protection +1",
     "Description": "A ring which boosts its wearer's defense by 5.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 5,
     "Weight": 0,
@@ -178,7 +178,7 @@
   {
     "Name": "Ring of Protection +2",
     "Description": "A ring which boosts its wearer's defense by 10.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 10,
     "Weight": 0,
@@ -200,7 +200,7 @@
   {
     "Name": "Ring of Strength +1",
     "Description": "A ring which boosts its wearer's Strength by 1.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 0,
     "Weight": 0,
@@ -222,7 +222,7 @@
   {
     "Name": "Ring of Strength +2",
     "Description": "A ring which boosts its wearer's Strength by 2.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 0,
     "Weight": 0,
@@ -244,7 +244,7 @@
   {
     "Name": "Ring of Vitality +1",
     "Description": "A ring which boosts its wearer's Vitality by 1.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 0,
     "Weight": 0,
@@ -266,7 +266,7 @@
   {
     "Name": "Ring of Vitality +2",
     "Description": "A ring which boosts its wearer's Vitality by 2.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 0,
     "Weight": 0,
@@ -288,7 +288,7 @@
   {
     "Name": "Ring of Wisdom +1",
     "Description": "A ring which boosts its wearer's Wisdom by 1.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 0,
     "Weight": 0,
@@ -310,7 +310,7 @@
   {
     "Name": "Ring of Wisdom +2",
     "Description": "A ring which boosts its wearer's Wisdom by 2.",
-    "Type": 0,
+    "Type": 8,
     "Damage": 0,
     "Defense": 0,
     "Weight": 0,
