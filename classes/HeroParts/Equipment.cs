@@ -8,133 +8,37 @@ namespace Sulimn.Classes.HeroParts
     {
         #region Modifying Properties
 
-        [JsonIgnore]
-        /// <summary>The <see cref="Weapon"/> an entity is using.</summary>
-        public Weapon Weapon { get; set; } = new Weapon();
-
         [JsonProperty(Order = 1)]
-        /// <summary>The <see cref="Weapon"/> an entity is using, set up to import from JSON.</summary>
-        public string WeaponString
-        {
-            get => Weapon?.Name;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    Weapon = GameState.AllWeapons.Find(o => o.Name == value);
-            }
-        }
-
-        [JsonIgnore]
-        /// <summary>The Head Armor an entity is wearing.</summary>
-        public HeadArmor Head { get; set; } = new HeadArmor();
+        /// <summary>The Weapon an entity is using.</summary>
+        public Item Weapon { get; set; } = new Item();
 
         [JsonProperty(Order = 2)]
-        /// <summary>The <see cref="HeadArmor"/> an entity is using, set up to import from JSON.</summary>
-        public string HeadArmorString
-        {
-            get => Head?.Name;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    Head = GameState.AllHeadArmor.Find(o => o.Name == value);
-            }
-        }
-
-        [JsonIgnore]
-        /// <summary>The Body Armor an entity is wearing.</summary>
-        public BodyArmor Body { get; set; } = new BodyArmor();
+        /// <summary>The Head Armor an entity is wearing.</summary>
+        public Item Head { get; set; } = new Item();
 
         [JsonProperty(Order = 3)]
-        /// <summary>The <see cref="BodyArmor"/> an entity is using, set up to import from JSON.</summary>
-        public string BodyArmorString
-        {
-            get => Body?.Name;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    Body = GameState.AllBodyArmor.Find(o => o.Name == value);
-            }
-        }
-
-        [JsonIgnore]
-        /// <summary>The Hand Armor an entity is wearing.</summary>
-        public HandArmor Hands { get; set; } = new HandArmor();
+        /// <summary>The Body Armor an entity is wearing.</summary>
+        public Item Body { get; set; } = new Item();
 
         [JsonProperty(Order = 4)]
-        /// <summary>The <see cref="HandArmor"/> an entity is using, set up to import from JSON.</summary>
-        public string HandArmorString
-        {
-            get => Hands?.Name;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    Hands = GameState.AllHandArmor.Find(o => o.Name == value);
-            }
-        }
-
-        [JsonIgnore]
-        /// <summary>The Leg Armor an entity is wearing.</summary>
-        public LegArmor Legs { get; set; } = new LegArmor();
+        /// <summary>The Hand Armor an entity is wearing.</summary>
+        public Item Hands { get; set; } = new Item();
 
         [JsonProperty(Order = 5)]
-        /// <summary>The <see cref="LegArmor"/> an entity is using, set up to import from JSON.</summary>
-        public string LegsArmorString
-        {
-            get => Legs?.Name;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    Legs = GameState.AllLegArmor.Find(o => o.Name == value);
-            }
-        }
-
-        [JsonIgnore]
-        /// <summary>The Feet Armor an entity is wearing.</summary>
-        public FeetArmor Feet { get; set; } = new FeetArmor();
+        /// <summary>The Leg Armor an entity is wearing.</summary>
+        public Item Legs { get; set; } = new Item();
 
         [JsonProperty(Order = 6)]
-        /// <summary>The <see cref="FeetArmor"/> an entity is using, set up to import from JSON.</summary>
-        public string FeetArmorString
-        {
-            get => Feet?.Name;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    Feet = GameState.AllFeetArmor.Find(o => o.Name == value);
-            }
-        }
-
-        [JsonIgnore]
-        /// <summary>The Ring an entity is wearing on its left hand.</summary>
-        public Ring LeftRing { get; set; } = new Ring();
+        /// <summary>The Feet Armor an entity is wearing.</summary>
+        public Item Feet { get; set; } = new Item();
 
         [JsonProperty(Order = 7)]
-        /// <summary>The <see cref="LeftRing"/> an entity is using, set up to import from JSON.</summary>
-        public string LeftRingString
-        {
-            get => LeftRing?.Name;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    LeftRing = GameState.AllRings.Find(o => o.Name == value);
-            }
-        }
-
-        [JsonIgnore]
-        /// <summary>The Ring an entity is wearing on its right hand.</summary>
-        public Ring RightRing { get; set; } = new Ring();
+        /// <summary>The Ring an entity is wearing on its left hand.</summary>
+        public Item LeftRing { get; set; } = new Item();
 
         [JsonProperty(Order = 8)]
-        /// <summary>The <see cref="RightRing"/> an entity is using, set up to import from JSON.</summary>
-        public string RightRingString
-        {
-            get => RightRing?.Name;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    RightRing = GameState.AllRings.Find(o => o.Name == value);
-            }
-        }
+        /// <summary>The Ring an entity is wearing on its right hand.</summary>
+        public Item RightRing { get; set; } = new Item();
 
         #endregion Modifying Properties
 
@@ -224,24 +128,24 @@ namespace Sulimn.Classes.HeroParts
         /// <param name="feet">Feet Armor</param>
         /// <param name="leftRing">Left Ring</param>
         /// <param name="rightRing">Right Ring</param>
-        public Equipment(Weapon weapon, HeadArmor head, BodyArmor body, HandArmor hands, LegArmor legs, FeetArmor feet,
-        Ring leftRing, Ring rightRing)
+        public Equipment(Item weapon, Item head, Item body, Item hands, Item legs, Item feet,
+        Item leftRing, Item rightRing)
         {
-            Weapon = new Weapon(weapon);
-            Head = new HeadArmor(head);
-            Body = new BodyArmor(body);
-            Hands = new HandArmor(hands);
-            Legs = new LegArmor(legs);
-            Feet = new FeetArmor(feet);
-            LeftRing = new Ring(leftRing);
-            RightRing = new Ring(rightRing);
+            Weapon = new Item(weapon);
+            Head = new Item(head);
+            Body = new Item(body);
+            Hands = new Item(hands);
+            Legs = new Item(legs);
+            Feet = new Item(feet);
+            LeftRing = new Item(leftRing);
+            RightRing = new Item(rightRing);
         }
 
         /// <summary>Replaces this instance of Equipment with another instance.</summary>
         /// <param name="other">Instance of Equipment to replace this instance</param>
-        public Equipment(Equipment other) : this(new Weapon(other.Weapon), new HeadArmor(other.Head),
-            new BodyArmor(other.Body), new HandArmor(other.Hands), new LegArmor(other.Legs), new FeetArmor(other.Feet),
-            new Ring(other.LeftRing), new Ring(other.RightRing))
+        public Equipment(Equipment other) : this(new Item(other.Weapon), new Item(other.Head),
+            new Item(other.Body), new Item(other.Hands), new Item(other.Legs), new Item(other.Feet),
+            new Item(other.LeftRing), new Item(other.RightRing))
         {
         }
 

@@ -18,25 +18,25 @@ namespace Sulimn.Classes
         internal static Enemy CurrentEnemy = new Enemy();
         internal static List<Enemy> AllEnemies = new List<Enemy>();
         internal static List<Item> AllItems = new List<Item>();
-        internal static List<HeadArmor> AllHeadArmor = new List<HeadArmor>();
-        internal static List<BodyArmor> AllBodyArmor = new List<BodyArmor>();
-        internal static List<HandArmor> AllHandArmor = new List<HandArmor>();
-        internal static List<LegArmor> AllLegArmor = new List<LegArmor>();
-        internal static List<FeetArmor> AllFeetArmor = new List<FeetArmor>();
-        internal static List<Ring> AllRings = new List<Ring>();
-        internal static List<Weapon> AllWeapons = new List<Weapon>();
-        internal static List<Food> AllFood = new List<Food>();
-        internal static List<Drink> AllDrinks = new List<Drink>();
-        internal static List<Potion> AllPotions = new List<Potion>();
+        internal static List<Item> AllHeadArmor = new List<Item>();
+        internal static List<Item> AllBodyArmor = new List<Item>();
+        internal static List<Item> AllHandArmor = new List<Item>();
+        internal static List<Item> AllLegArmor = new List<Item>();
+        internal static List<Item> AllFeetArmor = new List<Item>();
+        internal static List<Item> AllRings = new List<Item>();
+        internal static List<Item> AllWeapons = new List<Item>();
+        internal static List<Item> AllFood = new List<Item>();
+        internal static List<Item> AllDrinks = new List<Item>();
+        internal static List<Item> AllPotions = new List<Item>();
         internal static List<Spell> AllSpells = new List<Spell>();
         internal static List<Hero> AllHeroes = new List<Hero>();
         internal static List<HeroClass> AllClasses = new List<HeroClass>();
-        internal static Weapon DefaultWeapon = new Weapon();
-        internal static HeadArmor DefaultHead = new HeadArmor();
-        internal static BodyArmor DefaultBody = new BodyArmor();
-        internal static HandArmor DefaultHands = new HandArmor();
-        internal static LegArmor DefaultLegs = new LegArmor();
-        internal static FeetArmor DefaultFeet = new FeetArmor();
+        internal static Item DefaultWeapon = new Item();
+        internal static Item DefaultHead = new Item();
+        internal static Item DefaultBody = new Item();
+        internal static Item DefaultHands = new Item();
+        internal static Item DefaultLegs = new Item();
+        internal static Item DefaultFeet = new Item();
 
         /// <summary>Determines whether a Hero's credentials are authentic.</summary>
         /// <param name="username">Hero's name</param>
@@ -57,11 +57,11 @@ namespace Sulimn.Classes
         internal static void LoadAll()
         {
             AllClasses = JSONInteraction.LoadClasses().OrderBy(o => o.Name).ToList();
-            AllHeadArmor = JSONInteraction.LoadArmor<HeadArmor>("head").OrderBy(o => o.Name).ToList();
-            AllBodyArmor = JSONInteraction.LoadArmor<BodyArmor>("body").OrderBy(o => o.Name).ToList();
-            AllHandArmor = JSONInteraction.LoadArmor<HandArmor>("hand").OrderBy(o => o.Name).ToList();
-            AllLegArmor = JSONInteraction.LoadArmor<LegArmor>("leg").OrderBy(o => o.Name).ToList();
-            AllFeetArmor = JSONInteraction.LoadArmor<FeetArmor>("feet").OrderBy(o => o.Name).ToList();
+            AllHeadArmor = JSONInteraction.LoadArmor<Item>("head").OrderBy(o => o.Name).ToList();
+            AllBodyArmor = JSONInteraction.LoadArmor<Item>("body").OrderBy(o => o.Name).ToList();
+            AllHandArmor = JSONInteraction.LoadArmor<Item>("hand").OrderBy(o => o.Name).ToList();
+            AllLegArmor = JSONInteraction.LoadArmor<Item>("leg").OrderBy(o => o.Name).ToList();
+            AllFeetArmor = JSONInteraction.LoadArmor<Item>("feet").OrderBy(o => o.Name).ToList();
             AllRings = JSONInteraction.LoadRings().OrderBy(o => o.Name).ToList();
             AllWeapons = JSONInteraction.LoadWeapons().OrderBy(o => o.Name).ToList();
             AllDrinks = JSONInteraction.LoadDrinks().OrderBy(o => o.Name).ToList();
@@ -128,17 +128,17 @@ namespace Sulimn.Classes
         /// <param name="newHero">New Hero</param>
         internal static void NewHero(Hero newHero)
         {
-            if (newHero.Equipment.Head == null || newHero.Equipment.Head == new HeadArmor())
+            if (newHero.Equipment.Head == null || newHero.Equipment.Head == new Item())
                 newHero.Equipment.Head = AllHeadArmor.Find(armor => armor.Name == DefaultHead.Name);
-            if (newHero.Equipment.Body == null || newHero.Equipment.Body == new BodyArmor())
+            if (newHero.Equipment.Body == null || newHero.Equipment.Body == new Item())
                 newHero.Equipment.Body = AllBodyArmor.Find(armor => armor.Name == DefaultBody.Name);
-            if (newHero.Equipment.Hands == null || newHero.Equipment.Hands == new HandArmor())
+            if (newHero.Equipment.Hands == null || newHero.Equipment.Hands == new Item())
                 newHero.Equipment.Hands = AllHandArmor.Find(armor => armor.Name == DefaultHands.Name);
-            if (newHero.Equipment.Legs == null || newHero.Equipment.Legs == new LegArmor())
+            if (newHero.Equipment.Legs == null || newHero.Equipment.Legs == new Item())
                 newHero.Equipment.Legs = AllLegArmor.Find(armor => armor.Name == DefaultLegs.Name);
-            if (newHero.Equipment.Feet == null || newHero.Equipment.Feet == new FeetArmor())
+            if (newHero.Equipment.Feet == null || newHero.Equipment.Feet == new Item())
                 newHero.Equipment.Feet = AllFeetArmor.Find(armor => armor.Name == DefaultFeet.Name);
-            if (newHero.Equipment.Weapon == null || newHero.Equipment.Weapon == new Weapon())
+            if (newHero.Equipment.Weapon == null || newHero.Equipment.Weapon == new Item())
             {
                 switch (newHero.Class.Name)
                 {

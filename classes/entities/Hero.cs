@@ -60,28 +60,13 @@ namespace Sulimn.Classes.Entities
 
         #region Helper Properties
 
-        [JsonIgnore]
+        [JsonProperty(Order = 10)]
         /// <summary>List of Items in the inventory.</summary>
         public ReadOnlyCollection<Item> Inventory => new ReadOnlyCollection<Item>(_inventory);
 
         [JsonIgnore]
         /// <summary>List of Items in the inventory, formatted.</summary>
         public string InventoryToString => string.Join(",", Inventory);
-
-        [JsonProperty(Order = 10)]
-        /// <summary>List of Items in the inventory, set up to import from JSON.</summary>
-        public string InventoryJson
-        {
-            get => InventoryToString;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-                    _inventory.AddRange(from string item in value.Split(',')
-                                        select GameState.AllItems.Find(itm => itm.Name == item));
-                }
-            }
-        }
 
         [JsonIgnore]
         /// <summary>Combined weight of all Items in a Hero's Inventory.</summary>
@@ -215,57 +200,57 @@ namespace Sulimn.Classes.Entities
         /// <param name="side">If Item is a Ring, which side is it?</param>
         internal void Equip(Item item, RingHand side = RingHand.Left)
         {
-            switch (item)
+            switch (item.Type)
             {
-                case Weapon weapon:
+                case ItemType.MeleeWeapon | ItemType.RangedWeapon:
                     if (Equipment.Weapon != GameState.DefaultWeapon)
                         AddItem(Equipment.Weapon);
-                    Equipment.Weapon = new Weapon(weapon);
+                    Equipment.Weapon = new Item(item);
                     break;
 
-                case HeadArmor headArmor:
+                case ItemType.HeadArmor:
                     if (Equipment.Head != GameState.DefaultHead)
                         AddItem(Equipment.Head);
-                    Equipment.Head = new HeadArmor(headArmor);
+                    Equipment.Head = new Item(item);
                     break;
 
-                case BodyArmor bodyArmor:
+                case ItemType.BodyArmor:
                     if (Equipment.Body != GameState.DefaultBody)
                         AddItem(Equipment.Body);
-                    Equipment.Body = new BodyArmor(bodyArmor);
+                    Equipment.Body = new Item(item);
                     break;
 
-                case HandArmor handArmor:
+                case ItemType.HandArmor:
                     if (Equipment.Hands != GameState.DefaultHands)
                         AddItem(Equipment.Hands);
-                    Equipment.Hands = new HandArmor(handArmor);
+                    Equipment.Hands = new Item(item);
                     break;
 
-                case LegArmor legArmor:
+                case ItemType.LegArmor:
                     if (Equipment.Legs != GameState.DefaultLegs)
                         AddItem(Equipment.Legs);
-                    Equipment.Legs = new LegArmor(legArmor);
+                    Equipment.Legs = new Item(item);
                     break;
 
-                case FeetArmor feetArmor:
+                case ItemType.FeetArmor:
                     if (Equipment.Feet != GameState.DefaultFeet)
                         AddItem(Equipment.Feet);
-                    Equipment.Feet = new FeetArmor(feetArmor);
+                    Equipment.Feet = new Item(item);
                     break;
 
-                case Ring ring:
+                case ItemType.Ring:
                     switch (side)
                     {
                         case RingHand.Left:
-                            if (Equipment.LeftRing != new Ring())
+                            if (Equipment.LeftRing != new Item())
                                 AddItem(Equipment.LeftRing);
-                            Equipment.LeftRing = new Ring(ring);
+                            Equipment.LeftRing = new Item(item);
                             break;
 
                         case RingHand.Right:
-                            if (Equipment.RightRing != new Ring())
+                            if (Equipment.RightRing != new Item())
                                 AddItem(Equipment.RightRing);
-                            Equipment.RightRing = new Ring(ring);
+                            Equipment.RightRing = new Item(item);
                             break;
                     }
                     break;
@@ -283,55 +268,55 @@ namespace Sulimn.Classes.Entities
         /// <param name="side">If Item is a Ring, which side is it?</param>
         internal void Unequip(Item item, RingHand side = RingHand.Left)
         {
-            switch (item)
+            switch (item.Type)
             {
-                case Weapon weapon:
-                    if (weapon != GameState.DefaultWeapon)
-                        AddItem(weapon);
-                    Equipment.Weapon = new Weapon(GameState.DefaultWeapon);
+                case ItemType.MeleeWeapon | ItemType.RangedWeapon:
+                    if (item != GameState.DefaultWeapon)
+                        AddItem(item);
+                    Equipment.Weapon = new Item(GameState.DefaultWeapon);
                     break;
 
-                case HeadArmor headArmor:
-                    if (headArmor != GameState.DefaultHead)
-                        AddItem(headArmor);
-                    Equipment.Head = new HeadArmor(GameState.DefaultHead);
+                case ItemType.HeadArmor:
+                    if (item != GameState.DefaultHead)
+                        AddItem(item);
+                    Equipment.Head = new Item(GameState.DefaultHead);
                     break;
 
-                case BodyArmor bodyArmor:
-                    if (bodyArmor != GameState.DefaultBody)
-                        AddItem(bodyArmor);
-                    Equipment.Body = new BodyArmor(GameState.DefaultBody);
+                case ItemType.BodyArmor:
+                    if (item != GameState.DefaultBody)
+                        AddItem(item);
+                    Equipment.Body = new Item(GameState.DefaultBody);
                     break;
 
-                case HandArmor handArmor:
-                    if (handArmor != GameState.DefaultHands)
-                        AddItem(handArmor);
-                    Equipment.Hands = new HandArmor(GameState.DefaultHands);
+                case ItemType.HandArmor:
+                    if (item != GameState.DefaultHands)
+                        AddItem(item);
+                    Equipment.Hands = new Item(GameState.DefaultHands);
                     break;
 
-                case LegArmor legArmor:
-                    if (legArmor != GameState.DefaultLegs)
-                        AddItem(legArmor);
-                    Equipment.Legs = new LegArmor(GameState.DefaultLegs);
+                case ItemType.LegArmor:
+                    if (item != GameState.DefaultLegs)
+                        AddItem(item);
+                    Equipment.Legs = new Item(GameState.DefaultLegs);
                     break;
 
-                case FeetArmor feetArmor:
-                    if (feetArmor != GameState.DefaultFeet)
-                        AddItem(feetArmor);
-                    Equipment.Feet = new FeetArmor(GameState.DefaultFeet);
+                case ItemType.FeetArmor:
+                    if (item != GameState.DefaultFeet)
+                        AddItem(item);
+                    Equipment.Feet = new Item(GameState.DefaultFeet);
                     break;
 
-                case Ring ring:
-                    if (ring != new Ring())
-                        AddItem(ring);
+                case ItemType.Ring:
+                    if (item != new Item())
+                        AddItem(item);
                     switch (side)
                     {
                         case RingHand.Left:
-                            Equipment.LeftRing = new Ring();
+                            Equipment.LeftRing = new Item();
                             break;
 
                         case RingHand.Right:
-                            Equipment.RightRing = new Ring();
+                            Equipment.RightRing = new Item();
                             break;
                     }
                     break;

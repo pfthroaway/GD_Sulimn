@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Sulimn.Classes.Entities;
 using Sulimn.Classes.Enums;
 using System;
 using System.Collections.Generic;
@@ -6,25 +7,41 @@ using System.Linq;
 
 namespace Sulimn.Classes.HeroParts
 {
-    /// <summary>Represents a Spell a Hero can cast.</summary>
+    /// <summary>Represents a <see cref="Spell"/> a <see cref="Hero"/> can cast.</summary>
     public class Spell : IEquatable<Spell>
     {
         #region Modifying Properties
 
-        /// <summary>Name of the Spell.</summary>
+        [JsonProperty(Order = 1)]
+        /// <summary>Name of the <see cref="Spell"/>.</summary>
         public string Name { get; set; }
 
-        /// <summary>Description of the Spell.</summary>
+        [JsonProperty(Order = 1)]
+        /// <summary>Description of the <see cref="Spell"/>.</summary>
         public string Description { get; set; }
 
-        /// <summary>Type of the Spell.</summary>
+        [JsonProperty(Order = 3)]
+        /// <summary>Type of the <see cref="Spell"/>.</summary>
         public SpellType Type { get; set; }
 
+        [JsonProperty(Order = 4)]
+        /// <summary>Magic cost of the <see cref="Spell"/>.</summary>
+        public int MagicCost { get; set; }
+
+        [JsonProperty(Order = 5)]
+        /// <summary>Amount of the <see cref="Spell"/>.</summary>
+        public int Amount { get; set; }
+
+        [JsonProperty(Order = 6)]
+        /// <summary>Required Level of the <see cref="Spell"/>.</summary>
+        public int MinimumLevel { get; set; }
+
         [JsonIgnore]
-        /// <summary><see cref="HeroClass"/>es allowed to use the Spell.</summary>
+        /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Spell"/>.</summary>
         public List<HeroClass> AllowedClasses { get; set; }
 
-        /// <summary><see cref="HeroClass"/>es allowed to use the Spell, set up to import from JSON.</summary>
+        [JsonProperty(Order = 7)]
+        /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Spell"/>, set up to import from JSON.</summary>
         public string AllowedClassesJson
         {
             get => AllowedClasses?.Count > 0 ? string.Join(",", AllowedClasses) : "";
@@ -39,53 +56,44 @@ namespace Sulimn.Classes.HeroParts
             }
         }
 
-        /// <summary>Required Level of the Spell.</summary>
-        public int MinimumLevel { get; set; }
-
-        /// <summary>Magic cost of the Spell.</summary>
-        public int MagicCost { get; set; }
-
-        /// <summary>Amount of the Spell.</summary>
-        public int Amount { get; set; }
-
         #endregion Modifying Properties
 
         #region Helper Properties
 
         [JsonIgnore]
-        /// <summary><see cref="HeroClass"/>es allowed to use the Spell, formatted.</summary>
+        /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Spell"/>, formatted.</summary>
         public string AllowedClassesToString => AllowedClasses?.Count > 0 ? string.Join(",", AllowedClasses) : "";
 
         [JsonIgnore]
-        /// <summary><see cref="HeroClass"/>es allowed to use the Spell, formatted, with preceding text.</summary>
+        /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Spell"/>, formatted, with preceding text.</summary>
         public string AllowedClassesToStringWithText => AllowedClasses?.Count > 0 ? $"Allowed Classes: {string.Join(",", AllowedClasses)}" : "";
 
         [JsonIgnore]
-        /// <summary>Type of the Spell, in string format.</summary>
+        /// <summary>Type of the <see cref="Spell"/>, in string format.</summary>
         public string TypeToString => !string.IsNullOrWhiteSpace(Name) ? Type.ToString() : "";
 
         [JsonIgnore]
-        /// <summary>Type and amount of the Spell.</summary>
+        /// <summary>Type and amount of the <see cref="Spell"/>.</summary>
         public string TypeAmount => Amount > 0 ? $"{Type}: {Amount}" : "";
 
         [JsonIgnore]
-        /// <summary>Magic cost of the Spell, with preceding text.</summary>
+        /// <summary>Magic cost of the <see cref="Spell"/>, with preceding text.</summary>
         public string MagicCostToString => MagicCost > 0 ? $"Magic Cost: {MagicCost:N0}" : "";
 
         [JsonIgnore]
-        /// <summary>Required Level of the Spell, with preceding text.</summary>
+        /// <summary>Required Level of the <see cref="Spell"/>, with preceding text.</summary>
         public string RequiredLevelToString => !string.IsNullOrWhiteSpace(Name) ? $"Required Level: {MinimumLevel}" : "";
 
         [JsonIgnore]
-        /// <summary>Value of the Spell.</summary>
+        /// <summary>Value of the <see cref="Spell"/>.</summary>
         public int Value => MinimumLevel * 200;
 
         [JsonIgnore]
-        /// <summary>Value of the Spell, with preceding text.</summary>
+        /// <summary>Value of the <see cref="Spell"/>, with preceding text.</summary>
         public string ValueToString => Value.ToString("N0");
 
         [JsonIgnore]
-        /// <summary>Value of the Spell, with thousands separator and preceding text.</summary>
+        /// <summary>Value of the <see cref="Spell"/>, with thousands separator and preceding text.</summary>
         public string ValueToStringWithText => !string.IsNullOrWhiteSpace(Name) ? $"Value: {ValueToString}" : "";
 
         #endregion Helper Properties
@@ -121,7 +129,7 @@ namespace Sulimn.Classes.HeroParts
 
         #region Constructors
 
-        /// <summary>Initializes a default instance of Spell.</summary>
+        /// <summary>Initializes a default instance of <see cref="Spell"/>.</summary>
         internal Spell()
         {
         }
