@@ -1,7 +1,6 @@
 using Godot;
 using Sulimn.Classes;
 using Sulimn.Classes.Entities;
-using System;
 
 public class CharacterScene : CanvasLayer
 {
@@ -17,7 +16,7 @@ public class CharacterScene : CanvasLayer
 
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape)
+        if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape && showScene)
         {
             SlideIn();
         }
@@ -229,7 +228,8 @@ public class CharacterScene : CanvasLayer
 
     private void _on_BtnInventory_pressed()
     {
-        // Replace with function body.
+        SlideIn();
+        GetTree().ChangeScene("scenes/character/InventoryScene.tscn");
     }
 
     private void _on_BtnCastSpell_pressed()

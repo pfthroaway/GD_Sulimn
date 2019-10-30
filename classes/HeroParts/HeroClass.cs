@@ -11,18 +11,23 @@ namespace Sulimn.Classes.HeroParts
         #region Modifying Properties
 
         /// <summary>Name of the Class.</summary>
+        [JsonProperty(Order = 1)]
         public string Name { get; set; }
 
         /// <summary>Description of the Class.</summary>
+        [JsonProperty(Order = 2)]
         public string Description { get; set; }
 
         /// <summary>Maximum number of skill points a Class can have when initially being assigned.</summary>
+        [JsonProperty(Order = 3)]
         public int SkillPoints { get; set; }
 
         /// <summary>Amount of Strength the Class has by default.</summary>
+        [JsonProperty(Order = 4)]
         public int Strength { get; set; }
 
         /// <summary>Amount of Vitality the Class has by default.</summary>
+        [JsonProperty(Order = 5)]
         public int Vitality
         {
             get => _vitality;
@@ -35,9 +40,11 @@ namespace Sulimn.Classes.HeroParts
         }
 
         /// <summary>Amount of Dexterity the Class has by default.</summary>
+        [JsonProperty(Order = 6)]
         public int Dexterity { get; set; }
 
         /// <summary>Amount of Wisdom the Class has by default.</summary>
+        [JsonProperty(Order = 7)]
         public int Wisdom
         {
             get => _wisdom;
@@ -49,45 +56,44 @@ namespace Sulimn.Classes.HeroParts
             }
         }
 
-        [JsonIgnore]
         /// <summary>Amount of current health the Class has.</summary>
+        [JsonIgnore]
         public int CurrentHealth { get; set; }
 
-        [JsonIgnore]
         /// <summary>Amount of maximum health the Class has.</summary>
+        [JsonIgnore]
         public int MaximumHealth { get; set; }
 
-        [JsonIgnore]
         /// <summary>Amount of current magic the Class has.</summary>
+        [JsonIgnore]
         public int CurrentMagic { get; set; }
 
-        [JsonIgnore]
         /// <summary>Amount of maximum magic the Class has.</summary>
+        [JsonIgnore]
         public int MaximumMagic { get; set; }
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
-        [JsonIgnore]
         /// <summary>Maximum number of skill points a Class can have when initially being assigned, with thousands separator.</summary>
-        /// <summary>The amount of skill points the Hero has available to spend</summary>
+        [JsonIgnore]
         public string SkillPointsToString => SkillPoints != 1 ? $"{SkillPoints:N0} Skill Points Available" : $"{SkillPoints:N0} Skill Point Available";
 
-        [JsonIgnore]
         /// <summary>Amount of health the Class has, formatted.</summary>
+        [JsonIgnore]
         public string HealthToString => $"{CurrentHealth:N0} / {MaximumHealth:N0}";
 
-        [JsonIgnore]
         /// <summary>Amount of health the Class has, formatted with preceding text.</summary>
+        [JsonIgnore]
         public string HealthToStringWithText => $"Health: {HealthToString}";
 
-        [JsonIgnore]
         /// <summary>Amount of magic the Class has, formatted.</summary>
+        [JsonIgnore]
         public string MagicToString => $"{CurrentMagic:N0} / {MaximumMagic:N0}";
 
-        [JsonIgnore]
         /// <summary>Amount of magic the Class has, formatted with preceding text.</summary>
+        [JsonIgnore]
         public string MagicToStringWithText => $"Magic: {MagicToString}";
 
         #endregion Helper Properties

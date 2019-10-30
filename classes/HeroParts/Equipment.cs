@@ -8,78 +8,78 @@ namespace Sulimn.Classes.HeroParts
     {
         #region Modifying Properties
 
-        [JsonProperty(Order = 1)]
         /// <summary>The Weapon an entity is using.</summary>
+        [JsonProperty(Order = 1)]
         public Item Weapon { get; set; } = new Item();
 
-        [JsonProperty(Order = 2)]
         /// <summary>The Head Armor an entity is wearing.</summary>
+        [JsonProperty(Order = 2)]
         public Item Head { get; set; } = new Item();
 
-        [JsonProperty(Order = 3)]
         /// <summary>The Body Armor an entity is wearing.</summary>
+        [JsonProperty(Order = 3)]
         public Item Body { get; set; } = new Item();
 
-        [JsonProperty(Order = 4)]
         /// <summary>The Hand Armor an entity is wearing.</summary>
+        [JsonProperty(Order = 4)]
         public Item Hands { get; set; } = new Item();
 
-        [JsonProperty(Order = 5)]
         /// <summary>The Leg Armor an entity is wearing.</summary>
+        [JsonProperty(Order = 5)]
         public Item Legs { get; set; } = new Item();
 
-        [JsonProperty(Order = 6)]
         /// <summary>The Feet Armor an entity is wearing.</summary>
+        [JsonProperty(Order = 6)]
         public Item Feet { get; set; } = new Item();
 
-        [JsonProperty(Order = 7)]
         /// <summary>The Ring an entity is wearing on its left hand.</summary>
+        [JsonProperty(Order = 7)]
         public Item LeftRing { get; set; } = new Item();
 
-        [JsonProperty(Order = 8)]
         /// <summary>The Ring an entity is wearing on its right hand.</summary>
+        [JsonProperty(Order = 8)]
         public Item RightRing { get; set; } = new Item();
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
-        [JsonIgnore]
         /// <summary>Weight of all the Equipment currently equipped.</summary>
+        [JsonIgnore]
         public int TotalWeight => Weapon.Weight + Body.Weight + Head.Weight + Body.Weight + Hands.Weight + Legs.Weight
                                   + Feet.Weight;
 
-        [JsonIgnore]
         /// <summary>Returns the total damage produced by the current set of equipment.</summary>
+        [JsonIgnore]
         public int TotalDamage => Weapon.Damage + LeftRing.Damage + RightRing.Damage;
 
-        [JsonIgnore]
         /// <summary>Returns the total defense produced by the current set of equipment.</summary>
+        [JsonIgnore]
         public int TotalDefense => Head.Defense + Body.Defense + Hands.Defense + Legs.Defense + Feet.Defense + LeftRing.Defense
         + RightRing.Defense;
 
-        [JsonIgnore]
         /// <summary>Returns the total damage produced by the current set of equipment with thousand separators.</summary>
+        [JsonIgnore]
         public string TotalDefenseToString => TotalDefense.ToString("N0");
 
-        [JsonIgnore]
         /// <summary>Returns the total damage produced by the current set of equipment with thousand separators and preceding text.</summary>
+        [JsonIgnore]
         public string TotalDefenseToStringWithText => $"Defense: {TotalDefense:N0}";
 
-        [JsonIgnore]
         /// <summary>Returns the total Strength bonus produced by the current set of equipment.</summary>
+        [JsonIgnore]
         public int BonusStrength => LeftRing != null && RightRing != null ? LeftRing.Strength + RightRing.Strength : 0;
 
-        [JsonIgnore]
         /// <summary>Returns the total Vitality bonus produced by the current set of equipment.</summary>
+        [JsonIgnore]
         public int BonusVitality => LeftRing != null && RightRing != null ? LeftRing.Vitality + RightRing.Vitality : 0;
 
-        [JsonIgnore]
         /// <summary>Returns the total Dexterity bonus produced by the current set of equipment.</summary>
+        [JsonIgnore]
         public int BonusDexterity => LeftRing != null && RightRing != null ? LeftRing.Dexterity + RightRing.Dexterity : 0;
 
-        [JsonIgnore]
         /// <summary>Returns the total Wisdom bonus produced by the current set of equipment.</summary>
+        [JsonIgnore]
         public int BonusWisdom => LeftRing != null && RightRing != null ? LeftRing.Wisdom + RightRing.Wisdom : 0;
 
         #endregion Helper Properties

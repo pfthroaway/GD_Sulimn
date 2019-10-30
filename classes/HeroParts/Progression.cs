@@ -7,53 +7,44 @@ namespace Sulimn.Classes.HeroParts
     {
         #region Modifying Properties
 
-        [JsonProperty(Order = 0)]
         /// <summary>Has the Hero completed Fields?</summary>
+        [JsonProperty(Order = 1)]
         public bool Fields { get; set; }
 
-        [JsonProperty(Order = 1)]
-
         /// <summary>Has the Hero completed Forest?</summary>
+        [JsonProperty(Order = 2)]
         public bool Forest { get; set; }
 
-        [JsonProperty(Order = 2)]
-
         /// <summary>Has the Hero completed Cathedral?</summary>
+        [JsonProperty(Order = 3)]
         public bool Cathedral { get; set; }
 
-        [JsonProperty(Order = 3)]
-
         /// <summary>Has the Hero completed Mines?</summary>
+        [JsonProperty(Order = 4)]
         public bool Mines { get; set; }
 
-        [JsonProperty(Order = 4)]
-
         /// <summary>Has the Hero completed Catacombs?</summary>
+        [JsonProperty(Order = 5)]
         public bool Catacombs { get; set; }
 
-        [JsonProperty(Order = 5)]
-
         /// <summary>Has the Hero completed Courtyard?</summary>
+        [JsonProperty(Order = 6)]
         public bool Courtyard { get; set; }
 
-        [JsonProperty(Order = 6)]
-
         /// <summary>Has the Hero completed Battlements?</summary>
+        [JsonProperty(Order = 7)]
         public bool Battlements { get; set; }
 
-        [JsonProperty(Order = 7)]
-
         /// <summary>Has the Hero completed Armoury?</summary>
+        [JsonProperty(Order = 8)]
         public bool Armoury { get; set; }
 
-        [JsonProperty(Order = 8)]
-
         /// <summary>Has the Hero completed Spire?</summary>
+        [JsonProperty(Order = 9)]
         public bool Spire { get; set; }
 
-        [JsonProperty(Order = 9)]
-
         /// <summary>Has the Hero completed ThroneRoom?</summary>
+        [JsonProperty(Order = 10)]
         public bool ThroneRoom { get; set; }
 
         #endregion Modifying Properties

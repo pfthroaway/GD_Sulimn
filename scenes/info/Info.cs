@@ -1,8 +1,7 @@
 using Godot;
 using Sulimn.Classes;
-using System;
 
-public class Info : Control
+public class Info : CanvasLayer
 {
     private Label LblLevel, LblExperience, LblGold, LblHealth, LblMagic;
 

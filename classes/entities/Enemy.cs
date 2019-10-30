@@ -23,17 +23,21 @@ namespace Sulimn.Classes.Entities
 
         #region Modifying Properties
 
-        [JsonProperty(Order = -4)]
         /// <summary>Type of the Enemy</summary>
+        [JsonProperty(Order = -4)]
         public string Type { get; set; }
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
-        [JsonIgnore]
         /// <summary>Returns the Enemy's level with preceding text.</summary>
+        [JsonIgnore]
         public string LevelToString => $"Level {Level}";
+
+        /// <summary>The total amount of weight a character is carrying.</summary>
+        [JsonIgnore]
+        public int TotalWeight => Equipment.TotalWeight;
 
         #endregion Helper Properties
 

@@ -1,4 +1,6 @@
-﻿namespace Sulimn.Classes.HeroParts
+﻿using Newtonsoft.Json;
+
+namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents the attributes an entity has.</summary>
     internal class Attributes
@@ -6,15 +8,19 @@
         #region Modifying Properties
 
         /// <summary>How strong an entity is.</summary>
+        [JsonProperty(Order = 1)]
         public int Strength { get; set; }
 
         /// <summary>How much health an entity can have.</summary>
+        [JsonProperty(Order = 2)]
         public int Vitality { get; set; }
 
         /// <summary>How fast an entity can move.</summary>
+        [JsonProperty(Order = 3)]
         public int Dexterity { get; set; }
 
         /// <summary>How magically-inclined an entity is.</summary>
+        [JsonProperty(Order = 4)]
         public int Wisdom { get; set; }
 
         #endregion Modifying Properties

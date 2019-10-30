@@ -6,94 +6,95 @@ using System.Linq;
 
 namespace Sulimn.Classes.Items
 {
+    /// <summary>Represents an <see cref="Item"/> that a <see cref="Hero"/> can interact with in the game.</summary>
     internal class Item
     {
         //TODO Implement durability and other new features, maybe weapon/armor smiths.
 
         #region Modifying Properties
 
-        [JsonProperty(Order = 1)]
         /// <summary>Name of the <see cref="Item"/>.</summary>
+        [JsonProperty(Order = 1)]
         public string Name { get; set; }
 
-        [JsonProperty(Order = 2)]
         /// <summary>Description of the <see cref="Item"/>.</summary>
+        [JsonProperty(Order = 2)]
         public string Description { get; set; }
 
-        [JsonProperty(Order = 3)]
         /// <summary>Type of the <see cref="Item"/>.</summary>
+        [JsonProperty(Order = 3)]
         public ItemType Type { get; set; }
 
-        [JsonProperty(Order = 4)]
         /// <summary>Amount of  the <see cref="Item"/> inflicts.</summary>
+        [JsonProperty(Order = 4)]
         public int Damage { get; set; }
 
-        [JsonProperty(Order = 5)]
         /// <summary>Amount of damage the <see cref="Item"/> can defend against.</summary>
+        [JsonProperty(Order = 5)]
         public int Defense { get; set; }
 
-        [JsonProperty(Order = 6)]
         /// <summary>Amount the <see cref="Item"/> weighs.</summary>
+        [JsonProperty(Order = 6)]
         public int Weight { get; set; }
 
-        [JsonProperty(Order = 7)]
         /// <summary>Amount the <see cref="Item"/> is worth.</summary>
+        [JsonProperty(Order = 7)]
         public int Value { get; set; }
 
-        [JsonProperty(Order = 8)]
         /// <summary>The current durability of an <see cref="Item"/>.</summary>
+        [JsonProperty(Order = 8)]
         public int CurrentDurability { get; set; }
 
-        [JsonProperty(Order = 9)]
         /// <summary>The maximum durability of an <see cref="Item"/>.</summary>
+        [JsonProperty(Order = 9)]
         public int MaximumDurability { get; set; }
 
-        [JsonProperty(Order = 10)]
         /// <summary>Amount of bonus Strength the <see cref="Item"/> grants.</summary>
+        [JsonProperty(Order = 10)]
         public int Strength { get; set; }
 
-        [JsonProperty(Order = 11)]
         /// <summary>Amount of bonus Vitality the <see cref="Item"/> grants.</summary>
+        [JsonProperty(Order = 11)]
         public int Vitality { get; set; }
 
-        [JsonProperty(Order = 12)]
         /// <summary>Amount of bonus Dexterity the <see cref="Item"/> grants.</summary>
+        [JsonProperty(Order = 12)]
         public int Dexterity { get; set; }
 
-        [JsonProperty(Order = 13)]
         /// <summary>Amount of bonus Wisdom the <see cref="Item"/> grants.</summary>
+        [JsonProperty(Order = 13)]
         public int Wisdom { get; set; }
 
-        [JsonProperty(Order = 14)]
         /// <summary>Amount of health this <see cref="Item"/> restores.</summary>
+        [JsonProperty(Order = 14)]
         public int RestoreHealth { get; set; }
 
-        [JsonProperty(Order = 15)]
         /// <summary>Amount of health this <see cref="Item"/> restores.</summary>
+        [JsonProperty(Order = 15)]
         public int RestoreMagic { get; set; }
 
-        [JsonProperty(Order = 16)]
         /// <summary>Does this <see cref="Item"/> cure?</summary>
+        [JsonProperty(Order = 16)]
         public bool Cures { get; set; }
 
-        [JsonProperty(Order = 17)]
         /// <summary>The minimum level a <see cref="Hero"/> is required to be to use the <see cref="Item"/>.</summary>
+        [JsonProperty(Order = 17)]
         public int MinimumLevel { get; set; }
 
-        [JsonProperty(Order = 18)]
         /// <summary>Can the <see cref="Item"/> be sold to a shop?</summary>
+        [JsonProperty(Order = 18)]
         public bool CanSell { get; set; }
 
-        [JsonProperty(Order = 19)]
         /// <summary>Is the <see cref="Item"/> sold in a shop?</summary>
+        [JsonProperty(Order = 19)]
         public bool IsSold { get; set; }
 
-        [JsonIgnore]
         /// <summary><see cref="HeroClass"/>es permitted to use this <see cref="Item"/>.</summary>
+        [JsonIgnore]
         public List<HeroClass> AllowedClasses { get; set; } = new List<HeroClass>();
 
-        [JsonProperty(Order = 20)]
         /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Item"/>, set up to import from JSON.</summary>
+        [JsonProperty(Order = 20)]
         public string AllowedClassesJson
         {
             get => AllowedClasses?.Count > 0 ? string.Join(",", AllowedClasses) : "";
@@ -112,40 +113,40 @@ namespace Sulimn.Classes.Items
 
         #region Helper Properties
 
-        [JsonIgnore]
         /// <summary>Damage the <see cref="Item"/> inflicts, formatted.</summary>
+        [JsonIgnore]
         public string DamageToString => Damage.ToString("N0");
 
-        [JsonIgnore]
         /// <summary>Damage the <see cref="Item"/> inflicts, formatted, with preceding text.</summary>
+        [JsonIgnore]
         public string DamageToStringWithText => Damage > 0 ? $"Damage: {DamageToString}" : "";
 
-        [JsonIgnore]
         /// <summary>Amount of damage the <see cref="Item"/> can defend against, formatted.</summary>
+        [JsonIgnore]
         public string DefenseToString => Defense.ToString("N0");
 
-        [JsonIgnore]
         /// <summary>Amount of damage the <see cref="Item"/> can defend against, formatted, with preceding text.</summary>
+        [JsonIgnore]
         public string DefenseToStringWithText => Defense > 0 ? $"Defense: {DefenseToString}" : "";
 
-        [JsonIgnore]
         /// <summary>Returns text relating to the amount of Health restored by the <see cref="Consumable"/>.</summary>
+        [JsonIgnore]
         public string RestoreHealthToString => RestoreHealth > 0 ? $"Restores {RestoreHealth:N0} Health." : "";
 
-        [JsonIgnore]
         /// <summary>Returns text relating to the amount of Magic restored by the <see cref="Consumable"/>.</summary>
+        [JsonIgnore]
         public string RestoreMagicToString => RestoreMagic > 0 ? $"Restores {RestoreMagic:N0} Magic." : "";
 
-        [JsonIgnore]
         /// <summary>Minimum level the <see cref="Hero"/> need to be to use the <see cref="Item"/>, with preceding text.</summary>
+        [JsonIgnore]
         public string MinimumLevelToString => $"Minimum Level: {MinimumLevel}";
 
-        [JsonIgnore]
         /// <summary>Returns text regarding if the <see cref="Consumable"/> can heal the user.</summary>
+        [JsonIgnore]
         public string CuresToString => Cures ? $"Cures ailments." : "";
 
-        [JsonIgnore]
         /// <summary>Returns text regarding all effects this <see cref="Consumable"/> will induce.</summary>
+        [JsonIgnore]
         public string EffectsToString
         {
             get
@@ -172,72 +173,72 @@ namespace Sulimn.Classes.Items
             }
         }
 
-        [JsonIgnore]
         /// <summary>The current durability of an <see cref="Item"/>, with thousands separators.</summary>
+        [JsonIgnore]
         public string CurrentDurabilityToString => CurrentDurability.ToString("N0");
 
-        [JsonIgnore]
         /// <summary>The maximum durability of an <see cref="Item"/>, with thousands separators.</summary>
+        [JsonIgnore]
         public string MaximumDurabilityToString => MaximumDurability.ToString("N0");
 
-        [JsonIgnore]
         /// <summary>The durability of an <see cref="Item"/>, formatted.</summary>
+        [JsonIgnore]
         public string Durability => $"{CurrentDurabilityToString} / {MaximumDurabilityToString}";
 
-        [JsonIgnore]
         /// <summary>The durability of an <see cref="Item"/>, formatted.</summary>
+        [JsonIgnore]
         public string DurabilityString => $"Durability: {Durability}";
 
-        [JsonIgnore]
         /// <summary>The weight of the <see cref="Item"/> with thousands separators.</summary>
+        [JsonIgnore]
         public string WeightToString => Weight.ToString("N0");
 
-        [JsonIgnore]
         /// <summary>The weight of the <see cref="Item"/> with thousands separators and preceding text.</summary>
+        [JsonIgnore]
         public string WeightToStringWithText => $"Weight: {WeightToString}";
 
-        [JsonIgnore]
         /// <summary>The value of the <see cref="Item"/> with thousands separators.</summary>
+        [JsonIgnore]
         public string ValueToString => Value.ToString("N0");
 
-        [JsonIgnore]
         /// <summary>The value of the <see cref="Item"/> with thousands separators and preceding text.</summary>
+        [JsonIgnore]
         public string ValueToStringWithText => $"Value: {ValueToString}";
 
-        [JsonIgnore]
         /// <summary>The value of the Item.</summary>
+        [JsonIgnore]
         public int SellValue => Value / 2;
 
-        [JsonIgnore]
         /// <summary>The sell value of the <see cref="Item"/> with thousands separators.</summary>
+        [JsonIgnore]
         public string SellValueToString => SellValue.ToString("N0");
 
-        [JsonIgnore]
         /// <summary>The sell value of the <see cref="Item"/> with thousands separators with preceding text.</summary>
+        [JsonIgnore]
         public string SellValueToStringWithText => $"Sell Value: {SellValueToString}";
 
-        [JsonIgnore]
         /// <summary>Returns text relating to the sellability of the <see cref="Item"/>.</summary>
+        [JsonIgnore]
         public string CanSellToString => CanSell ? "Sellable" : "Not Sellable";
 
-        [JsonIgnore]
         /// <summary>Returns the Strength and preceding text.</summary>
+        [JsonIgnore]
         public string StrengthToString => Strength > 0 ? $"Strength: {Strength}" : "";
 
-        [JsonIgnore]
         /// <summary>Returns the Vitality and preceding text.</summary>
+        [JsonIgnore]
         public string VitalityToString => Vitality > 0 ? $"Vitality: {Vitality}" : "";
 
-        [JsonIgnore]
         /// <summary>Returns the Dexterity and preceding text.</summary>
+        [JsonIgnore]
         public string DexterityToString => Dexterity > 0 ? $"Dexterity: {Dexterity}" : "";
 
-        [JsonIgnore]
         /// <summary>Returns the Wisdom and preceding text.</summary>
+        [JsonIgnore]
         public string WisdomToString => Wisdom > 0 ? $"Wisdom: {Wisdom}" : "";
 
-        [JsonIgnore]
         /// <summary>Returns all bonuses in string format.</summary>
+        [JsonIgnore]
         public string BonusToString
         {
             get
@@ -253,6 +254,7 @@ namespace Sulimn.Classes.Items
         }
 
         /// <summary>Displays the Type of the <see cref="Item"/>, formatted.</summary>
+        [JsonIgnore]
         public string TypeToString
         {
             get
@@ -286,8 +288,8 @@ namespace Sulimn.Classes.Items
             }
         }
 
-        [JsonIgnore]
         /// <summary>Text to be displayed when hovering over an <see cref="Item"/>.</summary>
+        [JsonIgnore]
         public string TooltipText => this != new Item()
                     ? Name + "\n"
                         + Description + "\n"
@@ -303,8 +305,8 @@ namespace Sulimn.Classes.Items
                         + BonusToString
                     : "";
 
-        [JsonIgnore]
         /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Item"/>, formatted</summary>
+        [JsonIgnore]
         public string AllowedClassesToString => String.Join(",", AllowedClasses);
 
         #endregion Helper Properties
@@ -358,7 +360,7 @@ namespace Sulimn.Classes.Items
         {
         }
 
-        /// <summary>Hello</summary>
+        /// <summary>Initializes an instance of <see cref="Item"/> by assigning values to Properties.</summary>
         /// <param name="name">Name of the <see cref="Item"/></param>
         /// <param name="description">Description of the <see cref="Item"/></param>
         /// <param name="itemType">Type of the <see cref="Item"/></param>

@@ -12,36 +12,36 @@ namespace Sulimn.Classes.HeroParts
     {
         #region Modifying Properties
 
-        [JsonProperty(Order = 1)]
         /// <summary>Name of the <see cref="Spell"/>.</summary>
+        [JsonProperty(Order = 1)]
         public string Name { get; set; }
 
-        [JsonProperty(Order = 1)]
         /// <summary>Description of the <see cref="Spell"/>.</summary>
+        [JsonProperty(Order = 2)]
         public string Description { get; set; }
 
-        [JsonProperty(Order = 3)]
         /// <summary>Type of the <see cref="Spell"/>.</summary>
+        [JsonProperty(Order = 3)]
         public SpellType Type { get; set; }
 
-        [JsonProperty(Order = 4)]
         /// <summary>Magic cost of the <see cref="Spell"/>.</summary>
+        [JsonProperty(Order = 4)]
         public int MagicCost { get; set; }
 
-        [JsonProperty(Order = 5)]
         /// <summary>Amount of the <see cref="Spell"/>.</summary>
+        [JsonProperty(Order = 5)]
         public int Amount { get; set; }
 
-        [JsonProperty(Order = 6)]
         /// <summary>Required Level of the <see cref="Spell"/>.</summary>
+        [JsonProperty(Order = 6)]
         public int MinimumLevel { get; set; }
 
-        [JsonIgnore]
         /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Spell"/>.</summary>
+        [JsonIgnore]
         public List<HeroClass> AllowedClasses { get; set; }
 
-        [JsonProperty(Order = 7)]
         /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Spell"/>, set up to import from JSON.</summary>
+        [JsonProperty(Order = 7)]
         public string AllowedClassesJson
         {
             get => AllowedClasses?.Count > 0 ? string.Join(",", AllowedClasses) : "";
@@ -60,40 +60,40 @@ namespace Sulimn.Classes.HeroParts
 
         #region Helper Properties
 
-        [JsonIgnore]
         /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Spell"/>, formatted.</summary>
+        [JsonIgnore]
         public string AllowedClassesToString => AllowedClasses?.Count > 0 ? string.Join(",", AllowedClasses) : "";
 
-        [JsonIgnore]
         /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Spell"/>, formatted, with preceding text.</summary>
+        [JsonIgnore]
         public string AllowedClassesToStringWithText => AllowedClasses?.Count > 0 ? $"Allowed Classes: {string.Join(",", AllowedClasses)}" : "";
 
-        [JsonIgnore]
         /// <summary>Type of the <see cref="Spell"/>, in string format.</summary>
+        [JsonIgnore]
         public string TypeToString => !string.IsNullOrWhiteSpace(Name) ? Type.ToString() : "";
 
-        [JsonIgnore]
         /// <summary>Type and amount of the <see cref="Spell"/>.</summary>
+        [JsonIgnore]
         public string TypeAmount => Amount > 0 ? $"{Type}: {Amount}" : "";
 
-        [JsonIgnore]
         /// <summary>Magic cost of the <see cref="Spell"/>, with preceding text.</summary>
+        [JsonIgnore]
         public string MagicCostToString => MagicCost > 0 ? $"Magic Cost: {MagicCost:N0}" : "";
 
-        [JsonIgnore]
         /// <summary>Required Level of the <see cref="Spell"/>, with preceding text.</summary>
+        [JsonIgnore]
         public string RequiredLevelToString => !string.IsNullOrWhiteSpace(Name) ? $"Required Level: {MinimumLevel}" : "";
 
-        [JsonIgnore]
         /// <summary>Value of the <see cref="Spell"/>.</summary>
+        [JsonIgnore]
         public int Value => MinimumLevel * 200;
 
-        [JsonIgnore]
         /// <summary>Value of the <see cref="Spell"/>, with preceding text.</summary>
+        [JsonIgnore]
         public string ValueToString => Value.ToString("N0");
 
-        [JsonIgnore]
         /// <summary>Value of the <see cref="Spell"/>, with thousands separator and preceding text.</summary>
+        [JsonIgnore]
         public string ValueToStringWithText => !string.IsNullOrWhiteSpace(Name) ? $"Value: {ValueToString}" : "";
 
         #endregion Helper Properties

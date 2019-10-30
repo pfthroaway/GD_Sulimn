@@ -1,13 +1,11 @@
 using Godot;
 using Sulimn.Classes;
-using System;
 using Sulimn.Classes.Entities;
 
 public class CityScene : Control
 {
     private Info info;
     private CharacterScene characterScene;
-    private InventoryScene inventoryScene;
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -22,12 +20,10 @@ public class CityScene : Control
     public override void _Ready()
     {
         info = (Info)GetNode("/root/Info");
-        info.Visible = true;
-        info.DisplayStats();
         characterScene = (CharacterScene)GetNode("/root/CharacterScene");
-        inventoryScene = (InventoryScene)GetNode("/root/InventoryScene");
+        info.Scale = new Vector2(1, 1);
         characterScene.Scale = new Vector2(1, 1);
-        inventoryScene.Scale = new Vector2(1, 1);
+        info.DisplayStats();
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

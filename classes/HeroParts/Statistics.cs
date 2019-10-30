@@ -21,40 +21,40 @@ namespace Sulimn.Classes.HeroParts
 
         #region Modifying Properties
 
+        /// <summary>Amount of current health the character has.</summary>
         [JsonProperty(Order = 1)]
-        /// <summary>Amount of current health the Class has.</summary>
         public int CurrentHealth { get; set; }
 
+        /// <summary>Amount of maximum health the character has.</summary>
         [JsonProperty(Order = 2)]
-        /// <summary>Amount of maximum health the Class has.</summary>
         public int MaximumHealth { get; set; }
 
+        /// <summary>Amount of current magic the character has.</summary>
         [JsonProperty(Order = 3)]
-        /// <summary>Amount of current magic the Class has.</summary>
         public int CurrentMagic { get; set; }
 
+        /// <summary>Amount of maximum magic the character has.</summary>
         [JsonProperty(Order = 4)]
-        /// <summary>Amount of maximum magic the Class has.</summary>
         public int MaximumMagic { get; set; }
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
-        [JsonIgnore]
         /// <summary>Amount of health the Class has, formatted.</summary>
+        [JsonIgnore]
         public string HealthToString => $"{CurrentHealth:N0} / {MaximumHealth:N0}";
 
-        [JsonIgnore]
         /// <summary>Amount of health the Class has, formatted.</summary>
+        [JsonIgnore]
         public string HealthToStringWithText => $"Health: {HealthToString}";
 
-        [JsonIgnore]
         /// <summary>Amount of magic the Class has, formatted with preceding text.</summary>
+        [JsonIgnore]
         public string MagicToString => $"{CurrentMagic:N0} / {MaximumMagic:N0}";
 
-        [JsonIgnore]
         /// <summary>Amount of magic the Class has, formatted with preceding text.</summary>
+        [JsonIgnore]
         public string MagicToStringWithText => $"Magic: {MagicToString}";
 
         #endregion Helper Properties

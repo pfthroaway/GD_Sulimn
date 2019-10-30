@@ -1,4 +1,6 @@
-﻿namespace Sulimn.Classes.HeroParts
+﻿using Newtonsoft.Json;
+
+namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents an account at the Bank.</summary>
     public class Bank
@@ -6,12 +8,15 @@
         #region Modifying Properties
 
         /// <summary>Gold the Hero has in the bank.</summary>
+        [JsonProperty(Order = 1)]
         public int GoldInBank { get; set; }
 
         /// <summary>Gold the Hero has available on loan.</summary>
+        [JsonProperty(Order = 2)]
         public int LoanAvailable { get; set; }
 
         /// <summary>Gold the Hero has taken out on loan.</summary>
+        [JsonProperty(Order = 3)]
         public int LoanTaken { get; set; }
 
         #endregion Modifying Properties
@@ -19,12 +24,15 @@
         #region Helper Properties
 
         /// <summary>Gold the Hero has in the bank, formatted.</summary>
+        [JsonIgnore]
         public string GoldInBankToString => GoldInBank.ToString("N0");
 
         /// <summary>Gold the Hero has available on loan, formatted.</summary>
+        [JsonIgnore]
         public string LoanAvailableToString => LoanAvailable.ToString("N0");
 
         /// <summary>Gold the Hero has taken out on loan, formatted.</summary>
+        [JsonIgnore]
         public string LoanTakenToString => LoanTaken.ToString("N0");
 
         #endregion Helper Properties

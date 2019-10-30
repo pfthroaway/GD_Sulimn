@@ -4,7 +4,6 @@ using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Sulimn.Classes.Entities
@@ -12,20 +11,18 @@ namespace Sulimn.Classes.Entities
     /// <summary>Represents a Hero from Sulimn.</summary>
     internal class Hero : Character
     {
-        private List<Item> _inventory = new List<Item>();
-
         #region Modifying Properties
 
-        [JsonProperty(Order = -4)]
         /// <summary>The hashed password of the Hero</summary>
+        [JsonProperty(Order = -4)]
         public string Password { get; set; }
 
-        [JsonIgnore]
         /// <summary>The HeroClass of the Hero, set up to import from JSON.</summary>
+        [JsonIgnore]
         public HeroClass Class { get; set; }
 
-        [JsonProperty(Order = -3)]
         /// <summary>The HeroClass of the Hero</summary>
+        [JsonProperty(Order = -3)]
         public string ClassString
         {
             get => Class.Name;
@@ -36,66 +33,64 @@ namespace Sulimn.Classes.Entities
             }
         }
 
-        [JsonProperty(Order = -1)]
         /// <summary>The amount of available skill points the Hero has</summary>
+        [JsonProperty(Order = -1)]
         public int SkillPoints { get; set; }
 
-        [JsonProperty(Order = 7)]
         /// <summary>The progress the Hero has made.</summary>
+        [JsonProperty(Order = 7)]
         public Progression Progression { get; set; }
 
-        [JsonProperty(Order = 8)]
         /// <summary>The list of Spells the Hero currently knows</summary>
+        [JsonProperty(Order = 8)]
         public Spellbook Spellbook { get; set; }
 
-        [JsonProperty(Order = 9)]
         /// <summary>The <see cref="Hero"/>'s <see cref="HeroParts.Bank"/>. </summary>
+        [JsonProperty(Order = 9)]
         public Bank Bank { get; set; }
 
-        [JsonProperty(Order = -2)]
         /// <summary>Will the player be deleted on death?</summary>
+        [JsonProperty(Order = -2)]
         public bool Hardcore { get; set; }
 
         #endregion Modifying Properties
 
         #region Helper Properties
 
-        [JsonProperty(Order = 10)]
         /// <summary>List of Items in the inventory.</summary>
-        public ReadOnlyCollection<Item> Inventory => new ReadOnlyCollection<Item>(_inventory);
+        [JsonProperty(Order = 10)]
+        public List<Item> Inventory { get; set; }
 
-        [JsonIgnore]
         /// <summary>List of Items in the inventory, formatted.</summary>
+        [JsonIgnore]
         public string InventoryToString => string.Join(",", Inventory);
 
-        [JsonIgnore]
         /// <summary>Combined weight of all Items in a Hero's Inventory.</summary>
+        [JsonIgnore]
         public int CarryingWeight => Inventory.Count > 0 ? Inventory.Sum(itm => itm.Weight) : 0;
 
-        [JsonIgnore]
-
         /// <summary>Combined weight of all Items in a Hero's Inventory and all the Equipment currently equipped.</summary>
+        [JsonIgnore]
         public int TotalWeight => CarryingWeight + Equipment.TotalWeight;
 
-        [JsonIgnore]
-
         /// <summary>Maximum weight a Hero can carry.</summary>
+        [JsonIgnore]
         public int MaximumWeight => TotalStrength * 10;
 
-        [JsonIgnore]
         /// <summary>Is the Hero carrying more than they should be able to?</summary>
+        [JsonIgnore]
         public bool Overweight => TotalWeight > MaximumWeight;
 
-        [JsonIgnore]
         /// <summary>Will the player be deleted on death?</summary>
+        [JsonIgnore]
         public string HardcoreToString => Hardcore ? "Hardcore" : "Softcore";
 
-        [JsonIgnore]
         /// <summary>The level and class of the Hero</summary>
+        [JsonIgnore]
         public string LevelAndClassToString => $"Level {Level} {Class.Name}";
 
+        /// <summary>The amount of skill points the Hero has available to spend, formatted.</summary>
         [JsonIgnore]
-        /// <summary>The amount of skill points the Hero has available to spend</summary>
         public string SkillPointsToString => SkillPoints != 1 ? $"{SkillPoints:N0} Skill Points Available" : $"{SkillPoints:N0} Skill Point Available";
 
         #endregion Helper Properties
@@ -187,13 +182,13 @@ namespace Sulimn.Classes.Entities
         /// <param name="item">Item to be removed</param>
         internal void AddItem(Item item)
         {
-            _inventory.Add(item);
-            _inventory = Inventory.OrderBy(itm => itm.Name).ToList();
+            Inventory.Add(item);
+            Inventory = Inventory.OrderBy(itm => itm.Name).ToList();
         }
 
         /// <summary>Removes an Item from the inventory.</summary>
         /// <param name="item">Item to be removed</param>
-        internal void RemoveItem(Item item) => _inventory.Remove(item);
+        internal void RemoveItem(Item item) => Inventory.Remove(item);
 
         /// <summary>Equips an Item into a Hero's Equipment.</summary>
         /// <param name="item">Item to be equipped</param>
@@ -389,7 +384,7 @@ namespace Sulimn.Classes.Entities
         /// <param name="progression">The progress the Hero has made</param>
         /// <param name="hardcore">Will the character be deleted on death?</param>
         internal Hero(string name, string password, HeroClass heroClass, int level, int experience, int skillPoints, int gold,
-        Attributes attributes, Statistics statistics, Equipment equipment, Spellbook spellbook, IEnumerable<Item> inventory, Bank bank, Progression progression, bool hardcore)
+        Attributes attributes, Statistics statistics, Equipment equipment, Spellbook spellbook, List<Item> inventory, Bank bank, Progression progression, bool hardcore)
         {
             Name = name;
             Password = password;
@@ -402,9 +397,7 @@ namespace Sulimn.Classes.Entities
             Statistics = statistics;
             Equipment = equipment;
             Spellbook = spellbook;
-            List<Item> items = new List<Item>();
-            items.AddRange(inventory);
-            _inventory = items;
+            Inventory = inventory;
             Bank = bank;
             Progression = progression;
             Hardcore = hardcore;
@@ -412,7 +405,7 @@ namespace Sulimn.Classes.Entities
 
         /// <summary>Replaces this instance of Hero with another instance.</summary>
         /// <param name="other">Instance of Hero to replace this one</param>
-        internal Hero(Hero other) : this(other.Name, other.Password, other.Class, other.Level, other.Experience, other.SkillPoints, other.Gold, new Attributes(other.Attributes), new Statistics(other.Statistics), new Equipment(other.Equipment), new Spellbook(other.Spellbook), other.Inventory, other.Bank, other.Progression, other.Hardcore)
+        internal Hero(Hero other) : this(other.Name, other.Password, other.Class, other.Level, other.Experience, other.SkillPoints, other.Gold, new Attributes(other.Attributes), new Statistics(other.Statistics), new Equipment(other.Equipment), new Spellbook(other.Spellbook), new List<Item>(other.Inventory), other.Bank, other.Progression, other.Hardcore)
         {
         }
 
