@@ -46,17 +46,17 @@ namespace Sulimn.Classes.HeroParts
 
         /// <summary>Weight of all the Equipment currently equipped.</summary>
         [JsonIgnore]
-        public int TotalWeight => Weapon.Weight + Body.Weight + Head.Weight + Body.Weight + Hands.Weight + Legs.Weight
-                                  + Feet.Weight;
+        public int TotalWeight => Weapon.Weight + Head.Weight + Body.Weight + Hands.Weight + Legs.Weight
+                                  + Feet.Weight + LeftRing.Weight + RightRing.Weight;
 
         /// <summary>Returns the total damage produced by the current set of equipment.</summary>
         [JsonIgnore]
-        public int TotalDamage => Weapon.Damage + LeftRing.Damage + RightRing.Damage;
+        public int TotalDamage => Weapon.Damage + Head.Damage + Body.Damage + Hands.Damage + Legs.Damage
+                                  + Feet.Damage + LeftRing.Damage + RightRing.Damage;
 
         /// <summary>Returns the total defense produced by the current set of equipment.</summary>
         [JsonIgnore]
-        public int TotalDefense => Head.Defense + Body.Defense + Hands.Defense + Legs.Defense + Feet.Defense + LeftRing.Defense
-        + RightRing.Defense;
+        public int TotalDefense => Weapon.Defense + Head.Defense + Body.Defense + Hands.Defense + Legs.Defense + Feet.Defense + LeftRing.Defense + RightRing.Defense;
 
         /// <summary>Returns the total damage produced by the current set of equipment with thousand separators.</summary>
         [JsonIgnore]
@@ -68,19 +68,23 @@ namespace Sulimn.Classes.HeroParts
 
         /// <summary>Returns the total Strength bonus produced by the current set of equipment.</summary>
         [JsonIgnore]
-        public int BonusStrength => LeftRing != null && RightRing != null ? LeftRing.Strength + RightRing.Strength : 0;
+        public int BonusStrength => Weapon.Strength + Head.Strength + Body.Strength + Hands.Strength + Legs.Strength
+                                  + Feet.Strength + LeftRing.Strength + RightRing.Strength;
 
         /// <summary>Returns the total Vitality bonus produced by the current set of equipment.</summary>
         [JsonIgnore]
-        public int BonusVitality => LeftRing != null && RightRing != null ? LeftRing.Vitality + RightRing.Vitality : 0;
+        public int BonusVitality => Weapon.Vitality + Head.Vitality + Body.Vitality + Hands.Vitality + Legs.Vitality
+                                  + Feet.Vitality + LeftRing.Vitality + RightRing.Vitality;
 
         /// <summary>Returns the total Dexterity bonus produced by the current set of equipment.</summary>
         [JsonIgnore]
-        public int BonusDexterity => LeftRing != null && RightRing != null ? LeftRing.Dexterity + RightRing.Dexterity : 0;
+        public int BonusDexterity => Weapon.Dexterity + Head.Dexterity + Body.Dexterity + Hands.Dexterity + Legs.Dexterity
+                                  + Feet.Dexterity + LeftRing.Dexterity + RightRing.Dexterity;
 
         /// <summary>Returns the total Wisdom bonus produced by the current set of equipment.</summary>
         [JsonIgnore]
-        public int BonusWisdom => LeftRing != null && RightRing != null ? LeftRing.Wisdom + RightRing.Wisdom : 0;
+        public int BonusWisdom => Weapon.Wisdom + Head.Wisdom + Body.Wisdom + Hands.Wisdom + Legs.Wisdom
+                                  + Feet.Wisdom + LeftRing.Wisdom + RightRing.Wisdom;
 
         #endregion Helper Properties
 

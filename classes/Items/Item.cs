@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Sulimn.Classes.Entities;
 using Sulimn.Classes.HeroParts;
 using System;
 using System.Collections.Generic;
@@ -189,6 +190,10 @@ namespace Sulimn.Classes.Items
         [JsonIgnore]
         public string DurabilityString => $"Durability: {Durability}";
 
+        /// <summary>The durability ratio of an <see cref="Item"/>.</summary>
+        [JsonIgnore]
+        public decimal DurabilityRatio => CurrentDurability * 1m / MaximumDurability;
+
         /// <summary>The weight of the <see cref="Item"/> with thousands separators.</summary>
         [JsonIgnore]
         public string WeightToString => Weight.ToString("N0");
@@ -207,7 +212,7 @@ namespace Sulimn.Classes.Items
 
         /// <summary>The value of the Item.</summary>
         [JsonIgnore]
-        public int SellValue => Value / 2;
+        public int SellValue => Value / 2 * CurrentDurability / MaximumDurability;
 
         /// <summary>The sell value of the <see cref="Item"/> with thousands separators.</summary>
         [JsonIgnore]

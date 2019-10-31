@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Sulimn.Classes.HeroParts;
+using Sulimn.Classes.Items;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Sulimn.Classes.Entities
 {
@@ -36,6 +39,14 @@ namespace Sulimn.Classes.Entities
         [JsonProperty(Order = 6)]
         public Equipment Equipment { get; set; }
 
+        /// <summary>The list of Spells the Hero currently knows</summary>
+        [JsonProperty(Order = 8)]
+        public Spellbook Spellbook { get; set; }
+
+        /// <summary>List of Items in the inventory.</summary>
+        [JsonProperty(Order = 10)]
+        public List<Item> Inventory { get; set; }
+
         #endregion Modifying Properties
 
         #region Helper Properties
@@ -55,6 +66,30 @@ namespace Sulimn.Classes.Entities
         /// <summary>Amount of Gold in the inventory, with thousands separator and preceding text.</summary>
         [JsonIgnore]
         public string GoldToStringWithText => $"Gold: {GoldToString}";
+
+        /// <summary>List of Items in the inventory, formatted.</summary>
+        [JsonIgnore]
+        public string InventoryToString => string.Join(",", Inventory);
+
+        /// <summary>Combined weight of all Items in a Hero's Inventory.</summary>
+        [JsonIgnore]
+        public int CarryingWeight => Inventory.Count > 0 ? Inventory.Sum(itm => itm.Weight) : 0;
+
+        /// <summary>Combined weight of all Items in a Hero's Inventory and all the Equipment currently equipped.</summary>
+        [JsonIgnore]
+        public int TotalWeight => CarryingWeight + Equipment.TotalWeight;
+
+        /// <summary>Maximum weight a Hero can carry.</summary>
+        [JsonIgnore]
+        public int MaximumWeight => TotalStrength * 10;
+
+        /// <summary>Is the Hero carrying more than they should be able to?</summary>
+        [JsonIgnore]
+        public bool Overweight => TotalWeight > MaximumWeight;
+
+        /// <summary>Ratio of Total Strength to Total Weight.</summary>
+        [JsonIgnore]
+        public decimal StrengthWeightRatio => TotalStrength * 10m / TotalWeight;
 
         /// <summary>Total Strength value including from Attributes and Equipment.</summary>
         [JsonIgnore]

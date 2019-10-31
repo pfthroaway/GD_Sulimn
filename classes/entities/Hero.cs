@@ -33,6 +33,10 @@ namespace Sulimn.Classes.Entities
             }
         }
 
+        /// <summary>Will the player be deleted on death?</summary>
+        [JsonProperty(Order = -2)]
+        public bool Hardcore { get; set; }
+
         /// <summary>The amount of available skill points the Hero has</summary>
         [JsonProperty(Order = -1)]
         public int SkillPoints { get; set; }
@@ -41,45 +45,13 @@ namespace Sulimn.Classes.Entities
         [JsonProperty(Order = 7)]
         public Progression Progression { get; set; }
 
-        /// <summary>The list of Spells the Hero currently knows</summary>
-        [JsonProperty(Order = 8)]
-        public Spellbook Spellbook { get; set; }
-
-        /// <summary>The <see cref="Hero"/>'s <see cref="HeroParts.Bank"/>. </summary>
+        /// <summary>The <see cref="Hero"/>'s Bank. </summary>
         [JsonProperty(Order = 9)]
         public Bank Bank { get; set; }
-
-        /// <summary>Will the player be deleted on death?</summary>
-        [JsonProperty(Order = -2)]
-        public bool Hardcore { get; set; }
 
         #endregion Modifying Properties
 
         #region Helper Properties
-
-        /// <summary>List of Items in the inventory.</summary>
-        [JsonProperty(Order = 10)]
-        public List<Item> Inventory { get; set; }
-
-        /// <summary>List of Items in the inventory, formatted.</summary>
-        [JsonIgnore]
-        public string InventoryToString => string.Join(",", Inventory);
-
-        /// <summary>Combined weight of all Items in a Hero's Inventory.</summary>
-        [JsonIgnore]
-        public int CarryingWeight => Inventory.Count > 0 ? Inventory.Sum(itm => itm.Weight) : 0;
-
-        /// <summary>Combined weight of all Items in a Hero's Inventory and all the Equipment currently equipped.</summary>
-        [JsonIgnore]
-        public int TotalWeight => CarryingWeight + Equipment.TotalWeight;
-
-        /// <summary>Maximum weight a Hero can carry.</summary>
-        [JsonIgnore]
-        public int MaximumWeight => TotalStrength * 10;
-
-        /// <summary>Is the Hero carrying more than they should be able to?</summary>
-        [JsonIgnore]
-        public bool Overweight => TotalWeight > MaximumWeight;
 
         /// <summary>Will the player be deleted on death?</summary>
         [JsonIgnore]
