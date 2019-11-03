@@ -19,7 +19,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Fist003.png"
   },
   {
     "Name": "Cloth Gloves",
@@ -41,7 +42,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Fist001.png"
   },
   {
     "Name": "Diamond Gauntlets",
@@ -63,7 +65,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Fist005.png"
   },
   {
     "Name": "Leather Gloves",
@@ -85,7 +88,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Fist002.png"
   },
   {
     "Name": "Plate Gauntlets",
@@ -107,7 +111,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Fist004.png"
   },
   {
     "Name": "Silk Gauntlets",
@@ -129,7 +134,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Fist003.png"
   },
   {
     "Name": "Studded Leather Gloves",
@@ -151,6 +157,7 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Fist002.png"
   }
 ]

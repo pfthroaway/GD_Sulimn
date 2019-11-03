@@ -19,7 +19,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/A_Armour02.png"
   },
   {
     "Name": "Cloth Shirt",
@@ -41,7 +42,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/A_Clothing01.png"
   },
   {
     "Name": "Diamond Chestplate",
@@ -63,7 +65,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/A_Armour03.png"
   },
   {
     "Name": "Leather Shirt",
@@ -85,7 +88,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/A_Clothing02.png"
   },
   {
     "Name": "Necromancer Robes",
@@ -107,7 +111,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/A_Clothing01.png"
   },
   {
     "Name": "Plate Mail Chestplate",
@@ -129,7 +134,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/A_Armour02.png"
   },
   {
     "Name": "Robe",
@@ -151,7 +157,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/A_Clothing01.png"
   },
   {
     "Name": "Silk Chestplate",
@@ -173,7 +180,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/A_Armour04.png"
   },
   {
     "Name": "Studded Leather Doublet",
@@ -195,6 +203,7 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/A_Armour01.png"
   }
 ]

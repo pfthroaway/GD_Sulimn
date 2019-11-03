@@ -19,7 +19,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/I_Key06.png"
   },
   {
     "Name": "Cloth Pants",
@@ -41,7 +42,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/I_Key06.png"
   },
   {
     "Name": "Diamond Leggings",
@@ -63,7 +65,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/I_Key06.png"
   },
   {
     "Name": "Leather Pants",
@@ -85,7 +88,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/I_Key06.png"
   },
   {
     "Name": "Necromancer Robe Leggings",
@@ -107,7 +111,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/I_Key06.png"
   },
   {
     "Name": "Plate Leggings",
@@ -129,7 +134,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/I_Key06.png"
   },
   {
     "Name": "Robe Leggings",
@@ -151,7 +157,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/I_Key06.png"
   },
   {
     "Name": "Silk Leggings",
@@ -173,7 +180,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/I_Key06.png"
   },
   {
     "Name": "Studded Leather Pants",
@@ -195,6 +203,7 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/I_Key06.png"
   }
 ]

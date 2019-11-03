@@ -87,6 +87,8 @@
     <Compile Include="classes\HeroParts\Spell.cs" />
     <Compile Include="classes\HeroParts\Spellbook.cs" />
     <Compile Include="classes\HeroParts\Statistics.cs" />
+    <Compile Include="classes\Inventory\InventoryItem.cs" />
+    <Compile Include="classes\Inventory\ItemSlot.cs" />
     <Compile Include="classes\Items\Item.cs" />
     <Compile Include="classes\Items\ItemType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

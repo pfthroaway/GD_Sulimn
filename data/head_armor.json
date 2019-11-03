@@ -19,7 +19,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/C_Elm03.png"
   },
   {
     "Name": "Cloth Helmet",
@@ -41,7 +42,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/C_Hat01.png"
   },
   {
     "Name": "Diamond Helmet",
@@ -63,7 +65,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/C_Elm04.png"
   },
   {
     "Name": "Leather Helmet",
@@ -85,7 +88,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/C_Elm01.png"
   },
   {
     "Name": "Miner's Helmet",
@@ -107,7 +111,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/C_Elm01.png"
   },
   {
     "Name": "Necromancer Robe Hood",
@@ -129,7 +134,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/C_Hat02.png"
   },
   {
     "Name": "Plate Helmet",
@@ -151,7 +157,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/C_Elm04.png"
   },
   {
     "Name": "Robe Hood",
@@ -173,7 +180,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/C_Elm01.png"
   },
   {
     "Name": "Silk Helmet",
@@ -195,7 +203,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/C_Elm02.png"
   },
   {
     "Name": "Studded Leather Helmet",
@@ -217,6 +226,7 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/C_Elm01.png"
   }
 ]

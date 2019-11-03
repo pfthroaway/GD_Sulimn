@@ -22,7 +22,12 @@ public class ExploreScene : Node2D
         {
             GameState.HeroPosition = new Vector2(Player.Position);
             if (EncounterEnemy())
+            {
                 GetTree().ChangeScene("res://scenes/battle/BattleScene.tscn");
+                PackedScene packedScene = new PackedScene();
+                packedScene.Pack(GetTree().CurrentScene);
+                ResourceSaver.Save("user://CurrentScene.tscn", packedScene);
+            }
         }
 
         if (characterScene.ShowScene)

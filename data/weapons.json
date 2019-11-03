@@ -19,7 +19,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/I_BirdsBeak.png"
   },
   {
     "Name": "Berserker Axe",
@@ -41,7 +42,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Axe012.png"
   },
   {
     "Name": "Bo Staff",
@@ -63,7 +65,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Staff08.png"
   },
   {
     "Name": "Cleaver",
@@ -85,7 +88,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Axe001.png"
   },
   {
     "Name": "Club",
@@ -107,7 +111,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Mace001.png"
   },
   {
     "Name": "Composite Bow",
@@ -129,7 +134,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Bow03.png"
   },
   {
     "Name": "Dagger",
@@ -151,7 +157,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Dagger002.png"
   },
   {
     "Name": "Fangs",
@@ -173,7 +180,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
   },
   {
     "Name": "Fists",
@@ -195,7 +203,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/S_Earth02.png"
   },
   {
     "Name": "Great Sword",
@@ -217,7 +226,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Sword005.png"
   },
   {
     "Name": "Heavy Axe",
@@ -239,7 +249,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Axe013.png"
   },
   {
     "Name": "Heavy Bow",
@@ -261,7 +272,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Bow12.png"
   },
   {
     "Name": "Light Axe",
@@ -283,7 +295,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Axe002.png"
   },
   {
     "Name": "Light Bow",
@@ -305,7 +318,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Bow02.png"
   },
   {
     "Name": "Light Staff",
@@ -327,7 +341,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Staff03.png"
   },
   {
     "Name": "Long Sword",
@@ -349,7 +364,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Sword002.png"
   },
   {
     "Name": "Mace",
@@ -371,7 +387,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Mace002.png"
   },
   {
     "Name": "Minotaur Horns",
@@ -393,7 +410,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Spear003.png"
   },
   {
     "Name": "Necromancer Staff",
@@ -415,7 +433,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Staff06.png"
   },
   {
     "Name": "Pickaxe",
@@ -437,7 +456,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Axe007.png"
   },
   {
     "Name": "Pike",
@@ -459,7 +479,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Spear009.png"
   },
   {
     "Name": "Sharp Fangs",
@@ -481,7 +502,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
   },
   {
     "Name": "Short Sword",
@@ -503,7 +525,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Sword001.png"
   },
   {
     "Name": "Spear",
@@ -525,7 +548,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Spear002.png"
   },
   {
     "Name": "Spider Fangs",
@@ -547,7 +571,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
   },
   {
     "Name": "Starter Bow",
@@ -569,7 +594,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Bow01.png"
   },
   {
     "Name": "Starter Staff",
@@ -591,7 +617,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Staff01.png"
   },
   {
     "Name": "Steel Dagger",
@@ -613,7 +640,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Dagger004.png"
   },
   {
     "Name": "Stone Dagger",
@@ -635,7 +663,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Dagger001.png"
   },
   {
     "Name": "Super Sword",
@@ -657,7 +686,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": true,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Sword006.png"
   },
   {
     "Name": "Sword of Souls",
@@ -679,7 +709,8 @@
     "MinimumLevel": 0,
     "CanSell": true,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/W_Sword016.png"
   },
   {
     "Name": "Teeth",
@@ -701,7 +732,8 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
   },
   {
     "Name": "Tusks",
@@ -723,6 +755,7 @@
     "MinimumLevel": 0,
     "CanSell": false,
     "IsSold": false,
-    "AllowedClassesJson": ""
+    "AllowedClassesJson": "",
+    "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
   }
 ]

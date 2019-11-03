@@ -8,7 +8,7 @@ using System.Linq;
 namespace Sulimn.Classes.Items
 {
     /// <summary>Represents an <see cref="Item"/> that a <see cref="Hero"/> can interact with in the game.</summary>
-    internal class Item
+    public class Item
     {
         // TODO Implement durability and other new features, maybe weapon/armor smiths.
 
@@ -109,6 +109,10 @@ namespace Sulimn.Classes.Items
                 }
             }
         }
+
+        /// <summary>Location of the Texture to be used for this <see cref="Item"/>.</summary>
+        [JsonProperty(Order = 21)]
+        public string Texture { get; set; }
 
         #endregion Modifying Properties
 
@@ -386,7 +390,8 @@ namespace Sulimn.Classes.Items
         /// <param name="canSell">Can the <see cref="Item"/> be sold to a shop?</param>
         /// <param name="isSold">Is the <see cref="Item"/> sold in a shop?</param>
         /// <param name="allowedClasses"><see cref="HeroClass"/>es permitted to use this <see cref="Item"/></param>
-        internal Item(string name, string description, ItemType itemType, int damage, int defense, int weight, int value, int currentDurability, int maximumDurability, int strength, int vitality, int dexterity, int wisdom, int restoreHealth, int restoreMagic, bool cures, int minimumLevel, bool canSell, bool isSold, List<HeroClass> allowedClasses)
+        /// <param name="texture">Location of the Texture to be used for this <see cref="Item"/></param>
+        internal Item(string name, string description, ItemType itemType, int damage, int defense, int weight, int value, int currentDurability, int maximumDurability, int strength, int vitality, int dexterity, int wisdom, int restoreHealth, int restoreMagic, bool cures, int minimumLevel, bool canSell, bool isSold, List<HeroClass> allowedClasses, string texture)
         {
             Name = name;
             Description = description;
@@ -408,11 +413,12 @@ namespace Sulimn.Classes.Items
             CanSell = canSell;
             IsSold = isSold;
             AllowedClasses = new List<HeroClass>(allowedClasses);
+            Texture = texture;
         }
 
         /// <summary>Replaces this instance of <see cref="Item"/> with another instance.</summary>
-        /// <param name="other">YP</param>
-        public Item(Item other) : this(other.Name, other.Description, other.Type, other.Damage, other.Defense, other.Weight, other.Value, other.CurrentDurability, other.MaximumDurability, other.Strength, other.Vitality, other.Dexterity, other.Wisdom, other.RestoreHealth, other.RestoreMagic, other.Cures, other.MinimumLevel, other.CanSell, other.IsSold, new List<HeroClass>(other.AllowedClasses))
+        /// <param name="other">Instance of <see cref="Item"/> to replace this instance</param>
+        public Item(Item other) : this(other.Name, other.Description, other.Type, other.Damage, other.Defense, other.Weight, other.Value, other.CurrentDurability, other.MaximumDurability, other.Strength, other.Vitality, other.Dexterity, other.Wisdom, other.RestoreHealth, other.RestoreMagic, other.Cures, other.MinimumLevel, other.CanSell, other.IsSold, new List<HeroClass>(other.AllowedClasses), other.Texture)
         {
         }
 

@@ -17,9 +17,7 @@ public class CharacterScene : CanvasLayer
     public override void _UnhandledInput(InputEvent @event)
     {
         if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape && ShowScene)
-        {
-            SlideIn();
-        }
+            _on_BtnCharacter_pressed();
     }
 
     #region Load
@@ -229,6 +227,9 @@ public class CharacterScene : CanvasLayer
     private void _on_BtnInventory_pressed()
     {
         _on_BtnCharacter_pressed();
+        PackedScene thisScene = new PackedScene();
+        thisScene.Pack(GetTree().CurrentScene);
+        GameState.PreviousScene = thisScene;
         GetTree().ChangeScene("scenes/character/InventoryScene.tscn");
     }
 
