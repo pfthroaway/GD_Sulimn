@@ -10,7 +10,7 @@ namespace Sulimn.Classes.Items
     /// <summary>Represents an <see cref="Item"/> that a <see cref="Hero"/> can interact with in the game.</summary>
     internal class Item
     {
-        //TODO Implement durability and other new features, maybe weapon/armor smiths.
+        // TODO Implement durability and other new features, maybe weapon/armor smiths.
 
         #region Modifying Properties
 
@@ -104,8 +104,8 @@ namespace Sulimn.Classes.Items
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     AllowedClasses = new List<HeroClass>();
-                    AllowedClasses.AddRange(from string heroClass in value.Split(',')
-                                            select GameState.AllClasses.Find(cls => cls.Name == heroClass));
+                    AllowedClasses.AddRange(from string itm in value.Split(',')
+                                            select GameState.AllClasses.Find(cls => cls.Name == itm.Trim()));
                 }
             }
         }

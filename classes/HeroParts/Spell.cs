@@ -51,7 +51,7 @@ namespace Sulimn.Classes.HeroParts
                 {
                     AllowedClasses = new List<HeroClass>();
                     AllowedClasses.AddRange(from string heroClass in value.Split(',')
-                                            select GameState.AllClasses.Find(cls => cls.Name == heroClass));
+                                            select GameState.AllClasses.Find(cls => cls.Name == heroClass.Trim()));
                 }
             }
         }

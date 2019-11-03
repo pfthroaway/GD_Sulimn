@@ -22,7 +22,7 @@ namespace Sulimn.Classes.HeroParts
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     foreach (string spell in value.Split(','))
-                        LearnSpell(GameState.AllSpells.Find(spl => spl.Name == spell));
+                        LearnSpell(GameState.AllSpells.Find(spl => spl.Name == spell.Trim()));
                 }
             }
         }

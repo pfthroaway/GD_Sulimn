@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Sulimn.Classes.Entities
 {
-    /// <summary>Represents a Hero from Sulimn.</summary>
+    /// <summary>Represents a <see cref="Hero"/> from Sulimn.</summary>
     internal class Hero : Character
     {
         #region Modifying Properties
@@ -17,11 +17,11 @@ namespace Sulimn.Classes.Entities
         [JsonProperty(Order = -4)]
         public string Password { get; set; }
 
-        /// <summary>The HeroClass of the Hero, set up to import from JSON.</summary>
+        /// <summary>The HeroClass of the <see cref="Hero"/>, set up to import from JSON.</summary>
         [JsonIgnore]
         public HeroClass Class { get; set; }
 
-        /// <summary>The HeroClass of the Hero</summary>
+        /// <summary>The <see cref="HeroClass"/> of the <see cref="Hero"/></summary>
         [JsonProperty(Order = -3)]
         public string ClassString
         {
@@ -37,11 +37,11 @@ namespace Sulimn.Classes.Entities
         [JsonProperty(Order = -2)]
         public bool Hardcore { get; set; }
 
-        /// <summary>The amount of available skill points the Hero has</summary>
+        /// <summary>The amount of available skill points the <see cref="Hero"/> has</summary>
         [JsonProperty(Order = -1)]
         public int SkillPoints { get; set; }
 
-        /// <summary>The progress the Hero has made.</summary>
+        /// <summary>The progress the <see cref="Hero"/> has made.</summary>
         [JsonProperty(Order = 7)]
         public Progression Progression { get; set; }
 
@@ -57,11 +57,11 @@ namespace Sulimn.Classes.Entities
         [JsonIgnore]
         public string HardcoreToString => Hardcore ? "Hardcore" : "Softcore";
 
-        /// <summary>The level and class of the Hero</summary>
+        /// <summary>The level and class of the <see cref="Hero"/>.</summary>
         [JsonIgnore]
         public string LevelAndClassToString => $"Level {Level} {Class.Name}";
 
-        /// <summary>The amount of skill points the Hero has available to spend, formatted.</summary>
+        /// <summary>The amount of skill points the <see cref="Hero"/> has available to spend, formatted.</summary>
         [JsonIgnore]
         public string SkillPointsToString => SkillPoints != 1 ? $"{SkillPoints:N0} Skill Points Available" : $"{SkillPoints:N0} Skill Point Available";
 
@@ -89,21 +89,21 @@ namespace Sulimn.Classes.Entities
 
         #region Experience Manipulation
 
-        /// <summary>Gains experience for Hero.</summary>
+        /// <summary>Gains experience for <see cref="Hero"/>.</summary>
         /// <param name="exp">Experience</param>
-        /// <returns>Returns text about the Hero gaining experience</returns>
+        /// <returns>Returns text about the <see cref="Hero"/> gaining experience</returns>
         internal string GainExperience(int exp)
         {
             Experience += exp;
             return $"You gained {exp} experience!{CheckLevelUp()}";
         }
 
-        /// <summary>Checks where a Hero has leveled up.</summary>
-        /// <returns>Returns null if Hero doesn't level up</returns>
+        /// <summary>Checks where a <see cref="Hero"/> has leveled up.</summary>
+        /// <returns>Returns null if <see cref="Hero"/> doesn't level up</returns>
         private string CheckLevelUp() => Experience >= Level * 100 ? LevelUp() : null;
 
-        /// <summary>Levels up a Hero.</summary>
-        /// <returns>Returns text about the Hero leveling up</returns>
+        /// <summary>Levels up a <see cref="Hero"/>.</summary>
+        /// <returns>Returns text about the <see cref="Hero"/> leveling up</returns>
         private string LevelUp()
         {
             Experience -= Level * 100;
@@ -121,9 +121,9 @@ namespace Sulimn.Classes.Entities
 
         #region Health Manipulation
 
-        /// <summary>The Hero takes damage.</summary>
+        /// <summary>The <see cref="Hero"/> takes damage.</summary>
         /// <param name="damage">Damage amount</param>
-        /// <returns>Returns text about the Hero leveling up.</returns>
+        /// <returns>Returns text about the <see cref="Hero"/> leveling up.</returns>
         internal string TakeDamage(int damage)
         {
             Statistics.CurrentHealth -= damage;
@@ -132,9 +132,9 @@ namespace Sulimn.Classes.Entities
             : $"You have taken {damage} damage.";
         }
 
-        /// <summary>Heals the Hero for a specified amount.</summary>
+        /// <summary>Heals the <see cref="Hero"/> for a specified amount.</summary>
         /// <param name="healAmount">Amount to be healed</param>
-        /// <returns>Returns text saying the Hero was healed</returns>
+        /// <returns>Text saying the <see cref="Hero"/> was healed</returns>
         internal string Heal(int healAmount)
         {
             Statistics.CurrentHealth += healAmount;
@@ -334,29 +334,28 @@ namespace Sulimn.Classes.Entities
 
         #region Constructors
 
-        /// <summary>Initializes a default instance of Hero.</summary>
+        /// <summary>Initializes a default instance of <see cref="Hero"/>.</summary>
         internal Hero()
         {
         }
 
-        /// <summary>Initializes an instance of Hero by assigning Properties.</summary>
-        /// <param name="name">Name of Hero</param>
-        /// <param name="password">Password of Hero</param>
-        /// <param name="heroClass">Class of Hero</param>
-        /// <param name="level">Level of Hero</param>
-        /// <param name="experience">Experience of Hero</param>
-        /// <param name="skillPoints">Skill Points of Hero</param>
-        /// <param name="gold">Gold of Hero</param>
-        /// <param name="attributes">Attributes of Hero</param>
-        /// <param name="statistics">Statistics of Hero</param>
-        /// <param name="equipment">Equipment of Hero</param>
-        /// <param name="spellbook">Spellbook of Hero</param>
-        /// <param name="inventory">Inventory of Hero</param>
-        /// <param name="bank">Bank of the Hero</param>
-        /// <param name="progression">The progress the Hero has made</param>
-        /// <param name="hardcore">Will the character be deleted on death?</param>
-        internal Hero(string name, string password, HeroClass heroClass, int level, int experience, int skillPoints, int gold,
-        Attributes attributes, Statistics statistics, Equipment equipment, Spellbook spellbook, List<Item> inventory, Bank bank, Progression progression, bool hardcore)
+        /// <summary>Initializes an instance of <see cref="Hero"/> by assigning Properties.</summary>
+        /// <param name="name">Name of <see cref="Hero"/></param>
+        /// <param name="password">Password of <see cref="Hero"/></param>
+        /// <param name="heroClass"><see cref="HeroClass"/> of <see cref="Hero"/></param>
+        /// <param name="level">Level of <see cref="Hero"/></param>
+        /// <param name="experience">Experience of <see cref="Hero"/></param>
+        /// <param name="skillPoints">Skill Points of <see cref="Hero"/></param>
+        /// <param name="gold">Gold of <see cref="Hero"/></param>
+        /// <param name="attributes"><see cref="Attributes"/> of <see cref="Hero"/></param>
+        /// <param name="statistics"><see cref="Statistics"/> of <see cref="Hero"/></param>
+        /// <param name="equipment"><see cref="Equipment"/> of <see cref="Hero"/></param>
+        /// <param name="spellbook"><see cref="Spellbook"/> of <see cref="Hero"/></param>
+        /// <param name="inventory">Inventory of <see cref="Hero"/></param>
+        /// <param name="bank">Bank of the <see cref="Hero"/></param>
+        /// <param name="progression">The progress the <see cref="Hero"/> has made</param>
+        /// <param name="hardcore">Will the <see cref="Hero"/> be deleted on death?</param>
+        internal Hero(string name, string password, HeroClass heroClass, int level, int experience, int skillPoints, int gold, Attributes attributes, Statistics statistics, Equipment equipment, Spellbook spellbook, List<Item> inventory, Bank bank, Progression progression, bool hardcore)
         {
             Name = name;
             Password = password;
@@ -375,8 +374,8 @@ namespace Sulimn.Classes.Entities
             Hardcore = hardcore;
         }
 
-        /// <summary>Replaces this instance of Hero with another instance.</summary>
-        /// <param name="other">Instance of Hero to replace this one</param>
+        /// <summary>Replaces this instance of <see cref="Hero"/> with another instance.</summary>
+        /// <param name="other">Instance of <see cref="Hero"/> to replace this one</param>
         internal Hero(Hero other) : this(other.Name, other.Password, other.Class, other.Level, other.Experience, other.SkillPoints, other.Gold, new Attributes(other.Attributes), new Statistics(other.Statistics), new Equipment(other.Equipment), new Spellbook(other.Spellbook), new List<Item>(other.Inventory), other.Bank, other.Progression, other.Hardcore)
         {
         }

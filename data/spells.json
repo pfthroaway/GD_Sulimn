@@ -5,7 +5,7 @@
     "Type": 0,
     "MagicCost": 10,
     "Amount": 25,
-    "MinimumLevel": 0,
+    "MinimumLevel": 5,
     "AllowedClassesJson": ""
   },
   {
@@ -14,7 +14,7 @@
     "Type": 3,
     "MagicCost": 30,
     "Amount": 125,
-    "MinimumLevel": 0,
+    "MinimumLevel": 15,
     "AllowedClassesJson": ""
   },
   {
@@ -23,7 +23,7 @@
     "Type": 0,
     "MagicCost": 15,
     "Amount": 75,
-    "MinimumLevel": 0,
+    "MinimumLevel": 8,
     "AllowedClassesJson": ""
   },
   {
@@ -32,7 +32,7 @@
     "Type": 0,
     "MagicCost": 5,
     "Amount": 30,
-    "MinimumLevel": 0,
+    "MinimumLevel": 1,
     "AllowedClassesJson": ""
   },
   {
@@ -41,7 +41,7 @@
     "Type": 0,
     "MagicCost": 30,
     "Amount": 125,
-    "MinimumLevel": 0,
+    "MinimumLevel": 15,
     "AllowedClassesJson": "Wizard"
   },
   {
@@ -50,7 +50,7 @@
     "Type": 1,
     "MagicCost": 40,
     "Amount": 150,
-    "MinimumLevel": 0,
+    "MinimumLevel": 20,
     "AllowedClassesJson": ""
   },
   {
@@ -59,7 +59,7 @@
     "Type": 1,
     "MagicCost": 20,
     "Amount": 75,
-    "MinimumLevel": 0,
+    "MinimumLevel": 10,
     "AllowedClassesJson": ""
   },
   {
@@ -68,7 +68,7 @@
     "Type": 1,
     "MagicCost": 5,
     "Amount": 30,
-    "MinimumLevel": 0,
+    "MinimumLevel": 1,
     "AllowedClassesJson": ""
   },
   {
@@ -77,7 +77,7 @@
     "Type": 0,
     "MagicCost": 10,
     "Amount": 60,
-    "MinimumLevel": 0,
+    "MinimumLevel": 3,
     "AllowedClassesJson": "Wizard"
   },
   {
@@ -86,7 +86,7 @@
     "Type": 0,
     "MagicCost": 20,
     "Amount": 90,
-    "MinimumLevel": 0,
+    "MinimumLevel": 12,
     "AllowedClassesJson": "Wizard"
   },
   {
@@ -95,7 +95,7 @@
     "Type": 3,
     "MagicCost": 15,
     "Amount": 50,
-    "MinimumLevel": 0,
+    "MinimumLevel": 5,
     "AllowedClassesJson": ""
   },
   {
@@ -104,7 +104,7 @@
     "Type": 0,
     "MagicCost": 10,
     "Amount": 60,
-    "MinimumLevel": 0,
+    "MinimumLevel": 5,
     "AllowedClassesJson": "Cleric"
   },
   {
@@ -113,7 +113,7 @@
     "Type": 0,
     "MagicCost": 10,
     "Amount": 60,
-    "MinimumLevel": 0,
+    "MinimumLevel": 5,
     "AllowedClassesJson": "Rogue"
   }
 ]

@@ -14,7 +14,7 @@ namespace Sulimn.Classes
     internal static class GameState
     {
         internal static Hero CurrentHero = new Hero();
-
+        internal static Vector2 HeroPosition = new Vector2(0, 0);
         internal static Enemy CurrentEnemy = new Enemy();
         internal static List<Enemy> AllEnemies = new List<Enemy>();
         internal static List<Item> AllItems = new List<Item>();
@@ -37,6 +37,8 @@ namespace Sulimn.Classes
         internal static Item DefaultHands = new Item();
         internal static Item DefaultLegs = new Item();
         internal static Item DefaultFeet = new Item();
+
+        internal static PackedScene PreviousScene = new PackedScene();
 
         /// <summary>Determines whether a Hero's credentials are authentic.</summary>
         /// <param name="username">Hero's name</param>
@@ -70,7 +72,7 @@ namespace Sulimn.Classes
             AllSpells = JSONInteraction.LoadSpells().OrderBy(o => o.Name).ToList();
             AllEnemies = JSONInteraction.LoadEnemies().OrderBy(o => o.Name).ToList();
 
-            //JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
+            JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
 
             AllItems.AddRanges(AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllFood, AllDrinks, AllPotions, AllWeapons);
 
@@ -97,9 +99,9 @@ namespace Sulimn.Classes
         private static Item GetItem(string name) => AllItems.Find(itm => itm.Name == name);
 
         /// <summary>Retrieves a List of all Items of specified Type.</summary>
-        /// <typeparam name="T">Type</typeparam>
+        /// <param name="type">Type</param>
         /// <returns>List of specified Type.</returns>
-        public static List<T> GetItemsOfType<T>() => AllItems.OfType<T>().ToList();
+        public static List<Item> GetItemsOfType(ItemType type) => new List<Item>(AllItems.FindAll(itm => itm.Type == type));
 
         #endregion Item Management
 
@@ -237,14 +239,14 @@ namespace Sulimn.Classes
         }
 
         /// <summary>Event where the Hero finds an item.</summary>
-        /// <typeparam name="T">Type of Item to be found</typeparam>
         /// <param name="minValue">Minimum value of Item</param>
         /// <param name="maxValue">Maximum value of Item</param>
+        /// <param name="type">Type</param>
         /// <param name="isSold">Is the item sold?</param>
         /// <returns>Returns text about found Item</returns>
-        internal static string EventFindItem<T>(int minValue, int maxValue, bool isSold = true) where T : Item
+        internal static string EventFindItem(int minValue, int maxValue, ItemType type, bool isSold = true)
         {
-            List<T> availableItems = new List<T>(GetItemsOfType<T>());
+            List<Item> availableItems = new List<Item>(AllItems.FindAll(itm => itm.Type == type));
             availableItems = availableItems.FindAll(itm => itm.Value >= minValue && itm.Value <= maxValue && itm.IsSold == isSold).ToList();
             int item = Functions.GenerateRandomNumber(0, availableItems.Count - 1);
             CurrentHero.AddItem(availableItems[item]);

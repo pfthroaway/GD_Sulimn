@@ -10,7 +10,7 @@ public class InventoryScene : CanvasLayer
     {
         AssignControls();
         SetTooltips();
-        //TODO I need to figure out a way to remember my navigation so I can return to the proper scene from the Inventory Scene.
+        // TODO I need to figure out a way to remember my navigation so I can return to the proper scene from the Inventory Scene.
     }
 
     /// <summary>Assign all controls.</summary>

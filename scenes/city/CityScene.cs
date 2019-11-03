@@ -24,6 +24,8 @@ public class CityScene : Control
         info.Scale = new Vector2(1, 1);
         characterScene.Scale = new Vector2(1, 1);
         info.DisplayStats();
+        GameState.HeroPosition = new Vector2(224, 160);
+        GetTree().ChangeScene("res://scenes/city/ExploreScene.tscn");
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

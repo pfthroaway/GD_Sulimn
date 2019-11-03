@@ -53,6 +53,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="actors\Player.cs" />
     <Compile Include="classes\Card\Card.cs" />
     <Compile Include="classes\Card\Hand.cs" />
     <Compile Include="classes\Database\JSONInteraction.cs" />
@@ -93,31 +94,13 @@
     <Compile Include="scenes\character\CharacterScene.cs" />
     <Compile Include="scenes\character\InventoryScene.cs" />
     <Compile Include="scenes\city\CityScene.cs" />
+    <Compile Include="scenes\city\ExploreScene.cs" />
     <Compile Include="scenes\info\Info.cs" />
     <Compile Include="scenes\MainScene.cs" />
     <Compile Include="scenes\character\NewHeroScene.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\body_armor.json" />
-    <None Include="data\classes.json" />
-    <None Include="data\drinks.json" />
-    <None Include="data\enemies.json" />
-    <None Include="data\feet_armor.json" />
-    <None Include="data\food.json" />
-    <None Include="data\hand_armor.json" />
-    <None Include="data\head_armor.json" />
-    <None Include="data\leg_armor.json" />
-    <None Include="data\potions.json" />
-    <None Include="data\rings.json" />
-    <None Include="data\spells.json" />
-    <None Include="data\weapons.json" />
     <None Include="packages.config" />
-    <None Include="scenes\character\CharacterScene.tscn" />
-    <None Include="scenes\city\CityScene.tscn" />
-    <None Include="scenes\info\Info.tscn" />
-    <None Include="scenes\info\ProgressBar.tscn" />
-    <None Include="scenes\MainScene.tscn" />
-    <None Include="scenes\character\NewHeroScene.tscn" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

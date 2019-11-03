@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Sulimn.Classes.Items;
+using System.Collections.Generic;
 
 namespace Sulimn.Classes.HeroParts
 {
@@ -43,6 +44,10 @@ namespace Sulimn.Classes.HeroParts
         #endregion Modifying Properties
 
         #region Helper Properties
+
+        /// <summary>List of all the <see cref="Item"/>s equipped.</summary>
+        [JsonIgnore]
+        public List<Item> AllEquipment => new List<Item> { Weapon, Head, Body, Hands, Legs, Feet, LeftRing, RightRing };
 
         /// <summary>Weight of all the Equipment currently equipped.</summary>
         [JsonIgnore]

@@ -7,6 +7,22 @@ namespace Sulimn.Classes.Entities
     /// <summary>Represents an Enemy who opposes the Hero.</summary>
     internal class Enemy : Character
     {
+        #region Health Manipulation
+
+        /// <summary>Heals the <see cref="Enemy"/> for a specified amount.</summary>
+        /// <param name="healAmount">Amount to be healed</param>
+        /// <returns>Text saying the <see cref="Enemy"/> was healed</returns>
+        internal string Heal(int healAmount)
+        {
+            Statistics.CurrentHealth += healAmount;
+            if (Statistics.CurrentHealth > Statistics.MaximumHealth)
+            {
+                Statistics.CurrentHealth = Statistics.MaximumHealth;
+                return "The {Name} to its maximum health.";
+            }
+            return $"The {Name} heals for {healAmount:N0} health.";
+        }
+
         /// <summary>The Enemy takes Damage.</summary>
         /// <param name="damage">Amount damaged</param>
         /// <returns>Text saying the Enemy took damage</returns>
@@ -20,6 +36,8 @@ namespace Sulimn.Classes.Entities
             }
             return $"The {Name} takes {damage} damage.";
         }
+
+        #endregion Health Manipulation
 
         #region Modifying Properties
 

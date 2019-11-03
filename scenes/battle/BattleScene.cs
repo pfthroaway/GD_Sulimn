@@ -6,6 +6,8 @@ using Sulimn.Classes.Extensions;
 using Sulimn.Classes.Extensions.DataTypeHelpers;
 using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
+using System.Collections.Generic;
+using System.Linq;
 
 public class BattleScene : Control
 {
@@ -13,7 +15,7 @@ public class BattleScene : Control
     private bool _battleEnded;
     private bool _blnHardcoreDeath;
     private bool _progress;
-    private Button BtnCastSpell;
+    private Button BtnAttack, BtnCastSpell, BtnChooseSpell, BtnFlee, BtnInventory, BtnLootBody, BtnReturn;
     private Info info;
     private string _previousPage;
     private TextEdit TxtBattle;
@@ -49,15 +51,22 @@ public class BattleScene : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        AssignControls();
-        UpdateStats();
+        GetTree().ChangeScene("res://scenes/city/ExploreScene.tscn");
+        //AssignControls();
+        //UpdateStats();
     }
 
     /// <summary>Assigns all controls to modifiable values.</summary>
     private void AssignControls()
     {
-        info = (Info)GetNode("/root/Info");
+        BtnAttack = null;
         BtnCastSpell = null;
+        BtnChooseSpell = null;
+        BtnFlee = null;
+        BtnInventory = null;
+        BtnLootBody = null;
+        BtnReturn = null;
+        info = (Info)GetNode("/root/Info");
         TxtBattle = null;
     }
 
@@ -92,16 +101,36 @@ public class BattleScene : Control
     /// <param name="progress">Will this battle be for progression?</param>
     internal void PrepareBattle(string prevPage, bool progress = false)
     {
-        //_previousPage = prevPage;
+        _previousPage = prevPage;
         _progress = progress;
         TxtBattle.Text = progress ? $"{GameState.CurrentEnemy.Name} rushes at you in the {_previousPage}. You defend yourself. " : $"You encounter an enemy. The {GameState.CurrentEnemy.Name} seems openly hostile to you. Prepare to defend yourself.";
     }
 
     /// <summary>Ends the battle and allows the user to exit the Page.</summary>
-    private void EndBattle()
+    private void EndBattle(bool win)
     {
         _battleEnded = true;
-        //BtnReturn.IsEnabled = true;
+        if (win)
+            BtnLootBody.Disabled = false;
+
+        BtnReturn.Disabled = false;
+    }
+
+    private void LootBody()
+    {
+        // TODO Make it possible to loot enemy corpses instead of automatically giving the Hero gold.
+
+        if (GameState.CurrentEnemy.Gold > 0)
+            AddTextToTextBox($"You find {GameState.CurrentEnemy.Gold} gold on the body.");
+
+        GameState.CurrentHero.Gold += GameState.CurrentEnemy.Gold;
+        List<Item> items = GameState.CurrentEnemy.Equipment.AllEquipment;
+        foreach (Item item in items)
+            if (item != new Item())
+            {
+                GameState.CurrentHero.AddItem(item);
+                AddTextToTextBox($"You pick up a {item.Name}.");
+            }
     }
 
     #endregion Battle Management
@@ -142,7 +171,7 @@ public class BattleScene : Control
             else if (GameState.CurrentHero.Statistics.CurrentHealth <= 0)
                 Death();
         }
-
+        info.DisplayStats();
         CheckButtons();
     }
 
@@ -152,10 +181,7 @@ public class BattleScene : Control
         switch (_heroAction)
         {
             case BattleAction.Attack:
-                if (GameState.CurrentHero.Equipment.Weapon.Type == ItemType.MeleeWeapon)
-                    HeroAttack(GameState.CurrentHero.TotalStrength, GameState.CurrentHero.Equipment.TotalDamage);
-                else if (GameState.CurrentHero.Equipment.Weapon.Type == ItemType.RangedWeapon)
-                    HeroAttack(GameState.CurrentHero.TotalDexterity, GameState.CurrentHero.Equipment.TotalDamage);
+                HeroAttack();
                 break;
 
             case BattleAction.Cast:
@@ -165,7 +191,7 @@ public class BattleScene : Control
                 switch (CurrentHeroSpell.Type)
                 {
                     case SpellType.Damage:
-                        HeroAttack(GameState.CurrentHero.TotalWisdom, CurrentHeroSpell.Amount);
+                        HeroAttack(true);
                         break;
 
                     case SpellType.Healing:
@@ -173,7 +199,7 @@ public class BattleScene : Control
                         break;
 
                     case SpellType.Shield:
-                        HeroShield += CurrentHeroSpell.Amount;
+                        HeroShield = CurrentHeroSpell.Amount;
                         AddTextToTextBox($"You now have a magical shield which will help protect you from {HeroShield} damage.");
                         break;
                 }
@@ -185,7 +211,7 @@ public class BattleScene : Control
 
                 if (FleeAttempt(GameState.CurrentHero.TotalDexterity, GameState.CurrentEnemy.TotalDexterity))
                 {
-                    EndBattle();
+                    EndBattle(false);
                     AddTextToTextBox($"You successfully fled from the {GameState.CurrentEnemy.Name}.");
                 }
                 else
@@ -194,62 +220,106 @@ public class BattleScene : Control
         }
     }
 
-    /// <summary>The Hero attacks the Enemy.</summary>
-    /// <param name="statModifier">Stat to be given 20% bonus to damage</param>
-    /// <param name="damage">Damage</param>
-    private void HeroAttack(int statModifier, int damage)
+    /// <summary>The <see cref="Hero"/> attacks the <see cref="Enemy"/>.</summary>
+    /// <param name="castSpell">Is the <see cref="Hero"/> attacking with a <see cref="Spell"/>?</param>
+    private void HeroAttack(bool castSpell = false)
     {
-        //TODO Implement Hero attacking the same way I did Enemy attacking.
+        //The Hero's chance to hit depends on whether or not they're overweight and their Dexterity compared to the enemy.
+        int chanceHeroHits = !GameState.CurrentHero.Overweight
+            ? Functions.GenerateRandomNumber(50 + GameState.CurrentEnemy.Attributes.Dexterity - GameState.CurrentHero.Attributes.Dexterity, 90, 10, 90)
+            : Functions.GenerateRandomNumber(Int32Helper.Parse(50 + GameState.CurrentEnemy.Attributes.Dexterity - (GameState.CurrentHero.Attributes.Dexterity * GameState.CurrentHero.StrengthWeightRatio)), 90, 10, 90);
 
-        int chanceHeroHits =
-        Functions.GenerateRandomNumber(
-        50 + GameState.CurrentHero.Attributes.Dexterity - GameState.CurrentEnemy.Attributes.Dexterity, 90,
-        10, 90);
-        int heroHits = Functions.GenerateRandomNumber(10, 90);
+        // If the number generated by this method call is less than the chance that the Hero hits, the Hero successfully hits.
+        int success = Functions.GenerateRandomNumber(10, 90);
 
-        if (heroHits <= chanceHeroHits)
+        if (success <= chanceHeroHits)
         {
-            int maximumHeroDamage = Int32Helper.Parse((statModifier * 0.2) + damage);
-            int maximumEnemyAbsorb = GameState.CurrentEnemy.Equipment.TotalDefense;
-            int actualDamage = Functions.GenerateRandomNumber(maximumHeroDamage / 10, maximumHeroDamage, 1);
-            int actualAbsorb = Functions.GenerateRandomNumber(maximumEnemyAbsorb / 10, maximumEnemyAbsorb);
+            // If successfully hitting, set up
+            int statModifier = GetStatModifier(GameState.CurrentHero, castSpell);
+
+            int damage = !castSpell
+                ? GameState.CurrentHero.Equipment.Weapon.Damage
+                : CurrentHeroSpell.Amount;
+
+            // Maximum damage is 20% of the statistic used for their primary + damage from the weapon.
+            int maximumDamage = Int32Helper.Parse((statModifier * 0.2) + damage);
+
+            // If overweight, multiply by the strength/weight ratio.
+            if (GameState.CurrentHero.Overweight)
+                maximumDamage = Int32Helper.Parse(maximumDamage * GameState.CurrentHero.StrengthWeightRatio);
+
+            // Choose the Item which is going to be hit.
+            Item itemGettingHit = ChooseItemToHit(GameState.CurrentEnemy.Equipment);
+
+            // Actual defense is maximum defense multiplied by the current durability of the item being hit.
+            // If there is no durability left, bypass it completely for determining defense.
+            int enemyDefense = itemGettingHit.CurrentDurability > 0 ? Int32Helper.Parse(itemGettingHit.Defense * itemGettingHit.DurabilityRatio) : 0;
+
+            // Actual damage is 10-100% of the maximum damage.
+            int actualDamage = Functions.GenerateRandomNumber(maximumDamage / 10, maximumDamage, 1);
+
+            // Maximum shield absorb is 10-100% of the shield currently being attacked.
+            int maximumShieldAbsorb = Functions.GenerateRandomNumber(HeroShield / 10, HeroShield);
+
+            // Maximum armor absorb is 10-100% of the Item currently being attacked.
+            int maximumArmorAbsorb = Functions.GenerateRandomNumber(enemyDefense / 10, enemyDefense);
+
+            int actualArmorAbsorb = 0;
+
+            // Shield absorbs actualDamage up to maxShieldAbsorb.
+            int actualShieldAbsorb = maximumShieldAbsorb >= actualDamage ? actualDamage : maximumShieldAbsorb;
+
+            HeroShield -= actualShieldAbsorb;
+
+            // If shield absorbs all damage, actualArmorAbsorb is 0, otherwise check actualDamage - maxShieldAbsorb.
+            if (actualShieldAbsorb < actualDamage)
+                actualArmorAbsorb = maximumArmorAbsorb >= actualDamage - actualShieldAbsorb ? actualDamage - actualShieldAbsorb : maximumArmorAbsorb;
 
             string absorb = "";
-            if (actualAbsorb > 0)
-                absorb = $"The {GameState.CurrentEnemy.Name}'s armor absorbed {actualAbsorb} damage. ";
+            string shield = "";
 
-            if (actualDamage > actualAbsorb)
+            if (actualShieldAbsorb > 0)
+                shield = $" Its magical shield absorbs {actualShieldAbsorb} damage.";
+            if (actualArmorAbsorb > 0)
+                absorb = $" Its armor absorbs {actualArmorAbsorb} damage. ";
+
+            if (actualDamage > actualShieldAbsorb + actualArmorAbsorb) //the enemy actually takes damage
             {
-                AddTextToTextBox($"You attack for {actualDamage} damage. {absorb}{GameState.CurrentEnemy.TakeDamage(actualDamage - actualAbsorb)}");
+                itemGettingHit.CurrentDurability -= actualDamage / 10;
+                if (itemGettingHit.CurrentDurability < 0)
+                    itemGettingHit.CurrentDurability = 0;
+                if (!castSpell)
+                    GameState.CurrentHero.Equipment.Weapon.CurrentDurability -= actualArmorAbsorb / 10;
+                AddTextToTextBox($"You attack the {GameState.CurrentEnemy.Name} for {actualDamage} damage. {shield}{absorb}{GameState.CurrentEnemy.TakeDamage(actualDamage - actualShieldAbsorb - actualArmorAbsorb)}");
                 if (GameState.CurrentEnemy.Statistics.CurrentHealth <= 0)
                 {
-                    EndBattle();
+                    EndBattle(true);
                     AddTextToTextBox(GameState.CurrentHero.GainExperience(GameState.CurrentEnemy.Experience));
-                    if (GameState.CurrentEnemy.Gold > 0)
-                        AddTextToTextBox($"You find {GameState.CurrentEnemy.Gold} gold on the body.");
-
-                    GameState.CurrentHero.Gold += GameState.CurrentEnemy.Gold;
                 }
             }
+            else if (actualShieldAbsorb > 0 && actualArmorAbsorb > 0)
+                AddTextToTextBox($"You attack the {GameState.CurrentEnemy.Name} for {actualDamage}, but {shield.ToLower()}{absorb.ToLower()}");
+            else if (actualDamage <= actualShieldAbsorb)
+                AddTextToTextBox($"You attack the {GameState.CurrentEnemy.Name} for {actualDamage}, but its shield absorbed all of it.");
             else
-                AddTextToTextBox($"You attack for {actualDamage}, but its armor absorbs all of it.");
+                AddTextToTextBox($"You attack the {GameState.CurrentEnemy.Name} for {actualDamage}, but its armor absorbed all of it.");
         }
         else
             AddTextToTextBox("You miss.");
     }
 
-    /// <summary>Sets the current Spell.</summary>
-    /// <param name="spell">Spell to be set</param>
+    /// <summary>Sets the current <see cref="Spell"/>.</summary>
+    /// <param name="spell"><see cref="Spell"/> to be set</param>
     internal void SetSpell(Spell spell)
     {
         CurrentHeroSpell = spell;
         BtnCastSpell.Disabled = false;
     }
 
-    /// <summary>Sets the Enemy's action for the round.</summary>
+    /// <summary>Sets the <see cref="Enemy"/>'s action for the round.</summary>
     private void SetEnemyAction()
     {
-        if (GameState.CurrentEnemy.Spellbook.Spells.Count > 0)
+        if (GameState.CurrentEnemy.Spellbook.Spells.Count > 0 && GameState.CurrentEnemy.Statistics.CurrentMagic > 0)
         {
             int action = Functions.GenerateRandomNumber(0, 1);
             _enemyAction = action == 0 ? BattleAction.Attack : BattleAction.Cast;
@@ -284,7 +354,7 @@ public class BattleScene : Control
         }
     }
 
-    /// <summary>The Enemy's turn this round of battle.</summary>
+    /// <summary>The <see cref="Enemy"/>'s turn this round of battle.</summary>
     private void EnemyTurn()
     {
         SetEnemyAction();
@@ -295,29 +365,73 @@ public class BattleScene : Control
                 break;
 
             case BattleAction.Cast:
-                //TODO Implement the ability for Enemies to cast spells.
+
+                List<Spell> availableSpells = GameState.CurrentEnemy.Spellbook.Spells.Where(spl => spl.MagicCost <= GameState.CurrentEnemy.Statistics.CurrentMagic).ToList();
+                List<Spell> healingSpells = availableSpells.Where(spl => spl.Type == SpellType.Healing).ToList();
+                List<Spell> attackSpells = availableSpells.Where(spl => spl.Type == SpellType.Damage).ToList();
+                List<Spell> shieldSpells = availableSpells.Where(spl => spl.Type == SpellType.Shield).ToList();
+
+                if (availableSpells.Count > 0)
+                {
+                    // Choose Spell
+                    if (attackSpells.Count > 0 && healingSpells.Count > 0 && GameState.CurrentEnemy.Statistics.HealthRatio < 0.5m)
+                        CurrentEnemySpell = Functions.GenerateRandomNumber(0, 1) == 0
+                            ? attackSpells[Functions.GenerateRandomNumber(0, attackSpells.Count - 1)]
+                            : healingSpells[Functions.GenerateRandomNumber(0, healingSpells.Count - 1)];
+                    else if (attackSpells.Count > 0 && shieldSpells.Count > 0 && EnemyShield > 0)
+                        CurrentEnemySpell = attackSpells[Functions.GenerateRandomNumber(0, attackSpells.Count - 1)];
+                    else if (attackSpells.Count > 0 && shieldSpells.Count > 0 && EnemyShield == 0)
+                        CurrentEnemySpell = Functions.GenerateRandomNumber(0, 1) == 0
+                            ? attackSpells[Functions.GenerateRandomNumber(0, attackSpells.Count - 1)]
+                            : shieldSpells[Functions.GenerateRandomNumber(0, shieldSpells.Count - 1)];
+                    else if (attackSpells.Count > 0)
+                        CurrentEnemySpell = attackSpells[Functions.GenerateRandomNumber(0, attackSpells.Count - 1)];
+                    else if (shieldSpells.Count > 0)
+                        CurrentEnemySpell = shieldSpells[Functions.GenerateRandomNumber(0, shieldSpells.Count - 1)];
+                    else if (healingSpells.Count > 0)
+                        CurrentEnemySpell = healingSpells[Functions.GenerateRandomNumber(0, healingSpells.Count - 1)];
+
+                    // Cast Spell
+                    AddTextToTextBox($"The {GameState.CurrentEnemy.Name} casts {CurrentEnemySpell.Name}.");
+
+                    switch (CurrentEnemySpell.Type)
+                    {
+                        case SpellType.Damage:
+                            EnemyAttack(true);
+                            break;
+
+                        case SpellType.Healing:
+                            AddTextToTextBox(GameState.CurrentEnemy.Heal(CurrentEnemySpell.Amount));
+                            break;
+
+                        case SpellType.Shield:
+                            EnemyShield = CurrentEnemySpell.Amount;
+                            AddTextToTextBox($"The {GameState.CurrentEnemy.Name} now has a magical shield which will help protect it from {EnemyShield} damage.");
+                            break;
+                    }
+
+                    GameState.CurrentEnemy.Statistics.CurrentMagic -= CurrentEnemySpell.MagicCost;
+                }
+                else
+                    EnemyAttack();
                 break;
 
             case BattleAction.Flee:
                 if (FleeAttempt(GameState.CurrentEnemy.TotalDexterity, GameState.CurrentHero.TotalDexterity))
                 {
-                    EndBattle();
+                    EndBattle(false);
                     AddTextToTextBox($"The {GameState.CurrentEnemy.Name} fled from the battle.");
                     AddTextToTextBox(GameState.CurrentHero.GainExperience(GameState.CurrentEnemy.Experience / 2));
                 }
-                //else
-                AddTextToTextBox($"You block the {GameState.CurrentEnemy.Name}'s attempt to flee.");
+                else
+                    AddTextToTextBox($"You block the {GameState.CurrentEnemy.Name}'s attempt to flee.");
                 break;
         }
     }
 
-    /// <summary>The Enemy attacks the Hero.</summary>
+    /// <summary>The <see cref="Enemy"/> attacks the <see cref="Hero"/>.</summary>
     private void EnemyAttack(bool castSpell = false)
     {
-        // TODO I'm rewriting the attack methods to implement doing damage to an Item's durability when struck with a weapon or spell.
-        // TODO I'm also implementing an overweight debuff to hit chances with weapons and spells and damage output when using a weapon.
-        // TODO Make it possible to loot enemy corpses instead of automatically giving the Hero gold.
-
         //The enemy's chance to hit depends on whether or not they're overweight and their Dexterity compared to the Hero.
         int chanceEnemyHits = !GameState.CurrentEnemy.Overweight
             ? Functions.GenerateRandomNumber(50 + GameState.CurrentHero.Attributes.Dexterity - GameState.CurrentEnemy.Attributes.Dexterity, 90, 10, 90)
@@ -346,6 +460,7 @@ public class BattleScene : Control
             Item itemGettingHit = ChooseItemToHit(GameState.CurrentHero.Equipment);
 
             // Actual defense is maximum defense multiplied by the current durability of the item being hit.
+            // If there is no durability left, bypass it completely for determining defense.
             int heroDefense = itemGettingHit.CurrentDurability > 0 ? Int32Helper.Parse(itemGettingHit.Defense * itemGettingHit.DurabilityRatio) : 0;
 
             // Actual damage is 10-100% of the maximum damage.
@@ -366,10 +481,7 @@ public class BattleScene : Control
 
             // If shield absorbs all damage, actualArmorAbsorb is 0, otherwise check actualDamage - maxShieldAbsorb.
             if (actualShieldAbsorb < actualDamage)
-                if (maximumArmorAbsorb >= actualDamage - actualShieldAbsorb)
-                    actualArmorAbsorb = actualDamage - actualShieldAbsorb;
-                else
-                    actualArmorAbsorb = maximumArmorAbsorb;
+                actualArmorAbsorb = maximumArmorAbsorb >= actualDamage - actualShieldAbsorb ? actualDamage - actualShieldAbsorb : maximumArmorAbsorb;
 
             string absorb = "";
             string shield = "";
@@ -382,22 +494,21 @@ public class BattleScene : Control
             if (actualDamage > actualShieldAbsorb + actualArmorAbsorb) //the player actually takes damage
             {
                 itemGettingHit.CurrentDurability -= actualDamage / 10;
+                if (itemGettingHit.CurrentDurability < 0)
+                    itemGettingHit.CurrentDurability = 0;
                 if (!castSpell)
                     GameState.CurrentEnemy.Equipment.Weapon.CurrentDurability -= actualArmorAbsorb / 10;
                 AddTextToTextBox($"The {GameState.CurrentEnemy.Name} attacks you for {actualDamage} damage. {shield}{absorb}{GameState.CurrentHero.TakeDamage(actualDamage - actualShieldAbsorb - actualArmorAbsorb)}");
             }
+            else if (actualShieldAbsorb > 0 && actualArmorAbsorb > 0)
+                AddTextToTextBox($"The {GameState.CurrentEnemy.Name} attacks you for {actualDamage}, but {shield.ToLower()}{absorb.ToLower()}");
+            else if (actualDamage <= actualShieldAbsorb)
+                AddTextToTextBox($"The {GameState.CurrentEnemy.Name} attacks you for {actualDamage}, but your shield absorbed all of it.");
             else
-            {
-                if (actualShieldAbsorb > 0 && actualArmorAbsorb > 0)
-                    AddTextToTextBox($"The {GameState.CurrentEnemy.Name} attacks you for {actualDamage}, but {shield.ToLower()}{absorb.ToLower()}");
-                else if (actualDamage == actualShieldAbsorb)
-                    AddTextToTextBox($"The {GameState.CurrentEnemy.Name} attacks you for {actualDamage}, but your shield absorbed all of it.");
-                else
-                    AddTextToTextBox($"The {GameState.CurrentEnemy.Name} attacks you for {actualDamage}, but your armor absorbed all of it.");
-            }
+                AddTextToTextBox($"The {GameState.CurrentEnemy.Name} attacks you for {actualDamage}, but your armor absorbed all of it.");
         }
-        //else
-        AddTextToTextBox($"The {GameState.CurrentEnemy.Name} misses.");
+        else
+            AddTextToTextBox($"The {GameState.CurrentEnemy.Name} misses.");
     }
 
     private int GetStatModifier(Character character, bool castSpell) => !castSpell
@@ -451,7 +562,7 @@ public class BattleScene : Control
     /// <summary>A fairy is summoned to resurrect the Hero.</summary>
     private void Death()
     {
-        EndBattle();
+        EndBattle(false);
         if (!GameState.CurrentHero.Hardcore)
         {
             AddTextToTextBox("A mysterious fairy appears, and, seeing your crumpled body on the ground, resurrects you. You have just enough health to make it back to town.");
@@ -475,13 +586,97 @@ public class BattleScene : Control
     /// <param name="enabled">Are the buttons enabled?</param>
     private void ToggleButtons(bool enabled)
     {
-        //BtnAttack.IsEnabled = !enabled;
+        BtnAttack.Disabled = !enabled;
         BtnCastSpell.Disabled = !enabled && CurrentHeroSpell != new Spell();
-        //BtnChooseSpell.IsEnabled = !enabled;
-        //BtnFlee.IsEnabled = !enabled;
+        BtnChooseSpell.Disabled = !enabled;
+        BtnFlee.Disabled = !enabled;
     }
 
     #endregion Button Management
+
+    #region Button-Click Methods
+
+    private void BtnAttack_Click() => NewRound(BattleAction.Attack);
+
+    //private void BtnEnemyDetails_Click() => GameState.Navigate(new EnemyDetailsPage());
+
+    private void BtnReturn_Click()
+    {
+        //if the battle is over, return to where you came from
+        //if you were fight a progression battle and you killed the enemy,
+        //add progression to the character and set to display after progression screens
+
+        if (_battleEnded)
+        {
+            switch (_previousPage)
+            {
+                case "Explore":
+                    break;
+
+                case "Fields":
+                    if (_progress && GameState.CurrentEnemy.Statistics.CurrentHealth <= 0)
+                    {
+                        GameState.CurrentHero.Progression.Fields = true;
+                        GameState.EventFindGold(250, 250);
+                    }
+                    break;
+
+                case "Forest":
+                    if (_progress && GameState.CurrentEnemy.Statistics.CurrentHealth <= 0)
+                    {
+                        GameState.CurrentHero.Progression.Forest = true;
+                        GameState.EventFindGold(1000, 1000);
+                    }
+                    break;
+
+                case "Cathedral":
+                    if (_progress && GameState.CurrentEnemy.Statistics.CurrentHealth <= 0)
+                    {
+                        GameState.CurrentHero.Progression.Cathedral = true;
+                        GameState.EventFindItem(1, 5000, ItemType.Ring);
+                    }
+                    break;
+
+                case "Mines":
+                    if (_progress && GameState.CurrentEnemy.Statistics.CurrentHealth <= 0)
+                    {
+                        GameState.CurrentHero.Progression.Mines = true;
+                        GameState.EventFindGold(5000, 5000);
+                    }
+                    break;
+
+                case "Catacombs":
+                    if (_progress && GameState.CurrentEnemy.Statistics.CurrentHealth <= 0)
+                    {
+                        GameState.CurrentHero.Progression.Catacombs = true;
+                        GameState.EventFindItem(15000, 20000, ItemType.Ring);
+                    }
+                    break;
+            }
+            if (!_blnHardcoreDeath)
+                GameState.SaveHero(GameState.CurrentHero);
+            //else
+            //GameState.HardcoreDeath();
+        }
+        //GameState.GoBack();
+    }
+
+    private void BtnCastSpell_Click() => NewRound(BattleAction.Cast);
+
+    private void BtnChooseSpell_Click()
+    {
+        //CastSpellPage castSpellPage = new CastSpellPage { RefToBattlePage = this };
+        //castSpellPage.LoadPage("Battle");
+        //GameState.Navigate(castSpellPage);
+    }
+
+    private void BtnFlee_Click() => NewRound(BattleAction.Flee);
+
+    private void _on_BtnReturn_pressed()
+    {
+    }
+
+    #endregion Button-Click Methods
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)

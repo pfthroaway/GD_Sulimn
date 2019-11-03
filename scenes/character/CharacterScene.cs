@@ -12,11 +12,11 @@ public class CharacterScene : CanvasLayer
     private AnimationPlayer player;
 
     private Hero _copyOfHero = new Hero();
-    private bool showScene;
+    public bool ShowScene;
 
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape && showScene)
+        if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape && ShowScene)
         {
             SlideIn();
         }
@@ -212,7 +212,7 @@ public class CharacterScene : CanvasLayer
 
     private void _on_BtnCharacter_pressed()
     {
-        if (!showScene)
+        if (!ShowScene)
         {
             SlideOut();
             _copyOfHero = new Hero(GameState.CurrentHero);
@@ -223,12 +223,12 @@ public class CharacterScene : CanvasLayer
             SlideIn();
             GameState.SaveHero(GameState.CurrentHero);
         }
-        showScene = !showScene;
+        ShowScene = !ShowScene;
     }
 
     private void _on_BtnInventory_pressed()
     {
-        SlideIn();
+        _on_BtnCharacter_pressed();
         GetTree().ChangeScene("scenes/character/InventoryScene.tscn");
     }
 
