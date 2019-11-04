@@ -169,7 +169,8 @@ namespace Sulimn.Classes.Entities
         {
             switch (item.Type)
             {
-                case ItemType.MeleeWeapon | ItemType.RangedWeapon:
+                case ItemType.MeleeWeapon:
+                case ItemType.RangedWeapon:
                     if (Equipment.Weapon != GameState.DefaultWeapon)
                         AddItem(Equipment.Weapon);
                     Equipment.Weapon = new Item(item);
@@ -237,7 +238,8 @@ namespace Sulimn.Classes.Entities
         {
             switch (item.Type)
             {
-                case ItemType.MeleeWeapon | ItemType.RangedWeapon:
+                case ItemType.MeleeWeapon:
+                case ItemType.RangedWeapon:
                     if (item != GameState.DefaultWeapon)
                         AddItem(item);
                     Equipment.Weapon = new Item(GameState.DefaultWeapon);

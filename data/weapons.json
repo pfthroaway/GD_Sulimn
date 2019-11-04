@@ -117,7 +117,7 @@
   {
     "Name": "Composite Bow",
     "Description": "A bow with a special design, capable of shooting far and quickly.",
-    "Type": 5,
+    "Type": 6,
     "Damage": 60,
     "Defense": 0,
     "Weight": 20,
@@ -255,7 +255,7 @@
   {
     "Name": "Heavy Bow",
     "Description": "A heavy bow, capable of shooting long distances.",
-    "Type": 5,
+    "Type": 6,
     "Damage": 30,
     "Defense": 0,
     "Weight": 16,
@@ -301,7 +301,7 @@
   {
     "Name": "Light Bow",
     "Description": "A basic ranged weapon.",
-    "Type": 5,
+    "Type": 6,
     "Damage": 12,
     "Defense": 0,
     "Weight": 8,
@@ -577,7 +577,7 @@
   {
     "Name": "Starter Bow",
     "Description": "An old, withered bow.",
-    "Type": 5,
+    "Type": 6,
     "Damage": 8,
     "Defense": 0,
     "Weight": 6,

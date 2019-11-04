@@ -24,7 +24,6 @@ namespace Sulimn.Classes.Inventory
         /// <summary>Picks up an <see cref="InventoryItem"/>.</summary>
         public void PickItem()
         {
-            GD.Print($"Picking up {Item.Name} from InventoryItem");
             MouseFilter = MouseFilterEnum.Ignore;
             Picked = true;
         }

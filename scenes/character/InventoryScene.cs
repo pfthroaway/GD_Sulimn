@@ -69,14 +69,14 @@ public class InventoryScene : Control
 
     private void SetUpEquipment()
     {
-        WeaponSlot = new ItemSlot(41);
-        HeadSlot = new ItemSlot(42);
-        BodySlot = new ItemSlot(43);
-        HandsSlot = new ItemSlot(44);
-        LegsSlot = new ItemSlot(45);
-        FeetSlot = new ItemSlot(46);
-        LeftRingSlot = new ItemSlot(47);
-        RightRingSlot = new ItemSlot(48);
+        WeaponSlot = new ItemSlot(40);
+        HeadSlot = new ItemSlot(41);
+        BodySlot = new ItemSlot(42);
+        HandsSlot = new ItemSlot(43);
+        LegsSlot = new ItemSlot(44);
+        FeetSlot = new ItemSlot(45);
+        LeftRingSlot = new ItemSlot(46);
+        RightRingSlot = new ItemSlot(47);
         if (GameState.CurrentHero.Equipment.Weapon != new Item())
         {
             Weapon = new InventoryItem(GameState.CurrentHero.Equipment.Weapon, WeaponSlot);
@@ -212,7 +212,7 @@ public class InventoryScene : Control
         {
             ItemSlot clickedSlot = null;
 
-            // Check if the item being clicked is in the inventory
+            // Check if the slot being clicked is in the slotList
             foreach (ItemSlot slot in slotList)
             {
                 Vector2 slotMousePos = slot.GetLocalMousePosition();
@@ -238,42 +238,42 @@ public class InventoryScene : Control
                         // let it go into that slot.
                         switch (clickedSlot.SlotIndex)
                         {
-                            case 41: // Weapon
+                            case 40: // Weapon
                                 if (holdingItem.Item.Type == ItemType.MeleeWeapon || holdingItem.Item.Type == ItemType.RangedWeapon)
                                     EquipAndSwap(clickedSlot);
                                 break;
 
-                            case 42: // Head
+                            case 41: // Head
                                 if (holdingItem.Item.Type == ItemType.HeadArmor)
                                     EquipAndSwap(clickedSlot);
                                 break;
 
-                            case 43: // Body
+                            case 42: // Body
                                 if (holdingItem.Item.Type == ItemType.BodyArmor)
                                     EquipAndSwap(clickedSlot);
                                 break;
 
-                            case 44: // Hands
+                            case 43: // Hands
                                 if (holdingItem.Item.Type == ItemType.HandArmor)
                                     EquipAndSwap(clickedSlot);
                                 break;
 
-                            case 45: // Legs
+                            case 44: // Legs
                                 if (holdingItem.Item.Type == ItemType.LegArmor)
                                     EquipAndSwap(clickedSlot);
                                 break;
 
-                            case 46: // Feet
+                            case 45: // Feet
                                 if (holdingItem.Item.Type == ItemType.FeetArmor)
                                     EquipAndSwap(clickedSlot);
                                 break;
 
-                            case 47: // LeftRing
+                            case 46: // LeftRing
                                 if (holdingItem.Item.Type == ItemType.Ring)
                                     EquipAndSwap(clickedSlot, RingHand.Left);
                                 break;
 
-                            case 48: // RightRing
+                            case 47: // RightRing
                                 if (holdingItem.Item.Type == ItemType.Ring)
                                     EquipAndSwap(clickedSlot, RingHand.Right);
                                 break;
@@ -288,67 +288,17 @@ public class InventoryScene : Control
                         // If it's not, unequip it and drop it in the first available slot.
                         if (holdingItem.Slot.SlotIndex > 40)
                         {
-                            switch (holdingItem.Slot.SlotIndex)
+                            if (holdingItem.Item.Type == clickedSlot.Item.Item.Type)
+                                EquipAndSwap(clickedSlot);
+                            else if (holdingItem.Item.Type == ItemType.MeleeWeapon || holdingItem.Item.Type == ItemType.RangedWeapon)
                             {
-                                case 41: // Weapon
-                                    if (clickedSlot.Item.Item.Type == ItemType.MeleeWeapon || holdingItem.Item.Type == ItemType.RangedWeapon)
-                                        EquipAndSwap(clickedSlot);
-                                    else
-                                        UnEquipAndPut(FindFirstEmptySlot());
-                                    break;
-
-                                case 42: // Head
-                                    if (clickedSlot.Item.Item.Type == ItemType.HeadArmor)
-                                        EquipAndSwap(clickedSlot);
-                                    else
-                                        UnEquipAndPut(FindFirstEmptySlot());
-                                    break;
-
-                                case 43: // Body
-                                    if (clickedSlot.Item.Item.Type == ItemType.BodyArmor)
-                                        EquipAndSwap(clickedSlot);
-                                    else
-                                        UnEquipAndPut(FindFirstEmptySlot());
-                                    break;
-
-                                case 44: // Hands
-                                    if (clickedSlot.Item.Item.Type == ItemType.HandArmor)
-                                        EquipAndSwap(clickedSlot);
-                                    else
-                                        UnEquipAndPut(FindFirstEmptySlot());
-                                    break;
-
-                                case 45: // Legs
-                                    if (clickedSlot.Item.Item.Type == ItemType.LegArmor)
-                                        EquipAndSwap(clickedSlot);
-                                    else
-                                        UnEquipAndPut(FindFirstEmptySlot());
-                                    break;
-
-                                case 46: // Feet
-                                    if (clickedSlot.Item.Item.Type == ItemType.FeetArmor)
-                                        EquipAndSwap(clickedSlot);
-                                    else
-                                        UnEquipAndPut(FindFirstEmptySlot());
-                                    break;
-
-                                case 47: // LeftRing
-                                    if (clickedSlot.Item.Item.Type == ItemType.Ring)
-                                        EquipAndSwap(clickedSlot);
-                                    else
-                                        UnEquipAndPut(FindFirstEmptySlot(), RingHand.Left);
-                                    break;
-
-                                case 48: // RightRing
-                                    if (clickedSlot.Item.Item.Type == ItemType.Ring)
-                                        EquipAndSwap(clickedSlot);
-                                    else
-                                        UnEquipAndPut(FindFirstEmptySlot(), RingHand.Right);
-                                    break;
+                                if (clickedSlot.Item.Item.Type == ItemType.MeleeWeapon || clickedSlot.Item.Item.Type == ItemType.RangedWeapon)
+                                    EquipAndSwap(clickedSlot);
                             }
+                            else
+                                UnEquipAndPut(FindFirstEmptySlot());
                         }
-                        // If the item didn't come from an equipment slot,
-                        // just swap the items.
+                        // If the item didn't come from an equipment slot, swap the items.
                         else
                             SwapItems(clickedSlot);
                     }
@@ -356,11 +306,12 @@ public class InventoryScene : Control
                 // If you clicked into a valid slot and there's nothing there
                 else if (clickedSlot != null)
                 {
+                    // If attempting to equip something, check if it's in a valid place.
                     if (clickedSlot?.SlotIndex > 40)
                     {
                         switch (clickedSlot.SlotIndex)
                         {
-                            case 41: // Weapon
+                            case 40: // Weapon
                                 if (holdingItem.Item.Type == ItemType.MeleeWeapon || holdingItem.Item.Type == ItemType.RangedWeapon)
                                 {
                                     GameState.CurrentHero.Equip(holdingItem.Item);
@@ -368,7 +319,7 @@ public class InventoryScene : Control
                                 }
                                 break;
 
-                            case 42: // Head
+                            case 41: // Head
                                 if (holdingItem.Item.Type == ItemType.HeadArmor)
                                 {
                                     GameState.CurrentHero.Equip(holdingItem.Item);
@@ -376,7 +327,7 @@ public class InventoryScene : Control
                                 }
                                 break;
 
-                            case 43: // Body
+                            case 42: // Body
                                 if (holdingItem.Item.Type == ItemType.BodyArmor)
                                 {
                                     GameState.CurrentHero.Equip(holdingItem.Item);
@@ -384,7 +335,7 @@ public class InventoryScene : Control
                                 }
                                 break;
 
-                            case 44: // Hands
+                            case 43: // Hands
                                 if (holdingItem.Item.Type == ItemType.HandArmor)
                                 {
                                     GameState.CurrentHero.Equip(holdingItem.Item);
@@ -392,7 +343,7 @@ public class InventoryScene : Control
                                 }
                                 break;
 
-                            case 45: // Legs
+                            case 44: // Legs
                                 if (holdingItem.Item.Type == ItemType.LegArmor)
                                 {
                                     GameState.CurrentHero.Equip(holdingItem.Item);
@@ -400,7 +351,7 @@ public class InventoryScene : Control
                                 }
                                 break;
 
-                            case 46: // Feet
+                            case 45: // Feet
                                 if (holdingItem.Item.Type == ItemType.FeetArmor)
                                 {
                                     GameState.CurrentHero.Equip(holdingItem.Item);
@@ -408,7 +359,7 @@ public class InventoryScene : Control
                                 }
                                 break;
 
-                            case 47: // LeftRing
+                            case 46: // LeftRing
                                 if (holdingItem.Item.Type == ItemType.Ring)
                                 {
                                     GameState.CurrentHero.Equip(holdingItem.Item, RingHand.Left);
@@ -416,7 +367,7 @@ public class InventoryScene : Control
                                 }
                                 break;
 
-                            case 48: // RightRing
+                            case 47: // RightRing
                                 if (holdingItem.Item.Type == ItemType.Ring)
                                 {
                                     GameState.CurrentHero.Equip(holdingItem.Item, RingHand.Right);
@@ -425,6 +376,8 @@ public class InventoryScene : Control
                                 break;
                         }
                     }
+                    else if (holdingItem.Slot.SlotIndex > 40)
+                        UnEquipAndPut(clickedSlot);
                     else
                         PutItem(clickedSlot);
                 }

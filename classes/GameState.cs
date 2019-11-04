@@ -72,28 +72,7 @@ namespace Sulimn.Classes
             AllSpells = JSONInteraction.LoadSpells().OrderBy(o => o.Name).ToList();
             AllEnemies = JSONInteraction.LoadEnemies().OrderBy(o => o.Name).ToList();
 
-            // reset all Enemy equipment so it gets the right texture
-            foreach (Enemy enemy in AllEnemies)
-            {
-                if (enemy.Equipment.Weapon != new Item())
-                    enemy.Equipment.Weapon = AllWeapons.Find(armr => armr.Name == enemy.Equipment.Weapon.Name);
-                if (enemy.Equipment.Head != new Item())
-                    enemy.Equipment.Head = AllHeadArmor.Find(armr => armr.Name == enemy.Equipment.Head.Name);
-                if (enemy.Equipment.Body != new Item())
-                    enemy.Equipment.Body = AllBodyArmor.Find(armr => armr.Name == enemy.Equipment.Body.Name);
-                if (enemy.Equipment.Hands != new Item())
-                    enemy.Equipment.Hands = AllHandArmor.Find(armr => armr.Name == enemy.Equipment.Hands.Name);
-                if (enemy.Equipment.Legs != new Item())
-                    enemy.Equipment.Legs = AllLegArmor.Find(armr => armr.Name == enemy.Equipment.Legs.Name);
-                if (enemy.Equipment.Feet != new Item())
-                    enemy.Equipment.Feet = AllFeetArmor.Find(armr => armr.Name == enemy.Equipment.Feet.Name);
-                if (enemy.Equipment.LeftRing != new Item())
-                    enemy.Equipment.LeftRing = AllRings.Find(armr => armr.Name == enemy.Equipment.LeftRing.Name);
-                if (enemy.Equipment.RightRing != new Item())
-                    enemy.Equipment.RightRing = AllRings.Find(armr => armr.Name == enemy.Equipment.RightRing.Name);
-            }
-
-            JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
+            //JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
 
             AllItems.AddRanges(AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllFood, AllDrinks, AllPotions, AllWeapons);
 
