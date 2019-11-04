@@ -74,6 +74,12 @@ namespace Sulimn.Classes
 
             //JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
 
+            // TODO Maybe set up an AllDefaultEquipment List to compare against.
+            // TODO Make it to where your fists can't take durability damage in battle.
+            // TODO Trash on Inventory screen.
+            // TODO Set up a history of PackedScenes and a navigation service for them.
+            // TODO Set up InventoryScene to where I can instance it, and be able to access the slotList on Merchants and looting enemy corpses.
+
             AllItems.AddRanges(AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllFood, AllDrinks, AllPotions, AllWeapons);
 
             DefaultWeapon = AllWeapons.Find(weapon => weapon.Name == "Fists");

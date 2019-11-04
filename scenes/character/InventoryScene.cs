@@ -151,6 +151,15 @@ public class InventoryScene : Control
 
     #region Item Manipulation
 
+    /// <summary>Equips the currently held <see cref="Item"/> and puts it in the correct slot.</summary>
+    /// <param name="clickedSlot"><see cref="ItemSlot"/> that was clicked on</param>
+    /// <param name="hand"><see cref="RingHand"/> to place a Ring on if <see cref="Item"/> is a Ring</param>
+    private void EquipAndPut(ItemSlot clickedSlot, RingHand hand = RingHand.Left)
+    {
+        GameState.CurrentHero.Equip(holdingItem.Item, hand);
+        PutItem(clickedSlot);
+    }
+
     /// <summary>Equips the currently held <see cref="Item"/> and swaps out the previously equipped <see cref="Item"/>.</summary>
     /// <param name="clickedSlot"><see cref="ItemSlot"/> that was clicked on</param>
     /// <param name="hand"><see cref="RingHand"/> to place a Ring on if <see cref="Item"/> is a Ring</param>
@@ -229,7 +238,7 @@ public class InventoryScene : Control
                 if (clickedSlot?.Item != null)
                 {
                     // Check to see if it is trying to go into an equipment slot.
-                    if (clickedSlot.SlotIndex > 40)
+                    if (clickedSlot.SlotIndex >= 40)
                     {
                         // If the slot already has a valid piece of equipment in it,
                         // check if the item going into it is a valid piece of equipment.
@@ -286,7 +295,7 @@ public class InventoryScene : Control
                         // If it came from an equipment slot, make sure the item
                         // attempting to be swapped with is a valid piece of equipment for that slot.
                         // If it's not, unequip it and drop it in the first available slot.
-                        if (holdingItem.Slot.SlotIndex > 40)
+                        if (holdingItem.Slot.SlotIndex >= 40)
                         {
                             if (holdingItem.Item.Type == clickedSlot.Item.Item.Type)
                                 EquipAndSwap(clickedSlot);
@@ -307,76 +316,52 @@ public class InventoryScene : Control
                 else if (clickedSlot != null)
                 {
                     // If attempting to equip something, check if it's in a valid place.
-                    if (clickedSlot?.SlotIndex > 40)
+                    if (clickedSlot?.SlotIndex >= 40)
                     {
                         switch (clickedSlot.SlotIndex)
                         {
                             case 40: // Weapon
                                 if (holdingItem.Item.Type == ItemType.MeleeWeapon || holdingItem.Item.Type == ItemType.RangedWeapon)
-                                {
-                                    GameState.CurrentHero.Equip(holdingItem.Item);
-                                    PutItem(clickedSlot);
-                                }
+                                    EquipAndPut(clickedSlot);
                                 break;
 
                             case 41: // Head
                                 if (holdingItem.Item.Type == ItemType.HeadArmor)
-                                {
-                                    GameState.CurrentHero.Equip(holdingItem.Item);
-                                    PutItem(clickedSlot);
-                                }
+                                    EquipAndPut(clickedSlot);
                                 break;
 
                             case 42: // Body
                                 if (holdingItem.Item.Type == ItemType.BodyArmor)
-                                {
-                                    GameState.CurrentHero.Equip(holdingItem.Item);
-                                    PutItem(clickedSlot);
-                                }
+                                    EquipAndPut(clickedSlot);
                                 break;
 
                             case 43: // Hands
                                 if (holdingItem.Item.Type == ItemType.HandArmor)
-                                {
-                                    GameState.CurrentHero.Equip(holdingItem.Item);
-                                    PutItem(clickedSlot);
-                                }
+                                    EquipAndPut(clickedSlot);
                                 break;
 
                             case 44: // Legs
                                 if (holdingItem.Item.Type == ItemType.LegArmor)
-                                {
-                                    GameState.CurrentHero.Equip(holdingItem.Item);
-                                    PutItem(clickedSlot);
-                                }
+                                    EquipAndPut(clickedSlot);
                                 break;
 
                             case 45: // Feet
                                 if (holdingItem.Item.Type == ItemType.FeetArmor)
-                                {
-                                    GameState.CurrentHero.Equip(holdingItem.Item);
-                                    PutItem(clickedSlot);
-                                }
+                                    EquipAndPut(clickedSlot);
                                 break;
 
                             case 46: // LeftRing
                                 if (holdingItem.Item.Type == ItemType.Ring)
-                                {
-                                    GameState.CurrentHero.Equip(holdingItem.Item, RingHand.Left);
-                                    PutItem(clickedSlot);
-                                }
+                                    EquipAndPut(clickedSlot);
                                 break;
 
                             case 47: // RightRing
                                 if (holdingItem.Item.Type == ItemType.Ring)
-                                {
-                                    GameState.CurrentHero.Equip(holdingItem.Item, RingHand.Right);
-                                    PutItem(clickedSlot);
-                                }
+                                    EquipAndPut(clickedSlot);
                                 break;
                         }
                     }
-                    else if (holdingItem.Slot.SlotIndex > 40)
+                    else if (holdingItem.Slot.SlotIndex >= 40)
                         UnEquipAndPut(clickedSlot);
                     else
                         PutItem(clickedSlot);
