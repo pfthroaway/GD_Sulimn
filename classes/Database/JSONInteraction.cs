@@ -160,7 +160,6 @@ namespace Sulimn.Classes.Database
         /// <param name="saveHero"><see cref="Hero"/> to be saved to disk</param>
         internal static void SaveHero(Hero saveHero)
         {
-            GD.Print("Attemping to save Hero.");
             Directory dir = new Directory();
             if (!dir.DirExists("user://save/"))
                 dir.MakeDir("user://save/");

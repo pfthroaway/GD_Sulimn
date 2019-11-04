@@ -15,7 +15,7 @@ public class MainScene : Control
     {
         if (@event is InputEventKey eventKey && eventKey.Pressed)
         {
-            if (eventKey.Scancode == (int)KeyList.Enter || (eventKey.Scancode == (int)KeyList.KpEnter && (!BtnLogin.Disabled)))
+            if ((eventKey.Scancode == (int)KeyList.Enter || eventKey.Scancode == (int)KeyList.KpEnter) && !BtnLogin.Disabled)
                 _on_BtnLogin_pressed();
             else if (eventKey.Scancode == (int)KeyList.Escape)
                 GetTree().Quit();

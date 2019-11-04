@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/character/CharacterScene.cs" type="Script" id=1]
 [ext_resource path="res://SegoeUI.tres" type="DynamicFont" id=2]
@@ -22,6 +22,13 @@ tracks/0/keys = {
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.145098, 0.145098, 0.164706, 1 )
+
+[sub_resource type="InputEventKey" id=3]
+pressed = true
+scancode = 67
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
 offset = Vector2( 10, 0 )
@@ -352,6 +359,7 @@ margin_bottom = 435.0
 rect_min_size = Vector2( 300, 55 )
 rect_rotation = 90.0
 custom_fonts/font = ExtResource( 2 )
+shortcut = SubResource( 4 )
 text = "CHARACTER"
 [connection signal="pressed" from="Info/Vitals/Attributes/MinusButtons/BtnStrengthMinus" to="." method="_on_BtnStrengthMinus_pressed"]
 [connection signal="pressed" from="Info/Vitals/Attributes/MinusButtons/BtnVitalityMinus" to="." method="_on_BtnVitalityMinus_pressed"]

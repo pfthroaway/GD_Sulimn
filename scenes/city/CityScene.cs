@@ -2,10 +2,12 @@ using Godot;
 using Sulimn.Classes;
 using Sulimn.Classes.Entities;
 
-public class CityScene : Control
+public class CityScene : Node2D
 {
-    private Info info;
     private CharacterScene characterScene;
+    private Info info;
+    private Player Player;
+    private Vector2 PreviousPosition;
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -20,17 +22,25 @@ public class CityScene : Control
     public override void _Ready()
     {
         info = (Info)GetNode("/root/Info");
+        Player = (Player)GetTree().CurrentScene.FindNode("Player");
         characterScene = (CharacterScene)GetNode("/root/CharacterScene");
         info.Scale = new Vector2(1, 1);
         characterScene.Scale = new Vector2(1, 1);
         info.DisplayStats();
-        GameState.HeroPosition = new Vector2(224, 160);
-        GetTree().ChangeScene("res://scenes/city/ExploreScene.tscn");
     }
 
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //
-    //  }
+    private void _on_FieldsArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+    {
+        if (area is Node player && player.IsInGroup("Player"))
+        {
+            Player.Move("left");
+            GameState.AddSceneToHistory(GetTree().CurrentScene);
+            GetTree().ChangeScene("res://scenes/exploration/FieldsScene.tscn");
+        }
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _PhysicsProcess(float delta)
+    {
+    }
 }

@@ -51,9 +51,8 @@ public class BattleScene : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        GetTree().ChangeScene("res://scenes/city/ExploreScene.tscn");
-        //AssignControls();
-        //UpdateStats();
+        AssignControls();
+        UpdateStats();
     }
 
     /// <summary>Assigns all controls to modifiable values.</summary>

@@ -39,6 +39,27 @@ namespace Sulimn.Classes
         internal static Item DefaultFeet = new Item();
 
         internal static PackedScene PreviousScene = new PackedScene();
+        internal static List<PackedScene> History = new List<PackedScene>();
+
+        #region Scene Navigation
+
+        internal static void AddSceneToHistory(Node scene)
+        {
+            PackedScene packedScene = new PackedScene();
+            packedScene.Pack(scene);
+            History.Add(packedScene);
+            SaveHero(CurrentHero);
+        }
+
+        internal static PackedScene GoBack()
+        {
+            PackedScene last = History.Last();
+            History.Remove(last);
+            SaveHero(CurrentHero);
+            return last;
+        }
+
+        #endregion Scene Navigation
 
         /// <summary>Determines whether a Hero's credentials are authentic.</summary>
         /// <param name="username">Hero's name</param>
@@ -79,6 +100,7 @@ namespace Sulimn.Classes
             // TODO Trash on Inventory screen.
             // TODO Set up a history of PackedScenes and a navigation service for them.
             // TODO Set up InventoryScene to where I can instance it, and be able to access the slotList on Merchants and looting enemy corpses.
+            // TODO Make it to where you can take off default armor, but not default weapon.
 
             AllItems.AddRanges(AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllFood, AllDrinks, AllPotions, AllWeapons);
 

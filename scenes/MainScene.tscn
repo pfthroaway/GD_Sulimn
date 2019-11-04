@@ -16,7 +16,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VB" type="VBoxContainer" parent="CC"]
-editor/display_folded = true
 margin_left = 750.0
 margin_top = 374.0
 margin_right = 1170.0
@@ -78,10 +77,9 @@ custom_fonts/font = ExtResource( 2 )
 text = "New Hero"
 
 [node name="LblError" type="Label" parent="."]
-margin_left = 10.0
-margin_top = 330.0
-margin_right = 710.0
-margin_bottom = 381.0
+margin_top = 750.0
+margin_right = 1920.0
+margin_bottom = 801.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 align = 1

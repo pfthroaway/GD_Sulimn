@@ -69,4 +69,11 @@ margin_bottom = 475.0
 rect_min_size = Vector2( 250, 55 )
 custom_fonts/font = ExtResource( 2 )
 text = "Return"
+
+[node name="TxtBattle" type="TextEdit" parent="."]
+margin_left = 65.0
+margin_top = 500.0
+margin_right = 865.0
+margin_bottom = 900.0
+readonly = true
 [connection signal="pressed" from="Buttons/BtnReturn" to="." method="_on_BtnReturn_pressed"]
