@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/exploration/FieldsScene.cs" type="Script" id=1]
 [ext_resource path="res://assets/tileset/water.png" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://assets/tileset/houseRight.png" type="Texture" id=14]
 [ext_resource path="res://assets/tileset/farm.png" type="Texture" id=15]
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=16]
+[ext_resource path="res://SegoeUI.tres" type="DynamicFont" id=17]
+[ext_resource path="res://scenes/exploration/MyAcceptDialog.cs" type="Script" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -279,6 +281,9 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 32, 64 )
 
+[sub_resource type="Theme" id=12]
+default_font = ExtResource( 17 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -295,4 +300,11 @@ position = Vector2( -32, 800 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CityArea"]
 position = Vector2( -96, 768 )
 shape = SubResource( 11 )
+
+[node name="MyAcceptDialog" type="AcceptDialog" parent="."]
+margin_right = 83.0
+margin_bottom = 58.0
+theme = SubResource( 12 )
+popup_exclusive = true
+script = ExtResource( 18 )
 [connection signal="area_shape_entered" from="CityArea" to="." method="_on_CityArea_area_shape_entered"]
