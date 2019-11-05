@@ -7,12 +7,18 @@ public class FieldsScene : Node2D
     private CharacterScene characterScene;
     private Player Player;
     private Vector2 PreviousPosition;
+    private AcceptDialog acceptDialog;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         Player = (Player)GetTree().CurrentScene.FindNode("Player");
         characterScene = (CharacterScene)GetNode("/root/CharacterScene");
+        acceptDialog = (AcceptDialog)GetNode("MyAcceptDialog");
+    }
+
+    public override void _Process(float delta)
+    {
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,6 +41,13 @@ public class FieldsScene : Node2D
             GetTree().ChangeSceneTo(GameState.GoBack());
     }
 
+    private void DisplayPopup(string text)
+    {
+        acceptDialog.Popup_();
+        acceptDialog.DialogText = text;
+        acceptDialog.SetGlobalPosition(new Vector2(Player.GetGlobalPosition().x + 32, Player.GetGlobalPosition().y - 32));
+    }
+
     #region Events
 
     /// <summary>Check whether the an event happened on this move.</summary>
@@ -49,12 +62,12 @@ public class FieldsScene : Node2D
         }
         else if (Functions.GenerateRandomNumber(1, 100) < 5)
         {
-            GD.Print(GameState.EventFindItem(1, 300));
+            DisplayPopup(GameState.EventFindItem(1, 300));
             characterScene.UpdateLabels();
         }
         else if (Functions.GenerateRandomNumber(1, 100) < 5)
         {
-            GD.Print(GameState.EventFindGold(1, 200));
+            DisplayPopup(GameState.EventFindGold(1, 200));
             characterScene.UpdateLabels();
         }
     }

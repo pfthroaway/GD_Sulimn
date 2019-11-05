@@ -96,6 +96,7 @@
     <Compile Include="scenes\character\CharacterScene.cs" />
     <Compile Include="scenes\character\InventoryScene.cs" />
     <Compile Include="scenes\city\CityScene.cs" />
+    <Compile Include="scenes\exploration\MyAcceptDialog.cs" />
     <Compile Include="scenes\exploration\FieldsScene.cs" />
     <Compile Include="scenes\info\Info.cs" />
     <Compile Include="scenes\MainScene.cs" />
