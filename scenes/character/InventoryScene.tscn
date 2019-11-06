@@ -38,80 +38,79 @@ columns = 10
 
 [node name="BodyBackground" type="TextureRect" parent="."]
 margin_left = 640.0
-margin_top = -42.5642
 margin_right = 704.0
-margin_bottom = 26.4358
+margin_bottom = 64.0
 rect_scale = Vector2( 10, 10 )
 texture = ExtResource( 2 )
 
 [node name="Weapon" type="TextureRect" parent="."]
-margin_left = 649.004
-margin_top = 426.967
-margin_right = 713.004
-margin_bottom = 490.967
+margin_left = 678.571
+margin_top = 291.293
+margin_right = 742.571
+margin_bottom = 355.293
 rect_min_size = Vector2( 64, 64 )
 theme = ExtResource( 3 )
 texture = ExtResource( 4 )
 
 [node name="Head" type="TextureRect" parent="."]
-margin_left = 728.693
-margin_top = -7.22036
-margin_right = 792.693
-margin_bottom = 56.7796
+margin_left = 913.992
+margin_top = 127.792
+margin_right = 977.992
+margin_bottom = 191.792
 rect_min_size = Vector2( 64, 64 )
 theme = ExtResource( 3 )
 texture = ExtResource( 5 )
 
 [node name="Body" type="TextureRect" parent="."]
-margin_left = 727.57
-margin_top = 189.317
-margin_right = 791.57
-margin_bottom = 253.317
+margin_left = 911.879
+margin_top = 324.697
+margin_right = 975.879
+margin_bottom = 388.697
 rect_min_size = Vector2( 64, 64 )
 theme = ExtResource( 3 )
 texture = ExtResource( 6 )
 
 [node name="Hands" type="TextureRect" parent="."]
-margin_left = 821.977
-margin_top = 418.554
-margin_right = 885.977
-margin_bottom = 482.554
+margin_left = 999.812
+margin_top = 301.842
+margin_right = 1063.81
+margin_bottom = 365.842
 rect_min_size = Vector2( 64, 64 )
 theme = ExtResource( 3 )
 texture = ExtResource( 7 )
 
 [node name="Legs" type="TextureRect" parent="."]
-margin_left = 734.551
-margin_top = 422.255
-margin_right = 798.551
-margin_bottom = 486.255
+margin_left = 913.503
+margin_top = 442.489
+margin_right = 977.503
+margin_bottom = 506.489
 rect_min_size = Vector2( 64, 64 )
 theme = ExtResource( 3 )
 texture = ExtResource( 8 )
 
 [node name="Feet" type="TextureRect" parent="."]
-margin_left = 702.576
-margin_top = 578.031
-margin_right = 766.576
-margin_bottom = 642.031
+margin_left = 913.34
+margin_top = 556.764
+margin_right = 977.34
+margin_bottom = 620.764
 rect_min_size = Vector2( 64, 64 )
 theme = ExtResource( 3 )
 texture = ExtResource( 9 )
 
 [node name="LeftRing" type="TextureRect" parent="."]
-margin_left = 790.704
-margin_top = 330.01
-margin_right = 854.704
-margin_bottom = 394.01
+margin_left = 774.289
+margin_top = 289.535
+margin_right = 838.289
+margin_bottom = 353.535
 rect_min_size = Vector2( 64, 64 )
 theme = ExtResource( 3 )
 texture = ExtResource( 10 )
 
 [node name="RightRing" type="TextureRect" parent="."]
-margin_left = 682.165
-margin_top = 328.12
-margin_right = 746.165
-margin_bottom = 392.12
+margin_left = 1097.61
+margin_top = 277.229
+margin_right = 1161.61
+margin_bottom = 341.229
 rect_min_size = Vector2( 64, 64 )
 theme = ExtResource( 3 )
 texture = ExtResource( 11 )
