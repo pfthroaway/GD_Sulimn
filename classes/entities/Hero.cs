@@ -19,7 +19,7 @@ namespace Sulimn.Classes.Entities
 
         /// <summary>The HeroClass of the <see cref="Hero"/>, set up to import from JSON.</summary>
         [JsonIgnore]
-        public HeroClass Class { get; set; }
+        public HeroClass Class { get; set; } = new HeroClass();
 
         /// <summary>The <see cref="HeroClass"/> of the <see cref="Hero"/></summary>
         [JsonProperty(Order = -3)]
@@ -43,11 +43,11 @@ namespace Sulimn.Classes.Entities
 
         /// <summary>The progress the <see cref="Hero"/> has made.</summary>
         [JsonProperty(Order = 7)]
-        public Progression Progression { get; set; }
+        public Progression Progression { get; set; } = new Progression();
 
         /// <summary>The <see cref="Hero"/>'s Bank. </summary>
         [JsonProperty(Order = 9)]
-        public Bank Bank { get; set; }
+        public Bank Bank { get; set; } = new Bank();
 
         #endregion Modifying Properties
 

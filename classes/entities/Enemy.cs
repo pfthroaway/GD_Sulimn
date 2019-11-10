@@ -47,18 +47,6 @@ namespace Sulimn.Classes.Entities
 
         #endregion Modifying Properties
 
-        #region Helper Properties
-
-        /// <summary>Returns the Enemy's level with preceding text.</summary>
-        [JsonIgnore]
-        public string LevelToString => $"Level {Level}";
-
-        /// <summary>The total amount of weight a character is carrying.</summary>
-        [JsonIgnore]
-        public int TotalWeight => Equipment.TotalWeight;
-
-        #endregion Helper Properties
-
         #region Override Operators
 
         public static bool Equals(Enemy left, Enemy right)

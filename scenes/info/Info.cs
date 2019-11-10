@@ -4,6 +4,7 @@ using Sulimn.Classes;
 public class Info : CanvasLayer
 {
     private Label LblLevel, LblExperience, LblGold, LblHealth, LblMagic;
+    private Button BtnCharacter;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -19,6 +20,18 @@ public class Info : CanvasLayer
         LblLevel = (Label)GetNode("LblLevel");
         LblExperience = (Label)GetNode("LblExperience");
         LblGold = (Label)GetNode("LblGold");
+        BtnCharacter = (Button)GetNode("BtnCharacter");
+    }
+
+    private void _on_BtnCharacter_pressed()
+    {
+        if (GetTree().CurrentScene.Name == "CharacterScene")
+            GetTree().ChangeSceneTo(GameState.GoBack());
+        else
+        {
+            GameState.AddSceneToHistory(GetTree().CurrentScene);
+            GetTree().ChangeScene("res://scenes/character/CharacterScene.tscn");
+        }
     }
 
     /// <summary>Updates labels to current values.</summary>

@@ -4,7 +4,6 @@ using Sulimn.Classes;
 public class MainScene : Control
 {
     private Info info;
-    private CharacterScene characterScene;
     private Button BtnLogin;
     private LineEdit TxtHeroName, PswdPassword;
     private Label LblError;
@@ -36,8 +35,6 @@ public class MainScene : Control
     {
         info = (Info)GetNode("/root/Info");
         info.Scale = new Vector2(0, 0);
-        characterScene = (CharacterScene)GetNode("/root/CharacterScene");
-        characterScene.Scale = new Vector2(0, 0);
         BtnLogin = (Button)GetNode("CC/VB/Buttons/BtnLogin");
         TxtHeroName = (LineEdit)GetNode("CC/VB/HeroName");
         PswdPassword = (LineEdit)GetNode("CC/VB/Password");

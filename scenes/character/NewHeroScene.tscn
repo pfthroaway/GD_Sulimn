@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/character/NewHeroScene.cs" type="Script" id=1]
-[ext_resource path="res://SegoeUI.tres" type="DynamicFont" id=2]
-[ext_resource path="res://SegoeUISMall.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/SegoeUISMall.tres" type="DynamicFont" id=3]
 
 [sub_resource type="StyleBoxTexture" id=1]
 content_margin_left = 5.0

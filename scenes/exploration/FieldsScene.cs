@@ -2,75 +2,74 @@ using Godot;
 using Sulimn.Classes;
 using Sulimn.Classes.Extensions;
 
-public class FieldsScene : Node2D
+namespace Sulimn.Scenes.Exploration
 {
-    private CharacterScene characterScene;
-    private Player Player;
-    private Vector2 PreviousPosition;
-    private AcceptDialog acceptDialog;
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public class FieldsScene : Node2D
     {
-        Player = (Player)GetTree().CurrentScene.FindNode("Player");
-        characterScene = (CharacterScene)GetNode("/root/CharacterScene");
-        acceptDialog = (AcceptDialog)GetNode("MyAcceptDialog");
-    }
+        private Info info;
+        private Player Player;
+        private Vector2 PreviousPosition;
+        private AcceptDialog acceptDialog;
 
-    public override void _Process(float delta)
-    {
-    }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _PhysicsProcess(float delta)
-    {
-        if (PreviousPosition != Player.GetGlobalPosition())
+        // Called when the node enters the scene tree for the first time.
+        public override void _Ready()
         {
-            PreviousPosition = Player.GetGlobalPosition();
-
-            if (characterScene.ShowScene)
-                Player.Disabled = true;
-
-            CheckForEvents();
+            Player = (Player)GetTree().CurrentScene.FindNode("Player");
+            acceptDialog = (AcceptDialog)GetNode("MyAcceptDialog");
+            info = (Info)GetNode("/root/Info");
         }
-    }
 
-    private void _on_CityArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
-    {
-        if (area is Node player && player.IsInGroup("Player"))
-            GetTree().ChangeSceneTo(GameState.GoBack());
-    }
-
-    private void DisplayPopup(string text)
-    {
-        acceptDialog.Popup_();
-        acceptDialog.DialogText = text;
-        acceptDialog.SetGlobalPosition(new Vector2(Player.GetGlobalPosition().x + 32, Player.GetGlobalPosition().y - 32));
-    }
-
-    #region Events
-
-    /// <summary>Check whether the an event happened on this move.</summary>
-    private void CheckForEvents()
-    {
-        if (Functions.GenerateRandomNumber(1, 100) < 10)
+        public override void _Process(float delta)
         {
-            GD.Print("This is where a battle would occur.");
-            //GameState.AddSceneToHistory(GetTree().CurrentScene);
-            //GameState.EventEncounterEnemy(1, 5);
-            //GetTree().ChangeScene("res://scenes/battle/BattleScene.tscn");
         }
-        else if (Functions.GenerateRandomNumber(1, 100) < 5)
-        {
-            DisplayPopup(GameState.EventFindItem(1, 300));
-            characterScene.UpdateLabels();
-        }
-        else if (Functions.GenerateRandomNumber(1, 100) < 5)
-        {
-            DisplayPopup(GameState.EventFindGold(1, 200));
-            characterScene.UpdateLabels();
-        }
-    }
 
-    #endregion Events
+        // Called every frame. 'delta' is the elapsed time since the previous frame.
+        public override void _PhysicsProcess(float delta)
+        {
+            if (PreviousPosition != Player.GetGlobalPosition())
+            {
+                PreviousPosition = Player.GetGlobalPosition();
+                CheckForEvents();
+            }
+        }
+
+        private void _on_CityArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+                GetTree().ChangeSceneTo(GameState.GoBack());
+        }
+
+        private void DisplayPopup(string text)
+        {
+            acceptDialog.Popup_();
+            acceptDialog.DialogText = text;
+            acceptDialog.SetGlobalPosition(new Vector2(Player.GetGlobalPosition().x + 32, Player.GetGlobalPosition().y - 32));
+        }
+
+        #region Events
+
+        /// <summary>Check whether the an event happened on this move.</summary>
+        private void CheckForEvents()
+        {
+            if (Functions.GenerateRandomNumber(1, 100) < 10)
+            {
+                GD.Print("This is where a battle would occur.");
+                //GameState.AddSceneToHistory(GetTree().CurrentScene);
+                //GameState.EventEncounterEnemy(1, 5);
+                //GetTree().ChangeScene("res://scenes/battle/BattleScene.tscn");
+            }
+            else if (Functions.GenerateRandomNumber(1, 100) < 5)
+            {
+                DisplayPopup(GameState.EventFindItem(1, 300));
+                info.DisplayStats();
+            }
+            else if (Functions.GenerateRandomNumber(1, 100) < 5)
+            {
+                DisplayPopup(GameState.EventFindGold(1, 200));
+                info.DisplayStats();
+            }
+        }
+
+        #endregion Events
+    }
 }

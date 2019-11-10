@@ -16,7 +16,7 @@
 [ext_resource path="res://assets/tileset/houseRight.png" type="Texture" id=14]
 [ext_resource path="res://assets/tileset/farm.png" type="Texture" id=15]
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=16]
-[ext_resource path="res://SegoeUI.tres" type="DynamicFont" id=17]
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=17]
 [ext_resource path="res://scenes/exploration/MyAcceptDialog.cs" type="Script" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]

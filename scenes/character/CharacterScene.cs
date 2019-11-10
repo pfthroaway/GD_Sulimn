@@ -1,319 +1,295 @@
 using Godot;
 using Sulimn.Classes;
 using Sulimn.Classes.Entities;
+using Sulimn.Scenes.Inventory;
 
-public class CharacterScene : CanvasLayer
+namespace Sulimn.Scenes.Character
 {
-    private Label LblName, LblLevel, LblExperience, LblSkillPoints, LblHardcore, LblGold, LblStrength, LblVitality, LblDexterity, LblWisdom, LblHealth, LblMagic;
-
-    private Button BtnStrengthMinus, BtnStrengthPlus, BtnVitalityMinus, BtnVitalityPlus, BtnDexterityMinus, BtnDexterityPlus, BtnWisdomMinus, BtnWisdomPlus;
-
-    private Info info;
-    private AnimationPlayer player;
-
-    private Hero _copyOfHero = new Hero();
-    public bool ShowScene;
-
-    public override void _UnhandledInput(InputEvent @event)
+    public class CharacterScene : Control
     {
-        if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape && ShowScene)
-            _on_BtnCharacter_pressed();
-    }
+        private Button BtnStrengthMinus, BtnStrengthPlus, BtnVitalityMinus, BtnVitalityPlus, BtnDexterityMinus, BtnDexterityPlus, BtnWisdomMinus, BtnWisdomPlus;
+        private Label LblName, LblLevel, LblExperience, LblSkillPoints, LblHardcore, LblGold, LblStrength, LblVitality, LblDexterity, LblWisdom, LblHealth, LblMagic;
+        private GridEquipment GridEquipment;
+        private GridInventory GridInventory;
+        private Hero _copyOfHero = new Hero();
+        private Info info;
 
-    #region Load
+        // TODO Set up properly equipping and unequipping everything.
+        // TODO Trash on Inventory screen.
+        // TODO Implement casting spells from the Character Scene.
+        // TODO Make it to where you can't add Fists to the inventory.
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        AssignControls();
-        SlideIn();
-    }
-
-    /// <summary>Assigns all controls to something usable in code.</summary>
-    private void AssignControls()
-    {
-        info = (Info)GetNode("/root/Info");
-
-        LblName = (Label)GetNode("Info/LblName");
-        LblLevel = (Label)GetNode("Info/LblLevel");
-        LblExperience = (Label)GetNode("Info/LblExperience");
-        LblHardcore = (Label)GetNode("Info/LblHardcore");
-
-        BtnStrengthMinus = (Button)GetNode("Info/Vitals/Attributes/MinusButtons/BtnStrengthMinus");
-        BtnVitalityMinus = (Button)GetNode("Info/Vitals/Attributes/MinusButtons/BtnVitalityMinus");
-        BtnDexterityMinus = (Button)GetNode("Info/Vitals/Attributes/MinusButtons/BtnDexterityMinus");
-        BtnWisdomMinus = (Button)GetNode("Info/Vitals/Attributes/MinusButtons/BtnWisdomMinus");
-
-        LblStrength = (Label)GetNode("Info/Vitals/Attributes/AttributeValues/LblStrength");
-        LblVitality = (Label)GetNode("Info/Vitals/Attributes/AttributeValues/LblVitality");
-        LblDexterity = (Label)GetNode("Info/Vitals/Attributes/AttributeValues/LblDexterity");
-        LblWisdom = (Label)GetNode("Info/Vitals/Attributes/AttributeValues/LblWisdom");
-
-        BtnStrengthPlus = (Button)GetNode("Info/Vitals/Attributes/PlusButtons/BtnStrengthPlus");
-        BtnVitalityPlus = (Button)GetNode("Info/Vitals/Attributes/PlusButtons/BtnVitalityPlus");
-        BtnDexterityPlus = (Button)GetNode("Info/Vitals/Attributes/PlusButtons/BtnDexterityPlus");
-        BtnWisdomPlus = (Button)GetNode("Info/Vitals/Attributes/PlusButtons/BtnWisdomPlus");
-
-        LblSkillPoints = (Label)GetNode("Info/Vitals/Statistics/TextLabels/LblSkillPoints");
-        LblHealth = (Label)GetNode("Info/Vitals/Statistics/TextLabels/LblHealth");
-        LblMagic = (Label)GetNode("Info/Vitals/Statistics/TextLabels/LblMagic");
-
-        LblGold = (Label)GetNode("Info/LblGold");
-
-        player = (AnimationPlayer)GetNode("AnimationPlayer");
-    }
-
-    #endregion Load
-
-    #region Animation
-
-    private void SlideIn() => player.Play("slide_out");
-
-    private void SlideOut() => player.PlayBackwards("slide_out");
-
-    #endregion Animation
-
-    #region Display Manipulation
-
-    /// <summary>Enables/disables buttons based on the Hero's available Skill Points.</summary>
-    private void CheckSkillPoints()
-    {
-        if (GameState.CurrentHero.SkillPoints > 0)
+        public override void _UnhandledInput(InputEvent @event)
         {
-            if (GameState.CurrentHero.SkillPoints >= _copyOfHero.SkillPoints)
-                DisableMinus();
-            TogglePlus(true);
-        }
-        else if (GameState.CurrentHero.SkillPoints == 0)
-        {
-            TogglePlus(false);
-        }
-        else if (GameState.CurrentHero.SkillPoints < 0)
-        {
-            GameState.CurrentHero = new Hero(_copyOfHero);
+            if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape)
+                GetTree().ChangeSceneTo(GameState.GoBack());
         }
 
-        UpdateLabels();
-    }
+        #region Load
 
-    public void UpdateLabels()
-    {
-        LblName.Text = GameState.CurrentHero.Name;
-        LblLevel.Text = GameState.CurrentHero.LevelAndClassToString;
-        LblExperience.Text = GameState.CurrentHero.ExperienceToStringWithText;
-        LblSkillPoints.Text = GameState.CurrentHero.SkillPointsToString;
-        LblHardcore.Text = GameState.CurrentHero.HardcoreToString;
-        LblGold.Text = GameState.CurrentHero.GoldToStringWithText;
-
-        UpdateAttributeLabels();
-
-        info.DisplayStats();
-    }
-
-    private void UpdateAttributeLabels()
-    {
-        LblStrength.Text = GameState.CurrentHero.TotalStrength.ToString("N0");
-        LblVitality.Text = GameState.CurrentHero.TotalVitality.ToString("N0");
-        LblDexterity.Text = GameState.CurrentHero.TotalDexterity.ToString("N0");
-        LblWisdom.Text = GameState.CurrentHero.TotalWisdom.ToString("N0");
-        LblHealth.Text = GameState.CurrentHero.Statistics.HealthToStringWithText;
-        LblMagic.Text = GameState.CurrentHero.Statistics.MagicToStringWithText;
-    }
-
-    #endregion Display Manipulation
-
-    #region Attribute Modification
-
-    /// <summary>Increases specified Attribute.</summary>
-    /// <param name="attribute">Attribute to be increased.</param>
-    /// <returns>Increased attribute</returns>
-    private int IncreaseAttribute(int attribute)
-    {
-        if (Input.IsActionPressed("shift"))
+        // Called when the node enters the scene tree for the first time.
+        public override void _Ready()
         {
-            if (GameState.CurrentHero.SkillPoints >= 5)
-            {
-                attribute += 5;
-                GameState.CurrentHero.SkillPoints -= 5;
-            }
-            else
-            {
-                attribute += GameState.CurrentHero.SkillPoints;
-                GameState.CurrentHero.SkillPoints = 0;
-            }
-        }
-        else
-        {
-            attribute++;
-            GameState.CurrentHero.SkillPoints--;
-        }
-
-        return attribute;
-    }
-
-    /// <summary>Decreases specified Attribute.</summary>
-    /// <param name="attribute">Attribute to be decreased.</param>
-    /// <param name="original">Original value of the attribute for the selected class.</param>
-    /// <returns>Decreased attribute</returns>
-    private int DecreaseAttribute(int attribute, int original)
-    {
-        if (Input.IsActionPressed("shift"))
-        {
-            if (attribute - original >= 5)
-            {
-                attribute -= 5;
-                GameState.CurrentHero.SkillPoints += 5;
-            }
-            else
-            {
-                GameState.CurrentHero.SkillPoints += attribute - original;
-                attribute -= attribute - original;
-            }
-        }
-        else
-        {
-            attribute--;
-            GameState.CurrentHero.SkillPoints++;
-        }
-
-        return attribute;
-    }
-
-    #endregion Attribute Modification
-
-    #region Buttons
-
-    #region Toggle Buttons
-
-    /// <summary>Toggles the Disabled Property of the Plus Buttons.</summary>
-    /// <param name="enabled">Should the Buttons be enabled?</param>
-    private void TogglePlus(bool enabled)
-    {
-        BtnDexterityPlus.Disabled = !enabled;
-        BtnStrengthPlus.Disabled = !enabled;
-        BtnWisdomPlus.Disabled = !enabled;
-        BtnVitalityPlus.Disabled = !enabled;
-    }
-
-    /// <summary>Disables attribute Minus Buttons.</summary>
-    private void DisableMinus()
-    {
-        BtnDexterityMinus.Disabled = true;
-        BtnStrengthMinus.Disabled = true;
-        BtnWisdomMinus.Disabled = true;
-        BtnVitalityMinus.Disabled = true;
-    }
-
-    #endregion Toggle Buttons
-
-    #region Button Click
-
-    private void _on_BtnCharacter_pressed()
-    {
-        if (!ShowScene)
-        {
-            SlideOut();
+            AssignControls();
             _copyOfHero = new Hero(GameState.CurrentHero);
             UpdateLabels();
+            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
+            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
         }
-        else
+
+        /// <summary>Assigns all controls to something usable in code.</summary>
+        private void AssignControls()
         {
-            SlideIn();
-            GameState.SaveHero(GameState.CurrentHero);
+            GridInventory = (GridInventory)GetNode("GridInventory");
+            GridEquipment = (GridEquipment)GetNode("GridEquipment");
+            info = (Info)GetNode("/root/Info");
+
+            LblName = (Label)GetNode("Info/LblName");
+            LblLevel = (Label)GetNode("Info/LblLevel");
+            LblExperience = (Label)GetNode("Info/LblExperience");
+            LblHardcore = (Label)GetNode("Info/LblHardcore");
+
+            BtnStrengthMinus = (Button)GetNode("Info/Vitals/Attributes/MinusButtons/BtnStrengthMinus");
+            BtnVitalityMinus = (Button)GetNode("Info/Vitals/Attributes/MinusButtons/BtnVitalityMinus");
+            BtnDexterityMinus = (Button)GetNode("Info/Vitals/Attributes/MinusButtons/BtnDexterityMinus");
+            BtnWisdomMinus = (Button)GetNode("Info/Vitals/Attributes/MinusButtons/BtnWisdomMinus");
+
+            LblStrength = (Label)GetNode("Info/Vitals/Attributes/AttributeValues/LblStrength");
+            LblVitality = (Label)GetNode("Info/Vitals/Attributes/AttributeValues/LblVitality");
+            LblDexterity = (Label)GetNode("Info/Vitals/Attributes/AttributeValues/LblDexterity");
+            LblWisdom = (Label)GetNode("Info/Vitals/Attributes/AttributeValues/LblWisdom");
+
+            BtnStrengthPlus = (Button)GetNode("Info/Vitals/Attributes/PlusButtons/BtnStrengthPlus");
+            BtnVitalityPlus = (Button)GetNode("Info/Vitals/Attributes/PlusButtons/BtnVitalityPlus");
+            BtnDexterityPlus = (Button)GetNode("Info/Vitals/Attributes/PlusButtons/BtnDexterityPlus");
+            BtnWisdomPlus = (Button)GetNode("Info/Vitals/Attributes/PlusButtons/BtnWisdomPlus");
+
+            LblSkillPoints = (Label)GetNode("Info/Vitals/Statistics/TextLabels/LblSkillPoints");
+            LblHealth = (Label)GetNode("Info/Vitals/Statistics/TextLabels/LblHealth");
+            LblMagic = (Label)GetNode("Info/Vitals/Statistics/TextLabels/LblMagic");
+
+            LblGold = (Label)GetNode("Info/LblGold");
         }
-        ShowScene = !ShowScene;
+
+        #endregion Load
+
+        #region Display Manipulation
+
+        /// <summary>Enables/disables buttons based on the Hero's available Skill Points.</summary>
+        private void CheckSkillPoints()
+        {
+            if (GameState.CurrentHero.SkillPoints > 0)
+            {
+                if (GameState.CurrentHero.SkillPoints >= _copyOfHero.SkillPoints)
+                    DisableMinus();
+                TogglePlus(true);
+            }
+            else if (GameState.CurrentHero.SkillPoints == 0)
+            {
+                TogglePlus(false);
+            }
+            else if (GameState.CurrentHero.SkillPoints < 0)
+            {
+                GameState.CurrentHero = new Hero(_copyOfHero);
+            }
+
+            UpdateLabels();
+        }
+
+        public void UpdateLabels()
+        {
+            LblName.Text = GameState.CurrentHero.Name;
+            LblLevel.Text = GameState.CurrentHero.LevelAndClassToString;
+            LblExperience.Text = GameState.CurrentHero.ExperienceToStringWithText;
+            LblSkillPoints.Text = GameState.CurrentHero.SkillPointsToString;
+            LblHardcore.Text = GameState.CurrentHero.HardcoreToString;
+            LblGold.Text = GameState.CurrentHero.GoldToStringWithText;
+
+            UpdateAttributeLabels();
+
+            info.DisplayStats();
+        }
+
+        private void UpdateAttributeLabels()
+        {
+            LblStrength.Text = GameState.CurrentHero.TotalStrength.ToString("N0");
+            LblVitality.Text = GameState.CurrentHero.TotalVitality.ToString("N0");
+            LblDexterity.Text = GameState.CurrentHero.TotalDexterity.ToString("N0");
+            LblWisdom.Text = GameState.CurrentHero.TotalWisdom.ToString("N0");
+            LblHealth.Text = GameState.CurrentHero.Statistics.HealthToStringWithText;
+            LblMagic.Text = GameState.CurrentHero.Statistics.MagicToStringWithText;
+        }
+
+        #endregion Display Manipulation
+
+        #region Attribute Modification
+
+        /// <summary>Increases specified Attribute.</summary>
+        /// <param name="attribute">Attribute to be increased.</param>
+        /// <returns>Increased attribute</returns>
+        private int IncreaseAttribute(int attribute)
+        {
+            if (Input.IsActionPressed("shift"))
+            {
+                if (GameState.CurrentHero.SkillPoints >= 5)
+                {
+                    attribute += 5;
+                    GameState.CurrentHero.SkillPoints -= 5;
+                }
+                else
+                {
+                    attribute += GameState.CurrentHero.SkillPoints;
+                    GameState.CurrentHero.SkillPoints = 0;
+                }
+            }
+            else
+            {
+                attribute++;
+                GameState.CurrentHero.SkillPoints--;
+            }
+
+            return attribute;
+        }
+
+        /// <summary>Decreases specified Attribute.</summary>
+        /// <param name="attribute">Attribute to be decreased.</param>
+        /// <param name="original">Original value of the attribute for the selected class.</param>
+        /// <returns>Decreased attribute</returns>
+        private int DecreaseAttribute(int attribute, int original)
+        {
+            if (Input.IsActionPressed("shift"))
+            {
+                if (attribute - original >= 5)
+                {
+                    attribute -= 5;
+                    GameState.CurrentHero.SkillPoints += 5;
+                }
+                else
+                {
+                    GameState.CurrentHero.SkillPoints += attribute - original;
+                    attribute -= attribute - original;
+                }
+            }
+            else
+            {
+                attribute--;
+                GameState.CurrentHero.SkillPoints++;
+            }
+
+            return attribute;
+        }
+
+        #endregion Attribute Modification
+
+        #region Buttons
+
+        #region Toggle Buttons
+
+        /// <summary>Toggles the Disabled Property of the Plus Buttons.</summary>
+        /// <param name="enabled">Should the Buttons be enabled?</param>
+        private void TogglePlus(bool enabled)
+        {
+            BtnDexterityPlus.Disabled = !enabled;
+            BtnStrengthPlus.Disabled = !enabled;
+            BtnWisdomPlus.Disabled = !enabled;
+            BtnVitalityPlus.Disabled = !enabled;
+        }
+
+        /// <summary>Disables attribute Minus Buttons.</summary>
+        private void DisableMinus()
+        {
+            BtnDexterityMinus.Disabled = true;
+            BtnStrengthMinus.Disabled = true;
+            BtnWisdomMinus.Disabled = true;
+            BtnVitalityMinus.Disabled = true;
+        }
+
+        #endregion Toggle Buttons
+
+        #region Button Click
+
+        private void _on_BtnCastSpell_pressed()
+        {
+            // Replace with function body.
+        }
+
+        #region Plus/Minus Buttons Click
+
+        private void _on_BtnStrengthMinus_pressed()
+        {
+            GameState.CurrentHero.Attributes.Strength = DecreaseAttribute(GameState.CurrentHero.Attributes.Strength, _copyOfHero.Attributes.Strength);
+            BtnStrengthMinus.Disabled = GameState.CurrentHero.Attributes.Strength == _copyOfHero.Attributes.Strength;
+            CheckSkillPoints();
+        }
+
+        private void _on_BtnStrengthPlus_pressed()
+        {
+            GameState.CurrentHero.Attributes.Strength = IncreaseAttribute(GameState.CurrentHero.Attributes.Strength);
+            BtnStrengthMinus.Disabled = false;
+            CheckSkillPoints();
+        }
+
+        private void _on_BtnVitalityMinus_pressed()
+        {
+            GameState.CurrentHero.Attributes.Vitality = DecreaseAttribute(GameState.CurrentHero.Attributes.Vitality, _copyOfHero.Attributes.Vitality);
+            GameState.CurrentHero.Statistics.CurrentHealth -= 5;
+            GameState.CurrentHero.Statistics.MaximumHealth -= 5;
+            BtnVitalityMinus.Disabled = GameState.CurrentHero.Attributes.Vitality == _copyOfHero.Attributes.Vitality;
+            CheckSkillPoints();
+        }
+
+        private void _on_BtnVitalityPlus_pressed()
+        {
+            GameState.CurrentHero.Attributes.Vitality = IncreaseAttribute(GameState.CurrentHero.Attributes.Vitality);
+            GameState.CurrentHero.Statistics.CurrentHealth += 5;
+            GameState.CurrentHero.Statistics.MaximumHealth += 5;
+            BtnVitalityMinus.Disabled = false;
+            CheckSkillPoints();
+        }
+
+        private void _on_BtnDexterityMinus_pressed()
+        {
+            GameState.CurrentHero.Attributes.Dexterity = DecreaseAttribute(GameState.CurrentHero.Attributes.Dexterity, _copyOfHero.Attributes.Dexterity);
+            BtnDexterityMinus.Disabled = GameState.CurrentHero.Attributes.Dexterity == _copyOfHero.Attributes.Dexterity;
+            CheckSkillPoints();
+        }
+
+        private void _on_BtnDexterityPlus_pressed()
+        {
+            GameState.CurrentHero.Attributes.Dexterity = IncreaseAttribute(GameState.CurrentHero.Attributes.Dexterity);
+            BtnDexterityMinus.Disabled = false;
+            CheckSkillPoints();
+        }
+
+        private void _on_BtnWisdomMinus_pressed()
+        {
+            GameState.CurrentHero.Attributes.Wisdom = DecreaseAttribute(GameState.CurrentHero.Attributes.Wisdom, _copyOfHero.Attributes.Wisdom);
+            GameState.CurrentHero.Statistics.CurrentMagic -= 5;
+            GameState.CurrentHero.Statistics.MaximumMagic -= 5;
+
+            BtnWisdomMinus.Disabled = GameState.CurrentHero.Attributes.Wisdom == _copyOfHero.Attributes.Wisdom;
+            CheckSkillPoints();
+        }
+
+        private void _on_BtnWisdomPlus_pressed()
+        {
+            GameState.CurrentHero.Attributes.Wisdom = IncreaseAttribute(GameState.CurrentHero.Attributes.Wisdom);
+            GameState.CurrentHero.Statistics.CurrentMagic += 5;
+            GameState.CurrentHero.Statistics.MaximumMagic += 5;
+            BtnWisdomMinus.Disabled = false;
+            CheckSkillPoints();
+        }
+
+        #endregion Plus/Minus Buttons Click
+
+        #endregion Button Click
+
+        #endregion Buttons
+
+        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
+        //  public override void _Process(float delta)
+        //  {
+        //
+        //  }
     }
-
-    private void _on_BtnInventory_pressed()
-    {
-        _on_BtnCharacter_pressed();
-        PackedScene thisScene = new PackedScene();
-        thisScene.Pack(GetTree().CurrentScene);
-        GameState.PreviousScene = thisScene;
-        GetTree().ChangeScene("scenes/character/InventoryScene.tscn");
-    }
-
-    private void _on_BtnCastSpell_pressed()
-    {
-        // Replace with function body.
-    }
-
-    #region Plus/Minus Buttons Click
-
-    private void _on_BtnStrengthMinus_pressed()
-    {
-        GameState.CurrentHero.Attributes.Strength = DecreaseAttribute(GameState.CurrentHero.Attributes.Strength, _copyOfHero.Attributes.Strength);
-        BtnStrengthMinus.Disabled = GameState.CurrentHero.Attributes.Strength == _copyOfHero.Attributes.Strength;
-        CheckSkillPoints();
-    }
-
-    private void _on_BtnStrengthPlus_pressed()
-    {
-        GameState.CurrentHero.Attributes.Strength = IncreaseAttribute(GameState.CurrentHero.Attributes.Strength);
-        BtnStrengthMinus.Disabled = false;
-        CheckSkillPoints();
-    }
-
-    private void _on_BtnVitalityMinus_pressed()
-    {
-        GameState.CurrentHero.Attributes.Vitality = DecreaseAttribute(GameState.CurrentHero.Attributes.Vitality, _copyOfHero.Attributes.Vitality);
-        GameState.CurrentHero.Statistics.CurrentHealth -= 5;
-        GameState.CurrentHero.Statistics.MaximumHealth -= 5;
-        BtnVitalityMinus.Disabled = GameState.CurrentHero.Attributes.Vitality == _copyOfHero.Attributes.Vitality;
-        CheckSkillPoints();
-    }
-
-    private void _on_BtnVitalityPlus_pressed()
-    {
-        GameState.CurrentHero.Attributes.Vitality = IncreaseAttribute(GameState.CurrentHero.Attributes.Vitality);
-        GameState.CurrentHero.Statistics.CurrentHealth += 5;
-        GameState.CurrentHero.Statistics.MaximumHealth += 5;
-        BtnVitalityMinus.Disabled = false;
-        CheckSkillPoints();
-    }
-
-    private void _on_BtnDexterityMinus_pressed()
-    {
-        GameState.CurrentHero.Attributes.Dexterity = DecreaseAttribute(GameState.CurrentHero.Attributes.Dexterity, _copyOfHero.Attributes.Dexterity);
-        BtnDexterityMinus.Disabled = GameState.CurrentHero.Attributes.Dexterity == _copyOfHero.Attributes.Dexterity;
-        CheckSkillPoints();
-    }
-
-    private void _on_BtnDexterityPlus_pressed()
-    {
-        GameState.CurrentHero.Attributes.Dexterity = IncreaseAttribute(GameState.CurrentHero.Attributes.Dexterity);
-        BtnDexterityMinus.Disabled = false;
-        CheckSkillPoints();
-    }
-
-    private void _on_BtnWisdomMinus_pressed()
-    {
-        GameState.CurrentHero.Attributes.Wisdom = DecreaseAttribute(GameState.CurrentHero.Attributes.Wisdom, _copyOfHero.Attributes.Wisdom);
-        GameState.CurrentHero.Statistics.CurrentMagic -= 5;
-        GameState.CurrentHero.Statistics.MaximumMagic -= 5;
-
-        BtnWisdomMinus.Disabled = GameState.CurrentHero.Attributes.Wisdom == _copyOfHero.Attributes.Wisdom;
-        CheckSkillPoints();
-    }
-
-    private void _on_BtnWisdomPlus_pressed()
-    {
-        GameState.CurrentHero.Attributes.Wisdom = IncreaseAttribute(GameState.CurrentHero.Attributes.Wisdom);
-        GameState.CurrentHero.Statistics.CurrentMagic += 5;
-        GameState.CurrentHero.Statistics.MaximumMagic += 5;
-        BtnWisdomMinus.Disabled = false;
-        CheckSkillPoints();
-    }
-
-    #endregion Plus/Minus Buttons Click
-
-    #endregion Button Click
-
-    #endregion Buttons
-
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //
-    //  }
 }

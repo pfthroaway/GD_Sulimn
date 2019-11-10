@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Sulimn.Classes.HeroParts
 {
     /// <summary>Represents pieces of equipment an entity is using.</summary>
-    internal class Equipment
+    public class Equipment
     {
         #region Modifying Properties
 

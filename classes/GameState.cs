@@ -43,6 +43,8 @@ namespace Sulimn.Classes
 
         #region Scene Navigation
 
+        /// <summary>Adds the current scene to the history.</summary>
+        /// <param name="scene">Scene to be added</param>
         internal static void AddSceneToHistory(Node scene)
         {
             PackedScene packedScene = new PackedScene();
@@ -97,9 +99,6 @@ namespace Sulimn.Classes
 
             // TODO Maybe set up an AllDefaultEquipment List to compare against.
             // TODO Make it to where your fists can't take durability damage in battle.
-            // TODO Trash on Inventory screen.
-            // TODO Set up a history of PackedScenes and a navigation service for them.
-            // TODO Set up InventoryScene to where I can instance it, and be able to access the slotList on Merchants and looting enemy corpses.
             // TODO Make it to where you can take off default armor, but not default weapon.
 
             AllItems.AddRanges(AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllFood, AllDrinks, AllPotions, AllWeapons);

@@ -29,27 +29,31 @@ namespace Sulimn.Classes.Entities
 
         /// <summary>Attributes of character</summary>
         [JsonProperty(Order = 4)]
-        public Attributes Attributes { get; set; }
+        public Attributes Attributes { get; set; } = new Attributes();
 
         /// <summary>Statistics of character</summary>
         [JsonProperty(Order = 5)]
-        public Statistics Statistics { get; set; }
+        public Statistics Statistics { get; set; } = new Statistics();
 
         /// <summary>Equipment of character</summary>
         [JsonProperty(Order = 6)]
-        public Equipment Equipment { get; set; }
+        public Equipment Equipment { get; set; } = new Equipment();
 
         /// <summary>The list of Spells the Hero currently knows</summary>
         [JsonProperty(Order = 8)]
-        public Spellbook Spellbook { get; set; }
+        public Spellbook Spellbook { get; set; } = new Spellbook();
 
         /// <summary>List of Items in the inventory.</summary>
         [JsonProperty(Order = 10)]
-        public List<Item> Inventory { get; set; }
+        public List<Item> Inventory { get; set; } = new List<Item>();
 
         #endregion Modifying Properties
 
         #region Helper Properties
+
+        /// <summary>Returns the Enemy's level with preceding text.</summary>
+        [JsonIgnore]
+        public string LevelToString => $"Level {Level}";
 
         /// <summary>The experience the Hero has gained this level alongside how much is needed to level up</summary>
         [JsonIgnore]
