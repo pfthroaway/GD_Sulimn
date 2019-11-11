@@ -1,4 +1,5 @@
 using Godot;
+using Sulimn.Classes;
 using Sulimn.Classes.Items;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Sulimn.Scenes.Inventory
     public class InventoryItem : Control
     {
         public bool Drag;
-        private Control orphanage;
+        private Orphanage orphanage;
         private Item _item = new Item();
 
         public Item Item
@@ -22,7 +23,7 @@ namespace Sulimn.Scenes.Inventory
 
         public override void _Ready()
         {
-            orphanage = (Control)GetTree().CurrentScene.FindNode("Orphanage");
+            orphanage = (Orphanage)GetTree().CurrentScene.FindNode("Orphanage");
             MouseDefaultCursorShape = CursorShape.PointingHand;
         }
 
@@ -32,26 +33,21 @@ namespace Sulimn.Scenes.Inventory
             {
                 if (!Drag)
                 {
+                    ItemSlot slot = (ItemSlot)GetParent();
                     if (orphanage.GetChildCount() > 0)
                     {
-                        ItemSlot slot = (ItemSlot)GetParent();
                         InventoryItem orphanItem = (InventoryItem)orphanage.GetChild(0);
-                        if (slot.ItemTypes.Contains(orphanItem.Item.Type))
+                        if (!orphanage.PreviousSlot.Merchant && !slot.Merchant && slot.ItemTypes.Contains(orphanItem.Item.Type)) // if not buying nor selling, and is a valid slot
+                            SwapItems(slot, orphanItem);
+                        else if (orphanage.PreviousSlot.Merchant && !slot.Merchant && GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
+                            SwapItems(slot, orphanItem);
+                        else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if selling
                         {
-                            TextureRect rect = (TextureRect)orphanItem.GetChild(0);
-                            rect.MouseFilter = MouseFilterEnum.Pass;
-                            orphanItem.Drag = false;
-                            orphanItem.RectGlobalPosition = Vector2.Zero;
-                            orphanage.RemoveChild(orphanItem);
-                            slot.AddChild(orphanItem);
-                            slot.RemoveChild(this);
-                            orphanage.AddChild(this);
-
-                            TextureRect rect2 = (TextureRect)GetChild(0);
-                            rect2.MouseFilter = MouseFilterEnum.Ignore;
-
-                            Drag = true;
+                            GameState.CurrentHero.SellItem(orphanItem.Item);
+                            SwapItems(slot, orphanItem);
                         }
+                        else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
+                            SwapItems(slot, orphanItem);
                     }
                     else if (orphanage.GetChildCount() == 0)
                     {
@@ -60,9 +56,29 @@ namespace Sulimn.Scenes.Inventory
                         rect.MouseFilter = MouseFilterEnum.Ignore;
                         GetParent().RemoveChild(this);
                         orphanage.AddChild(this);
+                        orphanage.PreviousSlot = slot;
                     }
                 }
             }
+        }
+
+        private void SwapItems(ItemSlot slot, InventoryItem orphanItem)
+        {
+            TextureRect rect = (TextureRect)orphanItem.GetChild(0);
+            rect.MouseFilter = MouseFilterEnum.Pass;
+            orphanItem.Drag = false;
+            orphanItem.RectGlobalPosition = Vector2.Zero;
+            orphanage.RemoveChild(orphanItem);
+            slot.AddChild(orphanItem);
+            slot.RemoveChild(this);
+            orphanage.AddChild(this);
+
+            TextureRect rect2 = (TextureRect)GetChild(0);
+            rect2.MouseFilter = MouseFilterEnum.Ignore;
+
+            if (slot.Equipment)
+                GameState.UpdateEquipment = true;
+            Drag = true;
         }
 
         public override void _Process(float delta)
@@ -81,11 +97,5 @@ namespace Sulimn.Scenes.Inventory
                 rect.Texture = (Texture)ResourceLoader.Load(item.Texture);
             }
         }
-
-        public InventoryItem()
-        {
-        }
-
-        public InventoryItem(Item item) => SetItem(item);
     }
 }

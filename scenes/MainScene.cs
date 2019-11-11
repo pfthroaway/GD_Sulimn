@@ -3,7 +3,6 @@ using Sulimn.Classes;
 
 public class MainScene : Control
 {
-    private Info info;
     private Button BtnLogin;
     private LineEdit TxtHeroName, PswdPassword;
     private Label LblError;
@@ -26,6 +25,7 @@ public class MainScene : Control
     {
         OS.WindowMaximized = true;
         GameState.LoadAll();
+        GameState.Info = (Info)GetNode("/root/Info");
         AssignControls();
         TxtHeroName.GrabFocus();
     }
@@ -33,8 +33,7 @@ public class MainScene : Control
     /// <summary>Assigns all controls to something usable in code.</summary>
     private void AssignControls()
     {
-        info = (Info)GetNode("/root/Info");
-        info.Scale = new Vector2(0, 0);
+        GameState.Info.Scale = new Vector2(0, 0);
         BtnLogin = (Button)GetNode("CC/VB/Buttons/BtnLogin");
         TxtHeroName = (LineEdit)GetNode("CC/VB/HeroName");
         PswdPassword = (LineEdit)GetNode("CC/VB/Password");

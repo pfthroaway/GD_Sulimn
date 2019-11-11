@@ -12,7 +12,6 @@ namespace Sulimn.Scenes.Character
         private GridEquipment GridEquipment;
         private GridInventory GridInventory;
         private Hero _copyOfHero = new Hero();
-        private Info info;
 
         // TODO Set up properly equipping and unequipping everything.
         // TODO Trash on Inventory screen.
@@ -33,7 +32,7 @@ namespace Sulimn.Scenes.Character
             AssignControls();
             _copyOfHero = new Hero(GameState.CurrentHero);
             UpdateLabels();
-            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
+            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory, false);
             GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
         }
 
@@ -42,7 +41,6 @@ namespace Sulimn.Scenes.Character
         {
             GridInventory = (GridInventory)GetNode("GridInventory");
             GridEquipment = (GridEquipment)GetNode("GridEquipment");
-            info = (Info)GetNode("/root/Info");
 
             LblName = (Label)GetNode("Info/LblName");
             LblLevel = (Label)GetNode("Info/LblLevel");
@@ -107,7 +105,7 @@ namespace Sulimn.Scenes.Character
 
             UpdateAttributeLabels();
 
-            info.DisplayStats();
+            GameState.Info.DisplayStats();
         }
 
         private void UpdateAttributeLabels()
@@ -286,10 +284,9 @@ namespace Sulimn.Scenes.Character
 
         #endregion Buttons
 
-        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-        //  public override void _Process(float delta)
-        //  {
-        //
-        //  }
+        // Called every frame. 'delta' is the elapsed time since the previous frame.
+        public override void _Process(float delta)
+        {
+        }
     }
 }

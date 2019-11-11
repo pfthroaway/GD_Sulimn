@@ -57,6 +57,14 @@ namespace Sulimn.Scenes.Inventory
             FeetSlot.ItemTypes = new List<ItemType> { ItemType.FeetArmor };
             LeftRingSlot.ItemTypes = new List<ItemType> { ItemType.Ring };
             RightRingSlot.ItemTypes = new List<ItemType> { ItemType.Ring };
+            WeaponSlot.Equipment = true;
+            HeadSlot.Equipment = true;
+            BodySlot.Equipment = true;
+            HandsSlot.Equipment = true;
+            LegsSlot.Equipment = true;
+            FeetSlot.Equipment = true;
+            LeftRingSlot.Equipment = true;
+            RightRingSlot.Equipment = true;
         }
 
         // Called when the node enters the scene tree for the first time.

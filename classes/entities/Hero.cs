@@ -297,6 +297,23 @@ namespace Sulimn.Classes.Entities
         /// <returns>Items of specified Type</returns>
         internal List<T> GetItemsOfType<T>() => Inventory.OfType<T>().ToList();
 
+        /// <summary>If the <see cref="Hero"/> can purchase the <see cref="Item"/>, purchase it and return true. If not, return false;</summary>
+        /// <param name="item"><see cref="Item"/> to be purchased.</param>
+        /// <returns>Whether or not the <see cref="Item"/> was purchased</returns>
+        internal bool PurchaseItem(Item item)
+        {
+            if (Gold >= item.Value)
+            {
+                Gold -= item.Value;
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>Sells an <see cref="Item"/></summary>
+        /// <param name="item"><see cref="Item"/> to be sold</param>
+        internal void SellItem(Item item) => Gold += item.Value;
+
         #endregion Inventory Management
 
         #region Override Operators

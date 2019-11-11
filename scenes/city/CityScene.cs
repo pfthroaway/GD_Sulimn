@@ -6,7 +6,6 @@ namespace Sulimn.Scenes.City
 {
     public class CityScene : Node2D
     {
-        private Info info;
         private Player Player;
         private Vector2 PreviousPosition;
 
@@ -22,10 +21,9 @@ namespace Sulimn.Scenes.City
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
-            info = (Info)GetNode("/root/Info");
             Player = (Player)GetTree().CurrentScene.FindNode("Player");
-            info.Scale = new Vector2(1, 1);
-            info.DisplayStats();
+            GameState.Info.Scale = new Vector2(1, 1);
+            GameState.Info.DisplayStats();
         }
 
         private void _on_FieldsArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
