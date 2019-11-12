@@ -72,7 +72,7 @@ namespace Sulimn.Scenes.Inventory
             slot.AddChild(orphanItem);
             slot.RemoveChild(this);
             orphanage.AddChild(this);
-
+            orphanage.PreviousSlot = slot;
             TextureRect rect2 = (TextureRect)GetChild(0);
             rect2.MouseFilter = MouseFilterEnum.Ignore;
 
