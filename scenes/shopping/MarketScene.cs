@@ -31,7 +31,7 @@ namespace Sulimn.Scenes.City
         {
             if (area is Node player && player.IsInGroup("Player"))
             {
-                Player.Move("left");
+                Player.Move("down");
                 GameState.AddSceneToHistory(GetTree().CurrentScene);
                 GetTree().ChangeScene("res://scenes/shopping/WeaponsRUsScene.tscn");
             }

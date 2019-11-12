@@ -35,7 +35,7 @@ namespace Sulimn.Scenes.Inventory
                         PutItemInSlot(item);// if not buying nor selling, and is a valid slot
                     else if (orphanage.PreviousSlot.Merchant && !Merchant && GameState.CurrentHero.PurchaseItem(item.Item)) // if purchasing and can afford it
                         PutItemInSlot(item);
-                    else if (!orphanage.PreviousSlot.Merchant && Merchant) // if selling
+                    else if (!orphanage.PreviousSlot.Merchant && Merchant && item.Item.CanSell) // if selling
                     {
                         GameState.CurrentHero.SellItem(item.Item);
                         PutItemInSlot(item);
@@ -53,9 +53,10 @@ namespace Sulimn.Scenes.Inventory
             item.Drag = false;
             item.RectGlobalPosition = Vector2.Zero;
             orphanage.RemoveChild(item);
-            GameState.UpdateEquipment = true;
+            GameState.UpdateDisplay = true;
             orphanage.PreviousSlot = null;
             AddChild(item);
+            Item = item;
             TextureRect rect = (TextureRect)GetChild(1).GetChild(0);
             rect.MouseFilter = MouseFilterEnum.Pass;
         }

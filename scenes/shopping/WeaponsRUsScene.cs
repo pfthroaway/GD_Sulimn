@@ -1,7 +1,9 @@
 using Godot;
 using Sulimn.Classes;
+using Sulimn.Classes.Items;
 using Sulimn.Scenes.Inventory;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sulimn.Scenes.Shopping
@@ -25,6 +27,56 @@ namespace Sulimn.Scenes.Shopping
             AssignControls();
         }
 
+        private void Save()
+        {
+            SaveInventory();
+            SaveEquipment();
+        }
+
+        private void SaveInventory()
+        {
+            GridInventory = (GridInventory)GetNode("GridInventory");
+            Godot.Collections.Array allSlots = GridInventory.GetChild(0).GetChildren();
+            List<Item> allItems = new List<Item>();
+            foreach (ItemSlot slot in allSlots)
+            {
+                if (slot?.Item?.Item != new Item())
+                {
+                    allItems.Add(slot.Item.Item);
+                    GD.Print($"Added item {slot.Item.Item.Name}");
+                }
+            }
+            GameState.CurrentHero.Inventory = allItems;
+        }
+
+        private void SaveEquipment()
+        {
+            ItemSlot WeaponSlot = (ItemSlot)GridEquipment.GetNode("WeaponSlot");
+            ItemSlot HeadSlot = (ItemSlot)GridEquipment.GetNode("HeadSlot");
+            ItemSlot BodySlot = (ItemSlot)GridEquipment.GetNode("BodySlot");
+            ItemSlot HandsSlot = (ItemSlot)GridEquipment.GetNode("HandsSlot");
+            ItemSlot LegsSlot = (ItemSlot)GridEquipment.GetNode("LegsSlot");
+            ItemSlot FeetSlot = (ItemSlot)GridEquipment.GetNode("FeetSlot");
+            ItemSlot LeftRingSlot = (ItemSlot)GridEquipment.GetNode("LeftRingSlot");
+            ItemSlot RightRingSlot = (ItemSlot)GridEquipment.GetNode("RightRingSlot");
+            if (WeaponSlot.Item != null)
+                GameState.CurrentHero.Equipment.Weapon = WeaponSlot.Item.Item;
+            if (HeadSlot.Item != null)
+                GameState.CurrentHero.Equipment.Head = HeadSlot.Item.Item;
+            if (BodySlot.Item != null)
+                GameState.CurrentHero.Equipment.Body = BodySlot.Item.Item;
+            if (HandsSlot.Item != null)
+                GameState.CurrentHero.Equipment.Hands = HandsSlot.Item.Item;
+            if (LegsSlot.Item != null)
+                GameState.CurrentHero.Equipment.Legs = LegsSlot.Item.Item;
+            if (FeetSlot.Item != null)
+                GameState.CurrentHero.Equipment.Feet = FeetSlot.Item.Item;
+            if (LeftRingSlot.Item != null)
+                GameState.CurrentHero.Equipment.LeftRing = LeftRingSlot.Item.Item;
+            if (RightRingSlot.Item != null)
+                GameState.CurrentHero.Equipment.RightRing = RightRingSlot.Item.Item;
+        }
+
         /// <summary>Assigns all controls to something usable in code.</summary>
         private void AssignControls()
         {
@@ -39,10 +91,12 @@ namespace Sulimn.Scenes.Shopping
         // Called every frame. 'delta' is the elapsed time since the previous frame.
         public override void _Process(float delta)
         {
-            if (GameState.UpdateEquipment)
+            if (GameState.UpdateDisplay)
             {
-                GameState.UpdateEquipment = false;
+                Save();
+                GD.Print(GameState.CurrentHero.InventoryToString);
                 GameState.Info.DisplayStats();
+                GameState.UpdateDisplay = false;
             }
         }
     }

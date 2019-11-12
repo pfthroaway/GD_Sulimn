@@ -40,7 +40,7 @@ namespace Sulimn.Classes
 
         internal static PackedScene PreviousScene = new PackedScene();
         internal static List<PackedScene> History = new List<PackedScene>();
-        internal static bool UpdateEquipment { get; set; }
+        internal static bool UpdateDisplay { get; set; }
         internal static Info Info { get; set; }
 
         #region Scene Navigation

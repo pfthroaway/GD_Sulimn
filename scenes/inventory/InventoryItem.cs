@@ -70,13 +70,14 @@ namespace Sulimn.Scenes.Inventory
             orphanItem.RectGlobalPosition = Vector2.Zero;
             orphanage.RemoveChild(orphanItem);
             slot.AddChild(orphanItem);
+            slot.Item = orphanItem;
             slot.RemoveChild(this);
             orphanage.AddChild(this);
             orphanage.PreviousSlot = slot;
             TextureRect rect2 = (TextureRect)GetChild(0);
             rect2.MouseFilter = MouseFilterEnum.Ignore;
 
-            GameState.UpdateEquipment = true;
+            GameState.UpdateDisplay = true;
             Drag = true;
         }
 
