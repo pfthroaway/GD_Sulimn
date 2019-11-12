@@ -4,7 +4,7 @@ using Sulimn.Classes.Entities;
 
 namespace Sulimn.Scenes.City
 {
-    public class CityScene : Node2D
+    public class MarketScene : Node2D
     {
         private Player Player;
 
@@ -27,24 +27,20 @@ namespace Sulimn.Scenes.City
             GameState.Info.DisplayStats();
         }
 
-        private void _on_FieldsArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        private void _on_WeaponsArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
             {
                 Player.Move("left");
                 GameState.AddSceneToHistory(GetTree().CurrentScene);
-                GetTree().ChangeScene("res://scenes/exploration/FieldsScene.tscn");
+                GetTree().ChangeScene("res://scenes/shopping/WeaponsRUsScene.tscn");
             }
         }
 
-        private void _on_MarketArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        private void _on_CityArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
-            {
-                Player.Move("down");
-                GameState.AddSceneToHistory(GetTree().CurrentScene);
-                GetTree().ChangeScene("res://scenes/shopping/MarketScene.tscn");
-            }
+                GetTree().ChangeSceneTo(GameState.GoBack());
         }
 
         // Called every frame. 'delta' is the elapsed time since the previous frame.

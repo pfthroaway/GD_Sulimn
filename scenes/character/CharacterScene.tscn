@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/character/CharacterScene.cs" type="Script" id=1]
 [ext_resource path="res://scenes/inventory/GridEquipment.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/inventory/GridEquipment.cs" type="Script" id=3]
-[ext_resource path="res://scenes/inventory/GridInventory.tscn" type="PackedScene" id=4]
-[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=5]
-[ext_resource path="res://resources/SegoeUISMall.tres" type="DynamicFont" id=6]
-[ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/inventory/GridInventory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=4]
+[ext_resource path="res://resources/SegoeUISMall.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.145098, 0.164706, 1 )
@@ -22,9 +21,8 @@ custom_styles/panel = SubResource( 1 )
 
 [node name="GridEquipment" parent="." instance=ExtResource( 2 )]
 margin_left = 80.0
-script = ExtResource( 3 )
 
-[node name="GridInventory" parent="." instance=ExtResource( 4 )]
+[node name="GridInventory" parent="." instance=ExtResource( 3 )]
 margin_left = 10.0
 margin_top = 660.0
 margin_right = 695.0
@@ -46,7 +44,7 @@ alignment = 1
 margin_top = 68.0
 margin_right = 425.0
 margin_bottom = 117.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
@@ -54,7 +52,7 @@ valign = 1
 margin_top = 132.0
 margin_right = 425.0
 margin_bottom = 181.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
@@ -62,7 +60,7 @@ valign = 1
 margin_top = 196.0
 margin_right = 425.0
 margin_bottom = 245.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
@@ -70,7 +68,7 @@ valign = 1
 margin_top = 260.0
 margin_right = 425.0
 margin_bottom = 309.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
@@ -96,7 +94,7 @@ custom_constants/separation = 22
 margin_right = 143.0
 margin_bottom = 49.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Strength"
 align = 1
 valign = 1
@@ -106,7 +104,7 @@ margin_top = 71.0
 margin_right = 143.0
 margin_bottom = 120.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Vitality"
 align = 1
 valign = 1
@@ -116,7 +114,7 @@ margin_top = 142.0
 margin_right = 143.0
 margin_bottom = 191.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Dexterity"
 align = 1
 valign = 1
@@ -126,7 +124,7 @@ margin_top = 213.0
 margin_right = 143.0
 margin_bottom = 262.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Wisdom"
 align = 1
 valign = 1
@@ -142,7 +140,7 @@ custom_constants/separation = 15
 margin_right = 50.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 50, 50 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "-"
 
@@ -151,7 +149,7 @@ margin_top = 70.0
 margin_right = 50.0
 margin_bottom = 125.0
 rect_min_size = Vector2( 50, 50 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "-"
 
@@ -160,7 +158,7 @@ margin_top = 140.0
 margin_right = 50.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 50, 50 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "-"
 
@@ -169,7 +167,7 @@ margin_top = 210.0
 margin_right = 50.0
 margin_bottom = 265.0
 rect_min_size = Vector2( 29, 29 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "-"
 
@@ -185,7 +183,7 @@ custom_constants/separation = 22
 margin_right = 60.0
 margin_bottom = 49.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 1
 valign = 1
@@ -195,7 +193,7 @@ margin_top = 71.0
 margin_right = 60.0
 margin_bottom = 120.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 1
 valign = 1
@@ -205,7 +203,7 @@ margin_top = 142.0
 margin_right = 60.0
 margin_bottom = 191.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 1
 valign = 1
@@ -215,7 +213,7 @@ margin_top = 213.0
 margin_right = 60.0
 margin_bottom = 262.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 1
 valign = 1
@@ -230,7 +228,7 @@ custom_constants/separation = 15
 margin_right = 50.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 50, 50 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "+"
 
@@ -239,7 +237,7 @@ margin_top = 70.0
 margin_right = 50.0
 margin_bottom = 125.0
 rect_min_size = Vector2( 50, 50 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "+"
 
@@ -248,7 +246,7 @@ margin_top = 140.0
 margin_right = 50.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 50, 50 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "+"
 
@@ -257,7 +255,7 @@ margin_top = 210.0
 margin_right = 50.0
 margin_bottom = 265.0
 rect_min_size = Vector2( 50, 50 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "+"
 
@@ -265,7 +263,7 @@ text = "+"
 margin_top = 275.0
 margin_right = 425.0
 margin_bottom = 303.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
 text = "Hold Shift to change by up to 5."
 align = 1
 
@@ -283,7 +281,7 @@ custom_constants/separation = 15
 [node name="LblSkillPoints" type="Label" parent="Info/Vitals/Statistics/TextLabels"]
 margin_bottom = 49.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
@@ -291,7 +289,7 @@ valign = 1
 margin_top = 64.0
 margin_bottom = 113.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
@@ -299,7 +297,7 @@ valign = 1
 margin_top = 128.0
 margin_bottom = 177.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
@@ -307,7 +305,7 @@ valign = 1
 margin_top = 829.0
 margin_right = 425.0
 margin_bottom = 878.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
@@ -321,18 +319,18 @@ margin_left = 112.0
 margin_right = 312.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 200, 55 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Cast Spell"
 
 [node name="Label2" type="Label" parent="Info"]
 margin_top = 963.0
 margin_right = 425.0
 margin_bottom = 991.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
 text = "All changes will be saved on closing."
 align = 1
 
-[node name="Orphanage" parent="." instance=ExtResource( 7 )]
+[node name="Orphanage" parent="." instance=ExtResource( 6 )]
 [connection signal="pressed" from="Info/Vitals/Attributes/MinusButtons/BtnStrengthMinus" to="." method="_on_BtnStrengthMinus_pressed"]
 [connection signal="pressed" from="Info/Vitals/Attributes/MinusButtons/BtnVitalityMinus" to="." method="_on_BtnVitalityMinus_pressed"]
 [connection signal="pressed" from="Info/Vitals/Attributes/MinusButtons/BtnDexterityMinus" to="." method="_on_BtnDexterityMinus_pressed"]

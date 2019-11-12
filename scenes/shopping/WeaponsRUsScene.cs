@@ -2,10 +2,11 @@ using Godot;
 using Sulimn.Classes;
 using Sulimn.Scenes.Inventory;
 using System;
+using System.Linq;
 
 namespace Sulimn.Scenes.Shopping
 {
-    public class WeaponRUsScene : Control
+    public class WeaponsRUsScene : Control
     {
         private GridEquipment GridEquipment;
         private GridInventory GridInventory, MerchantInventory;
@@ -24,8 +25,8 @@ namespace Sulimn.Scenes.Shopping
             GridInventory = (GridInventory)GetNode("GridInventory");
             MerchantInventory = (GridInventory)GetNode("MerchantInventory");
             GridEquipment = (GridEquipment)GetNode("GridEquipment");
-            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory, false);
-            MerchantInventory.SetUpInventory(GameState.CurrentHero.Inventory, true);
+            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory.Where(itm => itm.CanSell).ToList(), false);
+            MerchantInventory.SetUpInventory(GameState.AllWeapons.Where(wpn => wpn.IsSold).ToList(), true);
             GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
         }
 
