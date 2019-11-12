@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using Sulimn.Classes;
 using Sulimn.Classes.Items;
 using System;
@@ -40,7 +40,7 @@ namespace Sulimn.Scenes.Inventory
                         GameState.CurrentHero.SellItem(item.Item);
                         PutItemInSlot(item);
                     }
-                    else if (!orphanage.PreviousSlot.Merchant && Merchant) // if moving Merchant item to different Merchant slot
+                    else if (orphanage.PreviousSlot.Merchant && Merchant) // if moving Merchant item to different Merchant slot
                         PutItemInSlot(item);
                 }
             }
@@ -53,12 +53,11 @@ namespace Sulimn.Scenes.Inventory
             item.Drag = false;
             item.RectGlobalPosition = Vector2.Zero;
             orphanage.RemoveChild(item);
+            GameState.UpdateEquipment = true;
             orphanage.PreviousSlot = null;
             AddChild(item);
             TextureRect rect = (TextureRect)GetChild(1).GetChild(0);
             rect.MouseFilter = MouseFilterEnum.Pass;
-            if (Equipment)
-                GameState.UpdateEquipment = true;
         }
     }
 }

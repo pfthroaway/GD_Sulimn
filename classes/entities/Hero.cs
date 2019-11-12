@@ -312,7 +312,7 @@ namespace Sulimn.Classes.Entities
 
         /// <summary>Sells an <see cref="Item"/></summary>
         /// <param name="item"><see cref="Item"/> to be sold</param>
-        internal void SellItem(Item item) => Gold += item.Value;
+        internal void SellItem(Item item) => Gold += item.SellValue;
 
         #endregion Inventory Management
 

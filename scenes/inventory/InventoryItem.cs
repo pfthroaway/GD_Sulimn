@@ -46,7 +46,7 @@ namespace Sulimn.Scenes.Inventory
                             GameState.CurrentHero.SellItem(orphanItem.Item);
                             SwapItems(slot, orphanItem);
                         }
-                        else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
+                        else if (orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
                             SwapItems(slot, orphanItem);
                     }
                     else if (orphanage.GetChildCount() == 0)
@@ -76,8 +76,7 @@ namespace Sulimn.Scenes.Inventory
             TextureRect rect2 = (TextureRect)GetChild(0);
             rect2.MouseFilter = MouseFilterEnum.Ignore;
 
-            if (slot.Equipment)
-                GameState.UpdateEquipment = true;
+            GameState.UpdateEquipment = true;
             Drag = true;
         }
 

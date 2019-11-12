@@ -13,6 +13,12 @@ namespace Sulimn.Scenes.Shopping
 
         // TODO Make it so that you can purchase/sell equipment, and it updates your equipment, inventory and gold properly.
 
+        public override void _UnhandledInput(InputEvent @event)
+        {
+            if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape)
+                GetTree().ChangeSceneTo(GameState.GoBack());
+        }
+
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
@@ -30,10 +36,14 @@ namespace Sulimn.Scenes.Shopping
             GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
         }
 
-        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-        //  public override void _Process(float delta)
-        //  {
-        //
-        //  }
+        // Called every frame. 'delta' is the elapsed time since the previous frame.
+        public override void _Process(float delta)
+        {
+            if (GameState.UpdateEquipment)
+            {
+                GameState.UpdateEquipment = false;
+                GameState.Info.DisplayStats();
+            }
+        }
     }
 }
