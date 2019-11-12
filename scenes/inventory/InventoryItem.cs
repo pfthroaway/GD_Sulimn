@@ -55,6 +55,7 @@ namespace Sulimn.Scenes.Inventory
                         TextureRect rect = (TextureRect)GetChild(0);
                         rect.MouseFilter = MouseFilterEnum.Ignore;
                         GetParent().RemoveChild(this);
+                        slot.Item = new InventoryItem();
                         orphanage.AddChild(this);
                         orphanage.PreviousSlot = slot;
                     }

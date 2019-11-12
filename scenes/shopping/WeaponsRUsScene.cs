@@ -41,10 +41,7 @@ namespace Sulimn.Scenes.Shopping
             foreach (ItemSlot slot in allSlots)
             {
                 if (slot?.Item?.Item != new Item())
-                {
-                    allItems.Add(slot.Item.Item);
-                    GD.Print($"Added item {slot.Item.Item.Name}");
-                }
+                    allItems.Add(slot?.Item?.Item);
             }
             GameState.CurrentHero.Inventory = allItems;
         }
