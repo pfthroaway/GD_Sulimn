@@ -23,3 +23,4 @@ shape = SubResource( 1 )
 current = true
 limit_left = -192
 limit_top = -192
+smoothing_enabled = true
