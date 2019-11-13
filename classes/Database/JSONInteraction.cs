@@ -45,6 +45,9 @@ namespace Sulimn.Classes.Database
             }
         }
 
+        /// <summary>Write's a user's scene history to file.</summary>
+        /// <param name="history">List of all previous scenes in their history</param>
+        /// <param name="username">Name of user whose scene history is being written</param>
         internal static void WriteSceneHistory(List<PackedScene> history, string username)
         {
             File newFile = new File();

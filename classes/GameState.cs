@@ -66,6 +66,8 @@ namespace Sulimn.Classes
             return last;
         }
 
+        internal static void WriteSceneHistory() => JSONInteraction.WriteSceneHistory(History, GameState.CurrentHero.Name);
+
         #endregion Scene Navigation
 
         /// <summary>Determines whether a Hero's credentials are authentic.</summary>
