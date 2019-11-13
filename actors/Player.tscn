@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/tileset/player.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.5842, 31.8267 )
+extents = Vector2( 16, 31.5 )
 
 [node name="Player" type="Area2D" groups=[
 "Player",

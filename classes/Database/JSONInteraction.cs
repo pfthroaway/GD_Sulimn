@@ -45,6 +45,14 @@ namespace Sulimn.Classes.Database
             }
         }
 
+        internal static void WriteSceneHistory(List<PackedScene> history, string username)
+        {
+            File newFile = new File();
+            newFile.Open($"user://save/{username}History.json", 2);
+            newFile.StoreLine(JsonConvert.SerializeObject(history, Formatting.Indented));
+            newFile.Close();
+        }
+
         #endregion Write
 
         #region Load

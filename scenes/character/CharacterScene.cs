@@ -13,7 +13,6 @@ namespace Sulimn.Scenes.Character
         private GridInventory GridInventory;
         private Hero _copyOfHero = new Hero();
 
-        // TODO Set up properly equipping and unequipping everything.
         // TODO Trash on Inventory screen.
         // TODO Implement casting spells from the Character Scene.
         // TODO Make it to where you can't add Fists to the inventory.
@@ -34,6 +33,7 @@ namespace Sulimn.Scenes.Character
             UpdateLabels();
             GridInventory.SetUpInventory(GameState.CurrentHero.Inventory, false);
             GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
+            CheckSkillPoints();
         }
 
         /// <summary>Assigns all controls to something usable in code.</summary>

@@ -43,6 +43,9 @@ namespace Sulimn.Classes
         internal static bool UpdateDisplay { get; set; }
         internal static Info Info { get; set; }
 
+        internal static SceneTree SceneTree { get; set; }
+        internal static MainLoop MainLoop { get; set; }
+
         #region Scene Navigation
 
         /// <summary>Adds the current scene to the history.</summary>
@@ -99,6 +102,7 @@ namespace Sulimn.Classes
 
             //JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
 
+            // TODO Save scene history on application exit and load back when the same player logs in.
             // TODO Maybe set up an AllDefaultEquipment List to compare against.
             // TODO Make it to where your fists can't take durability damage in battle.
             // TODO Make it to where you can take off default armor, but not default weapon.

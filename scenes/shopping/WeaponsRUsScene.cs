@@ -90,7 +90,6 @@ namespace Sulimn.Scenes.Shopping
             if (GameState.UpdateDisplay)
             {
                 Save();
-                GD.Print(GameState.CurrentHero.InventoryToString);
                 GameState.Info.DisplayStats();
                 GameState.UpdateDisplay = false;
             }

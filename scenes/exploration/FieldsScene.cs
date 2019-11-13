@@ -52,22 +52,24 @@ namespace Sulimn.Scenes.Exploration
         /// <summary>Check whether the an event happened on this move.</summary>
         private void CheckForEvents()
         {
-            if (Functions.GenerateRandomNumber(1, 100) < 10)
+            if (GameState.CurrentHero.Statistics.CurrentHealth > 1)
             {
-                GD.Print("This is where a battle would occur.");
-                //GameState.AddSceneToHistory(GetTree().CurrentScene);
-                //GameState.EventEncounterEnemy(1, 5);
-                //GetTree().ChangeScene("res://scenes/battle/BattleScene.tscn");
-            }
-            else if (Functions.GenerateRandomNumber(1, 100) < 5)
-            {
-                DisplayPopup(GameState.EventFindItem(1, 300));
-                info.DisplayStats();
-            }
-            else if (Functions.GenerateRandomNumber(1, 100) < 5)
-            {
-                DisplayPopup(GameState.EventFindGold(1, 200));
-                info.DisplayStats();
+                if (Functions.GenerateRandomNumber(1, 100) < 10)
+                {
+                    GameState.AddSceneToHistory(GetTree().CurrentScene);
+                    GameState.EventEncounterEnemy(1, 5);
+                    GetTree().ChangeScene("res://scenes/battle/BattleScene.tscn");
+                }
+                else if (Functions.GenerateRandomNumber(1, 100) < 5)
+                {
+                    DisplayPopup(GameState.EventFindItem(1, 300));
+                    info.DisplayStats();
+                }
+                else if (Functions.GenerateRandomNumber(1, 100) < 5)
+                {
+                    DisplayPopup(GameState.EventFindGold(1, 200));
+                    info.DisplayStats();
+                }
             }
         }
 

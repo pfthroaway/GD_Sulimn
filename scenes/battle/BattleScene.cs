@@ -15,8 +15,8 @@ public class BattleScene : Control
     private bool _battleEnded;
     private bool _blnHardcoreDeath;
     private bool _progress;
-    private Button BtnAttack, BtnCastSpell, BtnChooseSpell, BtnFlee, BtnInventory, BtnLootBody, BtnReturn;
-    private Info info;
+    private Button BtnAttack, BtnCastSpell, BtnChooseSpell, BtnEnemyDetails, BtnFlee, BtnLootBody, BtnReturn;
+    private Label LblHeroName, LblHeroHealth, LblHeroMagic, LblHeroShield, LblEnemyName, LblEnemyHealth, LblEnemyMagic, LblEnemyShield, LblSpellName, LblSpellCost;
     private string _previousPage;
     private TextEdit TxtBattle;
 
@@ -58,21 +58,40 @@ public class BattleScene : Control
     /// <summary>Assigns all controls to modifiable values.</summary>
     private void AssignControls()
     {
-        BtnAttack = null;
-        BtnCastSpell = null;
-        BtnChooseSpell = null;
-        BtnFlee = null;
-        BtnInventory = null;
-        BtnLootBody = null;
-        BtnReturn = null;
-        info = (Info)GetNode("/root/Info");
-        TxtBattle = null;
+        BtnAttack = (Button)GetNode("BtnAttack");
+        BtnCastSpell = (Button)GetNode("BtnCastSpell");
+        BtnChooseSpell = (Button)GetNode("BtnChooseSpell");
+        BtnEnemyDetails = (Button)GetNode("Enemy/CC/VB/BtnEnemyDetails");
+        BtnFlee = (Button)GetNode("BtnFlee");
+        BtnLootBody = (Button)GetNode("Enemy/CC/VB/BtnLootBody");
+        BtnReturn = (Button)GetNode("BtnReturn");
+        LblHeroName = (Label)GetNode("Hero/LblName");
+        LblHeroHealth = (Label)GetNode("Hero/LblHealth");
+        LblHeroMagic = (Label)GetNode("Hero/LblMagic");
+        LblHeroShield = (Label)GetNode("Hero/LblShield");
+        LblEnemyName = (Label)GetNode("Enemy/LblName");
+        LblEnemyHealth = (Label)GetNode("Enemy/LblHealth");
+        LblEnemyMagic = (Label)GetNode("Enemy/LblMagic");
+        LblEnemyShield = (Label)GetNode("Enemy/LblShield");
+        LblSpellName = (Label)GetNode("LblSpellName");
+        LblSpellCost = (Label)GetNode("LblSpellCost");
+        TxtBattle = (TextEdit)GetNode("TxtBattle");
     }
 
     /// <summary>Update labels to current values.</summary>
     private void UpdateStats()
     {
-        info.DisplayStats();
+        GameState.Info.DisplayStats();
+        LblHeroName.Text = GameState.CurrentHero.Name;
+        LblHeroHealth.Text = GameState.CurrentHero.Statistics.HealthToStringWithText;
+        LblHeroMagic.Text = GameState.CurrentHero.Statistics.MagicToStringWithText;
+        LblHeroShield.Text = HeroShieldToString;
+        LblEnemyName.Text = GameState.CurrentEnemy.Name;
+        LblEnemyHealth.Text = GameState.CurrentEnemy.Statistics.HealthToStringWithText;
+        LblEnemyMagic.Text = GameState.CurrentEnemy.Statistics.MagicToStringWithText;
+        LblEnemyShield.Text = EnemyShieldToString;
+        LblSpellName.Text = CurrentHeroSpell?.Name;
+        LblSpellCost.Text = CurrentHeroSpell?.MagicCostToString;
     }
 
     #endregion Load
@@ -81,8 +100,9 @@ public class BattleScene : Control
     /// <param name="newText">Text to be added</param>
     private void AddTextToTextBox(string newText)
     {
-        TxtBattle.Text += "\n\n" + newText;
+        TxtBattle.Text += TxtBattle.Text.Length > 0 ? "\n\n" + newText : newText;
         TxtBattle.CursorSetLine(TxtBattle.GetLineCount());
+        TxtBattle.Select(TxtBattle.GetLineCount(), 0, 0, 0);
     }
 
     /// <summary>Represents an action taken in a battle.</summary>
@@ -140,7 +160,7 @@ public class BattleScene : Control
     /// <param name="heroAction">Action the hero chose to perform this round</param>
     private void NewRound(BattleAction heroAction)
     {
-        ToggleButtons(false);
+        ToggleButtons(true);
         _heroAction = heroAction;
 
         // if Hero Dexterity is greater
@@ -170,7 +190,8 @@ public class BattleScene : Control
             else if (GameState.CurrentHero.Statistics.CurrentHealth <= 0)
                 Death();
         }
-        info.DisplayStats();
+        GameState.Info.DisplayStats();
+        UpdateStats();
         CheckButtons();
     }
 
@@ -579,27 +600,36 @@ public class BattleScene : Control
     #region Button Management
 
     /// <summary>Checks whether to enable/disable battle buttons.</summary>
-    private void CheckButtons() => ToggleButtons(!_battleEnded);
+    private void CheckButtons() => ToggleButtons(_battleEnded);
 
-    /// <summary>Toggles whether the Page's Buttons are enabled.</summary>
-    /// <param name="enabled">Are the buttons enabled?</param>
-    private void ToggleButtons(bool enabled)
+    /// <summary>Toggles whether the Page's Buttons are disabled.</summary>
+    /// <param name="disabled">Are the buttons disabled?</param>
+    private void ToggleButtons(bool disabled)
     {
-        BtnAttack.Disabled = !enabled;
-        BtnCastSpell.Disabled = !enabled && CurrentHeroSpell != new Spell();
-        BtnChooseSpell.Disabled = !enabled;
-        BtnFlee.Disabled = !enabled;
+        BtnAttack.Disabled = disabled;
+        BtnCastSpell.Disabled = CurrentHeroSpell == null || CurrentHeroSpell == new Spell() ? true : disabled;
+        BtnChooseSpell.Disabled = disabled;
+        BtnFlee.Disabled = disabled;
     }
 
     #endregion Button Management
 
     #region Button-Click Methods
 
-    private void BtnAttack_Click() => NewRound(BattleAction.Attack);
+    private void _on_BtnAttack_pressed() => NewRound(BattleAction.Attack);
 
-    //private void BtnEnemyDetails_Click() => GameState.Navigate(new EnemyDetailsPage());
+    private void _on_BtnChooseSpell_pressed()
+    {
+        //CastSpellPage castSpellPage = new CastSpellPage { RefToBattlePage = this };
+        //castSpellPage.LoadPage("Battle");
+        //GameState.Navigate(castSpellPage);
+    }
 
-    private void BtnReturn_Click()
+    private void _on_BtnCastSpell_pressed() => NewRound(BattleAction.Cast);
+
+    private void _on_BtnFlee_pressed() => NewRound(BattleAction.Flee);
+
+    private void _on_BtnReturn_pressed()
     {
         //if the battle is over, return to where you came from
         //if you were fight a progression battle and you killed the enemy,
@@ -652,27 +682,13 @@ public class BattleScene : Control
                     }
                     break;
             }
-            if (!_blnHardcoreDeath)
-                GameState.SaveHero(GameState.CurrentHero);
-            //else
-            //GameState.HardcoreDeath();
+            if (_blnHardcoreDeath)
+            {
+                GetTree().ChangeScene("res://scenes/MainScene.tscn");
+                //GameState.HardcoreDeath();
+            }
         }
-        //GameState.GoBack();
-    }
-
-    private void BtnCastSpell_Click() => NewRound(BattleAction.Cast);
-
-    private void BtnChooseSpell_Click()
-    {
-        //CastSpellPage castSpellPage = new CastSpellPage { RefToBattlePage = this };
-        //castSpellPage.LoadPage("Battle");
-        //GameState.Navigate(castSpellPage);
-    }
-
-    private void BtnFlee_Click() => NewRound(BattleAction.Flee);
-
-    private void _on_BtnReturn_pressed()
-    {
+        GetTree().ChangeSceneTo(GameState.GoBack());
     }
 
     #endregion Button-Click Methods

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/city/CityScene.cs" type="Script" id=1]
 [ext_resource path="res://assets/tileset/water.png" type="Texture" id=2]
@@ -70,6 +70,9 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 32, 64 )
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 64, 32 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -91,6 +94,6 @@ shape = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MarketArea"]
 position = Vector2( 768, 224 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 [connection signal="area_shape_entered" from="FieldsArea" to="." method="_on_FieldsArea_area_shape_entered"]
 [connection signal="area_shape_entered" from="MarketArea" to="." method="_on_MarketArea_area_shape_entered"]

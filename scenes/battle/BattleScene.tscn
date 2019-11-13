@@ -1,79 +1,247 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/battle/BattleScene.cs" type="Script" id=1]
 [ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=2]
+
+[sub_resource type="InputEventKey" id=1]
+scancode = 69
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[sub_resource type="InputEventKey" id=3]
+scancode = 76
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[sub_resource type="InputEventKey" id=5]
+scancode = 65
+
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
+
+[sub_resource type="InputEventKey" id=7]
+scancode = 83
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="InputEventKey" id=9]
+scancode = 67
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
+
+[sub_resource type="InputEventKey" id=11]
+scancode = 70
+
+[sub_resource type="ShortCut" id=12]
+shortcut = SubResource( 11 )
+
+[sub_resource type="InputEventKey" id=13]
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=14]
+shortcut = SubResource( 13 )
 
 [node name="Control" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1015.2 ],
+"_edit_vertical_guides_": [ 960.518 ]
+}
 
-[node name="Buttons" type="VBoxContainer" parent="."]
-margin_left = 65.0
-margin_top = 10.0
-margin_right = 315.0
-margin_bottom = 485.0
-custom_constants/separation = 15
+[node name="Hero" type="VBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 250.0
+margin_top = 100.0
+margin_right = 960.0
+margin_bottom = 385.0
+custom_constants/separation = 10
 
-[node name="BtnInventory" type="Button" parent="Buttons"]
+[node name="LblName" type="Label" parent="Hero"]
+margin_right = 710.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 300, 49 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="LblHealth" type="Label" parent="Hero"]
+margin_top = 59.0
+margin_right = 710.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 300, 49 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="LblMagic" type="Label" parent="Hero"]
+margin_top = 118.0
+margin_right = 710.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 300, 49 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="LblShield" type="Label" parent="Hero"]
+margin_top = 177.0
+margin_right = 710.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 300, 49 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="Enemy" type="VBoxContainer" parent="."]
+margin_left = 960.0
+margin_top = 100.0
+margin_right = 1670.0
+margin_bottom = 521.0
+custom_constants/separation = 10
+
+[node name="LblName" type="Label" parent="Enemy"]
+margin_right = 710.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 300, 49 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="LblHealth" type="Label" parent="Enemy"]
+margin_top = 59.0
+margin_right = 710.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 300, 49 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="LblMagic" type="Label" parent="Enemy"]
+margin_top = 118.0
+margin_right = 710.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 300, 49 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="LblShield" type="Label" parent="Enemy"]
+margin_top = 177.0
+margin_right = 710.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 300, 49 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="CC" type="CenterContainer" parent="Enemy"]
+margin_top = 236.0
+margin_right = 710.0
+margin_bottom = 356.0
+
+[node name="VB" type="VBoxContainer" parent="Enemy/CC"]
+margin_left = 230.0
+margin_right = 480.0
+margin_bottom = 120.0
+custom_constants/separation = 10
+
+[node name="BtnEnemyDetails" type="Button" parent="Enemy/CC/VB"]
 margin_right = 250.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 250, 55 )
+size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 2 )
-text = "Inventory"
-
-[node name="BtnAttack" type="Button" parent="Buttons"]
-margin_top = 70.0
-margin_right = 250.0
-margin_bottom = 125.0
-rect_min_size = Vector2( 250, 55 )
-custom_fonts/font = ExtResource( 2 )
-text = "Attack"
-
-[node name="BtnFlee" type="Button" parent="Buttons"]
-margin_top = 140.0
-margin_right = 250.0
-margin_bottom = 195.0
-rect_min_size = Vector2( 250, 55 )
-custom_fonts/font = ExtResource( 2 )
-text = "Flee"
-
-[node name="BtnCastSpell" type="Button" parent="Buttons"]
-margin_top = 210.0
-margin_right = 250.0
-margin_bottom = 265.0
-rect_min_size = Vector2( 250, 55 )
-custom_fonts/font = ExtResource( 2 )
-text = "Cast Spell"
-
-[node name="BtnChooseSpell" type="Button" parent="Buttons"]
-margin_top = 280.0
-margin_right = 250.0
-margin_bottom = 335.0
-rect_min_size = Vector2( 250, 55 )
-custom_fonts/font = ExtResource( 2 )
-text = "Choose Spell"
-
-[node name="BtnEnemyDetails" type="Button" parent="Buttons"]
-margin_top = 350.0
-margin_right = 250.0
-margin_bottom = 405.0
-rect_min_size = Vector2( 250, 55 )
-custom_fonts/font = ExtResource( 2 )
+shortcut = SubResource( 2 )
 text = "Enemy Details"
 
-[node name="BtnReturn" type="Button" parent="Buttons"]
-margin_top = 420.0
+[node name="BtnLootBody" type="Button" parent="Enemy/CC/VB"]
+margin_top = 65.0
 margin_right = 250.0
-margin_bottom = 475.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 250, 55 )
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 2 )
+disabled = true
+shortcut = SubResource( 4 )
+text = "Loot Body"
+
+[node name="BtnAttack" type="Button" parent="."]
+margin_left = 480.0
+margin_top = 560.0
+margin_right = 730.0
+margin_bottom = 615.0
 rect_min_size = Vector2( 250, 55 )
 custom_fonts/font = ExtResource( 2 )
+shortcut = SubResource( 6 )
+text = "Attack"
+
+[node name="BtnChooseSpell" type="Button" parent="."]
+margin_left = 480.0
+margin_top = 625.0
+margin_right = 730.0
+margin_bottom = 680.0
+rect_min_size = Vector2( 250, 55 )
+custom_fonts/font = ExtResource( 2 )
+shortcut = SubResource( 8 )
+text = "Choose Spell"
+
+[node name="BtnCastSpell" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 560.0
+margin_right = 1085.0
+margin_bottom = 615.0
+rect_min_size = Vector2( 250, 55 )
+custom_fonts/font = ExtResource( 2 )
+disabled = true
+shortcut = SubResource( 10 )
+text = "Cast Spell"
+
+[node name="BtnFlee" type="Button" parent="."]
+margin_left = 1190.0
+margin_top = 560.0
+margin_right = 1440.0
+margin_bottom = 615.0
+rect_min_size = Vector2( 250, 55 )
+custom_fonts/font = ExtResource( 2 )
+shortcut = SubResource( 12 )
+text = "Flee"
+
+[node name="LblSpellName" type="Label" parent="."]
+margin_left = 730.0
+margin_top = 628.0
+margin_right = 1190.0
+margin_bottom = 677.0
+rect_min_size = Vector2( 460, 49 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="LblSpellCost" type="Label" parent="."]
+margin_left = 1190.0
+margin_top = 628.0
+margin_right = 1440.0
+margin_bottom = 677.0
+rect_min_size = Vector2( 250, 49 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="BtnReturn" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 950.0
+margin_right = 1085.0
+margin_bottom = 1005.0
+rect_min_size = Vector2( 250, 55 )
+custom_fonts/font = ExtResource( 2 )
+disabled = true
+shortcut = SubResource( 14 )
 text = "Return"
 
 [node name="TxtBattle" type="TextEdit" parent="."]
-margin_left = 65.0
-margin_top = 504.783
-margin_right = 865.0
-margin_bottom = 904.783
+margin_left = 360.0
+margin_top = 690.0
+margin_right = 1560.0
+margin_bottom = 940.0
+custom_fonts/font = ExtResource( 2 )
 readonly = true
-[connection signal="pressed" from="Buttons/BtnReturn" to="." method="_on_BtnReturn_pressed"]
+wrap_enabled = true
+[connection signal="pressed" from="BtnAttack" to="." method="_on_BtnAttack_pressed"]
+[connection signal="pressed" from="BtnChooseSpell" to="." method="_on_BtnChooseSpell_pressed"]
+[connection signal="pressed" from="BtnCastSpell" to="." method="_on_BtnCastSpell_pressed"]
+[connection signal="pressed" from="BtnFlee" to="." method="_on_BtnFlee_pressed"]
+[connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

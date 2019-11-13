@@ -20,7 +20,10 @@ rect_min_size = Vector2( 1095, 1080 )
 custom_styles/panel = SubResource( 1 )
 
 [node name="GridEquipment" parent="." instance=ExtResource( 2 )]
-margin_left = 80.0
+margin_left = 22.5
+margin_top = 10.0
+margin_right = 22.5
+margin_bottom = 10.0
 
 [node name="GridInventory" parent="." instance=ExtResource( 3 )]
 margin_left = 10.0
