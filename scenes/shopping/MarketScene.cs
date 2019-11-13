@@ -1,4 +1,5 @@
 using Godot;
+using Sulimn.Actors;
 using Sulimn.Classes;
 using Sulimn.Classes.Entities;
 
@@ -11,12 +12,7 @@ namespace Sulimn.Scenes.City
         public override void _UnhandledInput(InputEvent @event)
         {
             if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape)
-            {
-                GameState.SaveHero(GameState.CurrentHero);
-                GetTree().ChangeScene("scenes/MainScene.tscn");
-                GameState.CurrentHero = new Hero();
-                GameState.History.Clear();
-            }
+                GetTree().ChangeSceneTo(GameState.GoBack());
         }
 
         // Called when the node enters the scene tree for the first time.

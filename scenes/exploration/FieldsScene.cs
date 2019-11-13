@@ -1,4 +1,5 @@
 using Godot;
+using Sulimn.Actors;
 using Sulimn.Classes;
 using Sulimn.Classes.Extensions;
 
