@@ -1,6 +1,5 @@
 using Godot;
 using Sulimn.Classes.Items;
-using System;
 using System.Collections.Generic;
 
 namespace Sulimn.Scenes.Inventory

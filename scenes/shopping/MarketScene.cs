@@ -1,7 +1,6 @@
 using Godot;
 using Sulimn.Actors;
 using Sulimn.Classes;
-using Sulimn.Classes.Entities;
 
 namespace Sulimn.Scenes.City
 {

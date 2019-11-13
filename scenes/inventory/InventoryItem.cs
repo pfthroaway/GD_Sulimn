@@ -1,11 +1,6 @@
 using Godot;
 using Sulimn.Classes;
 using Sulimn.Classes.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sulimn.Scenes.Inventory
 {

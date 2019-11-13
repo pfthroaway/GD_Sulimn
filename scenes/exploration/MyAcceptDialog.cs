@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Sulimn.Actors;
 
 public class MyAcceptDialog : AcceptDialog
 {

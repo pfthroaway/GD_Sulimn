@@ -2,7 +2,6 @@ using Godot;
 using Sulimn.Classes;
 using Sulimn.Classes.Items;
 using Sulimn.Scenes.Inventory;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
