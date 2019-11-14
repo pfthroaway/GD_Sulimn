@@ -37,9 +37,9 @@ margin_right = 352.0
 margin_bottom = 320.0
 
 [node name="HandsSlot" parent="." instance=ExtResource( 3 )]
-margin_left = 384.0
+margin_left = 463.0
 margin_top = 200.0
-margin_right = 448.0
+margin_right = 527.0
 margin_bottom = 264.0
 
 [node name="LegsSlot" parent="." instance=ExtResource( 3 )]
@@ -61,7 +61,7 @@ margin_right = 214.0
 margin_bottom = 264.0
 
 [node name="RightRingSlot" parent="." instance=ExtResource( 3 )]
-margin_left = 463.0
+margin_left = 384.0
 margin_top = 200.0
-margin_right = 527.0
+margin_right = 448.0
 margin_bottom = 264.0
