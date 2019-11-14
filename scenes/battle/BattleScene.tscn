@@ -94,6 +94,7 @@ custom_fonts/font = ExtResource( 2 )
 align = 1
 
 [node name="Enemy" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 960.0
 margin_top = 100.0
 margin_right = 1670.0
@@ -232,14 +233,14 @@ disabled = true
 shortcut = SubResource( 14 )
 text = "Return"
 
-[node name="TxtBattle" type="TextEdit" parent="."]
+[node name="TxtBattle" type="RichTextLabel" parent="."]
 margin_left = 360.0
 margin_top = 690.0
-margin_right = 1560.0
-margin_bottom = 940.0
-custom_fonts/font = ExtResource( 2 )
-readonly = true
-wrap_enabled = true
+margin_right = 400.0
+margin_bottom = 730.0
+rect_min_size = Vector2( 1200, 250 )
+custom_fonts/normal_font = ExtResource( 2 )
+scroll_following = true
 [connection signal="pressed" from="BtnAttack" to="." method="_on_BtnAttack_pressed"]
 [connection signal="pressed" from="BtnChooseSpell" to="." method="_on_BtnChooseSpell_pressed"]
 [connection signal="pressed" from="BtnCastSpell" to="." method="_on_BtnCastSpell_pressed"]

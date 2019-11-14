@@ -62,12 +62,12 @@ namespace Sulimn.Scenes.Exploration
                 }
                 else if (Functions.GenerateRandomNumber(1, 100) < 5)
                 {
-                    DisplayPopup(GameState.EventFindItem(1, 300));
+                    DisplayPopup(GameState.EventFindItem(1, 100));
                     info.DisplayStats();
                 }
                 else if (Functions.GenerateRandomNumber(1, 100) < 5)
                 {
-                    DisplayPopup(GameState.EventFindGold(1, 200));
+                    DisplayPopup(GameState.EventFindGold(1, 100));
                     info.DisplayStats();
                 }
             }

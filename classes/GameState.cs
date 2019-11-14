@@ -4,6 +4,7 @@ using Sulimn.Classes.Entities;
 using Sulimn.Classes.Extensions;
 using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
+using Sulimn.Scenes.Inventory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +70,46 @@ namespace Sulimn.Classes
         internal static void WriteSceneHistory() => JSONInteraction.WriteSceneHistory(History, GameState.CurrentHero.Name);
 
         #endregion Scene Navigation
+
+        internal static void SetInventoryFromGrid(GridInventory inventory)
+        {
+            Godot.Collections.Array allSlots = inventory.GetChild(0).GetChildren();
+            List<Item> allItems = new List<Item>();
+            foreach (ItemSlot slot in allSlots)
+            {
+                if (slot?.Item?.Item != new Item())
+                    allItems.Add(slot?.Item?.Item);
+            }
+            CurrentHero.Inventory = allItems;
+        }
+
+        internal static void SetEquipmentFromGrid(GridEquipment equipment)
+        {
+            ItemSlot WeaponSlot = (ItemSlot)equipment.GetNode("WeaponSlot");
+            ItemSlot HeadSlot = (ItemSlot)equipment.GetNode("HeadSlot");
+            ItemSlot BodySlot = (ItemSlot)equipment.GetNode("BodySlot");
+            ItemSlot HandsSlot = (ItemSlot)equipment.GetNode("HandsSlot");
+            ItemSlot LegsSlot = (ItemSlot)equipment.GetNode("LegsSlot");
+            ItemSlot FeetSlot = (ItemSlot)equipment.GetNode("FeetSlot");
+            ItemSlot LeftRingSlot = (ItemSlot)equipment.GetNode("LeftRingSlot");
+            ItemSlot RightRingSlot = (ItemSlot)equipment.GetNode("RightRingSlot");
+            if (WeaponSlot.Item != null)
+                GameState.CurrentHero.Equipment.Weapon = WeaponSlot.Item.Item;
+            if (HeadSlot.Item != null)
+                GameState.CurrentHero.Equipment.Head = HeadSlot.Item.Item;
+            if (BodySlot.Item != null)
+                GameState.CurrentHero.Equipment.Body = BodySlot.Item.Item;
+            if (HandsSlot.Item != null)
+                GameState.CurrentHero.Equipment.Hands = HandsSlot.Item.Item;
+            if (LegsSlot.Item != null)
+                GameState.CurrentHero.Equipment.Legs = LegsSlot.Item.Item;
+            if (FeetSlot.Item != null)
+                GameState.CurrentHero.Equipment.Feet = FeetSlot.Item.Item;
+            if (LeftRingSlot.Item != null)
+                GameState.CurrentHero.Equipment.LeftRing = LeftRingSlot.Item.Item;
+            if (RightRingSlot.Item != null)
+                GameState.CurrentHero.Equipment.RightRing = RightRingSlot.Item.Item;
+        }
 
         /// <summary>Determines whether a Hero's credentials are authentic.</summary>
         /// <param name="username">Hero's name</param>

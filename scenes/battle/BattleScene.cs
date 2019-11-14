@@ -17,8 +17,8 @@ public class BattleScene : Control
     private bool _progress;
     private Button BtnAttack, BtnCastSpell, BtnChooseSpell, BtnEnemyDetails, BtnFlee, BtnLootBody, BtnReturn;
     private Label LblHeroName, LblHeroHealth, LblHeroMagic, LblHeroShield, LblEnemyName, LblEnemyHealth, LblEnemyMagic, LblEnemyShield, LblSpellName, LblSpellCost;
+    private RichTextLabel TxtBattle;
     private string _previousPage;
-    private TextEdit TxtBattle;
 
     #region Modifying Properties
 
@@ -75,7 +75,7 @@ public class BattleScene : Control
         LblEnemyShield = (Label)GetNode("Enemy/LblShield");
         LblSpellName = (Label)GetNode("LblSpellName");
         LblSpellCost = (Label)GetNode("LblSpellCost");
-        TxtBattle = (TextEdit)GetNode("TxtBattle");
+        TxtBattle = (RichTextLabel)GetNode("TxtBattle");
     }
 
     /// <summary>Update labels to current values.</summary>
@@ -101,8 +101,7 @@ public class BattleScene : Control
     private void AddTextToTextBox(string newText)
     {
         TxtBattle.Text += TxtBattle.Text.Length > 0 ? "\n\n" + newText : newText;
-        TxtBattle.CursorSetLine(TxtBattle.GetLineCount());
-        TxtBattle.Select(TxtBattle.GetLineCount(), 0, 0, 0);
+        TxtBattle.ScrollFollowing = true;
     }
 
     /// <summary>Represents an action taken in a battle.</summary>

@@ -9,6 +9,7 @@ namespace Sulimn.Scenes.Inventory
         public bool Drag;
         private Orphanage orphanage;
         private Item _item = new Item();
+        private ItemContextMenu _contextMenu;
 
         public Item Item
         {
@@ -19,41 +20,51 @@ namespace Sulimn.Scenes.Inventory
         public override void _Ready()
         {
             orphanage = (Orphanage)GetTree().CurrentScene.FindNode("Orphanage");
+            _contextMenu = (ItemContextMenu)GetNode("ItemContextMenu");
             MouseDefaultCursorShape = CursorShape.PointingHand;
         }
 
         private void _on_TextureRect_gui_input(InputEvent @event)
         {
-            if (@event is InputEventMouseButton button && button.Pressed && button.ButtonIndex == 1)
+            if (@event is InputEventMouseButton button && button.Pressed)
             {
-                if (!Drag)
+                ItemSlot slot = (ItemSlot)GetParent();
+                if (button.ButtonIndex == 1)
                 {
-                    ItemSlot slot = (ItemSlot)GetParent();
-                    if (orphanage.GetChildCount() > 0)
+                    if (!Drag)
                     {
-                        InventoryItem orphanItem = (InventoryItem)orphanage.GetChild(0);
-                        if (!orphanage.PreviousSlot.Merchant && !slot.Merchant && slot.ItemTypes.Contains(orphanItem.Item.Type)) // if not buying nor selling, and is a valid slot
-                            SwapItems(slot, orphanItem);
-                        else if (orphanage.PreviousSlot.Merchant && !slot.Merchant && GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
-                            SwapItems(slot, orphanItem);
-                        else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if selling
+                        if (orphanage.GetChildCount() > 0)
                         {
-                            GameState.CurrentHero.SellItem(orphanItem.Item);
-                            SwapItems(slot, orphanItem);
+                            InventoryItem orphanItem = (InventoryItem)orphanage.GetChild(0);
+                            if (!orphanage.PreviousSlot.Merchant && !slot.Merchant && slot.ItemTypes.Contains(orphanItem.Item.Type)) // if not buying nor selling, and is a valid slot
+                                SwapItems(slot, orphanItem);
+                            else if (orphanage.PreviousSlot.Merchant && !slot.Merchant && GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
+                                SwapItems(slot, orphanItem);
+                            else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if selling
+                            {
+                                GameState.CurrentHero.SellItem(orphanItem.Item);
+                                SwapItems(slot, orphanItem);
+                            }
+                            else if (orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
+                                SwapItems(slot, orphanItem);
                         }
-                        else if (orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
-                            SwapItems(slot, orphanItem);
+                        else if (orphanage.GetChildCount() == 0)
+                        {
+                            Drag = true;
+                            TextureRect rect = (TextureRect)GetChild(0);
+                            rect.MouseFilter = MouseFilterEnum.Ignore;
+                            GetParent().RemoveChild(this);
+                            slot.Item = new InventoryItem();
+                            orphanage.AddChild(this);
+                            orphanage.PreviousSlot = slot;
+                        }
                     }
-                    else if (orphanage.GetChildCount() == 0)
-                    {
-                        Drag = true;
-                        TextureRect rect = (TextureRect)GetChild(0);
-                        rect.MouseFilter = MouseFilterEnum.Ignore;
-                        GetParent().RemoveChild(this);
-                        slot.Item = new InventoryItem();
-                        orphanage.AddChild(this);
-                        orphanage.PreviousSlot = slot;
-                    }
+                }
+                else if (button.ButtonIndex == 2)
+                {
+                    _contextMenu.PopupCentered();
+                    _contextMenu.SetGlobalPosition(new Vector2(button.GetGlobalPosition().x + 32, button.GetGlobalPosition().y - 32));
+                    _contextMenu.LoadSlot(slot);
                 }
             }
         }

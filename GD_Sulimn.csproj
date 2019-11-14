@@ -99,6 +99,7 @@
     <Compile Include="scenes\inventory\GridEquipment.cs" />
     <Compile Include="scenes\inventory\GridInventory.cs" />
     <Compile Include="scenes\inventory\InventoryItem.cs" />
+    <Compile Include="scenes\inventory\ItemContextMenu.cs" />
     <Compile Include="scenes\inventory\ItemSlot.cs" />
     <Compile Include="scenes\inventory\Orphanage.cs" />
     <Compile Include="scenes\MainScene.cs" />

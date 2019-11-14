@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/inventory/ItemContextMenu.cs" type="Script" id=2]
+
+[node name="ItemContextMenu" type="PopupMenu"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 270, 140 )
+custom_fonts/font = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="BtnConsume" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 260.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 250, 55 )
+custom_fonts/font = ExtResource( 1 )
+text = "Consume"
+
+[node name="BtnDrop" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 75.0
+margin_right = 260.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 250, 55 )
+custom_fonts/font = ExtResource( 1 )
+text = "Drop"
+[connection signal="pressed" from="BtnConsume" to="." method="_on_BtnConsume_pressed"]
+[connection signal="pressed" from="BtnDrop" to="." method="_on_BtnDrop_pressed"]

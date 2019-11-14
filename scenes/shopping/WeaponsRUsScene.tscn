@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/shopping/WeaponsRUsScene.cs" type="Script" id=1]
 [ext_resource path="res://scenes/inventory/GridEquipment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/inventory/GridInventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=5]
 
 [node name="WeaponsRUs" type="Control"]
 anchor_right = 1.0
@@ -33,3 +34,13 @@ margin_right = 1910.0
 margin_bottom = 931.0
 
 [node name="Orphanage" parent="." instance=ExtResource( 4 )]
+
+[node name="BtnReturn" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 960.0
+margin_right = 1085.0
+margin_bottom = 1015.0
+rect_min_size = Vector2( 250, 55 )
+custom_fonts/font = ExtResource( 5 )
+text = "Return"
+[connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

@@ -20,7 +20,12 @@ namespace Sulimn.Scenes.Character
         public override void _UnhandledInput(InputEvent @event)
         {
             if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape)
+            {
+                Save();
+                GameState.Info.DisplayStats();
+                GameState.UpdateDisplay = false;
                 GetTree().ChangeSceneTo(GameState.GoBack());
+            }
         }
 
         #region Load
@@ -70,6 +75,20 @@ namespace Sulimn.Scenes.Character
         }
 
         #endregion Load
+
+        #region Save
+
+        private void Save()
+        {
+            SaveInventory();
+            SaveEquipment();
+        }
+
+        private void SaveInventory() => GameState.SetInventoryFromGrid(GridInventory);
+
+        private void SaveEquipment() => GameState.SetEquipmentFromGrid(GridEquipment);
+
+        #endregion Save
 
         #region Display Manipulation
 
@@ -287,6 +306,12 @@ namespace Sulimn.Scenes.Character
         // Called every frame. 'delta' is the elapsed time since the previous frame.
         public override void _Process(float delta)
         {
+            if (GameState.UpdateDisplay)
+            {
+                Save();
+                UpdateLabels();
+                GameState.UpdateDisplay = false;
+            }
         }
     }
 }

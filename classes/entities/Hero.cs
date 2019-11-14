@@ -158,6 +158,18 @@ namespace Sulimn.Classes.Entities
             Inventory = Inventory.OrderBy(itm => itm.Name).ToList();
         }
 
+        /// <summary>Consumes an <see cref="Item"/>.</summary>
+        /// <param name="item"><see cref="Item"/> to be consumed</param>
+        internal string ConsumeItem(Item item)
+        {
+            string restoreText = "";
+            if (item.RestoreMagic > 0)
+                restoreText += Statistics.RestoreMagic(item.RestoreMagic);
+            if (item.RestoreHealth > 0)
+                restoreText += Heal(item.RestoreHealth);
+            return restoreText;
+        }
+
         /// <summary>Removes an Item from the inventory.</summary>
         /// <param name="item">Item to be removed</param>
         internal void RemoveItem(Item item) => Inventory.Remove(item);

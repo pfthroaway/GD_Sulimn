@@ -3108,7 +3108,7 @@
   },
   {
     "Name": "Leon the Knave",
-    "Type": "Human",
+    "Type": "Boss",
     "Level": 5,
     "Experience": 125,
     "Gold": 200,
