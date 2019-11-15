@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/battle/LootBodyScene.cs" type="Script" id=1]
+[ext_resource path="res://scenes/inventory/GridEquipment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/inventory/GridInventory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/Button.tres" type="Theme" id=4]
+[ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=5]
+
+[sub_resource type="InputEventKey" id=1]
+scancode = 82
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[node name="LootBody" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="HeroEquipment" parent="." instance=ExtResource( 2 )]
+margin_left = 32.5
+margin_top = 10.0
+margin_right = -1247.5
+margin_bottom = -430.0
+
+[node name="HeroInventory" parent="." instance=ExtResource( 3 )]
+margin_left = 10.0
+margin_top = 660.0
+margin_right = 695.0
+margin_bottom = 931.0
+
+[node name="EnemyEquipment" parent="." instance=ExtResource( 2 )]
+margin_left = 1247.5
+margin_top = 10.0
+margin_right = -32.5
+margin_bottom = -430.0
+
+[node name="EnemyInventory" parent="." instance=ExtResource( 3 )]
+margin_left = 1225.0
+margin_top = 660.0
+margin_right = 1910.0
+margin_bottom = 931.0
+
+[node name="BtnReturn" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 950.0
+margin_right = 1085.0
+margin_bottom = 1005.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 4 )
+shortcut = SubResource( 2 )
+text = "Return"
+
+[node name="Orphanage" parent="." instance=ExtResource( 5 )]
+[connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

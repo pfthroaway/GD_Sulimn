@@ -1,4 +1,5 @@
 using Godot;
+using Sulimn.Classes;
 using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
 using System.Collections.Generic;
@@ -9,34 +10,36 @@ namespace Sulimn.Scenes.Inventory
     {
         private ItemSlot WeaponSlot, HeadSlot, BodySlot, HandsSlot, LegsSlot, FeetSlot, LeftRingSlot, RightRingSlot;
 
-        private void AddItemInstanceToSlot(ItemSlot slot, Item item)
+        public void SetUpEquipment(Equipment equipment, bool enemy = false)
         {
-            var scene = (PackedScene)ResourceLoader.Load("res://scenes/inventory/InventoryItem.tscn");
-            InventoryItem invItem = (InventoryItem)scene.Instance();
-            slot.AddChild(invItem);
-            slot.Item = invItem;
-            slot.Item.SetItem(item);
-            invItem.Theme = (Theme)ResourceLoader.Load("res://resources/TextureRect.tres");
-        }
+            if (enemy)
+            {
+                WeaponSlot.Enemy = true;
+                HeadSlot.Enemy = true;
+                BodySlot.Enemy = true;
+                HandsSlot.Enemy = true;
+                LegsSlot.Enemy = true;
+                FeetSlot.Enemy = true;
+                LeftRingSlot.Enemy = true;
+                RightRingSlot.Enemy = true;
+            }
 
-        public void SetUpEquipment(Equipment equipment)
-        {
             if (equipment.Weapon != new Item())
-                AddItemInstanceToSlot(WeaponSlot, equipment.Weapon);
+                GameState.AddItemInstanceToSlot(WeaponSlot, equipment.Weapon);
             if (equipment.Head != new Item())
-                AddItemInstanceToSlot(HeadSlot, equipment.Head);
+                GameState.AddItemInstanceToSlot(HeadSlot, equipment.Head);
             if (equipment.Body != new Item())
-                AddItemInstanceToSlot(BodySlot, equipment.Body);
+                GameState.AddItemInstanceToSlot(BodySlot, equipment.Body);
             if (equipment.Hands != new Item())
-                AddItemInstanceToSlot(HandsSlot, equipment.Hands);
+                GameState.AddItemInstanceToSlot(HandsSlot, equipment.Hands);
             if (equipment.Legs != new Item())
-                AddItemInstanceToSlot(LegsSlot, equipment.Legs);
+                GameState.AddItemInstanceToSlot(LegsSlot, equipment.Legs);
             if (equipment.Feet != new Item())
-                AddItemInstanceToSlot(FeetSlot, equipment.Feet);
+                GameState.AddItemInstanceToSlot(FeetSlot, equipment.Feet);
             if (equipment.LeftRing != new Item())
-                AddItemInstanceToSlot(LeftRingSlot, equipment.LeftRing);
+                GameState.AddItemInstanceToSlot(LeftRingSlot, equipment.LeftRing);
             if (equipment.RightRing != new Item())
-                AddItemInstanceToSlot(RightRingSlot, equipment.RightRing);
+                GameState.AddItemInstanceToSlot(RightRingSlot, equipment.RightRing);
         }
 
         private void AssignControls()

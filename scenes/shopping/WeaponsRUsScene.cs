@@ -10,7 +10,8 @@ namespace Sulimn.Scenes.Shopping
     public class WeaponsRUsScene : Control
     {
         private GridEquipment GridEquipment;
-        private GridInventory GridInventory, MerchantInventory;
+        private GridInventory GridInventory;
+        private MerchantInventory MerchantInventory;
 
         // TODO Make it so that you can purchase/sell equipment, and it updates your equipment, inventory and gold properly.
 
@@ -34,10 +35,10 @@ namespace Sulimn.Scenes.Shopping
         private void AssignControls()
         {
             GridInventory = (GridInventory)GetNode("GridInventory");
-            MerchantInventory = (GridInventory)GetNode("MerchantInventory");
+            MerchantInventory = (MerchantInventory)GetNode("MerchantInventory");
             GridEquipment = (GridEquipment)GetNode("GridEquipment");
-            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory.Where(itm => itm.CanSell).ToList(), false);
-            MerchantInventory.SetUpInventory(GameState.AllWeapons.Where(wpn => wpn.IsSold).ToList(), true);
+            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory.Where(itm => itm.CanSell).ToList());
+            MerchantInventory.SetUpInventory(GameState.AllWeapons.Where(wpn => wpn.IsSold).ToList());
             GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
         }
 

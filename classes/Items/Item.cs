@@ -226,6 +226,9 @@ namespace Sulimn.Classes.Items
         [JsonIgnore]
         public string SellValueToStringWithText => $"Sell Value: {SellValueToString}";
 
+        /// <summary>Is the <see cref="Item"/> lootable?</summary>
+        public bool IsLootable => Value > 0 && (CanSell || IsSold);
+
         /// <summary>Returns text relating to the sellability of the <see cref="Item"/>.</summary>
         [JsonIgnore]
         public string CanSellToString => CanSell ? "Sellable" : "Not Sellable";

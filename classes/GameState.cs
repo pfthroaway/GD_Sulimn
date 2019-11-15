@@ -59,6 +59,8 @@ namespace Sulimn.Classes
             SaveHero(CurrentHero);
         }
 
+        /// <summary>Go back to previous scene.</summary>
+        /// <returns>Previous scene</returns>
         internal static PackedScene GoBack()
         {
             PackedScene last = History.Last();
@@ -168,6 +170,19 @@ namespace Sulimn.Classes
         private static Enemy GetEnemy(string name) => new Enemy(AllEnemies.Find(enemy => enemy.Name == name));
 
         #region Item Management
+
+        /// <summary>Adds an instance of <see cref="Item"/> to an <see cref="ItemSlot"/>.</summary>
+        /// <param name="slot"><see cref="ItemSlot"/> where the <see cref="Item"/> is to be added</param>
+        /// <param name="item"><see cref="Item"/> to be added</param>
+        internal static void AddItemInstanceToSlot(ItemSlot slot, Item item)
+        {
+            var scene = (PackedScene)ResourceLoader.Load("res://scenes/inventory/InventoryItem.tscn");
+            InventoryItem invItem = (InventoryItem)scene.Instance();
+            slot.AddChild(invItem);
+            slot.Item = invItem;
+            slot.Item.SetItem(item);
+            invItem.Theme = (Theme)ResourceLoader.Load("res://resources/TextureRect.tres");
+        }
 
         /// <summary>Gets a specific Item based on its name.</summary>
         /// <param name="name">Item name</param>

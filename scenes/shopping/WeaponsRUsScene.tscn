@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/shopping/WeaponsRUsScene.cs" type="Script" id=1]
 [ext_resource path="res://scenes/inventory/GridEquipment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/inventory/GridInventory.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=4]
-[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/inventory/MerchantInventory.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/Button.tres" type="Theme" id=5]
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=7]
+
+[sub_resource type="InputEventKey" id=1]
+scancode = 82
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
 [node name="WeaponsRUs" type="Control"]
 anchor_right = 1.0
@@ -16,9 +24,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="GridEquipment" parent="." instance=ExtResource( 2 )]
-margin_left = 22.5
+margin_left = 32.5
 margin_top = 10.0
-margin_right = -1257.5
+margin_right = -1247.5
 margin_bottom = -430.0
 
 [node name="GridInventory" parent="." instance=ExtResource( 3 )]
@@ -27,20 +35,22 @@ margin_top = 660.0
 margin_right = 695.0
 margin_bottom = 931.0
 
-[node name="MerchantInventory" parent="." instance=ExtResource( 3 )]
+[node name="MerchantInventory" parent="." instance=ExtResource( 4 )]
 margin_left = 1225.0
-margin_top = 660.0
+margin_top = 522.0
 margin_right = 1910.0
 margin_bottom = 931.0
 
-[node name="Orphanage" parent="." instance=ExtResource( 4 )]
-
 [node name="BtnReturn" type="Button" parent="."]
 margin_left = 835.0
-margin_top = 960.0
+margin_top = 950.0
 margin_right = 1085.0
-margin_bottom = 1015.0
+margin_bottom = 1005.0
 rect_min_size = Vector2( 250, 55 )
-custom_fonts/font = ExtResource( 5 )
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
+shortcut = SubResource( 2 )
 text = "Return"
+
+[node name="Orphanage" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

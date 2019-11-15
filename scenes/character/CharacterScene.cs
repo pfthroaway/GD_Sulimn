@@ -36,7 +36,7 @@ namespace Sulimn.Scenes.Character
             AssignControls();
             _copyOfHero = new Hero(GameState.CurrentHero);
             UpdateLabels();
-            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory, false);
+            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
             GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
             CheckSkillPoints();
         }
@@ -113,6 +113,7 @@ namespace Sulimn.Scenes.Character
             UpdateLabels();
         }
 
+        /// <summary>Updates all the labels.</summary>
         public void UpdateLabels()
         {
             LblName.Text = GameState.CurrentHero.Name;

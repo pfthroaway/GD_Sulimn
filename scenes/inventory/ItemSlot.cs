@@ -19,6 +19,9 @@ namespace Sulimn.Scenes.Inventory
         /// <summary>Is this <see cref="ItemSlot"/> an equipment slot?</summary>
         public bool Equipment { get; set; }
 
+        /// <summary>Is this <see cref="ItemSlot"/> part of an enemy's inventory?</summary>
+        public bool Enemy { get; set; }
+
         /// <summary>Is this <see cref="ItemSlot"/> part of a merchant's inventory?</summary>
         public bool Merchant { get; set; }
 

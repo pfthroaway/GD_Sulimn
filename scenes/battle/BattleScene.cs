@@ -634,6 +634,12 @@ public class BattleScene : Control
 
     private void _on_BtnFlee_pressed() => NewRound(BattleAction.Flee);
 
+    private void _on_BtnLootBody_pressed()
+    {
+        GameState.AddSceneToHistory(GetTree().CurrentScene);
+        GetTree().ChangeScene("res://scenes/battle/LootBodyScene.tscn");
+    }
+
     private void _on_BtnReturn_pressed()
     {
         //if the battle is over, return to where you came from

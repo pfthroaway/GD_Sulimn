@@ -5,15 +5,16 @@ using System.Collections.Generic;
 
 namespace Sulimn.Scenes.Inventory
 {
-    public class GridInventory : Panel
+    public class MerchantInventory : Panel
     {
         /// <summary>Sets up an inventory.</summary>
         /// <param name="inventory"></param>
         public void SetUpInventory(List<Item> inventory)
         {
-            for (int i = 0; i < 40; i++)
+            for (int i = 0; i < 60; i++)
             {
                 ItemSlot slot = (ItemSlot)FindNode($"ItemSlot{i + 1}");
+                slot.Merchant = true;
                 if (i < inventory.Count)
                     GameState.AddItemInstanceToSlot(slot, inventory[i]);
             }
