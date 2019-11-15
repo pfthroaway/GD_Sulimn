@@ -48,6 +48,12 @@ public class BattleScene : Control
 
     #region Load
 
+    public override void _UnhandledKeyInput(InputEventKey @event)
+    {
+        if (@event.Pressed && @event.Scancode == (int)KeyList.Escape)
+            _on_BtnReturn_pressed();
+    }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -634,13 +640,11 @@ public class BattleScene : Control
         //if you were fight a progression battle and you killed the enemy,
         //add progression to the character and set to display after progression screens
 
+        // TODO Implement Progression
         if (_battleEnded)
         {
             switch (_previousPage)
             {
-                case "Explore":
-                    break;
-
                 case "Fields":
                     if (_progress && GameState.CurrentEnemy.Statistics.CurrentHealth <= 0)
                     {

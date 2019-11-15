@@ -3,6 +3,7 @@ using Godot.Collections;
 
 namespace Sulimn.Actors
 {
+    /// <summary>Represents a moveable <see cref="Player"/>.</summary>
     public class Player : Area2D
     {
         private readonly int TileSize = 64;

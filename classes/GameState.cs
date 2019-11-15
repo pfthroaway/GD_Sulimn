@@ -361,7 +361,7 @@ namespace Sulimn.Classes
             CurrentHero.Statistics.CurrentMagic = CurrentHero.Statistics.MaximumMagic;
 
             return
-            "You stumble across a stream. You stop to drink some of the water and rest a while. You feel recharged!";
+            "You stumble across a stream.\nYou stop to drink some of\nthe water and rest a while.\nYou feel recharged!";
         }
 
         #endregion Exploration Events

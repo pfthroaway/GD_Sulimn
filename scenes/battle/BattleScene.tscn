@@ -40,7 +40,7 @@ scancode = 70
 shortcut = SubResource( 11 )
 
 [sub_resource type="InputEventKey" id=13]
-scancode = 16777217
+scancode = 82
 
 [sub_resource type="ShortCut" id=14]
 shortcut = SubResource( 13 )
