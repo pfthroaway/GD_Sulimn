@@ -36,17 +36,20 @@ namespace Sulimn.Scenes.Inventory
                         if (orphanage.GetChildCount() > 0)
                         {
                             InventoryItem orphanItem = (InventoryItem)orphanage.GetChild(0);
-                            if (!orphanage.PreviousSlot.Merchant && !slot.Merchant && slot.ItemTypes.Contains(orphanItem.Item.Type)) // if not buying nor selling, and is a valid slot
-                                SwapItems(slot, orphanItem);
-                            else if (orphanage.PreviousSlot.Merchant && !slot.Merchant && GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
-                                SwapItems(slot, orphanItem);
-                            else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if selling
+                            if (slot.ItemTypes.Contains(orphanItem.Item.Type))
                             {
-                                GameState.CurrentHero.SellItem(orphanItem.Item);
-                                SwapItems(slot, orphanItem);
+                                if (!orphanage.PreviousSlot.Merchant && !slot.Merchant) // if not buying nor selling, and is a valid slot
+                                    SwapItems(slot, orphanItem);
+                                else if (orphanage.PreviousSlot.Merchant && !slot.Merchant && GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
+                                    SwapItems(slot, orphanItem);
+                                else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if selling
+                                {
+                                    GameState.CurrentHero.SellItem(orphanItem.Item);
+                                    SwapItems(slot, orphanItem);
+                                }
+                                else if (orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
+                                    SwapItems(slot, orphanItem);
                             }
-                            else if (orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
-                                SwapItems(slot, orphanItem);
                         }
                         else if (orphanage.GetChildCount() == 0)
                         {

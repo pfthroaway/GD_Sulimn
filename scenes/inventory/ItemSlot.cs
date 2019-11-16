@@ -34,17 +34,20 @@ namespace Sulimn.Scenes.Inventory
                 if (orphanage.GetChildCount() > 0)
                 {
                     InventoryItem item = (InventoryItem)orphanage.GetChild(0);
-                    if (!orphanage.PreviousSlot.Merchant && !Merchant && ItemTypes.Contains(item.Item.Type))
-                        PutItemInSlot(item);// if not buying nor selling, and is a valid slot
-                    else if (orphanage.PreviousSlot.Merchant && !Merchant && GameState.CurrentHero.PurchaseItem(item.Item)) // if purchasing and can afford it
-                        PutItemInSlot(item);
-                    else if (!orphanage.PreviousSlot.Merchant && Merchant && item.Item.CanSell) // if selling
+                    if (ItemTypes.Contains(item.Item.Type))
                     {
-                        GameState.CurrentHero.SellItem(item.Item);
-                        PutItemInSlot(item);
+                        if (!orphanage.PreviousSlot.Merchant && !Merchant)
+                            PutItemInSlot(item);// if not buying nor selling, and is a valid slot
+                        else if (orphanage.PreviousSlot.Merchant && !Merchant && GameState.CurrentHero.PurchaseItem(item.Item)) // if purchasing and can afford it
+                            PutItemInSlot(item);
+                        else if (!orphanage.PreviousSlot.Merchant && Merchant && item.Item.CanSell) // if selling
+                        {
+                            GameState.CurrentHero.SellItem(item.Item);
+                            PutItemInSlot(item);
+                        }
+                        else if (orphanage.PreviousSlot.Merchant && Merchant) // if moving Merchant item to different Merchant slot
+                            PutItemInSlot(item);
                     }
-                    else if (orphanage.PreviousSlot.Merchant && Merchant) // if moving Merchant item to different Merchant slot
-                        PutItemInSlot(item);
                 }
             }
         }
