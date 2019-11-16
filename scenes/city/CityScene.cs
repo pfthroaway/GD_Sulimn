@@ -28,6 +28,14 @@ namespace Sulimn.Scenes.City
             GameState.Info.DisplayStats();
         }
 
+        #region Areas Entered
+
+        private void _on_CathedralArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+                Player.Move("down");
+        }
+
         private void _on_FieldsArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
@@ -36,6 +44,22 @@ namespace Sulimn.Scenes.City
                 GameState.AddSceneToHistory(GetTree().CurrentScene);
                 GetTree().ChangeScene("res://scenes/exploration/FieldsScene.tscn");
             }
+        }
+
+        private void _on_ForestArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+            {
+                Player.Move("right");
+                GameState.AddSceneToHistory(GetTree().CurrentScene);
+                GetTree().ChangeScene("res://scenes/exploration/ForestScene.tscn");
+            }
+        }
+
+        private void _on_MinesArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+                Player.Move("up");
         }
 
         private void _on_MarketArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
@@ -47,6 +71,8 @@ namespace Sulimn.Scenes.City
                 GetTree().ChangeScene("res://scenes/shopping/MarketScene.tscn");
             }
         }
+
+        #endregion Areas Entered
 
         // Called every frame. 'delta' is the elapsed time since the previous frame.
         public override void _PhysicsProcess(float delta)

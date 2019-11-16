@@ -28,6 +28,10 @@ namespace Sulimn.Scenes.Inventory
                     case ItemType.Potion:
                         BtnConsume.Disabled = false;
                         break;
+
+                    default:
+                        BtnConsume.Disabled = true;
+                        break;
                 }
             }
             else

@@ -5,14 +5,14 @@ using Sulimn.Classes.Extensions;
 
 namespace Sulimn.Scenes.Exploration
 {
-    public class FieldsScene : Node2D
+    public class ForestScene : Node2D
     {
         private Player Player;
         private Vector2 PreviousPosition;
         private MyAcceptDialog acceptDialog;
         private int MovesSinceLastEvent;
         private int BonusChance;
-        private Area2D CottageArea;
+        private Area2D ClearingArea;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
@@ -20,7 +20,7 @@ namespace Sulimn.Scenes.Exploration
             Player = (Player)GetTree().CurrentScene.FindNode("Player");
             acceptDialog = (MyAcceptDialog)GetNode("MyAcceptDialog");
             PreviousPosition = Player.GetGlobalPosition();
-            CottageArea = (Area2D)GetNode("CottageArea");
+            ClearingArea = (Area2D)GetNode("ClearingArea");
         }
 
         public override void _Process(float delta)
@@ -44,7 +44,7 @@ namespace Sulimn.Scenes.Exploration
                 GetTree().ChangeSceneTo(GameState.GoBack());
         }
 
-        private void _on_CottageArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        private void _on_ClearingArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
             {
@@ -79,18 +79,32 @@ namespace Sulimn.Scenes.Exploration
             if (GameState.CurrentHero.Statistics.CurrentHealth > 1)
             {
                 int evnt = Functions.GenerateRandomNumber(1, 20);
-                if (evnt <= 4) // 20% chance for battle
+                if (evnt <= 2) // 10% chance for easy battle
                 {
                     GameState.AddSceneToHistory(GetTree().CurrentScene);
                     GameState.EventEncounterEnemy(1, 5);
                     GetTree().ChangeScene("res://scenes/battle/BattleScene.tscn");
                     MovesSinceLastEvent = 0;
                 }
-                else if (evnt <= 6) // 10% chance to find an item
-                    DisplayPopup(GameState.EventFindItem(1, 100));
-                else if (evnt <= 8) // 10% chance to find gold
-                    DisplayPopup(GameState.EventFindGold(1, 100));
-                else if (evnt <= 10) // 10% chance to find stream
+                else if (evnt <= 4) // 10% chance for medium battle
+                {
+                    GameState.AddSceneToHistory(GetTree().CurrentScene);
+                    GameState.EventEncounterEnemy(3, 7);
+                    GetTree().ChangeScene("res://scenes/battle/BattleScene.tscn");
+                    MovesSinceLastEvent = 0;
+                }
+                else if (evnt <= 5) // 5% chance for hard battle
+                {
+                    GameState.AddSceneToHistory(GetTree().CurrentScene);
+                    GameState.EventEncounterEnemy(5, 10);
+                    GetTree().ChangeScene("res://scenes/battle/BattleScene.tscn");
+                    MovesSinceLastEvent = 0;
+                }
+                else if (evnt <= 7) // 10% chance to find an item
+                    DisplayPopup(GameState.EventFindItem(1, 200));
+                else if (evnt <= 9) // 10% chance to find gold
+                    DisplayPopup(GameState.EventFindGold(1, 200));
+                else if (evnt <= 10) // 5% chance to find stream
                     DisplayPopup(GameState.EventEncounterStream(), 1.5f);
                 // 50% chance for no event
             }

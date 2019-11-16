@@ -94,9 +94,10 @@
     <Compile Include="scenes\battle\LootBodyScene.cs" />
     <Compile Include="scenes\character\CharacterScene.cs" />
     <Compile Include="scenes\city\CityScene.cs" />
+    <Compile Include="scenes\exploration\ForestScene.cs" />
     <Compile Include="scenes\exploration\MyAcceptDialog.cs" />
     <Compile Include="scenes\exploration\FieldsScene.cs" />
-    <Compile Include="scenes\info\Info.cs" />
+    <Compile Include="scenes\Info.cs" />
     <Compile Include="scenes\inventory\GridEquipment.cs" />
     <Compile Include="scenes\inventory\GridInventory.cs" />
     <Compile Include="scenes\inventory\InventoryItem.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="scenes\MainScene.cs" />
     <Compile Include="scenes\character\NewHeroScene.cs" />
     <Compile Include="scenes\shopping\ItemMerchantScene.cs" />
+    <Compile Include="scenes\shopping\MagickShoppeScene.cs" />
     <Compile Include="scenes\shopping\MarketScene.cs" />
   </ItemGroup>
   <ItemGroup>

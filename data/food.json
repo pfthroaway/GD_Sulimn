@@ -89,7 +89,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_C_Bread.png"
+    "Texture": "res://assets/inventory/images/cracker.png"
   },
   {
     "Name": "Soup",
@@ -112,6 +112,6 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_C_Bread.png"
+    "Texture": "res://assets/inventory/images/soup.png"
   }
 ]

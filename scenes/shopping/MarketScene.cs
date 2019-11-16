@@ -5,7 +5,7 @@ using Sulimn.Classes.Extensions;
 using Sulimn.Classes.Items;
 using System.Collections.Generic;
 
-namespace Sulimn.Scenes.City
+namespace Sulimn.Scenes.Shopping
 {
     public class MarketScene : Node2D
     {
@@ -36,6 +36,12 @@ namespace Sulimn.Scenes.City
 
         private void _on_MagickShoppeArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
+            if (area is Node player && player.IsInGroup("Player"))
+            {
+                Player.Move("down");
+                GameState.AddSceneToHistory(GetTree().CurrentScene);
+                GetTree().ChangeScene("res://scenes/shopping/MagickShoppeScene.tscn");
+            }
         }
 
         private void _on_SilverEmpireArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)

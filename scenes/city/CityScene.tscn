@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/city/CityScene.cs" type="Script" id=1]
 [ext_resource path="res://assets/tileset/water.png" type="Texture" id=2]
@@ -71,6 +71,15 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 extents = Vector2( 32, 64 )
 
 [sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 32, 64 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 64, 32 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 64, 32 )
+
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 64, 32 )
 
 [node name="Node2D" type="Node2D"]
@@ -90,10 +99,31 @@ position = Vector2( 1824, 480 )
 position = Vector2( 1888, 512 )
 shape = SubResource( 4 )
 
+[node name="ForestArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForestArea"]
+position = Vector2( 32, 512 )
+shape = SubResource( 5 )
+
+[node name="MinesArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinesArea"]
+position = Vector2( 960, 1054 )
+shape = SubResource( 6 )
+
+[node name="CathedralArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CathedralArea"]
+position = Vector2( 960, 32 )
+shape = SubResource( 8 )
+
 [node name="MarketArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MarketArea"]
 position = Vector2( 768, 224 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 [connection signal="area_shape_entered" from="FieldsArea" to="." method="_on_FieldsArea_area_shape_entered"]
+[connection signal="area_shape_entered" from="ForestArea" to="." method="_on_ForestArea_area_shape_entered"]
+[connection signal="area_shape_entered" from="MinesArea" to="." method="_on_MinesArea_area_shape_entered"]
+[connection signal="area_shape_entered" from="CathedralArea" to="." method="_on_CathedralArea_area_shape_entered"]
 [connection signal="area_shape_entered" from="MarketArea" to="." method="_on_MarketArea_area_shape_entered"]

@@ -11,15 +11,15 @@ namespace Sulimn.Classes.Entities
     {
         #region Modifying Properties
 
-        /// <summary>Name of character</summary>
+        /// <summary>Name of <see cref="Character"/></summary>
         [JsonProperty(Order = -5)]
         public string Name { get; set; }
 
-        /// <summary>Level of character</summary>
+        /// <summary>Level of <see cref="Character"/></summary>
         [JsonProperty(Order = 1)]
         public int Level { get; set; }
 
-        /// <summary>Name of character</summary>
+        /// <summary>Name of <see cref="Character"/></summary>
         [JsonProperty(Order = 2)]
         public int Experience { get; set; }
 
@@ -27,23 +27,23 @@ namespace Sulimn.Classes.Entities
         [JsonProperty(Order = 3)]
         public int Gold { get; set; }
 
-        /// <summary>Attributes of character</summary>
+        /// <summary>Attributes of <see cref="Character"/></summary>
         [JsonProperty(Order = 4)]
         public Attributes Attributes { get; set; } = new Attributes();
 
-        /// <summary>Statistics of character</summary>
+        /// <summary>Statistics of <see cref="Character"/></summary>
         [JsonProperty(Order = 5)]
         public Statistics Statistics { get; set; } = new Statistics();
 
-        /// <summary>Equipment of character</summary>
+        /// <summary>Equipment of <see cref="Character"/></summary>
         [JsonProperty(Order = 6)]
         public Equipment Equipment { get; set; } = new Equipment();
 
-        /// <summary>The list of Spells the Hero currently knows</summary>
+        /// <summary>The list of <see cref="Spell"/>s the <see cref="Character"/> currently knows</summary>
         [JsonProperty(Order = 8)]
         public Spellbook Spellbook { get; set; } = new Spellbook();
 
-        /// <summary>List of Items in the inventory.</summary>
+        /// <summary>List of <see cref="Item"/>s in the inventory.</summary>
         [JsonProperty(Order = 10)]
         public List<Item> Inventory { get; set; } = new List<Item>();
 

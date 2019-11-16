@@ -32,7 +32,7 @@ public class LootBodyScene : Control
         HeroEquipment = (GridEquipment)GetNode("HeroEquipment");
         EnemyEquipment = (GridEquipment)GetNode("EnemyEquipment");
         HeroInventory.SetUpInventory(GameState.CurrentHero.Inventory);
-        EnemyInventory.SetUpInventory(GameState.CurrentEnemy.Inventory.Where(itm => itm.IsLootable).ToList());
+        EnemyInventory.SetUpInventory(GameState.CurrentEnemy.Inventory);
         HeroEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
         EnemyEquipment.SetUpEquipment(GameState.CurrentEnemy.Equipment, true);
     }

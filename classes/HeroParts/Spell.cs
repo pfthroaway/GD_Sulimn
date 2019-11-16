@@ -38,7 +38,7 @@ namespace Sulimn.Classes.HeroParts
 
         /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Spell"/>.</summary>
         [JsonIgnore]
-        public List<HeroClass> AllowedClasses { get; set; }
+        public List<HeroClass> AllowedClasses { get; set; } = new List<HeroClass>();
 
         /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Spell"/>, set up to import from JSON.</summary>
         [JsonProperty(Order = 7)]
@@ -108,6 +108,7 @@ namespace Sulimn.Classes.HeroParts
                    && left.Type == right.Type
                    && string.Equals(left.Description, right.Description, StringComparison.OrdinalIgnoreCase)
                    && !left.AllowedClasses.Except(right.AllowedClasses).Any()
+                   && !right.AllowedClasses.Except(left.AllowedClasses).Any()
                    && left.MinimumLevel == right.MinimumLevel
                    && left.MagicCost == right.MagicCost
                    && left.Amount == right.Amount;

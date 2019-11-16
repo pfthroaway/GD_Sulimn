@@ -4,6 +4,7 @@ using Sulimn.Classes.Entities;
 using Sulimn.Classes.Extensions;
 using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
+using Sulimn.Scenes;
 using Sulimn.Scenes.Inventory;
 using System;
 using System.Collections.Generic;
@@ -407,11 +408,11 @@ namespace Sulimn.Classes
             if (CurrentEnemy.Type == "Human" || CurrentEnemy.Type == "Boss")
             {
                 if (Functions.GenerateRandomNumber(1, 100) <= 20)
-                    CurrentEnemy.AddItem(GetRandomItem(1, CurrentEnemy.Level * 20));
-                if (Functions.GenerateRandomNumber(1, 100) <= 10)
                     CurrentEnemy.AddItem(GetRandomItem(1, CurrentEnemy.Level * 50));
-                if (CurrentEnemy.Type == "Boss" && Functions.GenerateRandomNumber(1, 100) <= 10)
+                if (Functions.GenerateRandomNumber(1, 100) <= 10)
                     CurrentEnemy.AddItem(GetRandomItem(1, CurrentEnemy.Level * 100));
+                if (CurrentEnemy.Type == "Boss" && Functions.GenerateRandomNumber(1, 100) <= 10)
+                    CurrentEnemy.AddItem(GetRandomItem(1, CurrentEnemy.Level * 200));
             }
         }
 

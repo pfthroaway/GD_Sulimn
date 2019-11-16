@@ -334,7 +334,8 @@ namespace Sulimn.Classes.Entities
                 && left.Gold == right.Gold
                 && left.Statistics == right.Statistics
                 && left.Progression == right.Progression
-                && !left.Inventory.Except(right.Inventory).Any();
+                && !left.Inventory.Except(right.Inventory).Any()
+                && !right.Inventory.Except(left.Inventory).Any();
         }
 
         public sealed override bool Equals(object obj) => Equals(this, obj as Hero);

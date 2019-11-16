@@ -110,6 +110,7 @@ namespace Sulimn.Scenes.Character
                 GameState.CurrentHero = new Hero(_copyOfHero);
             }
 
+            GameState.CurrentHero.UpdateStatistics();
             UpdateLabels();
         }
 
@@ -165,7 +166,7 @@ namespace Sulimn.Scenes.Character
                 attribute++;
                 GameState.CurrentHero.SkillPoints--;
             }
-
+            CheckSkillPoints();
             return attribute;
         }
 
@@ -194,6 +195,7 @@ namespace Sulimn.Scenes.Character
                 GameState.CurrentHero.SkillPoints++;
             }
 
+            CheckSkillPoints();
             return attribute;
         }
 

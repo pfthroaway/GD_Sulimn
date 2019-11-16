@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/shopping/MagickShoppeScene.cs" type="Script" id=1]
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/Button.tres" type="Theme" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1920, 1080 )
+script = ExtResource( 1 )
+
+[node name="LstSpells" type="ItemList" parent="."]
+margin_left = 540.0
+margin_top = 200.0
+margin_right = 940.0
+margin_bottom = 465.0
+rect_min_size = Vector2( 400, 265 )
+custom_fonts/font = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 540.0
+margin_top = 141.0
+margin_right = 940.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 400, 49 )
+custom_fonts/font = ExtResource( 2 )
+text = "Available Spells:"
+align = 1
+autowrap = true
+
+[node name="SpellInfo" type="VBoxContainer" parent="."]
+margin_left = 970.0
+margin_top = 200.0
+margin_right = 1370.0
+margin_bottom = 596.0
+custom_constants/separation = 10
+
+[node name="LblName" type="Label" parent="SpellInfo"]
+margin_right = 600.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 400, 49 )
+custom_fonts/font = ExtResource( 2 )
+autowrap = true
+
+[node name="LblTypeAmount" type="Label" parent="SpellInfo"]
+margin_top = 59.0
+margin_right = 600.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 400, 49 )
+custom_fonts/font = ExtResource( 2 )
+autowrap = true
+
+[node name="LblMagicCost" type="Label" parent="SpellInfo"]
+margin_top = 118.0
+margin_right = 600.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 400, 49 )
+custom_fonts/font = ExtResource( 2 )
+autowrap = true
+
+[node name="LblCost" type="Label" parent="SpellInfo"]
+margin_top = 177.0
+margin_right = 600.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 400, 49 )
+custom_fonts/font = ExtResource( 2 )
+autowrap = true
+
+[node name="LblRequiredLevel" type="Label" parent="SpellInfo"]
+margin_top = 236.0
+margin_right = 600.0
+margin_bottom = 285.0
+rect_min_size = Vector2( 400, 49 )
+custom_fonts/font = ExtResource( 2 )
+autowrap = true
+
+[node name="LblDescription" type="Label" parent="SpellInfo"]
+margin_top = 295.0
+margin_right = 600.0
+margin_bottom = 344.0
+rect_min_size = Vector2( 600, 49 )
+custom_fonts/font = ExtResource( 2 )
+autowrap = true
+
+[node name="BtnLearnSpell" type="Button" parent="."]
+margin_left = 615.0
+margin_top = 475.0
+margin_right = 865.0
+margin_bottom = 530.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
+disabled = true
+text = "Learn Spell"
+
+[node name="BtnReturn" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 950.0
+margin_right = 1085.0
+margin_bottom = 1005.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
+text = "Return"
+[connection signal="item_selected" from="LstSpells" to="." method="_on_LstSpells_item_selected"]
+[connection signal="pressed" from="BtnLearnSpell" to="." method="_on_BtnLearnSpell_pressed"]
+[connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

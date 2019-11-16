@@ -350,7 +350,8 @@ namespace Sulimn.Classes.Items
                 && left.MinimumLevel == right.MinimumLevel
                 && left.CanSell == right.CanSell
                 && left.IsSold == right.IsSold
-                && !left.AllowedClasses.Except(right.AllowedClasses).Any();
+                && !left.AllowedClasses.Except(right.AllowedClasses).Any()
+                && !right.AllowedClasses.Except(left.AllowedClasses).Any();
         }
 
         public override bool Equals(object obj) => Equals(this, obj as Item);

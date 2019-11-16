@@ -101,7 +101,6 @@ size_flags_horizontal = 6
 custom_fonts/font = ExtResource( 2 )
 
 [node name="Class" type="VBoxContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 650.0
@@ -209,6 +208,7 @@ align = 1
 valign = 1
 
 [node name="MinusButtons" type="VBoxContainer" parent="Vitals/Attributes"]
+editor/display_folded = true
 margin_left = 163.0
 margin_right = 213.0
 margin_bottom = 286.0

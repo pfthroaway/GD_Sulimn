@@ -546,38 +546,34 @@ public class BattleScene : Control
 
     /// <summary>Picks an <see cref="Item"/> to be targeted in an attack.</summary>
     /// <param name="equipment"><see cref="Equipment"/> where the items are to be picked from</param>
-    /// <returns>Item selected</returns>
+    /// <returns><see cref="Item"/> selected</returns>
     private Item ChooseItemToHit(Equipment equipment)
     {
-        switch (Functions.GenerateRandomNumber(1, 8))
-        {
-            case 1:
-                return equipment.Weapon;
+        // 2% chance to hit rings
+        // 10% chance to hit hands
+        // 10% chance to hit feet
+        // 11% chance to hit head
+        // 10% chance to hit legs
+        // 15% chance to hit weapon
+        // 40% chance to hit body
 
-            case 2:
-                return equipment.Head;
-
-            case 3:
-                return equipment.Body;
-
-            case 4:
-                return equipment.Hands;
-
-            case 5:
-                return equipment.Legs;
-
-            case 6:
-                return equipment.Feet;
-
-            case 7:
-                return equipment.LeftRing;
-
-            case 8:
-                return equipment.RightRing;
-
-            default:
-                return equipment.Body;
-        }
+        int item = Functions.GenerateRandomNumber(1, 100);
+        if (item <= 2)
+            return equipment.LeftRing;
+        else if (item <= 4)
+            return equipment.RightRing;
+        else if (item <= 14)
+            return equipment.Hands;
+        else if (item <= 24)
+            return equipment.Feet;
+        else if (item <= 35)
+            return equipment.Head;
+        else if (item <= 45)
+            return equipment.Legs;
+        else if (item <= 60)
+            return equipment.Weapon;
+        else
+            return equipment.Body;
     }
 
     /// <summary>Determines whether a flight attempt is successful.</summary>

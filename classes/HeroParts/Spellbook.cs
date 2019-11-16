@@ -42,7 +42,8 @@ namespace Sulimn.Classes.HeroParts
         {
             if (left is null && right is null) return true;
             if (left is null ^ right is null) return false;
-            return !left.Spells.Except(right.Spells).Any();
+            return !left.Spells.Except(right.Spells).Any()
+                && !right.Spells.Except(left.Spells).Any();
         }
 
         public sealed override bool Equals(object obj) => Equals(this, obj as Spellbook);
