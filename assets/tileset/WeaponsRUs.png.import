@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Feet.png-03e6a97c36b55729bde83c10dfc04821.stex"
+path="res://.import/WeaponsRUs.png-df9e96e1a1dace609ffb8892e47da503.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/inventory/Feet.png"
-dest_files=[ "res://.import/Feet.png-03e6a97c36b55729bde83c10dfc04821.stex" ]
+source_file="res://assets/tileset/WeaponsRUs.png"
+dest_files=[ "res://.import/WeaponsRUs.png-df9e96e1a1dace609ffb8892e47da503.stex" ]
 
 [params]
 

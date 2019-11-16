@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Head.png-3e2e8d7787dbf6ce5fa031dca1e03a22.stex"
+path="res://.import/SilverEmpire.png-8a54c7cadd0b9021cb7845921a2cc835.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/inventory/Head.png"
-dest_files=[ "res://.import/Head.png-3e2e8d7787dbf6ce5fa031dca1e03a22.stex" ]
+source_file="res://assets/tileset/SilverEmpire.png"
+dest_files=[ "res://.import/SilverEmpire.png-8a54c7cadd0b9021cb7845921a2cc835.stex" ]
 
 [params]
 

@@ -112,5 +112,21 @@ namespace Sulimn.Classes.Entities
         public int TotalWisdom => Attributes.Wisdom + Equipment.BonusWisdom;
 
         #endregion Helper Properties
+
+        #region Inventory Management
+
+        /// <summary>Adds an Item to the inventory.</summary>
+        /// <param name="item">Item to be removed</param>
+        internal void AddItem(Item item)
+        {
+            Inventory.Add(item);
+            Inventory = Inventory.OrderBy(itm => itm.Name).ToList();
+        }
+
+        /// <summary>Removes an Item from the inventory.</summary>
+        /// <param name="item">Item to be removed</param>
+        internal void RemoveItem(Item item) => Inventory.Remove(item);
+
+        #endregion Inventory Management
     }
 }

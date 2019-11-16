@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scenes/shopping/WeaponsRUsScene.cs" type="Script" id=1]
+[ext_resource path="res://scenes/shopping/ItemMerchantScene.cs" type="Script" id=1]
 [ext_resource path="res://scenes/inventory/GridEquipment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/inventory/GridInventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/inventory/MerchantInventory.tscn" type="PackedScene" id=4]
@@ -14,7 +14,7 @@ scancode = 82
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
 
-[node name="WeaponsRUs" type="Control"]
+[node name="ItemMerchant" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -37,7 +37,7 @@ margin_bottom = 931.0
 
 [node name="MerchantInventory" parent="." instance=ExtResource( 4 )]
 margin_left = 1225.0
-margin_top = 522.0
+margin_top = 384.0
 margin_right = 1910.0
 margin_bottom = 931.0
 

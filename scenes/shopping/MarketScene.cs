@@ -1,18 +1,15 @@
 using Godot;
 using Sulimn.Actors;
 using Sulimn.Classes;
+using Sulimn.Classes.Extensions;
+using Sulimn.Classes.Items;
+using System.Collections.Generic;
 
 namespace Sulimn.Scenes.City
 {
     public class MarketScene : Node2D
     {
         private Player Player;
-
-        public override void _UnhandledInput(InputEvent @event)
-        {
-            if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape)
-                GetTree().ChangeSceneTo(GameState.GoBack());
-        }
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
@@ -22,14 +19,41 @@ namespace Sulimn.Scenes.City
             GameState.Info.DisplayStats();
         }
 
+        private void EnterArea(params List<Item>[] items)
+        {
+            Player.Move("down");
+            GameState.MerchantInventory.Clear();
+            GameState.MerchantInventory.AddRanges(items);
+            GameState.AddSceneToHistory(GetTree().CurrentScene);
+            GetTree().ChangeScene("res://scenes/shopping/ItemMerchantScene.tscn");
+        }
+
         private void _on_WeaponsArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
-            {
-                Player.Move("down");
-                GameState.AddSceneToHistory(GetTree().CurrentScene);
-                GetTree().ChangeScene("res://scenes/shopping/WeaponsRUsScene.tscn");
-            }
+                EnterArea(GameState.AllWeapons);
+        }
+
+        private void _on_MagickShoppeArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+        }
+
+        private void _on_SilverEmpireArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+                EnterArea(GameState.AllRings);
+        }
+
+        private void _on_ArmouryArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+                EnterArea(GameState.AllHeadArmor, GameState.AllBodyArmor, GameState.AllHandArmor, GameState.AllLegArmor, GameState.AllFeetArmor);
+        }
+
+        private void _on_GeneralStoreArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+                EnterArea(GameState.AllFood, GameState.AllDrinks, GameState.AllPotions);
         }
 
         private void _on_CityArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)

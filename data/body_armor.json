@@ -181,7 +181,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/A_Armour04.png"
+    "Texture": "res://assets/inventory/images/A_Armor04.png"
   },
   {
     "Name": "Studded Leather Doublet",

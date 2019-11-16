@@ -5,11 +5,17 @@ using System.Linq;
 
 namespace Sulimn.Scenes.Shopping
 {
-    public class WeaponsRUsScene : Control
+    public class ItemMerchantScene : Control
     {
         private GridEquipment GridEquipment;
         private GridInventory GridInventory;
         private MerchantInventory MerchantInventory;
+
+        public override void _UnhandledInput(InputEvent @event)
+        {
+            if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape)
+                GetTree().ChangeSceneTo(GameState.GoBack());
+        }
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
@@ -34,8 +40,8 @@ namespace Sulimn.Scenes.Shopping
             MerchantInventory = (MerchantInventory)GetNode("MerchantInventory");
             GridEquipment = (GridEquipment)GetNode("GridEquipment");
             GridInventory.SetUpInventory(GameState.CurrentHero.Inventory.Where(itm => itm.CanSell).ToList());
-            MerchantInventory.SetUpInventory(GameState.AllWeapons.Where(wpn => wpn.IsSold).ToList());
             GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
+            MerchantInventory.SetUpInventory(GameState.MerchantInventory.Where(itm => itm.IsSold).ToList());
         }
 
         private void _on_BtnReturn_pressed() => GetTree().ChangeSceneTo(GameState.GoBack());

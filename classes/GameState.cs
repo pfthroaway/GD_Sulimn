@@ -15,7 +15,6 @@ namespace Sulimn.Classes
     internal static class GameState
     {
         internal static Hero CurrentHero = new Hero();
-        internal static Vector2 HeroPosition = new Vector2(0, 0);
         internal static Enemy CurrentEnemy = new Enemy();
         internal static List<Enemy> AllEnemies = new List<Enemy>();
         internal static List<Item> AllItems = new List<Item>();
@@ -29,6 +28,7 @@ namespace Sulimn.Classes
         internal static List<Item> AllFood = new List<Item>();
         internal static List<Item> AllDrinks = new List<Item>();
         internal static List<Item> AllPotions = new List<Item>();
+        internal static List<Item> MerchantInventory = new List<Item>();
         internal static List<Spell> AllSpells = new List<Spell>();
         internal static List<Hero> AllHeroes = new List<Hero>();
         internal static List<HeroClass> AllClasses = new List<HeroClass>();
@@ -317,24 +317,59 @@ namespace Sulimn.Classes
             return $"You find {foundGold:N0} gold!";
         }
 
-        /// <summary>Event where the Hero finds an item.</summary>
-        /// <param name="minValue">Minimum value of Item</param>
-        /// <param name="maxValue">Maximum value of Item</param>
-        /// <param name="isSold">Is the item sold?</param>
-        /// <returns>Returns text about found Item</returns>
+        /// <summary>Event where the <see cref="Hero"/> finds an <see cref="Item"/>.</summary>
+        /// <param name="minValue">Minimum value of <see cref="Item"/></param>
+        /// <param name="maxValue">Maximum value of <see cref="Item"/></param>
+        /// <param name="isSold">Is the <see cref="Item"/> sold?</param>
+        /// <returns>Returns text about found <see cref="Item"/></returns>
         internal static string EventFindItem(int minValue, int maxValue, bool isSold = true)
         {
-            List<Item> availableItems = AllItems.Where(itm => itm.Value >= minValue && itm.Value <= maxValue && itm.IsSold == isSold).ToList();
-            int item = Functions.GenerateRandomNumber(0, availableItems.Count - 1);
-
-            CurrentHero.AddItem(availableItems[item]);
+            Item item = GetRandomItem(minValue, maxValue, isSold);
+            CurrentHero.AddItem(item);
             SaveHero(CurrentHero);
-            return $"You find a {availableItems[item].Name}!";
+            return $"You find a {item.Name}!";
         }
 
-        /// <summary>Event where the Hero finds an item.</summary>
-        /// <param name="names">List of names of available Items</param>
-        /// <returns>Returns text about found Item</returns>
+        /// <summary>Event where the <see cref="Hero"/> finds an <see cref="Item"/>.</summary>
+        /// <param name="minValue">Minimum value of <see cref="Item"/></param>
+        /// <param name="maxValue">Maximum value of <see cref="Item"/></param>
+        /// <param name="type">Type of <see cref="Item"/></param>
+        /// <param name="isSold">Is the <see cref="Item"/> sold?</param>
+        /// <returns>Returns text about found <see cref="Item"/></returns>
+        internal static string EventFindItem(int minValue, int maxValue, ItemType type, bool isSold = true)
+        {
+            Item newItem = GetRandomItem(minValue, maxValue, type, isSold);
+            CurrentHero.AddItem(newItem);
+            SaveHero(CurrentHero);
+            return $"You find a {newItem.Name}!";
+        }
+
+        /// <summary>Gets a random <see cref="Item"/>.</summary>
+        /// <param name="minValue">Minimum value of <see cref="Item"/></param>
+        /// <param name="maxValue">Maximum value of <see cref="Item"/></param>
+        /// <param name="isSold">Is the <see cref="Item"/> sold?</param>
+        /// <returns>Random <see cref="Item"/></returns>
+        private static Item GetRandomItem(int minValue, int maxValue, bool isSold = true)
+        {
+            List<Item> availableItems = new List<Item>(AllItems.FindAll(itm => itm.Value >= minValue && itm.Value <= maxValue && itm.IsSold == isSold));
+            return availableItems[Functions.GenerateRandomNumber(0, availableItems.Count - 1)];
+        }
+
+        /// <summary>Gets a random <see cref="Item"/> of a given <see cref="ItemType"/>.</summary>
+        /// <param name="minValue">Minimum value of <see cref="Item"/></param>
+        /// <param name="maxValue">Maximum value of It<see cref="Item"/>em</param>
+        /// <param name="type">Type of <see cref="Item"/></param>
+        /// <param name="isSold">Is the <see cref="Item"/> sold?</param>
+        /// <returns>Random <see cref="Item"/></returns>
+        private static Item GetRandomItem(int minValue, int maxValue, ItemType type, bool isSold = true)
+        {
+            List<Item> availableItems = new List<Item>(AllItems.FindAll(itm => itm.Type == type && itm.Value >= minValue && itm.Value <= maxValue && itm.IsSold == isSold));
+            return availableItems[Functions.GenerateRandomNumber(0, availableItems.Count - 1)];
+        }
+
+        /// <summary>Event where the <see cref="Hero"/> finds an <see cref="Item"/>.</summary>
+        /// <param name="names">List of names of available <see cref="Item"/>s</param>
+        /// <returns>Returns text about found <see cref="Item"/></returns>
         internal static string EventFindItem(params string[] names)
         {
             List<Item> availableItems = new List<Item>();
@@ -344,22 +379,6 @@ namespace Sulimn.Classes
 
             CurrentHero.AddItem(availableItems[item]);
 
-            SaveHero(CurrentHero);
-            return $"You find a {availableItems[item].Name}!";
-        }
-
-        /// <summary>Event where the Hero finds an item.</summary>
-        /// <param name="minValue">Minimum value of Item</param>
-        /// <param name="maxValue">Maximum value of Item</param>
-        /// <param name="type">Type</param>
-        /// <param name="isSold">Is the item sold?</param>
-        /// <returns>Returns text about found Item</returns>
-        internal static string EventFindItem(int minValue, int maxValue, ItemType type, bool isSold = true)
-        {
-            List<Item> availableItems = new List<Item>(AllItems.FindAll(itm => itm.Type == type));
-            availableItems = availableItems.FindAll(itm => itm.Value >= minValue && itm.Value <= maxValue && itm.IsSold == isSold).ToList();
-            int item = Functions.GenerateRandomNumber(0, availableItems.Count - 1);
-            CurrentHero.AddItem(availableItems[item]);
             SaveHero(CurrentHero);
             return $"You find a {availableItems[item].Name}!";
         }
@@ -385,6 +404,15 @@ namespace Sulimn.Classes
             CurrentEnemy = new Enemy(availableEnemies[enemyNum]);
             if (CurrentEnemy.Gold > 0)
                 CurrentEnemy.Gold = Functions.GenerateRandomNumber(CurrentEnemy.Gold / 2, CurrentEnemy.Gold);
+            if (CurrentEnemy.Type == "Human" || CurrentEnemy.Type == "Boss")
+            {
+                if (Functions.GenerateRandomNumber(1, 100) <= 20)
+                    CurrentEnemy.AddItem(GetRandomItem(1, CurrentEnemy.Level * 20));
+                if (Functions.GenerateRandomNumber(1, 100) <= 10)
+                    CurrentEnemy.AddItem(GetRandomItem(1, CurrentEnemy.Level * 50));
+                if (CurrentEnemy.Type == "Boss" && Functions.GenerateRandomNumber(1, 100) <= 10)
+                    CurrentEnemy.AddItem(GetRandomItem(1, CurrentEnemy.Level * 100));
+            }
         }
 
         /// <summary>Event where the Hero encounters a water stream and restores health and magic.</summary>

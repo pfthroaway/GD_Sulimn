@@ -106,8 +106,8 @@
     <Compile Include="scenes\inventory\Orphanage.cs" />
     <Compile Include="scenes\MainScene.cs" />
     <Compile Include="scenes\character\NewHeroScene.cs" />
+    <Compile Include="scenes\shopping\ItemMerchantScene.cs" />
     <Compile Include="scenes\shopping\MarketScene.cs" />
-    <Compile Include="scenes\shopping\WeaponsRUsScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

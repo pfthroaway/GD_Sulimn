@@ -204,7 +204,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/C_Elm02.png"
+    "Texture": "res://assets/inventory/images/C_Hat02.png"
   },
   {
     "Name": "Studded Leather Helmet",

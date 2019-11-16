@@ -150,14 +150,6 @@ namespace Sulimn.Classes.Entities
 
         #region Inventory Management
 
-        /// <summary>Adds an Item to the inventory.</summary>
-        /// <param name="item">Item to be removed</param>
-        internal void AddItem(Item item)
-        {
-            Inventory.Add(item);
-            Inventory = Inventory.OrderBy(itm => itm.Name).ToList();
-        }
-
         /// <summary>Consumes an <see cref="Item"/>.</summary>
         /// <param name="item"><see cref="Item"/> to be consumed</param>
         internal string ConsumeItem(Item item)
@@ -169,10 +161,6 @@ namespace Sulimn.Classes.Entities
                 restoreText += Heal(item.RestoreHealth);
             return restoreText;
         }
-
-        /// <summary>Removes an Item from the inventory.</summary>
-        /// <param name="item">Item to be removed</param>
-        internal void RemoveItem(Item item) => Inventory.Remove(item);
 
         /// <summary>Equips an Item into a Hero's Equipment.</summary>
         /// <param name="item">Item to be equipped</param>

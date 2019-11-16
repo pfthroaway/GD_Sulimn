@@ -11,7 +11,7 @@ namespace Sulimn.Scenes.Inventory
         /// <param name="inventory"></param>
         public void SetUpInventory(List<Item> inventory)
         {
-            for (int i = 0; i < 60; i++)
+            for (int i = 0; i < 80; i++)
             {
                 ItemSlot slot = (ItemSlot)FindNode($"ItemSlot{i + 1}");
                 slot.Merchant = true;
