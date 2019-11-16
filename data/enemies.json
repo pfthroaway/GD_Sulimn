@@ -39,7 +39,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Sword002.png"
       },
       "Head": {
         "Name": "Studded Leather Helmet",
@@ -62,7 +62,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Elm01.png"
       },
       "Body": {
         "Name": "Studded Leather Doublet",
@@ -85,7 +85,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Armour01.png"
       },
       "Hands": {
         "Name": null,
@@ -131,7 +131,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -154,7 +154,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes03.png"
       },
       "LeftRing": {
         "Name": null,
@@ -246,7 +246,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
       },
       "Head": {
         "Name": null,
@@ -453,7 +453,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Mace001.png"
       },
       "Head": {
         "Name": null,
@@ -545,7 +545,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": null,
@@ -660,7 +660,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Axe001.png"
       },
       "Head": {
         "Name": "Cloth Helmet",
@@ -683,7 +683,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Hat01.png"
       },
       "Body": {
         "Name": "Leather Shirt",
@@ -706,7 +706,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Clothing02.png"
       },
       "Hands": {
         "Name": null,
@@ -752,7 +752,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Cloth Shoes",
@@ -775,7 +775,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes01.png"
       },
       "LeftRing": {
         "Name": null,
@@ -867,7 +867,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_BirdsBeak.png"
       },
       "Head": {
         "Name": null,
@@ -1074,7 +1074,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Axe007.png"
       },
       "Head": {
         "Name": "Miner's Helmet",
@@ -1097,7 +1097,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Elm01.png"
       },
       "Body": {
         "Name": "Leather Shirt",
@@ -1120,7 +1120,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Clothing02.png"
       },
       "Hands": {
         "Name": null,
@@ -1166,7 +1166,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Leather Shoes",
@@ -1189,7 +1189,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes02.png"
       },
       "LeftRing": {
         "Name": null,
@@ -1281,7 +1281,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Spear009.png"
       },
       "Head": {
         "Name": "Studded Leather Helmet",
@@ -1304,7 +1304,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Elm01.png"
       },
       "Body": {
         "Name": "Chain Mail Chestplate",
@@ -1327,7 +1327,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Armour02.png"
       },
       "Hands": {
         "Name": null,
@@ -1373,7 +1373,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Chain Boots",
@@ -1396,7 +1396,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes04.png"
       },
       "LeftRing": {
         "Name": null,
@@ -1490,7 +1490,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Staff06.png"
       },
       "Head": {
         "Name": "Necromancer Robe Hood",
@@ -1513,7 +1513,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Hat02.png"
       },
       "Body": {
         "Name": "Necromancer Robes",
@@ -1536,7 +1536,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Clothing01.png"
       },
       "Hands": {
         "Name": null,
@@ -1582,7 +1582,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -1605,7 +1605,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes03.png"
       },
       "LeftRing": {
         "Name": null,
@@ -1697,7 +1697,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Spear009.png"
       },
       "Head": {
         "Name": "Chain Helmet",
@@ -1720,7 +1720,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Elm03.png"
       },
       "Body": {
         "Name": "Chain Mail Chestplate",
@@ -1743,7 +1743,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Armour02.png"
       },
       "Hands": {
         "Name": null,
@@ -1789,7 +1789,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Chain Boots",
@@ -1812,7 +1812,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes04.png"
       },
       "LeftRing": {
         "Name": null,
@@ -1904,7 +1904,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
       },
       "Head": {
         "Name": null,
@@ -2111,7 +2111,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
       },
       "Head": {
         "Name": null,
@@ -2318,7 +2318,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Sword002.png"
       },
       "Head": {
         "Name": null,
@@ -2364,7 +2364,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Armour01.png"
       },
       "Hands": {
         "Name": null,
@@ -2410,7 +2410,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -2433,7 +2433,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes03.png"
       },
       "LeftRing": {
         "Name": null,
@@ -2525,7 +2525,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Sword002.png"
       },
       "Head": {
         "Name": "Studded Leather Helmet",
@@ -2548,7 +2548,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Elm01.png"
       },
       "Body": {
         "Name": "Studded Leather Doublet",
@@ -2571,7 +2571,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Armour01.png"
       },
       "Hands": {
         "Name": null,
@@ -2617,7 +2617,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -2640,7 +2640,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes03.png"
       },
       "LeftRing": {
         "Name": null,
@@ -2732,7 +2732,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Sword001.png"
       },
       "Head": {
         "Name": null,
@@ -2778,7 +2778,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Clothing02.png"
       },
       "Hands": {
         "Name": null,
@@ -2824,7 +2824,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Cloth Shoes",
@@ -2847,7 +2847,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes01.png"
       },
       "LeftRing": {
         "Name": null,
@@ -2939,7 +2939,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Sword005.png"
       },
       "Head": {
         "Name": "Leather Helmet",
@@ -2962,7 +2962,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Elm01.png"
       },
       "Body": {
         "Name": "Studded Leather Doublet",
@@ -2985,7 +2985,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Armour01.png"
       },
       "Hands": {
         "Name": null,
@@ -3031,7 +3031,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -3054,7 +3054,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes03.png"
       },
       "LeftRing": {
         "Name": null,
@@ -3146,7 +3146,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Sword001.png"
       },
       "Head": {
         "Name": null,
@@ -3192,7 +3192,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Clothing02.png"
       },
       "Hands": {
         "Name": null,
@@ -3238,7 +3238,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Cloth Shoes",
@@ -3261,7 +3261,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes01.png"
       },
       "LeftRing": {
         "Name": null,
@@ -3353,7 +3353,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
       },
       "Head": {
         "Name": null,
@@ -3560,7 +3560,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
       },
       "Head": {
         "Name": null,
@@ -3767,7 +3767,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Spear003.png"
       },
       "Head": {
         "Name": null,
@@ -3813,7 +3813,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Armour02.png"
       },
       "Hands": {
         "Name": null,
@@ -3859,7 +3859,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -3882,7 +3882,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes03.png"
       },
       "LeftRing": {
         "Name": null,
@@ -3974,7 +3974,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Staff08.png"
       },
       "Head": {
         "Name": "Robe Hood",
@@ -3997,7 +3997,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Elm01.png"
       },
       "Body": {
         "Name": "Robe",
@@ -4020,7 +4020,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Clothing01.png"
       },
       "Hands": {
         "Name": null,
@@ -4066,7 +4066,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -4089,7 +4089,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes03.png"
       },
       "LeftRing": {
         "Name": null,
@@ -4181,7 +4181,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Staff06.png"
       },
       "Head": {
         "Name": "Necromancer Robe Hood",
@@ -4204,7 +4204,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Hat02.png"
       },
       "Body": {
         "Name": "Robe",
@@ -4227,7 +4227,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Clothing01.png"
       },
       "Hands": {
         "Name": null,
@@ -4273,7 +4273,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -4296,7 +4296,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes03.png"
       },
       "LeftRing": {
         "Name": null,
@@ -4388,7 +4388,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Sword002.png"
       },
       "Head": {
         "Name": "Cloth Helmet",
@@ -4411,7 +4411,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Hat01.png"
       },
       "Body": {
         "Name": "Studded Leather Doublet",
@@ -4434,7 +4434,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Armour01.png"
       },
       "Hands": {
         "Name": null,
@@ -4480,7 +4480,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Leather Shoes",
@@ -4503,7 +4503,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes02.png"
       },
       "LeftRing": {
         "Name": null,
@@ -4595,7 +4595,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
       },
       "Head": {
         "Name": null,
@@ -4802,7 +4802,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
       },
       "Head": {
         "Name": null,
@@ -5009,7 +5009,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Sword001.png"
       },
       "Head": {
         "Name": "Cloth Helmet",
@@ -5032,7 +5032,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Hat01.png"
       },
       "Body": {
         "Name": "Leather Shirt",
@@ -5055,7 +5055,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Clothing02.png"
       },
       "Hands": {
         "Name": null,
@@ -5101,7 +5101,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Leather Shoes",
@@ -5124,7 +5124,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes02.png"
       },
       "LeftRing": {
         "Name": null,
@@ -5216,7 +5216,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Spear009.png"
       },
       "Head": {
         "Name": "Studded Leather Helmet",
@@ -5239,7 +5239,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/C_Elm01.png"
       },
       "Body": {
         "Name": "Chain Mail Chestplate",
@@ -5262,7 +5262,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Armour02.png"
       },
       "Hands": {
         "Name": null,
@@ -5308,7 +5308,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Chain Boots",
@@ -5331,7 +5331,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes04.png"
       },
       "LeftRing": {
         "Name": null,
@@ -5423,7 +5423,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Sword002.png"
       },
       "Head": {
         "Name": null,
@@ -5469,7 +5469,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Clothing02.png"
       },
       "Hands": {
         "Name": null,
@@ -5515,7 +5515,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": "Leather Shoes",
@@ -5538,7 +5538,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Shoes02.png"
       },
       "LeftRing": {
         "Name": null,
@@ -5630,7 +5630,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/W_Dagger001.png"
       },
       "Head": {
         "Name": null,
@@ -5676,7 +5676,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/A_Clothing01.png"
       },
       "Hands": {
         "Name": null,
@@ -5722,7 +5722,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/I_Key06.png"
       },
       "Feet": {
         "Name": null,
@@ -5837,7 +5837,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
       },
       "Head": {
         "Name": null,
@@ -6044,7 +6044,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": null
+        "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
       },
       "Head": {
         "Name": null,

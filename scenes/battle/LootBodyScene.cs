@@ -1,7 +1,6 @@
 using Godot;
 using Sulimn.Classes;
 using Sulimn.Scenes.Inventory;
-using System;
 using System.Linq;
 
 public class LootBodyScene : Control
@@ -10,8 +9,6 @@ public class LootBodyScene : Control
     private GridInventory HeroInventory, EnemyInventory;
 
     private void _on_BtnReturn_pressed() => GetTree().ChangeSceneTo(GameState.GoBack());
-
-    // TODO Fix enemy item textures.
 
     #region Save
 
@@ -40,9 +37,14 @@ public class LootBodyScene : Control
         EnemyEquipment.SetUpEquipment(GameState.CurrentEnemy.Equipment, true);
     }
 
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //
-    //  }
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(float delta)
+    {
+        if (GameState.UpdateDisplay)
+        {
+            Save();
+            GameState.Info.DisplayStats();
+            GameState.UpdateDisplay = false;
+        }
+    }
 }

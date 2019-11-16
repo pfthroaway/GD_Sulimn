@@ -310,11 +310,13 @@ public class BattleScene : Control
 
             if (actualDamage > actualShieldAbsorb + actualArmorAbsorb) //the enemy actually takes damage
             {
+                //the attacking weapon and item being hit take durability damage
                 itemGettingHit.CurrentDurability -= actualDamage / 10;
                 if (itemGettingHit.CurrentDurability < 0)
                     itemGettingHit.CurrentDurability = 0;
-                if (!castSpell)
+                if (!castSpell && GameState.CurrentHero.Equipment.Weapon.Name != GameState.DefaultWeapon.Name)
                     GameState.CurrentHero.Equipment.Weapon.CurrentDurability -= actualArmorAbsorb / 10;
+
                 AddTextToTextBox($"You attack the {GameState.CurrentEnemy.Name} for {actualDamage} damage. {shield}{absorb}{GameState.CurrentEnemy.TakeDamage(actualDamage - actualShieldAbsorb - actualArmorAbsorb)}");
                 if (GameState.CurrentEnemy.Statistics.CurrentHealth <= 0)
                 {

@@ -19,7 +19,7 @@ namespace Sulimn.Scenes.Inventory
         public void LoadSlot(ItemSlot slot)
         {
             CurrentSlot = slot;
-            if (!slot.Merchant)
+            if (!slot.Merchant && !slot.Enemy)
             {
                 switch (slot.Item.Item.Type)
                 {

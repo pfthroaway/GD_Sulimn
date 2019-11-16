@@ -1,8 +1,6 @@
 using Godot;
 using Sulimn.Classes;
-using Sulimn.Classes.Items;
 using Sulimn.Scenes.Inventory;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Sulimn.Scenes.Shopping
@@ -12,8 +10,6 @@ namespace Sulimn.Scenes.Shopping
         private GridEquipment GridEquipment;
         private GridInventory GridInventory;
         private MerchantInventory MerchantInventory;
-
-        // TODO Make it so that you can purchase/sell equipment, and it updates your equipment, inventory and gold properly.
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()

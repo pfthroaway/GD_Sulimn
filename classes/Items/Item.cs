@@ -227,6 +227,7 @@ namespace Sulimn.Classes.Items
         public string SellValueToStringWithText => $"Sell Value: {SellValueToString}";
 
         /// <summary>Is the <see cref="Item"/> lootable?</summary>
+        [JsonIgnore]
         public bool IsLootable => Value > 0 && (CanSell || IsSold);
 
         /// <summary>Returns text relating to the sellability of the <see cref="Item"/>.</summary>
@@ -303,19 +304,20 @@ namespace Sulimn.Classes.Items
         /// <summary>Text to be displayed when hovering over an <see cref="Item"/>.</summary>
         [JsonIgnore]
         public string TooltipText => this != new Item()
-                    ? Name + "\n"
-                        + Description + "\n"
-                        + TypeToString + "\n"
-                        + ((Damage > 0) ? DamageToStringWithText + "\n" : "")
-                        + ((Defense > 0) ? DefenseToStringWithText + "\n" : "")
-                        + ((Weight > 0) ? WeightToStringWithText + "\n" : "")
-                        + ValueToStringWithText + "\n"
-                        + DurabilityString + "\n"
-                        + (EffectsToString.Length > 0 ? EffectsToString + "\n" : "")
-                        + (MinimumLevel > 1 ? MinimumLevelToString + "\n" : "")
-                        + (AllowedClasses.Count > 0 ? AllowedClassesToString + "\n" : "")
-                        + BonusToString
-                    : "";
+            ? Name + "\n"
+            + Description + "\n"
+            + TypeToString + "\n"
+            + ((Damage > 0) ? DamageToStringWithText + "\n" : "")
+            + ((Defense > 0) ? DefenseToStringWithText + "\n" : "")
+            + ((Weight > 0) ? WeightToStringWithText + "\n" : "")
+            + ValueToStringWithText + "\n"
+            + DurabilityString + "\n"
+            + (EffectsToString.Length > 0 ? EffectsToString + "\n" : "")
+            + (MinimumLevel > 1 ? MinimumLevelToString + "\n" : "")
+            + (AllowedClasses.Count > 0 ? AllowedClassesToString + "\n" : "")
+            + (!IsLootable ? "Not Lootable\n" : "")
+            + BonusToString
+            : "";
 
         /// <summary><see cref="HeroClass"/>es allowed to use the <see cref="Item"/>, formatted</summary>
         [JsonIgnore]
