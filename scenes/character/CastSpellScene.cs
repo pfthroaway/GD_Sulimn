@@ -11,7 +11,7 @@ namespace Sulimn.Scenes.Character
         private bool Battle;
         private Button BtnCastSpell;
         private ItemList LstSpells;
-        private Label LblName, LblTypeAmount, LblMagicCost, LblCost, LblRequiredLevel, LblDescription;
+        private Label LblName, LblTypeAmount, LblMagicCost, LblCost, LblRequiredLevel, LblDescription, LblError;
         private Spell SelectedSpell = new Spell();
 
         public override void _UnhandledInput(InputEvent @event)
@@ -34,6 +34,7 @@ namespace Sulimn.Scenes.Character
             LblCost = (Label)GetNode("SpellInfo/LblCost");
             LblRequiredLevel = (Label)GetNode("SpellInfo/LblRequiredLevel");
             LblDescription = (Label)GetNode("SpellInfo/LblDescription");
+            LblError = (Label)GetNode("LblError");
             LstSpells = (ItemList)GetNode("LstSpells");
         }
 
@@ -55,19 +56,8 @@ namespace Sulimn.Scenes.Character
         /// <summary>Loads all <see cref="Spell"/>s not currently known by the <see cref="Hero"/>.</summary>
         private void LoadSpells()
         {
-            if (GameState.CurrentHero.Spellbook.Spells.Count > 0)
-            {
-                foreach (Spell spl in GameState.CurrentHero.Spellbook.Spells)
-                {
-                    if (!Battle)
-                    {
-                        if (spl.Type != SpellType.Damage && spl.Type != SpellType.Shield)
-                            LstSpells.AddItem(spl.Name);
-                    }
-                    else
-                        LstSpells.AddItem(spl.Name);
-                }
-            }
+            foreach (Spell spl in GameState.CurrentHero.Spellbook.Spells)
+                LstSpells.AddItem(spl.Name);
         }
 
         // Called when the node enters the scene tree for the first time.
@@ -81,13 +71,15 @@ namespace Sulimn.Scenes.Character
 
         private void _on_BtnCastSpell_pressed()
         {
+            SpellType type = GameState.CurrentHero.CurrentSpell.Type;
             GameState.CurrentHero.CurrentSpell = SelectedSpell;
-            if (Battle)
+            if (Battle && (type == SpellType.Damage || type == SpellType.Shield))
                 GetTree().ChangeSceneTo(GameState.GoBack());
-            else
+            else if (!Battle && (type == SpellType.Damage || type == SpellType.Shield))
+                LblError.Text = "You are not currently in a battle, therefore you are unable to cast this spell.";
+            else if (type == SpellType.Healing)
             {
-                if (GameState.CurrentHero.CurrentSpell.Type == SpellType.Healing)
-                    GameState.CurrentHero.Heal(GameState.CurrentHero.CurrentSpell.Amount);
+                GameState.CurrentHero.Heal(GameState.CurrentHero.CurrentSpell.Amount);
                 GameState.CurrentHero.Statistics.CurrentMagic -= GameState.CurrentHero.CurrentSpell.MagicCost;
                 GameState.Info.DisplayStats();
             }
@@ -95,18 +87,19 @@ namespace Sulimn.Scenes.Character
 
         private void _on_BtnReturn_pressed() => GetTree().ChangeSceneTo(GameState.GoBack());
 
+        private void _on_LstSpells_item_selected(int index)
+        {
+            LblError.Text = "";
+            if (index >= 0)
+                SelectedSpell = GameState.AllSpells.Find(spl => spl.Name == LstSpells.Items[index].ToString());
+            DisplaySpell();
+        }
+
         //  // Called every frame. 'delta' is the elapsed time since the previous frame.
         //  public override void _Process(float delta)
         //  {
         //
         //  }
-
-        private void _on_LstSpells_item_selected(int index)
-        {
-            if (index >= 0)
-                SelectedSpell = GameState.AllSpells.Find(spl => spl.Name == LstSpells.Items[index].ToString());
-            DisplaySpell();
-        }
 
         #endregion Click
     }

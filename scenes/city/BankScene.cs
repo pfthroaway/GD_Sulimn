@@ -77,7 +77,7 @@ namespace Sulimn.Scenes.City
         /// <summary>Repay the loan.</summary>
         private void RepayLoan()
         {
-            if (GameState.CurrentHero.Bank.LoanTaken <= Gold)
+            if (GameState.CurrentHero.Bank.LoanTaken >= Gold)
             {
                 GameState.CurrentHero.Bank.LoanTaken -= Gold;
                 GameState.CurrentHero.Bank.LoanAvailable += Gold;

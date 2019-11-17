@@ -42,6 +42,7 @@ align = 1
 autowrap = true
 
 [node name="SpellInfo" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 970.0
 margin_top = 200.0
 margin_right = 1370.0
@@ -105,6 +106,16 @@ theme = ExtResource( 3 )
 disabled = true
 shortcut = SubResource( 2 )
 text = "Cast Spell"
+
+[node name="LblError" type="Label" parent="."]
+margin_top = 891.0
+margin_right = 1920.0
+margin_bottom = 940.0
+rect_min_size = Vector2( 1920, 49 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+align = 1
+autowrap = true
 
 [node name="BtnReturn" type="Button" parent="."]
 margin_left = 835.0
