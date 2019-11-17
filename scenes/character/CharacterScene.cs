@@ -230,7 +230,8 @@ namespace Sulimn.Scenes.Character
 
         private void _on_BtnCastSpell_pressed()
         {
-            // Replace with function body.
+            GameState.AddSceneToHistory(GetTree().CurrentScene);
+            GetTree().ChangeScene("res://scenes/character/CastSpellScene.tscn");
         }
 
         #region Plus/Minus Buttons Click

@@ -27,13 +27,25 @@ namespace Sulimn.Classes.HeroParts
         [JsonIgnore]
         public string GoldInBankToString => GoldInBank.ToString("N0");
 
+        /// <summary>Gold the Hero has in the bank, formatted with preceding text.</summary>
+        [JsonIgnore]
+        public string GoldInBankToStringWithText => $"Gold In Bank: {GoldInBankToString}";
+
         /// <summary>Gold the Hero has available on loan, formatted.</summary>
         [JsonIgnore]
         public string LoanAvailableToString => LoanAvailable.ToString("N0");
 
+        /// <summary>Gold the Hero has available on loan, formatted with preceding text.</summary>
+        [JsonIgnore]
+        public string LoanAvailableToStringWithText => $"Loan Available: {LoanAvailableToString}";
+
         /// <summary>Gold the Hero has taken out on loan, formatted.</summary>
         [JsonIgnore]
         public string LoanTakenToString => LoanTaken.ToString("N0");
+
+        /// <summary>Gold the Hero has taken out on loan, formatted with preceding text.</summary>
+        [JsonIgnore]
+        public string LoanTakenToStringWithText => $"Loan Owed: {LoanTakenToString}";
 
         #endregion Helper Properties
 

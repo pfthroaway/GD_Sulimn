@@ -43,8 +43,24 @@ namespace Sulimn.Classes.Entities
         [JsonProperty(Order = 8)]
         public Spellbook Spellbook { get; set; } = new Spellbook();
 
-        /// <summary>List of <see cref="Item"/>s in the inventory.</summary>
+        /// <summary>Currently prepared <see cref="Spell"/>.</summary>
+        [JsonIgnore]
+        public Spell CurrentSpell { get; set; } = new Spell();
+
+        /// <summary>Currently prepared <see cref="Spell"/>, to string.</summary>
         [JsonProperty(Order = 10)]
+        public string CurrentSpellString
+        {
+            get => CurrentSpell.Name;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    CurrentSpell = GameState.AllSpells.Find(spl => spl.Name == value.Trim());
+            }
+        }
+
+        /// <summary>List of <see cref="Item"/>s in the inventory.</summary>
+        [JsonProperty(Order = 11)]
         public List<Item> Inventory { get; set; } = new List<Item>();
 
         #endregion Modifying Properties

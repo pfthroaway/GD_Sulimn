@@ -1,0 +1,168 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/city/BankScene.cs" type="Script" id=1]
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/Button.tres" type="Theme" id=3]
+
+[sub_resource type="InputEventKey" id=1]
+scancode = 68
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[sub_resource type="InputEventKey" id=3]
+scancode = 87
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[sub_resource type="InputEventKey" id=5]
+scancode = 84
+
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
+
+[sub_resource type="InputEventKey" id=7]
+scancode = 76
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="InputEventKey" id=9]
+scancode = 82
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Gold" type="VBoxContainer" parent="."]
+margin_left = 540.0
+margin_top = 200.0
+margin_right = 940.0
+margin_bottom = 426.0
+custom_constants/separation = 10
+
+[node name="LblGoldOnHand" type="Label" parent="Gold"]
+margin_right = 400.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 400, 49 )
+custom_fonts/font = ExtResource( 2 )
+
+[node name="LblGoldInBank" type="Label" parent="Gold"]
+margin_top = 59.0
+margin_right = 400.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 400, 49 )
+custom_fonts/font = ExtResource( 2 )
+
+[node name="LblLoanAvailable" type="Label" parent="Gold"]
+margin_top = 118.0
+margin_right = 400.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 400, 49 )
+custom_fonts/font = ExtResource( 2 )
+
+[node name="LblLoanOwed" type="Label" parent="Gold"]
+margin_top = 177.0
+margin_right = 400.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 400, 49 )
+custom_fonts/font = ExtResource( 2 )
+
+[node name="TxtGold" type="LineEdit" parent="."]
+margin_left = 1100.0
+margin_top = 200.0
+margin_right = 1350.0
+margin_bottom = 259.0
+rect_min_size = Vector2( 250, 59 )
+custom_fonts/font = ExtResource( 2 )
+
+[node name="Buttons" type="GridContainer" parent="."]
+margin_left = 970.0
+margin_top = 275.0
+margin_right = 1480.0
+margin_bottom = 395.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 2
+
+[node name="BtnDeposit" type="Button" parent="Buttons"]
+margin_right = 250.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
+disabled = true
+shortcut = SubResource( 2 )
+text = "Deposit"
+
+[node name="BtnWithdraw" type="Button" parent="Buttons"]
+margin_left = 260.0
+margin_right = 510.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
+disabled = true
+shortcut = SubResource( 4 )
+text = "Withdraw"
+
+[node name="BtnTakeOutLoan" type="Button" parent="Buttons"]
+margin_top = 65.0
+margin_right = 250.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
+disabled = true
+shortcut = SubResource( 6 )
+text = "Take Out Loan"
+
+[node name="BtnRepayLoan" type="Button" parent="Buttons"]
+margin_left = 260.0
+margin_top = 65.0
+margin_right = 510.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
+disabled = true
+shortcut = SubResource( 8 )
+text = "Repay Loan"
+
+[node name="LblError" type="Label" parent="."]
+margin_top = 581.0
+margin_right = 1920.0
+margin_bottom = 630.0
+rect_min_size = Vector2( 1920, 49 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+align = 1
+
+[node name="TxtBank" type="RichTextLabel" parent="."]
+margin_left = 360.0
+margin_top = 640.0
+margin_right = 1560.0
+margin_bottom = 890.0
+rect_min_size = Vector2( 1200, 300 )
+custom_fonts/normal_font = ExtResource( 2 )
+
+[node name="BtnReturn" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 950.0
+margin_right = 1085.0
+margin_bottom = 1005.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
+shortcut = SubResource( 10 )
+text = "Return"
+[connection signal="text_changed" from="TxtGold" to="." method="_on_TxtGold_text_changed"]
+[connection signal="pressed" from="Buttons/BtnDeposit" to="." method="_on_BtnDeposit_pressed"]
+[connection signal="pressed" from="Buttons/BtnWithdraw" to="." method="_on_BtnWithdraw_pressed"]
+[connection signal="pressed" from="Buttons/BtnTakeOutLoan" to="." method="_on_BtnTakeOutLoan_pressed"]
+[connection signal="pressed" from="Buttons/BtnRepayLoan" to="." method="_on_BtnRepayLoan_pressed"]
+[connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

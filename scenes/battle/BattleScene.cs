@@ -22,12 +22,6 @@ public class BattleScene : Control
 
     #region Modifying Properties
 
-    /// <summary>The <see cref="Hero"/>'s currently selected <see cref="Spell"/>.</summary>
-    public Spell CurrentHeroSpell { get; set; }
-
-    /// <summary>The <see cref="Enemy"/>'s currently selected <see cref="Spell"/>.</summary>
-    public Spell CurrentEnemySpell { get; set; }
-
     /// <summary>The <see cref="Hero"/>'s current magical shield value.</summary>
     public int HeroShield { get; set; }
 
@@ -96,13 +90,14 @@ public class BattleScene : Control
         LblEnemyHealth.Text = GameState.CurrentEnemy.Statistics.HealthToStringWithText;
         LblEnemyMagic.Text = GameState.CurrentEnemy.Statistics.MagicToStringWithText;
         LblEnemyShield.Text = EnemyShieldToString;
-        LblSpellName.Text = CurrentHeroSpell?.Name;
-        LblSpellCost.Text = CurrentHeroSpell?.MagicCostToString;
+        LblSpellName.Text = GameState.CurrentHero.CurrentSpell.Name;
+        LblSpellCost.Text = GameState.CurrentHero.CurrentSpell.MagicCostToString;
+        CheckButtons();
     }
 
     #endregion Load
 
-    /// <summary>Adds text to the TxtBattle TextEdit.</summary>
+    /// <summary>Adds text to the TxtBattle RichTextLabel.</summary>
     /// <param name="newText">Text to be added</param>
     private void AddTextToTextBox(string newText)
     {
@@ -211,25 +206,25 @@ public class BattleScene : Control
 
             case BattleAction.Cast:
 
-                AddTextToTextBox($"You cast {CurrentHeroSpell.Name}.");
+                AddTextToTextBox($"You cast {GameState.CurrentHero.CurrentSpell.Name}.");
 
-                switch (CurrentHeroSpell.Type)
+                switch (GameState.CurrentHero.CurrentSpell.Type)
                 {
                     case SpellType.Damage:
                         HeroAttack(true);
                         break;
 
                     case SpellType.Healing:
-                        AddTextToTextBox(GameState.CurrentHero.Heal(CurrentHeroSpell.Amount));
+                        AddTextToTextBox(GameState.CurrentHero.Heal(GameState.CurrentHero.CurrentSpell.Amount));
                         break;
 
                     case SpellType.Shield:
-                        HeroShield = CurrentHeroSpell.Amount;
+                        HeroShield = GameState.CurrentHero.CurrentSpell.Amount;
                         AddTextToTextBox($"You now have a magical shield which will help protect you from {HeroShield} damage.");
                         break;
                 }
 
-                GameState.CurrentHero.Statistics.CurrentMagic -= CurrentHeroSpell.MagicCost;
+                GameState.CurrentHero.Statistics.CurrentMagic -= GameState.CurrentHero.CurrentSpell.MagicCost;
                 break;
 
             case BattleAction.Flee:
@@ -264,7 +259,7 @@ public class BattleScene : Control
 
             int damage = !castSpell
                 ? GameState.CurrentHero.Equipment.Weapon.Damage
-                : CurrentHeroSpell.Amount;
+                : GameState.CurrentHero.CurrentSpell.Amount;
 
             // Maximum damage is 20% of the statistic used for their primary + damage from the weapon.
             int maximumDamage = Int32Helper.Parse((statModifier * 0.2) + damage);
@@ -335,14 +330,6 @@ public class BattleScene : Control
             AddTextToTextBox("You miss.");
     }
 
-    /// <summary>Sets the current <see cref="Spell"/>.</summary>
-    /// <param name="spell"><see cref="Spell"/> to be set</param>
-    internal void SetSpell(Spell spell)
-    {
-        CurrentHeroSpell = spell;
-        BtnCastSpell.Disabled = false;
-    }
-
     /// <summary>Sets the <see cref="Enemy"/>'s action for the round.</summary>
     private void SetEnemyAction()
     {
@@ -402,42 +389,42 @@ public class BattleScene : Control
                 {
                     // Choose Spell
                     if (attackSpells.Count > 0 && healingSpells.Count > 0 && GameState.CurrentEnemy.Statistics.HealthRatio < 0.5m)
-                        CurrentEnemySpell = Functions.GenerateRandomNumber(0, 1) == 0
+                        GameState.CurrentEnemy.CurrentSpell = Functions.GenerateRandomNumber(0, 1) == 0
                             ? attackSpells[Functions.GenerateRandomNumber(0, attackSpells.Count - 1)]
                             : healingSpells[Functions.GenerateRandomNumber(0, healingSpells.Count - 1)];
                     else if (attackSpells.Count > 0 && shieldSpells.Count > 0 && EnemyShield > 0)
-                        CurrentEnemySpell = attackSpells[Functions.GenerateRandomNumber(0, attackSpells.Count - 1)];
+                        GameState.CurrentEnemy.CurrentSpell = attackSpells[Functions.GenerateRandomNumber(0, attackSpells.Count - 1)];
                     else if (attackSpells.Count > 0 && shieldSpells.Count > 0 && EnemyShield == 0)
-                        CurrentEnemySpell = Functions.GenerateRandomNumber(0, 1) == 0
+                        GameState.CurrentEnemy.CurrentSpell = Functions.GenerateRandomNumber(0, 1) == 0
                             ? attackSpells[Functions.GenerateRandomNumber(0, attackSpells.Count - 1)]
                             : shieldSpells[Functions.GenerateRandomNumber(0, shieldSpells.Count - 1)];
                     else if (attackSpells.Count > 0)
-                        CurrentEnemySpell = attackSpells[Functions.GenerateRandomNumber(0, attackSpells.Count - 1)];
+                        GameState.CurrentEnemy.CurrentSpell = attackSpells[Functions.GenerateRandomNumber(0, attackSpells.Count - 1)];
                     else if (shieldSpells.Count > 0)
-                        CurrentEnemySpell = shieldSpells[Functions.GenerateRandomNumber(0, shieldSpells.Count - 1)];
+                        GameState.CurrentEnemy.CurrentSpell = shieldSpells[Functions.GenerateRandomNumber(0, shieldSpells.Count - 1)];
                     else if (healingSpells.Count > 0)
-                        CurrentEnemySpell = healingSpells[Functions.GenerateRandomNumber(0, healingSpells.Count - 1)];
+                        GameState.CurrentEnemy.CurrentSpell = healingSpells[Functions.GenerateRandomNumber(0, healingSpells.Count - 1)];
 
                     // Cast Spell
-                    AddTextToTextBox($"The {GameState.CurrentEnemy.Name} casts {CurrentEnemySpell.Name}.");
+                    AddTextToTextBox($"The {GameState.CurrentEnemy.Name} casts {GameState.CurrentEnemy.CurrentSpell.Name}.");
 
-                    switch (CurrentEnemySpell.Type)
+                    switch (GameState.CurrentEnemy.CurrentSpell.Type)
                     {
                         case SpellType.Damage:
                             EnemyAttack(true);
                             break;
 
                         case SpellType.Healing:
-                            AddTextToTextBox(GameState.CurrentEnemy.Heal(CurrentEnemySpell.Amount));
+                            AddTextToTextBox(GameState.CurrentEnemy.Heal(GameState.CurrentEnemy.CurrentSpell.Amount));
                             break;
 
                         case SpellType.Shield:
-                            EnemyShield = CurrentEnemySpell.Amount;
+                            EnemyShield = GameState.CurrentEnemy.CurrentSpell.Amount;
                             AddTextToTextBox($"The {GameState.CurrentEnemy.Name} now has a magical shield which will help protect it from {EnemyShield} damage.");
                             break;
                     }
 
-                    GameState.CurrentEnemy.Statistics.CurrentMagic -= CurrentEnemySpell.MagicCost;
+                    GameState.CurrentEnemy.Statistics.CurrentMagic -= GameState.CurrentEnemy.CurrentSpell.MagicCost;
                 }
                 else
                     EnemyAttack();
@@ -474,7 +461,7 @@ public class BattleScene : Control
 
             int damage = !castSpell
                 ? GameState.CurrentEnemy.Equipment.Weapon.Damage
-                : CurrentEnemySpell.Amount;
+                : GameState.CurrentEnemy.CurrentSpell.Amount;
 
             // Maximum damage is 20% of the statistic used for their primary + damage from the weapon.
             int maximumDamage = Int32Helper.Parse((statModifier * 0.2) + damage);
@@ -610,7 +597,7 @@ public class BattleScene : Control
     private void ToggleButtons(bool disabled)
     {
         BtnAttack.Disabled = disabled;
-        BtnCastSpell.Disabled = CurrentHeroSpell == null || CurrentHeroSpell == new Spell() ? true : disabled;
+        BtnCastSpell.Disabled = GameState.CurrentHero.CurrentSpell == null || GameState.CurrentHero.CurrentSpell == new Spell() ? true : disabled;
         BtnChooseSpell.Disabled = disabled;
         BtnFlee.Disabled = disabled;
     }
@@ -623,9 +610,8 @@ public class BattleScene : Control
 
     private void _on_BtnChooseSpell_pressed()
     {
-        //CastSpellPage castSpellPage = new CastSpellPage { RefToBattlePage = this };
-        //castSpellPage.LoadPage("Battle");
-        //GameState.Navigate(castSpellPage);
+        GameState.AddSceneToHistory(GetTree().CurrentScene);
+        GetTree().ChangeScene("res://scenes/character/CastSpellScene.tscn");
     }
 
     private void _on_BtnCastSpell_pressed() => NewRound(BattleAction.Cast);

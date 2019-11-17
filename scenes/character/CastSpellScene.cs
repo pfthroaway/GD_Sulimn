@@ -1,16 +1,17 @@
 using Godot;
 using Sulimn.Classes;
+using Sulimn.Classes.Enums;
 using Sulimn.Classes.HeroParts;
 using System.Collections.Generic;
 
-namespace Sulimn.Scenes.Shopping
+namespace Sulimn.Scenes.Character
 {
-    public class MagickShoppeScene : Control
+    public class CastSpellScene : Control
     {
-        private Button BtnLearnSpell;
+        private bool Battle;
+        private Button BtnCastSpell;
         private ItemList LstSpells;
         private Label LblName, LblTypeAmount, LblMagicCost, LblCost, LblRequiredLevel, LblDescription;
-        private List<Spell> AvailableSpells = new List<Spell>();
         private Spell SelectedSpell = new Spell();
 
         public override void _UnhandledInput(InputEvent @event)
@@ -19,9 +20,14 @@ namespace Sulimn.Scenes.Shopping
                 GetTree().ChangeSceneTo(GameState.GoBack());
         }
 
+        /// <summary>Assigns all controls.</summary>
         private void AssignControls()
         {
-            BtnLearnSpell = (Button)GetNode("BtnLearnSpell");
+            BtnCastSpell = (Button)GetNode("BtnCastSpell");
+            if (GameState.PreviousScene == "BattleScene")
+                Battle = true;
+            if (Battle)
+                BtnCastSpell.Text = "Choose Spell";
             LblName = (Label)GetNode("SpellInfo/LblName");
             LblTypeAmount = (Label)GetNode("SpellInfo/LblTypeAmount");
             LblMagicCost = (Label)GetNode("SpellInfo/LblMagicCost");
@@ -42,24 +48,26 @@ namespace Sulimn.Scenes.Shopping
                 LblCost.Text = SelectedSpell.ValueToStringWithText;
                 LblRequiredLevel.Text = SelectedSpell.RequiredLevelToString;
                 LblDescription.Text = SelectedSpell.Description;
-                BtnLearnSpell.Disabled = string.IsNullOrWhiteSpace(SelectedSpell.Name) || GameState.CurrentHero.Gold < SelectedSpell.Value;
+                BtnCastSpell.Disabled = string.IsNullOrWhiteSpace(SelectedSpell.Name) || GameState.CurrentHero.Statistics.CurrentMagic < SelectedSpell.MagicCost;
             }
         }
 
         /// <summary>Loads all <see cref="Spell"/>s not currently known by the <see cref="Hero"/>.</summary>
         private void LoadSpells()
         {
-            LstSpells.Clear();
-            AvailableSpells.Clear();
-            foreach (Spell spl in GameState.AllSpells)
+            if (GameState.CurrentHero.Spellbook.Spells.Count > 0)
             {
-                if (!GameState.CurrentHero.Spellbook.Spells.Contains(spl) && (spl.AllowedClasses.Count == 0 || spl.AllowedClasses.Contains(GameState.CurrentHero.Class)))
-                    AvailableSpells.Add(spl);
+                foreach (Spell spl in GameState.CurrentHero.Spellbook.Spells)
+                {
+                    if (!Battle)
+                    {
+                        if (spl.Type != SpellType.Damage && spl.Type != SpellType.Shield)
+                            LstSpells.AddItem(spl.Name);
+                    }
+                    else
+                        LstSpells.AddItem(spl.Name);
+                }
             }
-
-            if (AvailableSpells.Count > 0)
-                foreach (Spell spl in AvailableSpells)
-                    LstSpells.AddItem(spl.Name);
         }
 
         // Called when the node enters the scene tree for the first time.
@@ -71,14 +79,18 @@ namespace Sulimn.Scenes.Shopping
 
         #region Click
 
-        private void _on_BtnLearnSpell_pressed()
+        private void _on_BtnCastSpell_pressed()
         {
-            GameState.CurrentHero.Gold -= SelectedSpell.Value;
-            GameState.CurrentHero.Spellbook.LearnSpell(SelectedSpell);
-            GameState.SaveHero(GameState.CurrentHero);
-            SelectedSpell = new Spell();
-            DisplaySpell();
-            LoadSpells();
+            GameState.CurrentHero.CurrentSpell = SelectedSpell;
+            if (Battle)
+                GetTree().ChangeSceneTo(GameState.GoBack());
+            else
+            {
+                if (GameState.CurrentHero.CurrentSpell.Type == SpellType.Healing)
+                    GameState.CurrentHero.Heal(GameState.CurrentHero.CurrentSpell.Amount);
+                GameState.CurrentHero.Statistics.CurrentMagic -= GameState.CurrentHero.CurrentSpell.MagicCost;
+                GameState.Info.DisplayStats();
+            }
         }
 
         private void _on_BtnReturn_pressed() => GetTree().ChangeSceneTo(GameState.GoBack());
@@ -92,7 +104,7 @@ namespace Sulimn.Scenes.Shopping
         private void _on_LstSpells_item_selected(int index)
         {
             if (index >= 0)
-                SelectedSpell = AvailableSpells[index];
+                SelectedSpell = GameState.AllSpells.Find(spl => spl.Name == LstSpells.Items[index].ToString());
             DisplaySpell();
         }
 

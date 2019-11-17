@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/battle/BattleScene.cs" type="Script" id=1]
 [ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/Button.tres" type="Theme" id=3]
 
 [sub_resource type="InputEventKey" id=1]
 scancode = 69
@@ -45,7 +46,7 @@ scancode = 82
 [sub_resource type="ShortCut" id=14]
 shortcut = SubResource( 13 )
 
-[node name="Control" type="Panel"]
+[node name="BattleScene" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -147,6 +148,7 @@ margin_right = 250.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 250, 55 )
 size_flags_horizontal = 0
+theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 shortcut = SubResource( 2 )
 text = "Enemy Details"
@@ -157,6 +159,7 @@ margin_right = 250.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 250, 55 )
 size_flags_horizontal = 0
+theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 shortcut = SubResource( 4 )
@@ -168,6 +171,7 @@ margin_top = 560.0
 margin_right = 730.0
 margin_bottom = 615.0
 rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 shortcut = SubResource( 6 )
 text = "Attack"
@@ -178,6 +182,7 @@ margin_top = 625.0
 margin_right = 730.0
 margin_bottom = 680.0
 rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 shortcut = SubResource( 8 )
 text = "Choose Spell"
@@ -188,6 +193,7 @@ margin_top = 560.0
 margin_right = 1085.0
 margin_bottom = 615.0
 rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 shortcut = SubResource( 10 )
@@ -199,6 +205,7 @@ margin_top = 560.0
 margin_right = 1440.0
 margin_bottom = 615.0
 rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 shortcut = SubResource( 12 )
 text = "Flee"
@@ -227,6 +234,7 @@ margin_top = 950.0
 margin_right = 1085.0
 margin_bottom = 1005.0
 rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
 shortcut = SubResource( 14 )

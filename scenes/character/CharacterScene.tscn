@@ -1,14 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/character/CharacterScene.cs" type="Script" id=1]
 [ext_resource path="res://scenes/inventory/GridEquipment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/inventory/GridInventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=4]
 [ext_resource path="res://resources/SegoeUISMall.tres" type="DynamicFont" id=5]
-[ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=6]
+[ext_resource path="res://resources/Button.tres" type="Theme" id=6]
+[ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.145098, 0.164706, 1 )
+
+[sub_resource type="InputEventKey" id=2]
+scancode = 83
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
 
 [node name="CharacterScene" type="Control"]
 script = ExtResource( 1 )
@@ -33,7 +40,6 @@ margin_right = 695.0
 margin_bottom = 931.0
 
 [node name="Info" type="VBoxContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1140.0
@@ -323,7 +329,8 @@ margin_left = 112.0
 margin_right = 312.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 200, 55 )
-custom_fonts/font = ExtResource( 4 )
+theme = ExtResource( 6 )
+shortcut = SubResource( 3 )
 text = "Cast Spell"
 
 [node name="Label2" type="Label" parent="Info"]
@@ -334,7 +341,7 @@ custom_fonts/font = ExtResource( 5 )
 text = "All changes will be saved on closing."
 align = 1
 
-[node name="Orphanage" parent="." instance=ExtResource( 6 )]
+[node name="Orphanage" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="Info/Vitals/Attributes/MinusButtons/BtnStrengthMinus" to="." method="_on_BtnStrengthMinus_pressed"]
 [connection signal="pressed" from="Info/Vitals/Attributes/MinusButtons/BtnVitalityMinus" to="." method="_on_BtnVitalityMinus_pressed"]
 [connection signal="pressed" from="Info/Vitals/Attributes/MinusButtons/BtnDexterityMinus" to="." method="_on_BtnDexterityMinus_pressed"]

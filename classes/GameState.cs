@@ -40,7 +40,7 @@ namespace Sulimn.Classes
         internal static Item DefaultLegs = new Item();
         internal static Item DefaultFeet = new Item();
 
-        internal static PackedScene PreviousScene = new PackedScene();
+        internal static string PreviousScene;
         internal static List<PackedScene> History = new List<PackedScene>();
         internal static bool UpdateDisplay { get; set; }
         internal static Info Info { get; set; }
@@ -54,6 +54,7 @@ namespace Sulimn.Classes
         /// <param name="scene">Scene to be added</param>
         internal static void AddSceneToHistory(Node scene)
         {
+            PreviousScene = scene.Name;
             PackedScene packedScene = new PackedScene();
             packedScene.Pack(scene);
             History.Add(packedScene);

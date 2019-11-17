@@ -1,15 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/shopping/MagickShoppeScene.cs" type="Script" id=1]
+[ext_resource path="res://scenes/character/CastSpellScene.cs" type="Script" id=1]
 [ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=2]
 [ext_resource path="res://resources/Button.tres" type="Theme" id=3]
 
 [sub_resource type="InputEventKey" id=1]
-pressed = true
-scancode = 82
+scancode = 83
 
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
+
+[sub_resource type="InputEventKey" id=3]
+scancode = 82
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -90,7 +95,7 @@ rect_min_size = Vector2( 600, 49 )
 custom_fonts/font = ExtResource( 2 )
 autowrap = true
 
-[node name="BtnLearnSpell" type="Button" parent="."]
+[node name="BtnCastSpell" type="Button" parent="."]
 margin_left = 615.0
 margin_top = 475.0
 margin_right = 865.0
@@ -98,7 +103,8 @@ margin_bottom = 530.0
 rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
 disabled = true
-text = "Learn Spell"
+shortcut = SubResource( 2 )
+text = "Cast Spell"
 
 [node name="BtnReturn" type="Button" parent="."]
 margin_left = 835.0
@@ -107,8 +113,8 @@ margin_right = 1085.0
 margin_bottom = 1005.0
 rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
-shortcut = SubResource( 2 )
+shortcut = SubResource( 4 )
 text = "Return"
 [connection signal="item_selected" from="LstSpells" to="." method="_on_LstSpells_item_selected"]
-[connection signal="pressed" from="BtnLearnSpell" to="." method="_on_BtnLearnSpell_pressed"]
+[connection signal="pressed" from="BtnCastSpell" to="." method="_on_BtnCastSpell_pressed"]
 [connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]
