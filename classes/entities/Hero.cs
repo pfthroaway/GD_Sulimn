@@ -55,30 +55,7 @@ namespace Sulimn.Classes.Entities
 
         /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the inventory.</summary>
         [JsonIgnore]
-        public int InventoryRepairCost
-        {
-            get
-            {
-                int total = 0;
-                foreach (Item itm in Inventory)
-                {
-                    switch (itm.Type)
-                    {
-                        case ItemType.MeleeWeapon:
-                        case ItemType.RangedWeapon:
-                        case ItemType.HeadArmor:
-                        case ItemType.BodyArmor:
-                        case ItemType.HandArmor:
-                        case ItemType.LegArmor:
-                        case ItemType.FeetArmor:
-                        case ItemType.Ring:
-                            total += itm.RepairCost;
-                            break;
-                    }
-                }
-                return total;
-            }
-        }
+        public int InventoryRepairCost => Inventory.Sum(itm => itm.RepairCost);
 
         /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the inventory, formatted.</summary>
         [JsonIgnore]

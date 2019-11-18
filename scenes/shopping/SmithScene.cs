@@ -12,6 +12,7 @@ namespace Sulimn.Classes.Shopping
         private GridInventory GridInventory;
         private ItemSlot RepairSlot;
         private Label LblRepair, LblRepairAll;
+        private Orphanage Orphanage;
 
         public override void _UnhandledInput(InputEvent @event)
         {
@@ -28,6 +29,7 @@ namespace Sulimn.Classes.Shopping
             GridEquipment = (GridEquipment)GetNode("GridEquipment");
             LblRepair = (Label)GetNode("LblRepair");
             LblRepairAll = (Label)GetNode("LblRepairAll");
+            Orphanage = (Orphanage)GetNode("Orphanage");
             RepairSlot = (ItemSlot)GetNode("RepairSlot");
 
             GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
@@ -46,7 +48,7 @@ namespace Sulimn.Classes.Shopping
             if (RepairSlot.Item.Item != null && RepairSlot.Item.Item != new Item())
             {
                 LblRepair.Text = RepairSlot.Item.Item.RepairCostToStringWithText;
-                BtnRepair.Disabled = GameState.CurrentHero.Gold < RepairSlot.Item.Item.RepairCost;
+                BtnRepair.Disabled = RepairSlot.Item.Item.RepairCost == 0 || GameState.CurrentHero.Gold < RepairSlot.Item.Item.RepairCost;
             }
             else
             {
@@ -73,21 +75,31 @@ namespace Sulimn.Classes.Shopping
 
         #region Button Click
 
-        private void _on_BtnReturn_pressed()
-        {
-            GameState.CurrentHero.Gold -= RepairSlot.Item.Item.RepairCost;
-            RepairSlot.Item.Item.CurrentDurability = RepairSlot.Item.Item.MaximumDurability;
-            // TODO Send item back to first empty inventory slot.
-        }
+        private void _on_BtnReturn_pressed() => GetTree().ChangeSceneTo(GameState.GoBack());
 
         private void _on_BtnRepair_pressed()
         {
-            // Replace with function body.
+            InventoryItem item = RepairSlot.Item;
+            GameState.CurrentHero.Gold -= item.Item.RepairCost;
+            item.Item.CurrentDurability = item.Item.MaximumDurability;
+            item.SetItem(item.Item);
+            ItemSlot slot = GridInventory.FindFirstEmptySlot();
+            if (slot != new ItemSlot())
+            {
+                RepairSlot.RemoveChild(item);
+                Orphanage.AddChild(item);
+                InventoryItem item2 = (InventoryItem)Orphanage.GetChild(0);
+                slot.Item = item;
+                slot.PutItemInSlot(item);
+                RepairSlot.Item = new InventoryItem();
+            }
+            GameState.Info.DisplayStats();
+            Save();
         }
 
         private void _on_BtnRepairAll_pressed()
         {
-            // Replace with function body.
+            // TODO Implement repair all
         }
 
         #endregion Button Click

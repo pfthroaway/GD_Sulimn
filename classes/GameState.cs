@@ -202,7 +202,7 @@ namespace Sulimn.Classes
 
             // TODO Save scene history on application exit and load back when the same player logs in.
             // TODO Make it to where you can take off default armor, but not default weapon.
-
+            // TODO Balance durability with item value/damage/defense.
             AllItems.AddRanges(AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllFood, AllDrinks, AllPotions, AllWeapons);
 
             DefaultWeapon = AllWeapons.Find(weapon => weapon.Name == "Fists");

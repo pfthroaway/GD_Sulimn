@@ -12,6 +12,8 @@ namespace Sulimn.Scenes.Inventory
     {
         private Orphanage orphanage;
 
+        // TODO Implement required level for items as a property that is compared against each item being put in the slot
+        // TODO Implement a CurrentScene LblError which displays errors as to why items can't go into a slot.
         public List<ItemType> ItemTypes { get; set; } = new List<ItemType>(Enum.GetValues(typeof(ItemType)).Cast<ItemType>().ToList());
 
         /// <summary><see cref="InventoryItem"/> currently occupying the <see cref="ItemSlot"/>.</summary>
@@ -55,7 +57,7 @@ namespace Sulimn.Scenes.Inventory
 
         /// <summary>Puts the currently held <see cref="Inventory"/> into the <see cref="ItemSlot"/>.</summary>
         /// <param name="item"><see cref="InventoryItem"/> to be put into the <see cref="ItemSlot"/></param>
-        private void PutItemInSlot(InventoryItem item)
+        public void PutItemInSlot(InventoryItem item)
         {
             item.Drag = false;
             item.RectGlobalPosition = Vector2.Zero;

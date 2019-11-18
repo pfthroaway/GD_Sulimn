@@ -22,7 +22,13 @@ namespace Sulimn.Scenes.Inventory
         }
 
         public ItemSlot FindFirstEmptySlot()
-        { // TODO Implement this
+        {
+            GridContainer container = (GridContainer)GetNode("GridInventory");
+            foreach (ItemSlot slot in container.GetChildren())
+            {
+                if (slot.GetChildren().Count == 1)
+                    return slot;
+            }
             return new ItemSlot();
         }
 
