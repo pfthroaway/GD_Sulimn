@@ -90,7 +90,7 @@ namespace Sulimn.Scenes.Exploration
                     DisplayPopup(GameState.EventFindItem(1, 100));
                 else if (evnt <= 8) // 10% chance to find gold
                     DisplayPopup(GameState.EventFindGold(1, 100));
-                else if (evnt <= 10) // 10% chance to find stream
+                else if (evnt <= 10 && GameState.CurrentHero.Statistics.HealthRatio < 0.5m) // 10% chance to find stream
                     DisplayPopup(GameState.EventEncounterStream(), 1.5f);
                 // 50% chance for no event
             }

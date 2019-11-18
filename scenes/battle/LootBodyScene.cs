@@ -19,9 +19,17 @@ namespace Sulimn.Scenes.Battle
             SaveEquipment();
         }
 
-        private void SaveInventory() => GameState.SetInventoryFromGrid(HeroInventory);
+        private void SaveInventory()
+        {
+            GameState.SetInventoryFromGrid(HeroInventory);
+            GameState.SetInventoryFromGrid(EnemyInventory, false);
+        }
 
-        private void SaveEquipment() => GameState.SetEquipmentFromGrid(HeroEquipment);
+        private void SaveEquipment()
+        {
+            GameState.SetEquipmentFromGrid(HeroEquipment);
+            GameState.SetEquipmentFromGrid(EnemyEquipment, false);
+        }
 
         #endregion Save
 
@@ -33,7 +41,7 @@ namespace Sulimn.Scenes.Battle
             HeroEquipment = (GridEquipment)GetNode("HeroEquipment");
             EnemyEquipment = (GridEquipment)GetNode("EnemyEquipment");
             HeroInventory.SetUpInventory(GameState.CurrentHero.Inventory);
-            EnemyInventory.SetUpInventory(GameState.CurrentEnemy.Inventory);
+            EnemyInventory.SetUpInventory(GameState.CurrentEnemy.Inventory, true);
             HeroEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
             EnemyEquipment.SetUpEquipment(GameState.CurrentEnemy.Equipment, true);
         }

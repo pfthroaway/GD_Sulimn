@@ -53,16 +53,13 @@ namespace Sulimn.Scenes.Inventory
                         }
                         else if (orphanage.GetChildCount() == 0)
                         {
-                            if (!slot.Enemy || slot.Item.Item.IsLootable)
-                            {
-                                Drag = true;
-                                TextureRect rect = (TextureRect)GetChild(0);
-                                rect.MouseFilter = MouseFilterEnum.Ignore;
-                                GetParent().RemoveChild(this);
-                                slot.Item = new InventoryItem();
-                                orphanage.AddChild(this);
-                                orphanage.PreviousSlot = slot;
-                            }
+                            Drag = true;
+                            TextureRect rect = (TextureRect)GetChild(0);
+                            rect.MouseFilter = MouseFilterEnum.Ignore;
+                            GetParent().RemoveChild(this);
+                            slot.Item = new InventoryItem();
+                            orphanage.AddChild(this);
+                            orphanage.PreviousSlot = slot;
                         }
                     }
                 }

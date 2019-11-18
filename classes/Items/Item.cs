@@ -226,10 +226,6 @@ namespace Sulimn.Classes.Items
         [JsonIgnore]
         public string SellValueToStringWithText => $"Sell Value: {SellValueToString}";
 
-        /// <summary>Is the <see cref="Item"/> lootable?</summary>
-        [JsonIgnore]
-        public bool IsLootable => Value > 0 && (CanSell || IsSold);
-
         /// <summary>Returns text relating to the sellability of the <see cref="Item"/>.</summary>
         [JsonIgnore]
         public string CanSellToString => CanSell ? "Sellable" : "Not Sellable";
@@ -315,7 +311,6 @@ namespace Sulimn.Classes.Items
             + (EffectsToString.Length > 0 ? EffectsToString + "\n" : "")
             + (MinimumLevel > 1 ? MinimumLevelToString + "\n" : "")
             + (AllowedClasses.Count > 0 ? AllowedClassesToString + "\n" : "")
-            + (!IsLootable ? "Not Lootable\n" : "")
             + BonusToString
             : "";
 

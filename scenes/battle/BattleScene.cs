@@ -129,27 +129,10 @@ public class BattleScene : Control
     private void EndBattle(bool win)
     {
         _battleEnded = true;
-        if (win)
+        if (win && GameState.CurrentEnemy.Type != "Animal")
             BtnLootBody.Disabled = false;
 
         BtnReturn.Disabled = false;
-    }
-
-    private void LootBody()
-    {
-        // TODO Make it possible to loot enemy corpses instead of automatically giving the Hero gold.
-
-        if (GameState.CurrentEnemy.Gold > 0)
-            AddTextToTextBox($"You find {GameState.CurrentEnemy.Gold} gold on the body.");
-
-        GameState.CurrentHero.Gold += GameState.CurrentEnemy.Gold;
-        List<Item> items = GameState.CurrentEnemy.Equipment.AllEquipment;
-        foreach (Item item in items)
-            if (item != new Item())
-            {
-                GameState.CurrentHero.AddItem(item);
-                AddTextToTextBox($"You pick up a {item.Name}.");
-            }
     }
 
     #endregion Battle Management
@@ -590,7 +573,7 @@ public class BattleScene : Control
     #region Button Management
 
     /// <summary>Checks whether to enable/disable battle buttons.</summary>
-    private void CheckButtons() => ToggleButtons(_battleEnded);
+    private void CheckButtons() => ToggleButtons(_battleEnded || GameState.CurrentEnemy.Statistics.CurrentHealth <= 0);
 
     /// <summary>Toggles whether the Page's Buttons are disabled.</summary>
     /// <param name="disabled">Are the buttons disabled?</param>

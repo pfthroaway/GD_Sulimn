@@ -71,11 +71,14 @@ namespace Sulimn.Classes
             return last;
         }
 
-        internal static void WriteSceneHistory() => JSONInteraction.WriteSceneHistory(History, GameState.CurrentHero.Name);
+        internal static void WriteSceneHistory() => JSONInteraction.WriteSceneHistory(History, CurrentHero.Name);
 
         #endregion Scene Navigation
 
-        internal static void SetInventoryFromGrid(GridInventory inventory)
+        /// <summary>Sets the current inventory for a given <see cref="GridInventory"/>.</summary>
+        /// <param name="inventory"><see cref="GridInventory"/> to set the inventory</param>
+        /// <param name="hero">Is this being set for the <see cref="Hero"/>?</param>
+        internal static void SetInventoryFromGrid(GridInventory inventory, bool hero = true)
         {
             Godot.Collections.Array allSlots = inventory.GetChild(0).GetChildren();
             List<Item> allItems = new List<Item>();
@@ -84,10 +87,16 @@ namespace Sulimn.Classes
                 if (slot?.Item?.Item != new Item())
                     allItems.Add(slot?.Item?.Item);
             }
-            CurrentHero.Inventory = allItems;
+            if (hero)
+                CurrentHero.Inventory = allItems;
+            else
+                CurrentEnemy.Inventory = allItems;
         }
 
-        internal static void SetEquipmentFromGrid(GridEquipment equipment)
+        /// <summary>Sets the current <see cref="Equipment"/> for a given <see cref="GridEquipment"/>.</summary>
+        /// <param name="equipment"><see cref="GridEquipment"/> to set the <see cref="Equipment"/></param>
+        /// <param name="hero">Is this being set for the <see cref="Hero"/>?</param>
+        internal static void SetEquipmentFromGrid(GridEquipment equipment, bool hero = true)
         {
             ItemSlot WeaponSlot = (ItemSlot)equipment.GetNode("WeaponSlot");
             ItemSlot HeadSlot = (ItemSlot)equipment.GetNode("HeadSlot");
@@ -97,22 +106,44 @@ namespace Sulimn.Classes
             ItemSlot FeetSlot = (ItemSlot)equipment.GetNode("FeetSlot");
             ItemSlot LeftRingSlot = (ItemSlot)equipment.GetNode("LeftRingSlot");
             ItemSlot RightRingSlot = (ItemSlot)equipment.GetNode("RightRingSlot");
-            if (WeaponSlot.Item != null)
-                GameState.CurrentHero.Equipment.Weapon = WeaponSlot.Item.Item;
-            if (HeadSlot.Item != null)
-                GameState.CurrentHero.Equipment.Head = HeadSlot.Item.Item;
-            if (BodySlot.Item != null)
-                GameState.CurrentHero.Equipment.Body = BodySlot.Item.Item;
-            if (HandsSlot.Item != null)
-                GameState.CurrentHero.Equipment.Hands = HandsSlot.Item.Item;
-            if (LegsSlot.Item != null)
-                GameState.CurrentHero.Equipment.Legs = LegsSlot.Item.Item;
-            if (FeetSlot.Item != null)
-                GameState.CurrentHero.Equipment.Feet = FeetSlot.Item.Item;
-            if (LeftRingSlot.Item != null)
-                GameState.CurrentHero.Equipment.LeftRing = LeftRingSlot.Item.Item;
-            if (RightRingSlot.Item != null)
-                GameState.CurrentHero.Equipment.RightRing = RightRingSlot.Item.Item;
+            if (hero)
+            {
+                if (WeaponSlot.Item != null)
+                    CurrentHero.Equipment.Weapon = WeaponSlot.Item.Item;
+                if (HeadSlot.Item != null)
+                    CurrentHero.Equipment.Head = HeadSlot.Item.Item;
+                if (BodySlot.Item != null)
+                    CurrentHero.Equipment.Body = BodySlot.Item.Item;
+                if (HandsSlot.Item != null)
+                    CurrentHero.Equipment.Hands = HandsSlot.Item.Item;
+                if (LegsSlot.Item != null)
+                    CurrentHero.Equipment.Legs = LegsSlot.Item.Item;
+                if (FeetSlot.Item != null)
+                    CurrentHero.Equipment.Feet = FeetSlot.Item.Item;
+                if (LeftRingSlot.Item != null)
+                    CurrentHero.Equipment.LeftRing = LeftRingSlot.Item.Item;
+                if (RightRingSlot.Item != null)
+                    CurrentHero.Equipment.RightRing = RightRingSlot.Item.Item;
+            }
+            else
+            {
+                if (WeaponSlot.Item != null)
+                    CurrentEnemy.Equipment.Weapon = WeaponSlot.Item.Item;
+                if (HeadSlot.Item != null)
+                    CurrentEnemy.Equipment.Head = HeadSlot.Item.Item;
+                if (BodySlot.Item != null)
+                    CurrentEnemy.Equipment.Body = BodySlot.Item.Item;
+                if (HandsSlot.Item != null)
+                    CurrentEnemy.Equipment.Hands = HandsSlot.Item.Item;
+                if (LegsSlot.Item != null)
+                    CurrentEnemy.Equipment.Legs = LegsSlot.Item.Item;
+                if (FeetSlot.Item != null)
+                    CurrentEnemy.Equipment.Feet = FeetSlot.Item.Item;
+                if (LeftRingSlot.Item != null)
+                    CurrentEnemy.Equipment.LeftRing = LeftRingSlot.Item.Item;
+                if (RightRingSlot.Item != null)
+                    CurrentEnemy.Equipment.RightRing = RightRingSlot.Item.Item;
+            }
         }
 
         /// <summary>Determines whether a Hero's credentials are authentic.</summary>
@@ -170,7 +201,6 @@ namespace Sulimn.Classes
             //JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
 
             // TODO Save scene history on application exit and load back when the same player logs in.
-            // TODO Make it to where your fists can't take durability damage in battle.
             // TODO Make it to where you can take off default armor, but not default weapon.
 
             AllItems.AddRanges(AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllFood, AllDrinks, AllPotions, AllWeapons);

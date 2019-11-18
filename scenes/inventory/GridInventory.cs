@@ -8,12 +8,14 @@ namespace Sulimn.Scenes.Inventory
     public class GridInventory : Panel
     {
         /// <summary>Sets up an inventory.</summary>
-        /// <param name="inventory"></param>
-        public void SetUpInventory(List<Item> inventory)
+        /// <param name="inventory">Inventory to be set up</param>
+        /// <param name="enemy">Is this an enemy's inventory?</param>
+        public void SetUpInventory(List<Item> inventory, bool enemy = false)
         {
             for (int i = 0; i < 40; i++)
             {
                 ItemSlot slot = (ItemSlot)FindNode($"ItemSlot{i + 1}");
+                slot.Enemy = enemy;
                 if (i < inventory.Count)
                     GameState.AddItemInstanceToSlot(slot, inventory[i]);
             }
