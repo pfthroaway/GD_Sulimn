@@ -591,13 +591,19 @@ public class BattleScene : Control
 
     private void _on_BtnAttack_pressed() => NewRound(BattleAction.Attack);
 
+    private void _on_BtnCastSpell_pressed() => NewRound(BattleAction.Cast);
+
     private void _on_BtnChooseSpell_pressed()
     {
         GameState.AddSceneToHistory(GetTree().CurrentScene);
         GetTree().ChangeScene("res://scenes/character/CastSpellScene.tscn");
     }
 
-    private void _on_BtnCastSpell_pressed() => NewRound(BattleAction.Cast);
+    private void _on_BtnEnemyDetails_pressed()
+    {
+        GameState.AddSceneToHistory(GetTree().CurrentScene);
+        GetTree().ChangeScene("res://scenes/battle/EnemyDetailsScene.tscn");
+    }
 
     private void _on_BtnFlee_pressed() => NewRound(BattleAction.Flee);
 

@@ -66,12 +66,6 @@ namespace Sulimn.Scenes.City
             }
         }
 
-        private void _on_MinesArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
-        {
-            if (area is Node player && player.IsInGroup("Player"))
-                Player.Move("up");
-        }
-
         private void _on_MarketArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
@@ -82,11 +76,17 @@ namespace Sulimn.Scenes.City
             }
         }
 
+        private void _on_MinesArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+                Player.Move("up");
+        }
+
         #endregion Areas Entered
 
         // Called every frame. 'delta' is the elapsed time since the previous frame.
-        public override void _PhysicsProcess(float delta)
-        {
-        }
+        //public override void _PhysicsProcess(float delta)
+        //{
+        //}
     }
 }

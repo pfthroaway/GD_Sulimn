@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/shopping/SmithScene.cs" type="Script" id=1]
+[ext_resource path="res://scenes/inventory/GridEquipment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/inventory/GridInventory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/inventory/ItemSlot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/Button.tres" type="Theme" id=5]
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=7]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="GridEquipment" parent="." instance=ExtResource( 2 )]
+margin_left = 32.5
+margin_top = 10.0
+margin_right = -1247.5
+margin_bottom = -430.0
+
+[node name="GridInventory" parent="." instance=ExtResource( 3 )]
+margin_left = 10.0
+margin_top = 660.0
+margin_right = 695.0
+margin_bottom = 931.0
+
+[node name="RepairSlot" parent="." instance=ExtResource( 4 )]
+margin_left = 928.0
+margin_top = 540.0
+margin_right = 992.0
+margin_bottom = 604.0
+
+[node name="BtnRepair" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 614.0
+margin_right = 1085.0
+margin_bottom = 669.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 5 )
+text = "Repair"
+
+[node name="LblRepair" type="Label" parent="."]
+margin_left = 835.0
+margin_top = 678.0
+margin_right = 1085.0
+margin_bottom = 727.0
+rect_min_size = Vector2( 250, 49 )
+custom_fonts/font = ExtResource( 6 )
+
+[node name="BtnRepairAll" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 738.587
+margin_right = 1085.0
+margin_bottom = 793.587
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 5 )
+text = "Repair All"
+
+[node name="LblRepairAll" type="Label" parent="."]
+margin_left = 835.0
+margin_top = 802.0
+margin_right = 1085.0
+margin_bottom = 851.0
+rect_min_size = Vector2( 250, 49 )
+custom_fonts/font = ExtResource( 6 )
+
+[node name="BtnReturn" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 950.0
+margin_right = 1085.0
+margin_bottom = 1005.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 5 )
+text = "Return"
+
+[node name="Orphanage" parent="." instance=ExtResource( 7 )]
+[connection signal="pressed" from="BtnRepair" to="." method="_on_BtnRepair_pressed"]
+[connection signal="pressed" from="BtnRepairAll" to="." method="_on_BtnRepairAll_pressed"]
+[connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

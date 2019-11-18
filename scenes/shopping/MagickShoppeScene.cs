@@ -79,6 +79,7 @@ namespace Sulimn.Scenes.Shopping
             SelectedSpell = new Spell();
             DisplaySpell();
             LoadSpells();
+            GameState.Info.DisplayStats();
         }
 
         private void _on_BtnReturn_pressed() => GetTree().ChangeSceneTo(GameState.GoBack());

@@ -53,6 +53,53 @@ namespace Sulimn.Classes.Entities
 
         #region Helper Properties
 
+        /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the inventory.</summary>
+        [JsonIgnore]
+        public int InventoryRepairCost
+        {
+            get
+            {
+                int total = 0;
+                foreach (Item itm in Inventory)
+                {
+                    switch (itm.Type)
+                    {
+                        case ItemType.MeleeWeapon:
+                        case ItemType.RangedWeapon:
+                        case ItemType.HeadArmor:
+                        case ItemType.BodyArmor:
+                        case ItemType.HandArmor:
+                        case ItemType.LegArmor:
+                        case ItemType.FeetArmor:
+                        case ItemType.Ring:
+                            total += itm.RepairCost;
+                            break;
+                    }
+                }
+                return total;
+            }
+        }
+
+        /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the inventory, formatted.</summary>
+        [JsonIgnore]
+        public string InventoryRepairCostToString => InventoryRepairCost.ToString("N0");
+
+        /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the inventory, formatted with preceding text.</summary>
+        [JsonIgnore]
+        public string InventoryRepairCostToStringWithText => $"Repair Cost: {InventoryRepairCostToString}";
+
+        /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the inventory and <see cref="Equipment"/>.</summary>
+        [JsonIgnore]
+        public int TotalRepairCost => InventoryRepairCost + Equipment.RepairCost;
+
+        /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the inventory and <see cref="Equipment"/>, formatted.</summary>
+        [JsonIgnore]
+        public string TotalRepairCostToString => TotalRepairCost.ToString("N0");
+
+        /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the inventory and <see cref="Equipment"/>, formatted with preceding text.</summary>
+        [JsonIgnore]
+        public string TotalRepairCostToStringWithText => $"Total Repair Cost: {TotalRepairCostToString}";
+
         /// <summary>Will the player be deleted on death?</summary>
         [JsonIgnore]
         public string HardcoreToString => Hardcore ? "Hardcore" : "Softcore";

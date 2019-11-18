@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Sulimn.Classes.Items;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sulimn.Classes.HeroParts
 {
@@ -48,6 +49,18 @@ namespace Sulimn.Classes.HeroParts
         /// <summary>List of all the <see cref="Item"/>s equipped.</summary>
         [JsonIgnore]
         public List<Item> AllEquipment => new List<Item> { Weapon, Head, Body, Hands, Legs, Feet, LeftRing, RightRing };
+
+        /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the <see cref="Equipment"/>.</summary>
+        [JsonIgnore]
+        public int RepairCost => AllEquipment.Sum(itm => itm.RepairCost);
+
+        /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the <see cref="Equipment"/>, formatted.</summary>
+        [JsonIgnore]
+        public string RepairCostToString => RepairCost.ToString("N0");
+
+        /// <summary>The amount of gold it would cost to repair all <see cref="Item"/>s in the <see cref="Equipment"/>, formatted with preceding text.</summary>
+        [JsonIgnore]
+        public string RepairCostToStringWithText => $"Repair Cost: {RepairCostToString}";
 
         /// <summary>Weight of all the Equipment currently equipped.</summary>
         [JsonIgnore]

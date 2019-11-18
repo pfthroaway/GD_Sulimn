@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Sulimn.Classes.Entities;
+using Sulimn.Classes.Extensions.DataTypeHelpers;
 using Sulimn.Classes.HeroParts;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,6 @@ namespace Sulimn.Classes.Items
     /// <summary>Represents an <see cref="Item"/> that a <see cref="Hero"/> can interact with in the game.</summary>
     public class Item
     {
-        // TODO Implement durability and other new features, maybe weapon/armor smiths.
-
         #region Modifying Properties
 
         /// <summary>Name of the <see cref="Item"/>.</summary>
@@ -196,7 +195,7 @@ namespace Sulimn.Classes.Items
 
         /// <summary>The durability ratio of an <see cref="Item"/>.</summary>
         [JsonIgnore]
-        public decimal DurabilityRatio => CurrentDurability * 1m / MaximumDurability;
+        public decimal DurabilityRatio => MaximumDurability > 0 ? CurrentDurability * 1m / MaximumDurability : 0;
 
         /// <summary>The weight of the <see cref="Item"/> with thousands separators.</summary>
         [JsonIgnore]
@@ -225,6 +224,18 @@ namespace Sulimn.Classes.Items
         /// <summary>The sell value of the <see cref="Item"/> with thousands separators with preceding text.</summary>
         [JsonIgnore]
         public string SellValueToStringWithText => $"Sell Value: {SellValueToString}";
+
+        /// <summary>The amount of gold it would cost to repair this <see cref="Item"/>.</summary>
+        [JsonIgnore]
+        public int RepairCost => Int32Helper.Parse((1 - DurabilityRatio) * Value);
+
+        /// <summary>The amount of gold it would cost to repair this <see cref="Item"/>,formatted.</summary>
+        [JsonIgnore]
+        public string RepairCostToString => RepairCost.ToString("N0");
+
+        /// <summary>The amount of gold it would cost to repair this <see cref="Item"/>, formatted with preceding text.</summary>
+        [JsonIgnore]
+        public string RepairCostToStringWithText => $"Repair Cost: {RepairCostToString}";
 
         /// <summary>Returns text relating to the sellability of the <see cref="Item"/>.</summary>
         [JsonIgnore]

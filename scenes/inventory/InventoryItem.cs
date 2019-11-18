@@ -4,6 +4,7 @@ using Sulimn.Classes.Items;
 
 namespace Sulimn.Scenes.Inventory
 {
+    /// <summary>Represents a displayable Item to be stored and displayed in <see cref="ItemSlot"/>s.</summary>
     public class InventoryItem : Control
     {
         public bool Drag;
@@ -11,6 +12,7 @@ namespace Sulimn.Scenes.Inventory
         private Item _item = new Item();
         private ItemContextMenu _contextMenu;
 
+        /// <summary>Item held by the <see cref="InventoryItem"/>.</summary>
         public Item Item
         {
             get => _item;
@@ -22,6 +24,16 @@ namespace Sulimn.Scenes.Inventory
             orphanage = (Orphanage)GetTree().CurrentScene.FindNode("Orphanage");
             _contextMenu = (ItemContextMenu)GetNode("ItemContextMenu");
             MouseDefaultCursorShape = CursorShape.PointingHand;
+        }
+
+        /// <summary>Repairs the Item.</summary>
+        public void RepairItem()
+        {
+            if (Item != new Item())
+            {
+                Item.CurrentDurability = Item.MaximumDurability;
+                GameState.UpdateDisplay = true;
+            }
         }
 
         private void _on_TextureRect_gui_input(InputEvent @event)
@@ -72,6 +84,9 @@ namespace Sulimn.Scenes.Inventory
             }
         }
 
+        /// <summary>Swaps the Item currently in the <see cref="ItemSlot"/> with the <see cref="InventoryItem"/> from the <see cref="Orphanage"/>.</summary>
+        /// <param name="slot"><see cref="ItemSlot"/> holding this <see cref="InventoryItem"/></param>
+        /// <param name="orphanItem"><see cref="InventoryItem"/> in the <see cref="Orphanage"/></param>
         private void SwapItems(ItemSlot slot, InventoryItem orphanItem)
         {
             TextureRect rect = (TextureRect)orphanItem.GetChild(0);
@@ -97,6 +112,8 @@ namespace Sulimn.Scenes.Inventory
                 RectGlobalPosition = GetViewport().GetMousePosition() + new Vector2(1, 1);
         }
 
+        /// <summary>Sets the Item in the <see cref="InventoryItem"/>.</summary>
+        /// <param name="item">Item to be set</param>
         public void SetItem(Item item)
         {
             if (item != null && item != new Item())

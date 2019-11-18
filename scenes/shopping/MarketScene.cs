@@ -19,7 +19,9 @@ namespace Sulimn.Scenes.Shopping
             GameState.Info.DisplayStats();
         }
 
-        private void EnterArea(params List<Item>[] items)
+        /// <summary>Loads the ItemMerchantScene.</summary>
+        /// <param name="items">Items to be loaded</param>
+        private void EnterMerchantArea(params List<Item>[] items)
         {
             Player.Move("down");
             GameState.MerchantInventory.Clear();
@@ -28,10 +30,24 @@ namespace Sulimn.Scenes.Shopping
             GetTree().ChangeScene("res://scenes/shopping/ItemMerchantScene.tscn");
         }
 
-        private void _on_WeaponsArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        #region Areas Entered
+
+        private void _on_ArmouryArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
-                EnterArea(GameState.AllWeapons);
+                EnterMerchantArea(GameState.AllHeadArmor, GameState.AllBodyArmor, GameState.AllHandArmor, GameState.AllLegArmor, GameState.AllFeetArmor);
+        }
+
+        private void _on_CityArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+                GetTree().ChangeSceneTo(GameState.GoBack());
+        }
+
+        private void _on_GeneralStoreArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+                EnterMerchantArea(GameState.AllFood, GameState.AllDrinks, GameState.AllPotions);
         }
 
         private void _on_MagickShoppeArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
@@ -47,30 +63,30 @@ namespace Sulimn.Scenes.Shopping
         private void _on_SilverEmpireArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
-                EnterArea(GameState.AllRings);
+                EnterMerchantArea(GameState.AllRings);
         }
 
-        private void _on_ArmouryArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        private void _on_SmithyArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
-                EnterArea(GameState.AllHeadArmor, GameState.AllBodyArmor, GameState.AllHandArmor, GameState.AllLegArmor, GameState.AllFeetArmor);
+            {
+                Player.Move("down");
+                GameState.AddSceneToHistory(GetTree().CurrentScene);
+                GetTree().ChangeScene("res://scenes/shopping/SmithScene.tscn");
+            }
         }
 
-        private void _on_GeneralStoreArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        private void _on_WeaponsArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
-                EnterArea(GameState.AllFood, GameState.AllDrinks, GameState.AllPotions);
+                EnterMerchantArea(GameState.AllWeapons);
         }
 
-        private void _on_CityArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
-        {
-            if (area is Node player && player.IsInGroup("Player"))
-                GetTree().ChangeSceneTo(GameState.GoBack());
-        }
+        #endregion Areas Entered
 
         // Called every frame. 'delta' is the elapsed time since the previous frame.
-        public override void _PhysicsProcess(float delta)
-        {
-        }
+        //public override void _PhysicsProcess(float delta)
+        //{
+        //}
     }
 }

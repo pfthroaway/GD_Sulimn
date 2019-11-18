@@ -25,6 +25,42 @@ namespace Sulimn.Classes.HeroParts
 
         #endregion Modifying Properties
 
+        #region Helper Properties
+
+        /// <summary>How strong an entity is, formatted.</summary>
+        [JsonIgnore]
+        public string StrengthToString => Strength.ToString("N0");
+
+        /// <summary>How strong an entity is, formatted with preceding text.</summary>
+        [JsonIgnore]
+        public string StrengthToStringWithText => $"Strength: {StrengthToString}";
+
+        /// <summary>How much health an entity can have, formatted.</summary>
+        [JsonIgnore]
+        public string VitalityToString => Vitality.ToString("N0");
+
+        /// <summary>How much health an entity can have, formatted.</summary>
+        [JsonIgnore]
+        public string VitalityToStringWithText => $"Vitality: {VitalityToString}";
+
+        /// <summary>How fast an entity can move, formatted.</summary>
+        [JsonIgnore]
+        public string DexterityToString => Dexterity.ToString("N0");
+
+        /// <summary>How fast an entity can move, formatted.</summary>
+        [JsonIgnore]
+        public string DexterityToStringWithText => $"Dexterity: {DexterityToString}";
+
+        /// <summary>How magically-inclined an entity is, formatted.</summary>
+        [JsonIgnore]
+        public string WisdomToString => Wisdom.ToString("N0");
+
+        /// <summary>How magically-inclined an entity is, formatted.</summary>
+        [JsonIgnore]
+        public string WisdomToStringWithText => $"Wisdom: {WisdomToString}";
+
+        #endregion Helper Properties
+
         #region Override Operators
 
         public static bool Equals(Attributes left, Attributes right)

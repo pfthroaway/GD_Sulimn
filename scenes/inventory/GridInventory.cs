@@ -21,6 +21,11 @@ namespace Sulimn.Scenes.Inventory
             }
         }
 
+        public ItemSlot FindFirstEmptySlot()
+        { // TODO Implement this
+            return new ItemSlot();
+        }
+
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {

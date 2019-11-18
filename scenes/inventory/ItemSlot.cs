@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace Sulimn.Scenes.Inventory
 {
+    /// <summary>Represents a slot to put <see cref="InventoryItem"/>s in.</summary>
     public class ItemSlot : Control
     {
         private Orphanage orphanage;

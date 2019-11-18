@@ -95,6 +95,7 @@ custom_fonts/font = ExtResource( 2 )
 align = 1
 
 [node name="Enemy" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 960.0
 margin_top = 100.0
 margin_right = 1670.0
@@ -248,6 +249,7 @@ margin_bottom = 730.0
 rect_min_size = Vector2( 1200, 250 )
 custom_fonts/normal_font = ExtResource( 2 )
 scroll_following = true
+[connection signal="pressed" from="Enemy/CC/VB/BtnEnemyDetails" to="." method="_on_BtnEnemyDetails_pressed"]
 [connection signal="pressed" from="Enemy/CC/VB/BtnLootBody" to="." method="_on_BtnLootBody_pressed"]
 [connection signal="pressed" from="BtnAttack" to="." method="_on_BtnAttack_pressed"]
 [connection signal="pressed" from="BtnChooseSpell" to="." method="_on_BtnChooseSpell_pressed"]

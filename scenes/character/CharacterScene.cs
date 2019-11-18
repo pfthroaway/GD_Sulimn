@@ -13,8 +13,6 @@ namespace Sulimn.Scenes.Character
         private GridInventory GridInventory;
         private Hero _copyOfHero = new Hero();
 
-        // TODO Trash on Inventory screen.
-        // TODO Implement casting spells from the Character Scene.
         // TODO Make it to where you can't add Fists to the inventory.
 
         public override void _UnhandledInput(InputEvent @event)
