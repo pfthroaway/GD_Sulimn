@@ -7,7 +7,7 @@ using Sulimn.Classes.Items;
 using System;
 using System.Collections.Generic;
 
-namespace Sulimn.Scenes.Character
+namespace Sulimn.Scenes.CharacterScenes
 {
     public class NewHeroScene : Control
     {

@@ -3,7 +3,7 @@ using Sulimn.Classes;
 using Sulimn.Classes.Entities;
 using Sulimn.Scenes.Inventory;
 
-namespace Sulimn.Scenes.Character
+namespace Sulimn.Scenes.CharacterScenes
 {
     public class CharacterScene : Control
     {

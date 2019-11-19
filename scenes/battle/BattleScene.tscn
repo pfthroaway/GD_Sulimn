@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/battle/BattleScene.cs" type="Script" id=1]
 [ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=2]
@@ -21,12 +21,6 @@ scancode = 65
 
 [sub_resource type="ShortCut" id=6]
 shortcut = SubResource( 5 )
-
-[sub_resource type="InputEventKey" id=7]
-scancode = 83
-
-[sub_resource type="ShortCut" id=8]
-shortcut = SubResource( 7 )
 
 [sub_resource type="InputEventKey" id=9]
 scancode = 67
@@ -167,9 +161,9 @@ shortcut = SubResource( 4 )
 text = "Loot Body"
 
 [node name="BtnAttack" type="Button" parent="."]
-margin_left = 480.0
+margin_left = 835.0
 margin_top = 560.0
-margin_right = 730.0
+margin_right = 1085.0
 margin_bottom = 615.0
 rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
@@ -177,21 +171,10 @@ custom_fonts/font = ExtResource( 2 )
 shortcut = SubResource( 6 )
 text = "Attack"
 
-[node name="BtnChooseSpell" type="Button" parent="."]
-margin_left = 480.0
-margin_top = 625.0
-margin_right = 730.0
-margin_bottom = 680.0
-rect_min_size = Vector2( 250, 55 )
-theme = ExtResource( 3 )
-custom_fonts/font = ExtResource( 2 )
-shortcut = SubResource( 8 )
-text = "Choose Spell"
-
 [node name="BtnCastSpell" type="Button" parent="."]
-margin_left = 835.0
+margin_left = 480.0
 margin_top = 560.0
-margin_right = 1085.0
+margin_right = 730.0
 margin_bottom = 615.0
 rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
@@ -211,19 +194,19 @@ custom_fonts/font = ExtResource( 2 )
 shortcut = SubResource( 12 )
 text = "Flee"
 
-[node name="LblSpellName" type="Label" parent="."]
-margin_left = 730.0
+[node name="LblSpellTypeAmount" type="Label" parent="."]
+margin_left = 480.0
 margin_top = 628.0
-margin_right = 1190.0
+margin_right = 730.0
 margin_bottom = 677.0
-rect_min_size = Vector2( 460, 49 )
+rect_min_size = Vector2( 250, 49 )
 custom_fonts/font = ExtResource( 2 )
 align = 1
 
 [node name="LblSpellCost" type="Label" parent="."]
-margin_left = 1190.0
+margin_left = 835.0
 margin_top = 628.0
-margin_right = 1440.0
+margin_right = 1085.0
 margin_bottom = 677.0
 rect_min_size = Vector2( 250, 49 )
 custom_fonts/font = ExtResource( 2 )
@@ -249,10 +232,18 @@ margin_bottom = 730.0
 rect_min_size = Vector2( 1200, 250 )
 custom_fonts/normal_font = ExtResource( 2 )
 scroll_following = true
+
+[node name="LstSpells" type="ItemList" parent="."]
+margin_left = 50.0
+margin_top = 415.0
+margin_right = 450.0
+margin_bottom = 680.0
+rect_min_size = Vector2( 400, 265 )
+custom_fonts/font = ExtResource( 2 )
 [connection signal="pressed" from="Enemy/CC/VB/BtnEnemyDetails" to="." method="_on_BtnEnemyDetails_pressed"]
 [connection signal="pressed" from="Enemy/CC/VB/BtnLootBody" to="." method="_on_BtnLootBody_pressed"]
 [connection signal="pressed" from="BtnAttack" to="." method="_on_BtnAttack_pressed"]
-[connection signal="pressed" from="BtnChooseSpell" to="." method="_on_BtnChooseSpell_pressed"]
 [connection signal="pressed" from="BtnCastSpell" to="." method="_on_BtnCastSpell_pressed"]
 [connection signal="pressed" from="BtnFlee" to="." method="_on_BtnFlee_pressed"]
 [connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]
+[connection signal="item_selected" from="LstSpells" to="." method="_on_LstSpells_item_selected"]

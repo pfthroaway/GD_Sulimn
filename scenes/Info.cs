@@ -1,5 +1,6 @@
 using Godot;
 using Sulimn.Classes;
+using Sulimn.Scenes.Battle;
 
 namespace Sulimn.Scenes
 {
@@ -9,10 +10,7 @@ namespace Sulimn.Scenes
         private Button BtnCharacter;
 
         // Called when the node enters the scene tree for the first time.
-        public override void _Ready()
-        {
-            AssignControls();
-        }
+        public override void _Ready() => AssignControls();
 
         /// <summary>Assigns all controls to local variables for easy use.</summary>
         private void AssignControls()
@@ -31,6 +29,8 @@ namespace Sulimn.Scenes
                 GetTree().ChangeSceneTo(GameState.GoBack());
             else
             {
+                if (GetTree().CurrentScene.Name == "BattleScene")
+                    GameState.BattleScene = (BattleScene)GetTree().CurrentScene;
                 GameState.AddSceneToHistory(GetTree().CurrentScene);
                 GetTree().ChangeScene("res://scenes/character/CharacterScene.tscn");
             }

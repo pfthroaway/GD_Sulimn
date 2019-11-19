@@ -4,15 +4,13 @@ using Sulimn.Classes.Enums;
 using Sulimn.Classes.HeroParts;
 using System.Collections.Generic;
 
-namespace Sulimn.Scenes.Character
+namespace Sulimn.Scenes.CharacterScenes
 {
     public class CastSpellScene : Control
     {
-        private bool Battle;
         private Button BtnCastSpell;
         private ItemList LstSpells;
         private Label LblName, LblTypeAmount, LblMagicCost, LblCost, LblRequiredLevel, LblDescription, LblError;
-        private Spell SelectedSpell = new Spell();
 
         public override void _UnhandledInput(InputEvent @event)
         {
@@ -24,10 +22,6 @@ namespace Sulimn.Scenes.Character
         private void AssignControls()
         {
             BtnCastSpell = (Button)GetNode("BtnCastSpell");
-            if (GameState.PreviousScene == "BattleScene")
-                Battle = true;
-            if (Battle)
-                BtnCastSpell.Text = "Choose Spell";
             LblName = (Label)GetNode("SpellInfo/LblName");
             LblTypeAmount = (Label)GetNode("SpellInfo/LblTypeAmount");
             LblMagicCost = (Label)GetNode("SpellInfo/LblMagicCost");
@@ -41,15 +35,15 @@ namespace Sulimn.Scenes.Character
         /// <summary>Displays information about the currently selected <see cref="Spell"/>.</summary>
         private void DisplaySpell()
         {
-            if (SelectedSpell != null)
+            if (GameState.CurrentHero.CurrentSpell != null)
             {
-                LblName.Text = SelectedSpell.Name;
-                LblTypeAmount.Text = SelectedSpell.TypeAmount;
-                LblMagicCost.Text = SelectedSpell.MagicCostToString;
-                LblCost.Text = SelectedSpell.ValueToStringWithText;
-                LblRequiredLevel.Text = SelectedSpell.RequiredLevelToString;
-                LblDescription.Text = SelectedSpell.Description;
-                BtnCastSpell.Disabled = string.IsNullOrWhiteSpace(SelectedSpell.Name) || GameState.CurrentHero.Statistics.CurrentMagic < SelectedSpell.MagicCost;
+                LblName.Text = GameState.CurrentHero.CurrentSpell.Name;
+                LblTypeAmount.Text = GameState.CurrentHero.CurrentSpell.TypeAmount;
+                LblMagicCost.Text = GameState.CurrentHero.CurrentSpell.MagicCostToString;
+                LblCost.Text = GameState.CurrentHero.CurrentSpell.ValueToStringWithText;
+                LblRequiredLevel.Text = GameState.CurrentHero.CurrentSpell.RequiredLevelToString;
+                LblDescription.Text = GameState.CurrentHero.CurrentSpell.Description;
+                BtnCastSpell.Disabled = string.IsNullOrWhiteSpace(GameState.CurrentHero.CurrentSpell.Name) || GameState.CurrentHero.Statistics.CurrentMagic < GameState.CurrentHero.CurrentSpell.MagicCost;
             }
         }
 
@@ -72,10 +66,7 @@ namespace Sulimn.Scenes.Character
         private void _on_BtnCastSpell_pressed()
         {
             SpellType type = GameState.CurrentHero.CurrentSpell.Type;
-            GameState.CurrentHero.CurrentSpell = SelectedSpell;
-            if (Battle && (type == SpellType.Damage || type == SpellType.Shield))
-                GetTree().ChangeSceneTo(GameState.GoBack());
-            else if (!Battle && (type == SpellType.Damage || type == SpellType.Shield))
+            if (type == SpellType.Damage || type == SpellType.Shield)
                 LblError.Text = "You are not currently in a battle, therefore you are unable to cast this spell.";
             else if (type == SpellType.Healing)
             {
@@ -91,7 +82,7 @@ namespace Sulimn.Scenes.Character
         {
             LblError.Text = "";
             if (index >= 0)
-                SelectedSpell = GameState.AllSpells.Find(spl => spl.Name == LstSpells.Items[index].ToString());
+                GameState.CurrentHero.CurrentSpell = GameState.CurrentHero.Spellbook.Spells[index];
             DisplaySpell();
         }
 

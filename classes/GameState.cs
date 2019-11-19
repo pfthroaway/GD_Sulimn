@@ -5,6 +5,7 @@ using Sulimn.Classes.Extensions;
 using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
 using Sulimn.Scenes;
+using Sulimn.Scenes.Battle;
 using Sulimn.Scenes.Inventory;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,7 @@ namespace Sulimn.Classes
         internal static Item DefaultLegs = new Item();
         internal static Item DefaultFeet = new Item();
 
+        internal static BattleScene BattleScene;
         internal static string PreviousScene;
         internal static List<PackedScene> History = new List<PackedScene>();
         internal static bool UpdateDisplay { get; set; }
@@ -264,7 +266,7 @@ namespace Sulimn.Classes
         /// <returns>Whether deletion was successful</returns>
         internal static void DeleteHero(Hero deleteHero)
         {
-            //JSONInteraction.DeleteHero(deleteHero);
+            JSONInteraction.DeleteHero(deleteHero);
             AllHeroes.Remove(deleteHero);
         }
 

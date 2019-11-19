@@ -131,10 +131,10 @@ namespace Sulimn.Classes.Database
             if (userDir.FileExists(path))
             {
                 userDir.Remove(path);
-                return userDir.FileExists(path);
+                return !userDir.FileExists(path);
             }
             else
-                return true;
+                return false;
         }
 
         /// <summary>Loads all <see cref="Hero"/>es from disk.</summary>
