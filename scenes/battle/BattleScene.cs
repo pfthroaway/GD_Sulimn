@@ -319,8 +319,7 @@ namespace Sulimn.Scenes.Battle
                         itemGettingHit.CurrentDurability = 0;
                     if (!castSpell && GameState.CurrentHero.Equipment.Weapon.Name != GameState.DefaultWeapon.Name)
                         GameState.CurrentHero.Equipment.Weapon.CurrentDurability -= actualArmorAbsorb / 10;
-                    string itemHit = itemGettingHit != new Item() ? $"You hit their {itemGettingHit.Name}. " : "";
-                    AddTextToTextBox($"You attack the {GameState.CurrentEnemy.Name} for {actualDamage} damage. {itemHit}{shield}{absorb}{GameState.CurrentEnemy.TakeDamage(actualDamage - actualShieldAbsorb - actualArmorAbsorb)}");
+                    AddTextToTextBox($"You attack the {GameState.CurrentEnemy.Name} for {actualDamage} damage. {shield}{absorb}{GameState.CurrentEnemy.TakeDamage(actualDamage - actualShieldAbsorb - actualArmorAbsorb)}");
                     if (GameState.CurrentEnemy.Statistics.CurrentHealth <= 0)
                     {
                         EndBattle(true);
@@ -500,11 +499,6 @@ namespace Sulimn.Scenes.Battle
                 HeroShield -= actualShieldAbsorb;
 
                 // If shield absorbs all damage, actualArmorAbsorb is 0, otherwise check actualDamage - actualShieldAbsorb.
-                //maxArmorAbsorb = 30
-                //actualDamage = 50
-                //actualShieldAbsorb = 30
-                //actualDamage - actualShieldAbsorb = 20
-                //actualArmorAbsorb = 30 > 50-30 (20, true) ? 50-30 : 30
                 int actualArmorAbsorb = 0;
                 if (actualShieldAbsorb < actualDamage)
                     actualArmorAbsorb = maximumArmorAbsorb >= actualDamage - actualShieldAbsorb ? actualDamage - actualShieldAbsorb : maximumArmorAbsorb;
@@ -524,8 +518,7 @@ namespace Sulimn.Scenes.Battle
                         itemGettingHit.CurrentDurability = 0;
                     if (!castSpell)
                         GameState.CurrentEnemy.Equipment.Weapon.CurrentDurability -= actualArmorAbsorb / 10;
-                    string itemHit = itemGettingHit != new Item() ? $"Your {itemGettingHit.Name} were hit. " : "";
-                    AddTextToTextBox($"The {GameState.CurrentEnemy.Name} attacks you for {actualDamage} damage. {itemHit}{shield}{absorb}{GameState.CurrentHero.TakeDamage(actualDamage - actualShieldAbsorb - actualArmorAbsorb)}");
+                    AddTextToTextBox($"The {GameState.CurrentEnemy.Name} attacks you for {actualDamage} damage. {shield}{absorb}{GameState.CurrentHero.TakeDamage(actualDamage - actualShieldAbsorb - actualArmorAbsorb)}");
                 }
                 else if (actualShieldAbsorb > 0 && actualArmorAbsorb > 0)
                     AddTextToTextBox($"The {GameState.CurrentEnemy.Name} attacks you for {actualDamage}, but {shield.ToLower()}{absorb.ToLower()}");
@@ -588,7 +581,53 @@ namespace Sulimn.Scenes.Battle
             EndBattle(false);
             if (!GameState.CurrentHero.Hardcore)
             {
-                AddTextToTextBox("A mysterious fairy appears, and, seeing your crumpled body on the ground, resurrects you. You have just enough health to make it back to town.");
+                // If you were killed by an animal, your equipment will take damage.
+                // If you were killed by a human, you lose 5-10% of your gold, and up to one item with a value <= 200.
+                string text = "";
+                if (GameState.CurrentEnemy.Type == "Animal")
+                {
+                    List<Item> equipment = GameState.CurrentHero.Equipment.AllEquipment.FindAll(itm => itm != new Item());
+                    int itemsDamaged = Functions.GenerateRandomNumber(1, equipment.Count);
+
+                    if (itemsDamaged > 0)
+                    {
+                        for (int i = 0; i < itemsDamaged; i++)
+                        {
+                            Functions.GenerateRandomNumber(0, equipment.Count);
+                            equipment[i].CurrentDurability -= Functions.GenerateRandomNumber(1, equipment[i].MaximumDurability / 2);
+                            if (equipment[i].CurrentDurability < 0)
+                                equipment[i].CurrentDurability = 0;
+                        }
+                    }
+                    text = $"You have died. The {GameState.CurrentEnemy.Name} mauls your dead corpse and your equipment has taken damage. ";
+                }
+                else
+                {
+                    text = $"You have died. The {GameState.CurrentEnemy.Name} frisks your dead corpse and has stolen some of your gold. ";
+                    List<Item> items = GameState.CurrentHero.Inventory.FindAll(itm => itm.Value <= 200);
+                    Item itemStolen = new Item();
+                    if (items.Count > 0)
+                        itemStolen = items[Functions.GenerateRandomNumber(0, items.Count - 1)];
+                    else
+                    {
+                        List<Item> equipment = GameState.CurrentHero.Equipment.AllEquipment.FindAll(itm => itm != new Item() && itm.Value <= 200);
+                        if (equipment.Count > 0)
+                        {
+                            itemStolen = equipment[Functions.GenerateRandomNumber(0, equipment.Count - 1)];
+                            if (itemStolen != null && itemStolen != new Item())
+                                GameState.CurrentHero.Unequip(itemStolen);
+                        }
+                    }
+
+                    if (itemStolen != null && itemStolen != new Item())
+                    {
+                        GameState.CurrentHero.RemoveItem(itemStolen);
+                        text += $"Your {itemStolen.Name} has also been stolen. ";
+                    }
+
+                    GameState.CurrentHero.Gold -= GameState.CurrentHero.Gold / 10;
+                }
+                AddTextToTextBox(text + "A mysterious fairy appears, and, seeing your crumpled body on the ground, resurrects you. You have just enough health to make it back to town.");
                 GameState.CurrentHero.Statistics.CurrentHealth = 1;
             }
             else
@@ -695,16 +734,16 @@ namespace Sulimn.Scenes.Battle
                         }
                         break;
                 }
+                if (_blnHardcoreDeath)
+                {
+                    GetTree().ChangeScene("res://scenes/MainScene.tscn");
+                    GameState.DeleteHero(GameState.CurrentHero);
+                    GameState.CurrentHero = new Hero();
+                    GameState.History = new List<PackedScene>();
+                }
+                else
+                    GetTree().ChangeSceneTo(GameState.GoBack());
             }
-            if (_blnHardcoreDeath)
-            {
-                GetTree().ChangeScene("res://scenes/MainScene.tscn");
-                GameState.DeleteHero(GameState.CurrentHero);
-                GameState.CurrentHero = new Hero();
-                GameState.History = new List<PackedScene>();
-            }
-            else
-                GetTree().ChangeSceneTo(GameState.GoBack());
         }
 
         private void _on_LstSpells_item_selected(int index)
