@@ -58,8 +58,7 @@ namespace Sulimn.Scenes.Shopping
             }
 
             if (AvailableSpells.Count > 0)
-                foreach (Spell spl in AvailableSpells)
-                    LstSpells.AddItem(spl.Name);
+                AvailableSpells.ForEach(spl => LstSpells.AddItem(spl.Name));
         }
 
         // Called when the node enters the scene tree for the first time.

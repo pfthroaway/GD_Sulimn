@@ -230,6 +230,8 @@ namespace Sulimn.Classes
         internal static void AddItemInstanceToSlot(ItemSlot slot, Item item)
         {
             var scene = (PackedScene)ResourceLoader.Load("res://scenes/inventory/InventoryItem.tscn");
+            while (slot.GetChildren().Count > 1)
+                slot.RemoveChild(slot.GetChild(1));
             InventoryItem invItem = (InventoryItem)scene.Instance();
             slot.AddChild(invItem);
             slot.Item = invItem;

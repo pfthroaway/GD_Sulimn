@@ -33,11 +33,7 @@ namespace Sulimn.Classes.Card
         internal void AddCard(Card newCard) => CardList.Add(newCard);
 
         /// <summary>Clears the Hidden state of all Cards in the Hand.</summary>
-        internal void ClearHidden()
-        {
-            foreach (Card card in CardList)
-                card.Hidden = false;
-        }
+        internal void ClearHidden() => CardList.ForEach(card => card.Hidden = false);
 
         /// <summary>Converts an 11-valued Ace to be valued at 1.</summary>
         internal void ConvertAce()

@@ -87,18 +87,21 @@ namespace Sulimn.Classes.Shopping
             {
                 RepairSlot.RemoveChild(item);
                 Orphanage.AddChild(item);
-                InventoryItem item2 = (InventoryItem)Orphanage.GetChild(0);
                 slot.Item = item;
                 slot.PutItemInSlot(item);
                 RepairSlot.Item = new InventoryItem();
             }
-            GameState.Info.DisplayStats();
-            Save();
+            GameState.UpdateDisplay = true;
         }
 
         private void _on_BtnRepairAll_pressed()
         {
-            // TODO Implement repair all
+            GameState.CurrentHero.Gold -= GameState.CurrentHero.TotalRepairCost;
+            GameState.CurrentHero.Inventory.ForEach(itm => itm.CurrentDurability = itm.MaximumDurability);
+            GameState.CurrentHero.Equipment.AllEquipment.ForEach(itm => itm.CurrentDurability = itm.MaximumDurability);
+            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
+            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
+            GameState.UpdateDisplay = true;
         }
 
         #endregion Button Click
@@ -110,6 +113,8 @@ namespace Sulimn.Classes.Shopping
             {
                 UpdateLabels();
                 GameState.UpdateDisplay = false;
+                GameState.Info.DisplayStats();
+                Save();
             }
         }
     }
