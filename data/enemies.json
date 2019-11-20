@@ -131,7 +131,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -204,6 +204,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -411,6 +412,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -545,7 +547,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": null,
@@ -618,6 +620,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -752,7 +755,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Cloth Shoes",
@@ -825,6 +828,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -1032,6 +1036,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -1166,7 +1171,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Leather Shoes",
@@ -1239,6 +1244,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -1373,7 +1379,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Chain Boots",
@@ -1448,6 +1454,7 @@
     "Spellbook": {
       "SpellsString": "Fire Bolt,Fireball,Heal Medium Wounds,Heal Self,Shield"
     },
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -1582,7 +1589,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -1655,6 +1662,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -1789,7 +1797,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants2.png"
       },
       "Feet": {
         "Name": "Chain Boots",
@@ -1862,6 +1870,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -2069,6 +2078,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -2276,6 +2286,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -2410,7 +2421,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -2483,6 +2494,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -2617,7 +2629,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -2690,6 +2702,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -2824,7 +2837,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Cloth Shoes",
@@ -2897,6 +2910,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -3031,7 +3045,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -3104,6 +3118,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -3238,7 +3253,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Cloth Shoes",
@@ -3311,6 +3326,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -3518,6 +3534,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -3725,6 +3742,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -3859,7 +3877,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -3932,6 +3950,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -4066,7 +4085,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -4139,6 +4158,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -4273,7 +4293,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Studded Leather Boots",
@@ -4346,6 +4366,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -4480,7 +4501,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Leather Shoes",
@@ -4553,6 +4574,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -4760,6 +4782,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -4967,6 +4990,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -5101,7 +5125,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Leather Shoes",
@@ -5174,6 +5198,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -5308,7 +5333,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Chain Boots",
@@ -5381,6 +5406,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -5515,7 +5541,7 @@
         "CanSell": true,
         "IsSold": true,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": "Leather Shoes",
@@ -5588,6 +5614,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -5722,7 +5749,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/I_Key06.png"
+        "Texture": "res://assets/inventory/Pants.png"
       },
       "Feet": {
         "Name": null,
@@ -5795,6 +5822,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -6002,6 +6030,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   },
   {
@@ -6209,6 +6238,7 @@
       }
     },
     "Spellbook": null,
+    "CurrentSpellString": null,
     "Inventory": null
   }
 ]
