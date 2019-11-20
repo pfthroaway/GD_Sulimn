@@ -20,7 +20,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/A_Armour02.png"
+    "Texture": "res://assets/inventory/A_Armour02.png"
   },
   {
     "Name": "Cloth Shirt",
@@ -43,7 +43,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/A_Clothing01.png"
+    "Texture": "res://assets/inventory/A_Clothing01.png"
   },
   {
     "Name": "Diamond Chestplate",
@@ -66,7 +66,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/A_Armour03.png"
+    "Texture": "res://assets/inventory/A_Armour03.png"
   },
   {
     "Name": "Leather Shirt",
@@ -89,7 +89,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/A_Clothing02.png"
+    "Texture": "res://assets/inventory/A_Clothing02.png"
   },
   {
     "Name": "Necromancer Robes",
@@ -112,7 +112,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/A_Clothing01.png"
+    "Texture": "res://assets/inventory/A_Clothing01.png"
   },
   {
     "Name": "Plate Mail Chestplate",
@@ -135,7 +135,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/A_Armour02.png"
+    "Texture": "res://assets/inventory/A_Armour02.png"
   },
   {
     "Name": "Robe",
@@ -158,7 +158,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/A_Clothing01.png"
+    "Texture": "res://assets/inventory/A_Clothing01.png"
   },
   {
     "Name": "Silk Chestplate",
@@ -181,7 +181,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/A_Armor04.png"
+    "Texture": "res://assets/inventory/A_Armor04.png"
   },
   {
     "Name": "Studded Leather Doublet",
@@ -204,6 +204,6 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/A_Armour01.png"
+    "Texture": "res://assets/inventory/A_Armour01.png"
   }
 ]

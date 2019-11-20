@@ -20,7 +20,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_Key06.png"
+    "Texture": "res://assets/inventory/Pants2.png"
   },
   {
     "Name": "Cloth Pants",
@@ -43,7 +43,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_Key06.png"
+    "Texture": "res://assets/inventory/Pants.png"
   },
   {
     "Name": "Diamond Leggings",
@@ -66,7 +66,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_Key06.png"
+    "Texture": "res://assets/inventory/Pants2.png"
   },
   {
     "Name": "Leather Pants",
@@ -89,7 +89,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_Key06.png"
+    "Texture": "res://assets/inventory/Pants.png"
   },
   {
     "Name": "Necromancer Robe Leggings",
@@ -112,7 +112,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_Key06.png"
+    "Texture": "res://assets/inventory/Pants.png"
   },
   {
     "Name": "Plate Leggings",
@@ -135,7 +135,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_Key06.png"
+    "Texture": "res://assets/inventory/Pants2.png"
   },
   {
     "Name": "Robe Leggings",
@@ -158,7 +158,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_Key06.png"
+    "Texture": "res://assets/inventory/Pants.png"
   },
   {
     "Name": "Silk Leggings",
@@ -181,7 +181,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_Key06.png"
+    "Texture": "res://assets/inventory/Pants2.png"
   },
   {
     "Name": "Studded Leather Pants",
@@ -204,6 +204,6 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_Key06.png"
+    "Texture": "res://assets/inventory/Pants.png"
   }
 ]

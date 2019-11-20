@@ -20,7 +20,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Yellow03.png"
+    "Texture": "res://assets/inventory/P_Yellow03.png"
   },
   {
     "Name": "Beer",
@@ -43,7 +43,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Yellow03.png"
+    "Texture": "res://assets/inventory/P_Yellow03.png"
   },
   {
     "Name": "Grog",
@@ -66,7 +66,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Yellow03.png"
+    "Texture": "res://assets/inventory/P_Yellow03.png"
   },
   {
     "Name": "Tea",
@@ -89,7 +89,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Yellow03.png"
+    "Texture": "res://assets/inventory/P_Yellow03.png"
   },
   {
     "Name": "Water",
@@ -112,6 +112,6 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_Water.png"
+    "Texture": "res://assets/inventory/I_Water.png"
   }
 ]

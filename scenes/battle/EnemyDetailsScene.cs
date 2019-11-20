@@ -1,7 +1,6 @@
 using Godot;
 using Sulimn.Classes;
 using Sulimn.Scenes.Inventory;
-using System;
 
 namespace Sulimn.Scenes.Battle
 {

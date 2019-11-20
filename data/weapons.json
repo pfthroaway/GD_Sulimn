@@ -20,7 +20,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_BirdsBeak.png"
+    "Texture": "res://assets/inventory/I_BirdsBeak.png"
   },
   {
     "Name": "Berserker Axe",
@@ -43,7 +43,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Axe012.png"
+    "Texture": "res://assets/inventory/W_Axe012.png"
   },
   {
     "Name": "Bo Staff",
@@ -66,7 +66,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Staff08.png"
+    "Texture": "res://assets/inventory/W_Staff08.png"
   },
   {
     "Name": "Cleaver",
@@ -89,7 +89,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Axe001.png"
+    "Texture": "res://assets/inventory/W_Axe001.png"
   },
   {
     "Name": "Club",
@@ -112,7 +112,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Mace001.png"
+    "Texture": "res://assets/inventory/W_Mace001.png"
   },
   {
     "Name": "Composite Bow",
@@ -135,7 +135,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Bow03.png"
+    "Texture": "res://assets/inventory/W_Bow03.png"
   },
   {
     "Name": "Dagger",
@@ -158,7 +158,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Dagger002.png"
+    "Texture": "res://assets/inventory/W_Dagger002.png"
   },
   {
     "Name": "Fangs",
@@ -181,7 +181,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
+    "Texture": "res://assets/inventory/Ac_Necklace06.png"
   },
   {
     "Name": "Fists",
@@ -204,7 +204,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/S_Earth02.png"
+    "Texture": "res://assets/inventory/S_Earth02.png"
   },
   {
     "Name": "Great Sword",
@@ -227,7 +227,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Sword005.png"
+    "Texture": "res://assets/inventory/W_Sword005.png"
   },
   {
     "Name": "Heavy Axe",
@@ -250,7 +250,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Axe013.png"
+    "Texture": "res://assets/inventory/W_Axe013.png"
   },
   {
     "Name": "Heavy Bow",
@@ -273,7 +273,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Bow12.png"
+    "Texture": "res://assets/inventory/W_Bow12.png"
   },
   {
     "Name": "Light Axe",
@@ -296,7 +296,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Axe002.png"
+    "Texture": "res://assets/inventory/W_Axe002.png"
   },
   {
     "Name": "Light Bow",
@@ -319,7 +319,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Bow02.png"
+    "Texture": "res://assets/inventory/W_Bow02.png"
   },
   {
     "Name": "Light Staff",
@@ -342,7 +342,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Staff03.png"
+    "Texture": "res://assets/inventory/W_Staff03.png"
   },
   {
     "Name": "Long Sword",
@@ -365,7 +365,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Sword002.png"
+    "Texture": "res://assets/inventory/W_Sword002.png"
   },
   {
     "Name": "Mace",
@@ -388,7 +388,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Mace002.png"
+    "Texture": "res://assets/inventory/W_Mace002.png"
   },
   {
     "Name": "Minotaur Horns",
@@ -411,7 +411,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Spear003.png"
+    "Texture": "res://assets/inventory/W_Spear003.png"
   },
   {
     "Name": "Necromancer Staff",
@@ -434,7 +434,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Staff06.png"
+    "Texture": "res://assets/inventory/W_Staff06.png"
   },
   {
     "Name": "Pickaxe",
@@ -457,7 +457,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Axe007.png"
+    "Texture": "res://assets/inventory/W_Axe007.png"
   },
   {
     "Name": "Pike",
@@ -480,7 +480,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Spear009.png"
+    "Texture": "res://assets/inventory/W_Spear009.png"
   },
   {
     "Name": "Sharp Fangs",
@@ -503,7 +503,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
+    "Texture": "res://assets/inventory/Ac_Necklace06.png"
   },
   {
     "Name": "Short Sword",
@@ -526,7 +526,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Sword001.png"
+    "Texture": "res://assets/inventory/W_Sword001.png"
   },
   {
     "Name": "Spear",
@@ -549,7 +549,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Spear002.png"
+    "Texture": "res://assets/inventory/W_Spear002.png"
   },
   {
     "Name": "Spider Fangs",
@@ -572,7 +572,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
+    "Texture": "res://assets/inventory/Ac_Necklace06.png"
   },
   {
     "Name": "Starter Bow",
@@ -595,7 +595,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Bow01.png"
+    "Texture": "res://assets/inventory/W_Bow01.png"
   },
   {
     "Name": "Starter Staff",
@@ -618,7 +618,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Staff01.png"
+    "Texture": "res://assets/inventory/W_Staff01.png"
   },
   {
     "Name": "Steel Dagger",
@@ -641,7 +641,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Dagger004.png"
+    "Texture": "res://assets/inventory/W_Dagger004.png"
   },
   {
     "Name": "Stone Dagger",
@@ -664,7 +664,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Dagger001.png"
+    "Texture": "res://assets/inventory/W_Dagger001.png"
   },
   {
     "Name": "Super Sword",
@@ -687,7 +687,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Sword006.png"
+    "Texture": "res://assets/inventory/W_Sword006.png"
   },
   {
     "Name": "Sword of Souls",
@@ -710,7 +710,7 @@
     "CanSell": true,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/W_Sword016.png"
+    "Texture": "res://assets/inventory/W_Sword016.png"
   },
   {
     "Name": "Teeth",
@@ -733,7 +733,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
+    "Texture": "res://assets/inventory/Ac_Necklace06.png"
   },
   {
     "Name": "Tusks",
@@ -756,6 +756,6 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/Ac_Necklace06.png"
+    "Texture": "res://assets/inventory/Ac_Necklace06.png"
   }
 ]

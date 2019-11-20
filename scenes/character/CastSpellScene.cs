@@ -2,7 +2,6 @@ using Godot;
 using Sulimn.Classes;
 using Sulimn.Classes.Enums;
 using Sulimn.Classes.HeroParts;
-using System.Collections.Generic;
 
 namespace Sulimn.Scenes.CharacterScenes
 {

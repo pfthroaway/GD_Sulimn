@@ -1,7 +1,6 @@
 using Godot;
 using Sulimn.Classes.Items;
 using Sulimn.Scenes.Inventory;
-using System;
 
 namespace Sulimn.Classes.Shopping
 {

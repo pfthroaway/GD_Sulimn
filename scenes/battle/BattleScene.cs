@@ -24,8 +24,6 @@ namespace Sulimn.Scenes.Battle
         private RichTextLabel TxtBattle;
         private string _previousPage;
 
-        // TODO Lose gold on death.
-
         #region Modifying Properties
 
         /// <summary>The <see cref="Hero"/>'s current magical shield value.</summary>

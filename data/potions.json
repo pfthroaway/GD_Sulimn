@@ -20,7 +20,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Green02.png"
+    "Texture": "res://assets/inventory/P_Green02.png"
   },
   {
     "Name": "Greater Healing Potion",
@@ -43,7 +43,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Red01.png"
+    "Texture": "res://assets/inventory/P_Red01.png"
   },
   {
     "Name": "Greater Magic Potion",
@@ -66,7 +66,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Blue01.png"
+    "Texture": "res://assets/inventory/P_Blue01.png"
   },
   {
     "Name": "Healing Potion",
@@ -89,7 +89,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Red05.png"
+    "Texture": "res://assets/inventory/P_Red05.png"
   },
   {
     "Name": "Light Healing Potion",
@@ -112,7 +112,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Red03.png"
+    "Texture": "res://assets/inventory/P_Red03.png"
   },
   {
     "Name": "Light Magic Potion",
@@ -135,7 +135,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Blue02.png"
+    "Texture": "res://assets/inventory/P_Blue02.png"
   },
   {
     "Name": "Magic Potion",
@@ -158,7 +158,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Blue03.png"
+    "Texture": "res://assets/inventory/P_Blue03.png"
   },
   {
     "Name": "Minor Healing Potion",
@@ -181,7 +181,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Red04.png"
+    "Texture": "res://assets/inventory/P_Red04.png"
   },
   {
     "Name": "Minor Magic Potion",
@@ -204,7 +204,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Blue04.png"
+    "Texture": "res://assets/inventory/P_Blue04.png"
   },
   {
     "Name": "Super Healing Potion",
@@ -227,7 +227,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Red07.png"
+    "Texture": "res://assets/inventory/P_Red07.png"
   },
   {
     "Name": "Super Magic Potion",
@@ -250,6 +250,6 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/P_Blue05.png"
+    "Texture": "res://assets/inventory/P_Blue05.png"
   }
 ]

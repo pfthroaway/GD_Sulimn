@@ -180,27 +180,27 @@ namespace Sulimn.Classes
             AllSpells = JSONInteraction.LoadSpells().OrderBy(o => o.Name).ToList();
             AllEnemies = JSONInteraction.LoadEnemies().OrderBy(o => o.Name).ToList();
 
-            //foreach (Enemy enemy in AllEnemies)
-            //{
-            //    if (enemy.Equipment.Weapon != new Item())
-            //        enemy.Equipment.Weapon.Texture = AllWeapons.Find(itm => itm.Name == enemy.Equipment.Weapon.Name).Texture;
-            //    if (enemy.Equipment.Head != new Item())
-            //        enemy.Equipment.Head.Texture = AllHeadArmor.Find(itm => itm.Name == enemy.Equipment.Head.Name).Texture;
-            //    if (enemy.Equipment.Body != new Item())
-            //        enemy.Equipment.Body.Texture = AllBodyArmor.Find(itm => itm.Name == enemy.Equipment.Body.Name).Texture;
-            //    if (enemy.Equipment.Hands != new Item())
-            //        enemy.Equipment.Hands.Texture = AllHandArmor.Find(itm => itm.Name == enemy.Equipment.Hands.Name).Texture;
-            //    if (enemy.Equipment.Legs != new Item())
-            //        enemy.Equipment.Legs.Texture = AllLegArmor.Find(itm => itm.Name == enemy.Equipment.Legs.Name).Texture;
-            //    if (enemy.Equipment.Feet != new Item())
-            //        enemy.Equipment.Feet.Texture = AllFeetArmor.Find(itm => itm.Name == enemy.Equipment.Feet.Name).Texture;
-            //    if (enemy.Equipment.LeftRing != new Item())
-            //        enemy.Equipment.LeftRing.Texture = AllRings.Find(itm => itm.Name == enemy.Equipment.LeftRing.Name).Texture;
-            //    if (enemy.Equipment.RightRing != new Item())
-            //        enemy.Equipment.RightRing.Texture = AllRings.Find(itm => itm.Name == enemy.Equipment.RightRing.Name).Texture;
-            //}
+            foreach (Enemy enemy in AllEnemies)
+            {
+                if (enemy.Equipment.Weapon != new Item())
+                    enemy.Equipment.Weapon.Texture = AllWeapons.Find(itm => itm.Name == enemy.Equipment.Weapon.Name).Texture;
+                if (enemy.Equipment.Head != new Item())
+                    enemy.Equipment.Head.Texture = AllHeadArmor.Find(itm => itm.Name == enemy.Equipment.Head.Name).Texture;
+                if (enemy.Equipment.Body != new Item())
+                    enemy.Equipment.Body.Texture = AllBodyArmor.Find(itm => itm.Name == enemy.Equipment.Body.Name).Texture;
+                if (enemy.Equipment.Hands != new Item())
+                    enemy.Equipment.Hands.Texture = AllHandArmor.Find(itm => itm.Name == enemy.Equipment.Hands.Name).Texture;
+                if (enemy.Equipment.Legs != new Item())
+                    enemy.Equipment.Legs.Texture = AllLegArmor.Find(itm => itm.Name == enemy.Equipment.Legs.Name).Texture;
+                if (enemy.Equipment.Feet != new Item())
+                    enemy.Equipment.Feet.Texture = AllFeetArmor.Find(itm => itm.Name == enemy.Equipment.Feet.Name).Texture;
+                if (enemy.Equipment.LeftRing != new Item())
+                    enemy.Equipment.LeftRing.Texture = AllRings.Find(itm => itm.Name == enemy.Equipment.LeftRing.Name).Texture;
+                if (enemy.Equipment.RightRing != new Item())
+                    enemy.Equipment.RightRing.Texture = AllRings.Find(itm => itm.Name == enemy.Equipment.RightRing.Name).Texture;
+            }
 
-            //JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
+            JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
 
             // TODO Save scene history on application exit and load back when the same player logs in.
             // TODO Make it to where you can take off default armor, but not default weapon.

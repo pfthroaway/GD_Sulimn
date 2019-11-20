@@ -22,23 +22,23 @@ scancode = 65
 [sub_resource type="ShortCut" id=6]
 shortcut = SubResource( 5 )
 
-[sub_resource type="InputEventKey" id=9]
+[sub_resource type="InputEventKey" id=7]
 scancode = 67
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="InputEventKey" id=9]
+scancode = 70
 
 [sub_resource type="ShortCut" id=10]
 shortcut = SubResource( 9 )
 
 [sub_resource type="InputEventKey" id=11]
-scancode = 70
+scancode = 82
 
 [sub_resource type="ShortCut" id=12]
 shortcut = SubResource( 11 )
-
-[sub_resource type="InputEventKey" id=13]
-scancode = 82
-
-[sub_resource type="ShortCut" id=14]
-shortcut = SubResource( 13 )
 
 [node name="BattleScene" type="Panel"]
 anchor_right = 1.0
@@ -180,7 +180,7 @@ rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
-shortcut = SubResource( 10 )
+shortcut = SubResource( 8 )
 text = "Cast Spell"
 
 [node name="BtnFlee" type="Button" parent="."]
@@ -191,7 +191,7 @@ margin_bottom = 615.0
 rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
-shortcut = SubResource( 12 )
+shortcut = SubResource( 10 )
 text = "Flee"
 
 [node name="LblSpellTypeAmount" type="Label" parent="."]
@@ -221,7 +221,7 @@ rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
-shortcut = SubResource( 14 )
+shortcut = SubResource( 12 )
 text = "Return"
 
 [node name="TxtBattle" type="RichTextLabel" parent="."]

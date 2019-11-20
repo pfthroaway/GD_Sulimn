@@ -20,7 +20,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_C_Meat.png"
+    "Texture": "res://assets/inventory/I_C_Meat.png"
   },
   {
     "Name": "Bread",
@@ -43,7 +43,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_C_Bread.png"
+    "Texture": "res://assets/inventory/I_C_Bread.png"
   },
   {
     "Name": "Chicken",
@@ -66,7 +66,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/I_C_Meat.png"
+    "Texture": "res://assets/inventory/I_C_Meat.png"
   },
   {
     "Name": "Cracker",
@@ -89,7 +89,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/cracker.png"
+    "Texture": "res://assets/inventory/cracker.png"
   },
   {
     "Name": "Soup",
@@ -112,6 +112,6 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/images/soup.png"
+    "Texture": "res://assets/inventory/soup.png"
   }
 ]
