@@ -31,11 +31,11 @@ func create_random_rect(mapwidth, mapheight) -> Rect:
 	return Rect.new(x, y, w, h)
 
 func v_tunnel(y1: int, y2: int, x: int):
-	for y in range(int(min(y1, y2)), int(max(y1, y2))):
+	for y in range(int(min(y1, y2)), int(max(y1, y2)+1)):
 		$TileMap.set_cell(x, y, 0)
 
 func h_tunnel(x1: int, x2: int, y: int):
-	for x in range(int(min(x1, x2)), int(max(x1, x2))):
+	for x in range(int(min(x1, x2)), int(max(x1, x2)+1)):
 		$TileMap.set_cell(x, y, 0)
 
 const FLOOR_WIDTH := 30
@@ -67,7 +67,7 @@ func _ready() -> void:
 			if r.intersect(j):
 				failed = true;
 		if !failed:
-			if len(rooms) > 1:
+			if len(rooms) > 0:
 				var nr = r.center()
 				var pr: Vector2 = rooms.back().center()
 				if randf() > 0.5:
