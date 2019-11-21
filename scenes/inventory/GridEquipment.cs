@@ -6,12 +6,27 @@ using System.Collections.Generic;
 
 namespace Sulimn.Scenes.Inventory
 {
+    /// <summary>Represents a grid of equipment.</summary>
     public class GridEquipment : Panel
     {
         private ItemSlot WeaponSlot, HeadSlot, BodySlot, HandsSlot, LegsSlot, FeetSlot, LeftRingSlot, RightRingSlot;
 
-        public void SetUpEquipment(Equipment equipment, bool enemy = false)
+        public void SetUpEquipment(Equipment equipment, int level = 0, HeroClass currentClass = null, bool enemy = false)
         {
+            if (currentClass != null)
+            {
+                WeaponSlot.CurrentClass = currentClass;
+                HeadSlot.CurrentClass = currentClass;
+                BodySlot.CurrentClass = currentClass;
+                HandsSlot.CurrentClass = currentClass;
+                LegsSlot.CurrentClass = currentClass;
+                FeetSlot.CurrentClass = currentClass;
+                LeftRingSlot.CurrentClass = currentClass;
+                RightRingSlot.CurrentClass = currentClass;
+            }
+            else
+                currentClass = new HeroClass();
+
             if (enemy)
             {
                 WeaponSlot.Enemy = true;
@@ -23,9 +38,22 @@ namespace Sulimn.Scenes.Inventory
                 LeftRingSlot.Enemy = true;
                 RightRingSlot.Enemy = true;
             }
+            if (level != 0)
+            {
+                WeaponSlot.MaximumItemLevel = level;
+                HeadSlot.MaximumItemLevel = level;
+                BodySlot.MaximumItemLevel = level;
+                HandsSlot.MaximumItemLevel = level;
+                LegsSlot.MaximumItemLevel = level;
+                FeetSlot.MaximumItemLevel = level;
+                LeftRingSlot.MaximumItemLevel = level;
+                RightRingSlot.MaximumItemLevel = level;
+            }
 
             if (equipment.Weapon != new Item())
                 GameState.AddItemInstanceToSlot(WeaponSlot, equipment.Weapon);
+            else if (equipment.Weapon == new Item() && !enemy)
+                GameState.AddItemInstanceToSlot(WeaponSlot, GameState.DefaultWeapon);
             if (equipment.Head != new Item())
                 GameState.AddItemInstanceToSlot(HeadSlot, equipment.Head);
             if (equipment.Body != new Item())

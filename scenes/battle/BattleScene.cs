@@ -285,7 +285,7 @@ namespace Sulimn.Scenes.Battle
                 int actualDamage = Functions.GenerateRandomNumber(maximumDamage / 10, maximumDamage, 1);
 
                 // Maximum shield absorb is 10-100% of the shield currently being attacked.
-                int maximumShieldAbsorb = Functions.GenerateRandomNumber(HeroShield / 10, HeroShield);
+                int maximumShieldAbsorb = Functions.GenerateRandomNumber(EnemyShield / 10, EnemyShield);
 
                 // Maximum armor absorb is 10-100% of the Item currently being attacked.
                 int maximumArmorAbsorb = enemyDefense > 0 ? Functions.GenerateRandomNumber(enemyDefense / 10, enemyDefense, 1) : 0;
@@ -305,7 +305,7 @@ namespace Sulimn.Scenes.Battle
                 string shield = "";
 
                 if (actualShieldAbsorb > 0)
-                    shield = $" Its magical shield absorbs {actualShieldAbsorb} damage.";
+                    shield = $" Its magical shield absorbs {actualShieldAbsorb} damage. ";
                 if (actualArmorAbsorb > 0)
                     absorb = $" Its armor absorbs {actualArmorAbsorb} damage. ";
 
@@ -505,7 +505,7 @@ namespace Sulimn.Scenes.Battle
                 string shield = "";
 
                 if (actualShieldAbsorb > 0)
-                    shield = $" Your magical shield absorbs {actualShieldAbsorb} damage.";
+                    shield = $" Your magical shield absorbs {actualShieldAbsorb} damage. ";
                 if (actualArmorAbsorb > 0)
                     absorb = $" Your armor absorbs {actualArmorAbsorb} damage. ";
 

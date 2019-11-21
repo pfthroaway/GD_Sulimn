@@ -36,7 +36,7 @@ namespace Sulimn.Scenes.Battle
 
             LblGold = (Label)GetNode("Info/LblGold");
             GridInventory.SetUpInventory(GameState.CurrentEnemy.Inventory, true);
-            GridEquipment.SetUpEquipment(GameState.CurrentEnemy.Equipment, true);
+            GridEquipment.SetUpEquipment(GameState.CurrentEnemy.Equipment, 0, null, true);
         }
 
         /// <summary>Updates all the labels.</summary>

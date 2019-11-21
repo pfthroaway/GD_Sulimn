@@ -42,8 +42,8 @@ namespace Sulimn.Scenes.Battle
             EnemyEquipment = (GridEquipment)GetNode("EnemyEquipment");
             HeroInventory.SetUpInventory(GameState.CurrentHero.Inventory);
             EnemyInventory.SetUpInventory(GameState.CurrentEnemy.Inventory, true);
-            HeroEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
-            EnemyEquipment.SetUpEquipment(GameState.CurrentEnemy.Equipment, true);
+            HeroEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
+            EnemyEquipment.SetUpEquipment(GameState.CurrentEnemy.Equipment, 0, null, true);
         }
 
         // Called every frame. 'delta' is the elapsed time since the previous frame.

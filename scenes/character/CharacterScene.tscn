@@ -40,6 +40,7 @@ margin_right = 695.0
 margin_bottom = 931.0
 
 [node name="Info" type="VBoxContainer" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1140.0
@@ -340,6 +341,17 @@ margin_bottom = 991.0
 custom_fonts/font = ExtResource( 5 )
 text = "All changes will be saved on closing."
 align = 1
+
+[node name="LblError" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 941.0
+margin_right = 695.0
+margin_bottom = 990.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+align = 1
+valign = 1
+autowrap = true
 
 [node name="Orphanage" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="Info/Vitals/Attributes/MinusButtons/BtnStrengthMinus" to="." method="_on_BtnStrengthMinus_pressed"]

@@ -74,6 +74,17 @@ rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 5 )
 text = "Return"
 
+[node name="LblError" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 941.0
+margin_right = 260.0
+margin_bottom = 990.0
+rect_min_size = Vector2( 685, 49 )
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+align = 1
+autowrap = true
+
 [node name="Orphanage" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="BtnRepair" to="." method="_on_BtnRepair_pressed"]
 [connection signal="pressed" from="BtnRepairAll" to="." method="_on_BtnRepairAll_pressed"]

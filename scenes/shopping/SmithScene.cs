@@ -32,7 +32,7 @@ namespace Sulimn.Classes.Shopping
             RepairSlot = (ItemSlot)GetNode("RepairSlot");
 
             GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
-            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
+            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
         }
 
         public override void _Ready()
@@ -100,7 +100,7 @@ namespace Sulimn.Classes.Shopping
             GameState.CurrentHero.Inventory.ForEach(itm => itm.CurrentDurability = itm.MaximumDurability);
             GameState.CurrentHero.Equipment.AllEquipment.ForEach(itm => itm.CurrentDurability = itm.MaximumDurability);
             GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
-            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
+            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
             GameState.UpdateDisplay = true;
         }
 

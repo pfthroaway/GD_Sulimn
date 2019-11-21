@@ -1,5 +1,6 @@
 using Godot;
 using Sulimn.Classes;
+using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace Sulimn.Scenes.Inventory
     public class ItemSlot : Control
     {
         private Orphanage orphanage;
+        public Label LblError;
 
-        // TODO Implement required level for items as a property that is compared against each item being put in the slot
-        // TODO Implement a CurrentScene LblError which displays errors as to why items can't go into a slot.
         public List<ItemType> ItemTypes { get; set; } = new List<ItemType>(Enum.GetValues(typeof(ItemType)).Cast<ItemType>().ToList());
+
+        /// <summary>Current <see cref="HeroClass"/> of Items allowed in the <see cref="ItemSlot"/> </summary>
+        public HeroClass CurrentClass = new HeroClass();
 
         /// <summary><see cref="InventoryItem"/> currently occupying the <see cref="ItemSlot"/>.</summary>
         public InventoryItem Item { get; set; } = new InventoryItem();
@@ -25,32 +28,42 @@ namespace Sulimn.Scenes.Inventory
         /// <summary>Is this <see cref="ItemSlot"/> part of an enemy's inventory?</summary>
         public bool Enemy { get; set; }
 
+        /// <summary>Maximum level of <see cref="Item"/>s allowed in <see cref="ItemSlot"/>.</summary>
+        public int MaximumItemLevel { get; set; }
+
         /// <summary>Is this <see cref="ItemSlot"/> part of a merchant's inventory?</summary>
         public bool Merchant { get; set; }
 
-        public override void _Ready() => orphanage = (Orphanage)GetTree().CurrentScene.FindNode("Orphanage");
+        public override void _Ready()
+        {
+            orphanage = (Orphanage)GetTree().CurrentScene.FindNode("Orphanage");
+            LblError = (Label)GetTree().CurrentScene.FindNode("LblError");
+        }
 
         private void _on_TextureRect_gui_input(InputEvent @event)
         {
-            if (@event is InputEventMouseButton button && button.Pressed && button.ButtonIndex == 1)
+            if (@event is InputEventMouseButton button && button.Pressed && button.ButtonIndex == 1 && orphanage.GetChildCount() > 0)
             {
-                if (orphanage.GetChildCount() > 0)
+                LblError.Text = "";
+                InventoryItem orphanItem = (InventoryItem)orphanage.GetChild(0);
+                if (ItemTypes.Contains(orphanItem.Item.Type))
                 {
-                    InventoryItem item = (InventoryItem)orphanage.GetChild(0);
-                    if (ItemTypes.Contains(item.Item.Type))
+                    if (!orphanage.PreviousSlot.Merchant && !Merchant && (MaximumItemLevel == 0 || MaximumItemLevel >= orphanItem.Item.MinimumLevel) && (orphanItem.Item.AllowedClasses.Count == 0 || CurrentClass == null || CurrentClass == new HeroClass() || orphanItem.Item.AllowedClasses.Contains(CurrentClass)))
+                        PutItemInSlot(orphanItem);// if not buying nor selling, and is a valid slot
+                    else if (orphanage.PreviousSlot.Merchant && !Merchant && (MaximumItemLevel == 0 || MaximumItemLevel >= orphanItem.Item.MinimumLevel) && (orphanItem.Item.AllowedClasses.Count == 0 || CurrentClass == null || CurrentClass == new HeroClass() || orphanItem.Item.AllowedClasses.Contains(CurrentClass)) && GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
+                        PutItemInSlot(orphanItem);
+                    else if (!orphanage.PreviousSlot.Merchant && Merchant && orphanItem.Item.CanSell) // if selling
                     {
-                        if (!orphanage.PreviousSlot.Merchant && !Merchant)
-                            PutItemInSlot(item);// if not buying nor selling, and is a valid slot
-                        else if (orphanage.PreviousSlot.Merchant && !Merchant && GameState.CurrentHero.PurchaseItem(item.Item)) // if purchasing and can afford it
-                            PutItemInSlot(item);
-                        else if (!orphanage.PreviousSlot.Merchant && Merchant && item.Item.CanSell) // if selling
-                        {
-                            GameState.CurrentHero.SellItem(item.Item);
-                            PutItemInSlot(item);
-                        }
-                        else if (orphanage.PreviousSlot.Merchant && Merchant) // if moving Merchant item to different Merchant slot
-                            PutItemInSlot(item);
+                        GameState.CurrentHero.SellItem(orphanItem.Item);
+                        PutItemInSlot(orphanItem);
                     }
+                    else if (orphanage.PreviousSlot.Merchant && Merchant) // if moving Merchant item to different Merchant slot
+                        PutItemInSlot(orphanItem);
+                    else if (MaximumItemLevel < orphanItem.Item.MinimumLevel)
+                        LblError.Text = "You do not are high enough level to equip this item.";
+                    else if (CurrentClass != new HeroClass() && !orphanItem.Item.AllowedClasses.Contains(CurrentClass))
+                        LblError.Text = "You are unable to equip this item because you are not the correct class.";
+                    // TODO Put in more errors for why you can't do certain things.
                 }
             }
         }

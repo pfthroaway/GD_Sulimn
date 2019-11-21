@@ -1,5 +1,6 @@
 using Godot;
 using Sulimn.Classes;
+using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
 
 namespace Sulimn.Scenes.Inventory
@@ -50,9 +51,9 @@ namespace Sulimn.Scenes.Inventory
                             InventoryItem orphanItem = (InventoryItem)orphanage.GetChild(0);
                             if (slot.ItemTypes.Contains(orphanItem.Item.Type))
                             {
-                                if (!orphanage.PreviousSlot.Merchant && !slot.Merchant) // if not buying nor selling, and is a valid slot
+                                if (!orphanage.PreviousSlot.Merchant && !slot.Merchant && (slot.MaximumItemLevel == 0 || slot.MaximumItemLevel >= orphanItem.Item.MinimumLevel) && (orphanItem.Item.AllowedClasses.Count == 0 || slot.CurrentClass == null || slot.CurrentClass == new HeroClass() || orphanItem.Item.AllowedClasses.Contains(slot.CurrentClass))) // if not buying nor selling, and is a valid slot
                                     SwapItems(slot, orphanItem);
-                                else if (orphanage.PreviousSlot.Merchant && !slot.Merchant && GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
+                                else if (orphanage.PreviousSlot.Merchant && !slot.Merchant && (slot.MaximumItemLevel == 0 || slot.MaximumItemLevel >= orphanItem.Item.MinimumLevel) && (orphanItem.Item.AllowedClasses.Count == 0 || slot.CurrentClass == null || slot.CurrentClass == new HeroClass() || orphanItem.Item.AllowedClasses.Contains(slot.CurrentClass)) && GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
                                     SwapItems(slot, orphanItem);
                                 else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if selling
                                 {
@@ -61,6 +62,10 @@ namespace Sulimn.Scenes.Inventory
                                 }
                                 else if (orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
                                     SwapItems(slot, orphanItem);
+                                else if (slot.MaximumItemLevel < orphanItem.Item.MinimumLevel)
+                                    slot.LblError.Text = "You do not are high enough level to equip this item.";
+                                else if (slot.CurrentClass != new HeroClass() && !orphanItem.Item.AllowedClasses.Contains(slot.CurrentClass))
+                                    slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
                             }
                         }
                         else if (orphanage.GetChildCount() == 0)

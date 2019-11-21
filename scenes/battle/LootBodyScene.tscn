@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/battle/LootBodyScene.cs" type="Script" id=1]
 [ext_resource path="res://scenes/inventory/GridEquipment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/inventory/GridInventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/Button.tres" type="Theme" id=4]
-[ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=6]
 
 [sub_resource type="InputEventKey" id=1]
 scancode = 82
@@ -51,5 +52,16 @@ theme = ExtResource( 4 )
 shortcut = SubResource( 2 )
 text = "Return"
 
-[node name="Orphanage" parent="." instance=ExtResource( 5 )]
+[node name="LblError" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 941.0
+margin_right = 695.0
+margin_bottom = 990.0
+rect_min_size = Vector2( 685, 49 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+align = 1
+autowrap = true
+
+[node name="Orphanage" parent="." instance=ExtResource( 6 )]
 [connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

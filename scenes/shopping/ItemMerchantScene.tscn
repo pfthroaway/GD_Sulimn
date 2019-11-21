@@ -52,5 +52,16 @@ custom_fonts/font = ExtResource( 6 )
 shortcut = SubResource( 2 )
 text = "Return"
 
+[node name="LblError" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 941.0
+margin_right = 50.0
+margin_bottom = 955.0
+rect_min_size = Vector2( 685, 49 )
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+align = 1
+autowrap = true
+
 [node name="Orphanage" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

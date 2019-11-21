@@ -13,8 +13,6 @@ namespace Sulimn.Scenes.CharacterScenes
         private GridInventory GridInventory;
         private Hero _copyOfHero = new Hero();
 
-        // TODO Make it to where you can't add Fists to the inventory.
-
         public override void _UnhandledInput(InputEvent @event)
         {
             if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Scancode == (int)KeyList.Escape)
@@ -35,7 +33,7 @@ namespace Sulimn.Scenes.CharacterScenes
             _copyOfHero = new Hero(GameState.CurrentHero);
             UpdateLabels();
             GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
-            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment);
+            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
             CheckSkillPoints();
         }
 
