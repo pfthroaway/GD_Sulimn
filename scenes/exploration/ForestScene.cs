@@ -53,13 +53,12 @@ namespace Sulimn.Scenes.Exploration
             }
         }
 
-        private void DisplayPopup(string text, float displayTime = 1f)
+        /// <summary>Displays a popup next to the Player.</summary>
+        /// <param name="text">Text to be displayed</param>
+        /// <param name="displayTime">Duration for the text to be displayed</param>
+        private void DisplayPopup(string text, float displayTime = 0.75f)
         {
-            acceptDialog.Popup_();
-            acceptDialog.SetExpiration(displayTime);
-            acceptDialog.DialogText = text;
-            acceptDialog.SetGlobalPosition(new Vector2(Player.GetGlobalPosition().x + 32, Player.GetGlobalPosition().y - 32));
-            GameState.Info.DisplayStats();
+            GameState.DisplayPopup(acceptDialog, Player, text, displayTime);
             MovesSinceLastEvent = 0;
         }
 
@@ -105,7 +104,7 @@ namespace Sulimn.Scenes.Exploration
                 else if (evnt <= 9) // 10% chance to find gold
                     DisplayPopup(GameState.EventFindGold(1, 200));
                 else if (evnt <= 10 && GameState.CurrentHero.Statistics.HealthRatio < 0.5m) // 5% chance to find stream
-                    DisplayPopup(GameState.EventEncounterStream(), 1.5f);
+                    DisplayPopup(GameState.EventEncounterStream(), 1.25f);
                 // 50% chance for no event
             }
             else if (GameState.CurrentHero.Statistics.CurrentHealth == 1)

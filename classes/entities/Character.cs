@@ -11,35 +11,35 @@ namespace Sulimn.Classes.Entities
     {
         #region Modifying Properties
 
-        /// <summary>Name of <see cref="Character"/></summary>
+        /// <summary>Name of the <see cref="Character"/>.</summary>
         [JsonProperty(Order = -5)]
         public string Name { get; set; }
 
-        /// <summary>Level of <see cref="Character"/></summary>
+        /// <summary>Level of the <see cref="Character"/>.</summary>
         [JsonProperty(Order = 1)]
         public int Level { get; set; }
 
-        /// <summary>Name of <see cref="Character"/></summary>
+        /// <summary>Name of the <see cref="Character"/>.</summary>
         [JsonProperty(Order = 2)]
         public int Experience { get; set; }
 
-        /// <summary>Amount of Gold in the inventory.</summary>
+        /// <summary>Amount of Gold in the <see cref="Character"/>'s inventory.</summary>
         [JsonProperty(Order = 3)]
         public int Gold { get; set; }
 
-        /// <summary>Attributes of <see cref="Character"/></summary>
+        /// <summary>Attributes of the <see cref="Character"/>.</summary>
         [JsonProperty(Order = 4)]
         public Attributes Attributes { get; set; } = new Attributes();
 
-        /// <summary>Statistics of <see cref="Character"/></summary>
+        /// <summary>Statistics of the <see cref="Character"/>.</summary>
         [JsonProperty(Order = 5)]
         public Statistics Statistics { get; set; } = new Statistics();
 
-        /// <summary>Equipment of <see cref="Character"/></summary>
+        /// <summary>Equipment of the <see cref="Character"/>.</summary>
         [JsonProperty(Order = 6)]
         public Equipment Equipment { get; set; } = new Equipment();
 
-        /// <summary>The list of <see cref="Spell"/>s the <see cref="Character"/> currently knows</summary>
+        /// <summary>The list of <see cref="Spell"/>s the <see cref="Character"/> currently knows.</summary>
         [JsonProperty(Order = 8)]
         public Spellbook Spellbook { get; set; } = new Spellbook();
 
@@ -71,41 +71,57 @@ namespace Sulimn.Classes.Entities
         [JsonIgnore]
         public string LevelToString => $"Level {Level}";
 
-        /// <summary>The experience the Hero has gained this level alongside how much is needed to level up</summary>
+        /// <summary>The experience the <see cref="Character"/> has gained this level alongside how much is needed to level up.</summary>
         [JsonIgnore]
         public string ExperienceToString => $"{Experience:N0} / {Level * 100:N0}";
 
-        /// <summary>The experience the Hero has gained this level alongside how much is needed to level up with preceding text</summary>
+        /// <summary>The experience the <see cref="Character"/> has gained this level alongside how much is needed to level up with preceding text.</summary>
         [JsonIgnore]
         public string ExperienceToStringWithText => $"Experience: {ExperienceToString}";
 
-        /// <summary>Amount of Gold in the inventory, with thousands separator.</summary>
+        /// <summary>Amount of Gold in the <see cref="Character"/>'s inventory, with thousands separator.</summary>
         [JsonIgnore]
         public string GoldToString => Gold.ToString("N0");
 
-        /// <summary>Amount of Gold in the inventory, with thousands separator and preceding text.</summary>
+        /// <summary>Amount of Gold in the <see cref="Character"/>'s inventory, with thousands separator and preceding text.</summary>
         [JsonIgnore]
         public string GoldToStringWithText => $"Gold: {GoldToString}";
 
-        /// <summary>List of Items in the inventory, formatted.</summary>
+        /// <summary>List of <see cref="Item"/>s in the inventory, formatted.</summary>
         [JsonIgnore]
         public string InventoryToString => string.Join(",", Inventory);
 
-        /// <summary>Combined weight of all Items in a Hero's Inventory.</summary>
+        /// <summary>Combined weight of all <see cref="Item"/>s in a <see cref="Character"/>'s Inventory.</summary>
         [JsonIgnore]
         public int CarryingWeight => Inventory.Count > 0 ? Inventory.Sum(itm => itm.Weight) : 0;
 
-        /// <summary>Combined weight of all Items in a Hero's Inventory and all the Equipment currently equipped.</summary>
+        /// <summary>Combined weight of all <see cref="Item"/>s in a <see cref="Character"/>'s Inventory and all the Equipment currently equipped.</summary>
         [JsonIgnore]
         public int TotalWeight => CarryingWeight + Equipment.TotalWeight;
 
-        /// <summary>Maximum weight a Hero can carry.</summary>
+        /// <summary>Combined weight of all <see cref="Items"/>s in a <see cref="Character"/>'s Inventory and all the Equipment currently equipped, formatted.</summary>
+        [JsonIgnore]
+        public string TotalWeightToString => TotalWeight.ToString("N0");
+
+        /// <summary>Maximum weight a <see cref="Character"/> can carry.</summary>
         [JsonIgnore]
         public int MaximumWeight => TotalStrength * 10;
 
-        /// <summary>Is the Hero carrying more than they should be able to?</summary>
+        /// <summary>Maximum weight a <see cref="Character"/> can carry, formatted.</summary>
+        [JsonIgnore]
+        public string MaximumWeightToString => MaximumWeight.ToString("N0");
+
+        /// <summary>Displays the <see cref="Character"/>'s currently held weight alongside the maximum weight.</summary>
+        [JsonIgnore]
+        public string WeightToString => $"Weight Carrying: {TotalWeightToString} / {MaximumWeightToString}";
+
+        /// <summary>Is the <see cref="Character"/> carrying more than they should be able to?</summary>
         [JsonIgnore]
         public bool Overweight => TotalWeight > MaximumWeight;
+
+        /// <summary>Displays text regarding the <see cref="Character"/> carrying more than they should be able to carry.</summary>
+        [JsonIgnore]
+        public string OverweightToString => Overweight ? "Overweight" : "Not Overweight";
 
         /// <summary>Ratio of Total Strength to Total Weight.</summary>
         [JsonIgnore]

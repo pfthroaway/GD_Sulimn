@@ -40,54 +40,51 @@ margin_right = 695.0
 margin_bottom = 931.0
 
 [node name="Info" type="VBoxContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1140.0
+margin_left = 1240.0
 margin_top = 10.0
-margin_right = 1565.0
+margin_right = 1665.0
 margin_bottom = 1070.0
 rect_min_size = Vector2( 425, 1060 )
 custom_constants/separation = 15
-alignment = 1
 
 [node name="LblName" type="Label" parent="Info"]
-margin_top = 68.0
 margin_right = 425.0
-margin_bottom = 117.0
+margin_bottom = 49.0
 custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
 [node name="LblLevel" type="Label" parent="Info"]
-margin_top = 132.0
+margin_top = 64.0
 margin_right = 425.0
-margin_bottom = 181.0
+margin_bottom = 113.0
 custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
 [node name="LblExperience" type="Label" parent="Info"]
-margin_top = 196.0
+margin_top = 128.0
 margin_right = 425.0
-margin_bottom = 245.0
+margin_bottom = 177.0
 custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
 [node name="LblHardcore" type="Label" parent="Info"]
-margin_top = 260.0
+margin_top = 192.0
 margin_right = 425.0
-margin_bottom = 309.0
+margin_bottom = 241.0
 custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
 [node name="Vitals" type="VBoxContainer" parent="Info"]
 editor/display_folded = true
-margin_top = 324.0
+margin_top = 256.0
 margin_right = 425.0
-margin_bottom = 814.0
+margin_bottom = 746.0
 custom_constants/separation = 10
 
 [node name="Attributes" type="HBoxContainer" parent="Info/Vitals"]
@@ -313,34 +310,41 @@ align = 1
 valign = 1
 
 [node name="LblGold" type="Label" parent="Info"]
-margin_top = 829.0
+margin_top = 761.0
 margin_right = 425.0
-margin_bottom = 878.0
+margin_bottom = 810.0
 custom_fonts/font = ExtResource( 4 )
 align = 1
 valign = 1
 
-[node name="Buttons" type="CenterContainer" parent="Info"]
-margin_top = 893.0
+[node name="Label2" type="Label" parent="Info"]
+margin_top = 825.0
 margin_right = 425.0
-margin_bottom = 948.0
+margin_bottom = 853.0
+custom_fonts/font = ExtResource( 5 )
+text = "All changes will be saved on closing."
+align = 1
 
-[node name="BtnCastSpell" type="Button" parent="Info/Buttons"]
-margin_left = 112.0
-margin_right = 312.0
-margin_bottom = 55.0
+[node name="BtnCastSpell" type="Button" parent="."]
+margin_left = 1352.0
+margin_top = 903.0
+margin_right = 1552.0
+margin_bottom = 958.0
 rect_min_size = Vector2( 200, 55 )
 theme = ExtResource( 6 )
 shortcut = SubResource( 3 )
 text = "Cast Spell"
 
-[node name="Label2" type="Label" parent="Info"]
-margin_top = 963.0
-margin_right = 425.0
-margin_bottom = 991.0
-custom_fonts/font = ExtResource( 5 )
-text = "All changes will be saved on closing."
+[node name="LblWeight" type="Label" parent="."]
+margin_left = 705.0
+margin_top = 660.0
+margin_right = 1105.0
+margin_bottom = 709.0
+rect_min_size = Vector2( 500, 49 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
+valign = 1
+autowrap = true
 
 [node name="LblError" type="Label" parent="."]
 margin_left = 10.0
@@ -362,4 +366,4 @@ autowrap = true
 [connection signal="pressed" from="Info/Vitals/Attributes/PlusButtons/BtnVitalityPlus" to="." method="_on_BtnVitalityPlus_pressed"]
 [connection signal="pressed" from="Info/Vitals/Attributes/PlusButtons/BtnDexterityPlus" to="." method="_on_BtnDexterityPlus_pressed"]
 [connection signal="pressed" from="Info/Vitals/Attributes/PlusButtons/BtnWisdomPlus" to="." method="_on_BtnWisdomPlus_pressed"]
-[connection signal="pressed" from="Info/Buttons/BtnCastSpell" to="." method="_on_BtnCastSpell_pressed"]
+[connection signal="pressed" from="BtnCastSpell" to="." method="_on_BtnCastSpell_pressed"]

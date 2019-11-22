@@ -6,8 +6,9 @@ namespace Sulimn.Scenes
 {
     public class Info : CanvasLayer
     {
-        private Label LblLevel, LblExperience, LblGold, LblHealth, LblMagic;
+        private Label LblLevel, LblExperience, LblGold;
         private Button BtnCharacter;
+        private TextureProgress TPHealth, TPMagic;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready() => AssignControls();
@@ -15,12 +16,12 @@ namespace Sulimn.Scenes
         /// <summary>Assigns all controls to local variables for easy use.</summary>
         private void AssignControls()
         {
-            LblHealth = (Label)GetNode("LblHealth");
-            LblMagic = (Label)GetNode("LblMagic");
             LblLevel = (Label)GetNode("LblLevel");
             LblExperience = (Label)GetNode("LblExperience");
             LblGold = (Label)GetNode("LblGold");
             BtnCharacter = (Button)GetNode("BtnCharacter");
+            TPHealth = (TextureProgress)GetNode("TPHealth");
+            TPMagic = (TextureProgress)GetNode("TPMagic");
         }
 
         private void _on_BtnCharacter_pressed()
@@ -39,8 +40,10 @@ namespace Sulimn.Scenes
         /// <summary>Updates labels to current values.</summary>
         public void DisplayStats()
         {
-            LblHealth.Text = GameState.CurrentHero.Statistics.HealthToStringWithText;
-            LblMagic.Text = GameState.CurrentHero.Statistics.MagicToStringWithText;
+            TPHealth.Value = (float)GameState.CurrentHero.Statistics.HealthRatio * 100;
+            TPHealth.SetTooltip(GameState.CurrentHero.Statistics.HealthToStringWithText);
+            TPMagic.Value = (float)GameState.CurrentHero.Statistics.MagicRatio * 100;
+            TPMagic.SetTooltip(GameState.CurrentHero.Statistics.MagicToStringWithText);
             LblLevel.Text = GameState.CurrentHero.LevelAndClassToString;
             LblExperience.Text = GameState.CurrentHero.ExperienceToStringWithText;
             LblGold.Text = GameState.CurrentHero.GoldToStringWithText;

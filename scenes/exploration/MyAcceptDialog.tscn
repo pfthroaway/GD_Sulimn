@@ -9,6 +9,7 @@ default_font = ExtResource( 1 )
 [node name="MyAcceptDialog" type="AcceptDialog"]
 margin_right = 83.0
 margin_bottom = 58.0
+rect_min_size = Vector2( 84, 128 )
 theme = SubResource( 1 )
 popup_exclusive = true
 window_title = ""

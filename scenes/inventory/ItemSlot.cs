@@ -60,7 +60,7 @@ namespace Sulimn.Scenes.Inventory
                     else if (orphanage.PreviousSlot.Merchant && Merchant) // if moving Merchant item to different Merchant slot
                         PutItemInSlot(orphanItem);
                     else if (MaximumItemLevel < orphanItem.Item.MinimumLevel)
-                        LblError.Text = "You do not are high enough level to equip this item.";
+                        LblError.Text = "You are not high enough level to equip this item.";
                     else if (CurrentClass != new HeroClass() && !orphanItem.Item.AllowedClasses.Contains(CurrentClass))
                         LblError.Text = "You are unable to equip this item because you are not the correct class.";
                     // TODO Put in more errors for why you can't do certain things.

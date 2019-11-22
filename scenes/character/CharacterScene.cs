@@ -8,7 +8,7 @@ namespace Sulimn.Scenes.CharacterScenes
     public class CharacterScene : Control
     {
         private Button BtnStrengthMinus, BtnStrengthPlus, BtnVitalityMinus, BtnVitalityPlus, BtnDexterityMinus, BtnDexterityPlus, BtnWisdomMinus, BtnWisdomPlus;
-        private Label LblName, LblLevel, LblExperience, LblSkillPoints, LblHardcore, LblGold, LblStrength, LblVitality, LblDexterity, LblWisdom, LblHealth, LblMagic;
+        private Label LblName, LblLevel, LblExperience, LblSkillPoints, LblHardcore, LblGold, LblStrength, LblVitality, LblDexterity, LblWisdom, LblHealth, LblMagic, LblWeight;
         private GridEquipment GridEquipment;
         private GridInventory GridInventory;
         private Hero _copyOfHero = new Hero();
@@ -68,6 +68,7 @@ namespace Sulimn.Scenes.CharacterScenes
             LblMagic = (Label)GetNode("Info/Vitals/Statistics/TextLabels/LblMagic");
 
             LblGold = (Label)GetNode("Info/LblGold");
+            LblWeight = (Label)GetNode("LblWeight");
         }
 
         #endregion Load
@@ -119,7 +120,7 @@ namespace Sulimn.Scenes.CharacterScenes
             LblSkillPoints.Text = GameState.CurrentHero.SkillPointsToString;
             LblHardcore.Text = GameState.CurrentHero.HardcoreToString;
             LblGold.Text = GameState.CurrentHero.GoldToStringWithText;
-
+            LblWeight.Text = GameState.CurrentHero.WeightToString;
             UpdateAttributeLabels();
 
             GameState.Info.DisplayStats();

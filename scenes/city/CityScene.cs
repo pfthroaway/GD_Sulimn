@@ -2,12 +2,14 @@ using Godot;
 using Sulimn.Actors;
 using Sulimn.Classes;
 using Sulimn.Classes.Entities;
+using Sulimn.Scenes.Exploration;
 
 namespace Sulimn.Scenes.City
 {
     public class CityScene : Node2D
     {
         private Player Player;
+        private MyAcceptDialog acceptDialog;
 
         public override void _UnhandledInput(InputEvent @event)
         {
@@ -24,9 +26,15 @@ namespace Sulimn.Scenes.City
         public override void _Ready()
         {
             Player = (Player)GetTree().CurrentScene.FindNode("Player");
+            acceptDialog = (MyAcceptDialog)GetNode("MyAcceptDialog");
             GameState.Info.Scale = new Vector2(1, 1);
             GameState.Info.DisplayStats();
         }
+
+        /// <summary>Displays a popup next to the Player.</summary>
+        /// <param name="text">Text to be displayed</param>
+        /// <param name="displayTime">Duration for the text to be displayed</param>
+        private void DisplayPopup(string text, float displayTime = 1f) => GameState.DisplayPopup(acceptDialog, Player, text, displayTime);
 
         #region Areas Entered
 
@@ -44,6 +52,33 @@ namespace Sulimn.Scenes.City
         {
             if (area is Node player && player.IsInGroup("Player"))
                 Player.Move("down");
+        }
+
+        private void _on_ChapelArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+            {
+                string text = "";
+                if (GameState.CurrentHero.Statistics.HealthRatio <= 0.25m)
+                {
+                    text = "You enter a local chapel and\napproach the altar. A priest approaches you.\n" +
+                "\"Let me heal your wounds. You look like\nyou've been through a tough battle.\"\n" +
+                "The priest gives you a potion which heals\nyou to full health!\n" +
+                "You thank the priest and return to then\nstreets.";
+                    GameState.CurrentHero.Statistics.CurrentHealth = GameState.CurrentHero.Statistics.MaximumHealth;
+
+                    GameState.SaveHero(GameState.CurrentHero);
+                }
+                else
+                {
+                    text = "You enter a local chapel. A priest\napproaches you.\n" +
+                    "\"You look healthy to me. If you ever need\nhealing, don't hesitate to come see me.\"\n\n" +
+                    "You thank the priest and return to the\nstreets.";
+                }
+                DisplayPopup(text, 3f);
+                Player.Move("up");
+                GameState.Info.DisplayStats();
+            }
         }
 
         private void _on_FieldsArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
@@ -77,6 +112,12 @@ namespace Sulimn.Scenes.City
         }
 
         private void _on_MinesArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+                Player.Move("up");
+        }
+
+        private void _on_TrainingArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
                 Player.Move("up");

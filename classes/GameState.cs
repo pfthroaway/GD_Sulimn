@@ -1,4 +1,5 @@
 using Godot;
+using Sulimn.Actors;
 using Sulimn.Classes.Database;
 using Sulimn.Classes.Entities;
 using Sulimn.Classes.Extensions;
@@ -6,6 +7,7 @@ using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
 using Sulimn.Scenes;
 using Sulimn.Scenes.Battle;
+using Sulimn.Scenes.Exploration;
 using Sulimn.Scenes.Inventory;
 using System;
 using System.Collections.Generic;
@@ -343,6 +345,20 @@ namespace Sulimn.Classes
         }
 
         #endregion Hero Management
+
+        /// <summary>Displays a popup next to the Player.</summary>
+        /// <param name="acceptDialog">Instance of MyAcceptDialog</param>
+        /// <param name="text">Text to be displayed</param>
+        /// <param name="displayTime">Duration for the text to be displayed</param>
+        internal static void DisplayPopup(MyAcceptDialog acceptDialog, Player player, string text, float displayTime = 0.75f)
+        {
+            acceptDialog.Popup_();
+            acceptDialog.SetExpiration(displayTime);
+            acceptDialog.DialogText = text;
+            acceptDialog.SetSize(new Vector2(84f, 128f));
+            acceptDialog.SetGlobalPosition(new Vector2(player.GetGlobalPosition().x + 32, player.GetGlobalPosition().y - 32));
+            Info.DisplayStats();
+        }
 
         #region Exploration Events
 
