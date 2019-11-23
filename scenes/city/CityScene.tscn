@@ -126,25 +126,25 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 32, 64 )
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 64, 32 )
-
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 64, 32 )
-
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 32, 64 )
+extents = Vector2( 64, 32 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 64, 32 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 64, 32 )
+extents = Vector2( 32, 64 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 64, 32 )
 
 [sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 64, 32 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 64, 32 )
+
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 64, 32 )
 
 [node name="Node2D" type="Node2D"]
@@ -170,48 +170,48 @@ editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChapelArea"]
 position = Vector2( 1152, 864 )
-shape = SubResource( 10 )
+shape = SubResource( 5 )
 
 [node name="TrainingArea" type="Area2D" parent="."]
 editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrainingArea"]
 position = Vector2( 768, 864 )
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="ForestArea" type="Area2D" parent="."]
 editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForestArea"]
 position = Vector2( 32, 512 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="MinesArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MinesArea"]
 position = Vector2( 960, 1056 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="CathedralArea" type="Area2D" parent="."]
 editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CathedralArea"]
 position = Vector2( 960, 32 )
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 
 [node name="MarketArea" type="Area2D" parent="."]
 editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MarketArea"]
 position = Vector2( 768, 224 )
-shape = SubResource( 8 )
+shape = SubResource( 10 )
 
 [node name="BankArea" type="Area2D" parent="."]
 editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BankArea"]
 position = Vector2( 1152, 224 )
-shape = SubResource( 9 )
+shape = SubResource( 11 )
 
 [node name="MyAcceptDialog" parent="." instance=ExtResource( 12 )]
 [connection signal="area_shape_entered" from="FieldsArea" to="." method="_on_FieldsArea_area_shape_entered"]
