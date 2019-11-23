@@ -52,6 +52,12 @@ namespace Sulimn.Classes
         internal static SceneTree SceneTree { get; set; }
         internal static MainLoop MainLoop { get; set; }
 
+        // TODO Gear and ? Buttons on the info bar
+        // TODO Set up textures for enemies and players. Use default until getting new.
+        // TODO Random generation rooms top left corner of room 1, add stairs entity which calls GameState.GoBack(). Add Player entity one tile to the right.
+        // TODO Find a way to get the scenes' variables' values to save. Why does The RichTextLabel keep it's value on leaving and coming back? Public vs private?
+        // TODO Player/Enemy editor. Slot interface for editing items one at a time.
+
         #region Scene Navigation
 
         /// <summary>Adds the current scene to the history.</summary>
