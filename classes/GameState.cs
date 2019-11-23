@@ -174,17 +174,17 @@ namespace Sulimn.Classes
         internal static void LoadAll()
         {
             AllClasses = JSONInteraction.LoadClasses().OrderBy(o => o.Name).ToList();
-            AllHeadArmor = JSONInteraction.LoadArmor<Item>("head").OrderBy(o => o.Name).ToList();
-            AllBodyArmor = JSONInteraction.LoadArmor<Item>("body").OrderBy(o => o.Name).ToList();
-            AllHandArmor = JSONInteraction.LoadArmor<Item>("hand").OrderBy(o => o.Name).ToList();
-            AllLegArmor = JSONInteraction.LoadArmor<Item>("leg").OrderBy(o => o.Name).ToList();
-            AllFeetArmor = JSONInteraction.LoadArmor<Item>("feet").OrderBy(o => o.Name).ToList();
-            AllRings = JSONInteraction.LoadRings().OrderBy(o => o.Name).ToList();
-            AllWeapons = JSONInteraction.LoadWeapons().OrderBy(o => o.Name).ToList();
-            AllDrinks = JSONInteraction.LoadDrinks().OrderBy(o => o.Name).ToList();
-            AllFood = JSONInteraction.LoadFood().OrderBy(o => o.Name).ToList();
-            AllPotions = JSONInteraction.LoadPotions().OrderBy(o => o.Name).ToList();
-            AllSpells = JSONInteraction.LoadSpells().OrderBy(o => o.Name).ToList();
+            AllHeadArmor = JSONInteraction.LoadArmor<Item>("head").OrderBy(o => o.Value).ToList();
+            AllBodyArmor = JSONInteraction.LoadArmor<Item>("body").OrderBy(o => o.Value).ToList();
+            AllHandArmor = JSONInteraction.LoadArmor<Item>("hand").OrderBy(o => o.Value).ToList();
+            AllLegArmor = JSONInteraction.LoadArmor<Item>("leg").OrderBy(o => o.Value).ToList();
+            AllFeetArmor = JSONInteraction.LoadArmor<Item>("feet").OrderBy(o => o.Value).ToList();
+            AllRings = JSONInteraction.LoadRings().OrderBy(o => o.Value).ToList();
+            AllWeapons = JSONInteraction.LoadWeapons().OrderBy(o => o.Type).ThenBy(o => o.Value).ToList();
+            AllDrinks = JSONInteraction.LoadDrinks().OrderBy(o => o.Value).ToList();
+            AllFood = JSONInteraction.LoadFood().OrderBy(o => o.Value).ToList();
+            AllPotions = JSONInteraction.LoadPotions().OrderBy(o => o.Cures).ThenBy(o => o.RestoreHealth).ThenBy(o => o.RestoreMagic).ToList();
+            AllSpells = JSONInteraction.LoadSpells().OrderBy(o => o.Value).ToList();
             AllEnemies = JSONInteraction.LoadEnemies().OrderBy(o => o.Name).ToList();
 
             //foreach (Enemy enemy in AllEnemies)
@@ -236,7 +236,7 @@ namespace Sulimn.Classes
         /// <param name="item"><see cref="Item"/> to be added</param>
         internal static void AddItemInstanceToSlot(ItemSlot slot, Item item)
         {
-            var scene = (PackedScene)ResourceLoader.Load("res://scenes/inventory/InventoryItem.tscn");
+            PackedScene scene = (PackedScene)ResourceLoader.Load("res://scenes/inventory/InventoryItem.tscn");
             while (slot.GetChildren().Count > 1)
                 slot.RemoveChild(slot.GetChild(1));
             InventoryItem invItem = (InventoryItem)scene.Instance();
@@ -382,9 +382,13 @@ namespace Sulimn.Classes
         internal static string EventFindItem(int minValue, int maxValue, bool isSold = true)
         {
             Item item = GetRandomItem(minValue, maxValue, isSold);
-            CurrentHero.AddItem(item);
-            SaveHero(CurrentHero);
-            return $"You find a {item.Name}!";
+            if (CurrentHero.Inventory.Count < 40)
+            {
+                CurrentHero.AddItem(item);
+                SaveHero(CurrentHero);
+                return $"You find a {item.Name}!";
+            }
+            return $"You find a {item.Name},\nbut your inventory is full.";
         }
 
         /// <summary>Event where the <see cref="Hero"/> finds an <see cref="Item"/>.</summary>
@@ -395,10 +399,14 @@ namespace Sulimn.Classes
         /// <returns>Returns text about found <see cref="Item"/></returns>
         internal static string EventFindItem(int minValue, int maxValue, ItemType type, bool isSold = true)
         {
-            Item newItem = GetRandomItem(minValue, maxValue, type, isSold);
-            CurrentHero.AddItem(newItem);
-            SaveHero(CurrentHero);
-            return $"You find a {newItem.Name}!";
+            Item item = GetRandomItem(minValue, maxValue, type, isSold);
+            if (CurrentHero.Inventory.Count < 40)
+            {
+                CurrentHero.AddItem(item);
+                SaveHero(CurrentHero);
+                return $"You find a {item.Name}!";
+            }
+            return $"You find a {item.Name},\nbut your inventory is full.";
         }
 
         /// <summary>Gets a random <see cref="Item"/>.</summary>

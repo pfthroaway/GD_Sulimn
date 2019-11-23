@@ -6,8 +6,7 @@ namespace Sulimn.Scenes
 {
     public class Info : CanvasLayer
     {
-        private Label LblLevel, LblExperience, LblGold;
-        private Button BtnCharacter;
+        private Label LblLevel, LblExperience, LblGold, LblText;
         private TextureProgress TPHealth, TPMagic;
 
         // Called when the node enters the scene tree for the first time.
@@ -19,7 +18,7 @@ namespace Sulimn.Scenes
             LblLevel = (Label)GetNode("LblLevel");
             LblExperience = (Label)GetNode("LblExperience");
             LblGold = (Label)GetNode("LblGold");
-            BtnCharacter = (Button)GetNode("BtnCharacter");
+            LblText = (Label)GetNode("LblText");
             TPHealth = (TextureProgress)GetNode("TPHealth");
             TPMagic = (TextureProgress)GetNode("TPMagic");
         }
@@ -49,10 +48,20 @@ namespace Sulimn.Scenes
             LblGold.Text = GameState.CurrentHero.GoldToStringWithText;
         }
 
-        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-        //  public override void _Process(float delta)
-        //  {
-        //
-        //  }
+        private void _on_TPHealth_mouse_entered()
+        {
+            LblText.Text = GameState.CurrentHero.Statistics.HealthToStringWithText;
+            LblText.RectGlobalPosition = new Vector2(TPHealth.GetGlobalPosition().x, TPHealth.GetGlobalPosition().y - 5);
+        }
+
+        private void _on_TPHealth_mouse_exited() => LblText.Text = "";
+
+        private void _on_TPMagic_mouse_entered()
+        {
+            LblText.Text = GameState.CurrentHero.Statistics.MagicToStringWithText;
+            LblText.RectGlobalPosition = new Vector2(TPMagic.GetGlobalPosition().x, TPMagic.GetGlobalPosition().y - 5);
+        }
+
+        private void _on_TPMagic_mouse_exited() => LblText.Text = "";
     }
 }

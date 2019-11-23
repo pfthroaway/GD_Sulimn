@@ -40,6 +40,16 @@ namespace Sulimn.Scenes.Inventory
             LblError = (Label)GetTree().CurrentScene.FindNode("LblError");
         }
 
+        /// <summary>Checks whether the item held in an <see cref="InventoryItem"/> is an appropriate level to be equipped in a particular <see cref="ItemSlot"/>.</summary>
+        /// <param name="item"><see cref="InventoryItem"/> attempting to be equipped</param>
+        /// <returns>True if it is an appropriate level</returns>
+        private bool CheckItemLevel(InventoryItem item) => MaximumItemLevel == 0 || MaximumItemLevel >= item.Item.MinimumLevel;
+
+        /// <summary>Checks whether the item held in an <see cref="InventoryItem"/> is an appropriate <see cref="HeroClass"/> to be equipped in this <see cref="ItemSlot"/>.</summary>
+        /// <param name="item"><see cref="InventoryItem"/> attempting to be equipped</param>
+        /// <returns>True if it is an appropriate <see cref="HeroClass"/>returns>
+        private bool CheckItemClasses(InventoryItem item) => item.Item.AllowedClasses.Count == 0 || CurrentClass == null || CurrentClass == new HeroClass() || item.Item.AllowedClasses.Contains(CurrentClass);
+
         private void _on_TextureRect_gui_input(InputEvent @event)
         {
             if (@event is InputEventMouseButton button && button.Pressed && button.ButtonIndex == 1 && orphanage.GetChildCount() > 0)
@@ -48,23 +58,34 @@ namespace Sulimn.Scenes.Inventory
                 InventoryItem orphanItem = (InventoryItem)orphanage.GetChild(0);
                 if (ItemTypes.Contains(orphanItem.Item.Type))
                 {
-                    if (!orphanage.PreviousSlot.Merchant && !Merchant && (MaximumItemLevel == 0 || MaximumItemLevel >= orphanItem.Item.MinimumLevel) && (orphanItem.Item.AllowedClasses.Count == 0 || CurrentClass == null || CurrentClass == new HeroClass() || orphanItem.Item.AllowedClasses.Contains(CurrentClass)))
+                    if (!orphanage.PreviousSlot.Merchant && !Merchant && CheckItemLevel(orphanItem) && CheckItemClasses(orphanItem))
                         PutItemInSlot(orphanItem);// if not buying nor selling, and is a valid slot
-                    else if (orphanage.PreviousSlot.Merchant && !Merchant && (MaximumItemLevel == 0 || MaximumItemLevel >= orphanItem.Item.MinimumLevel) && (orphanItem.Item.AllowedClasses.Count == 0 || CurrentClass == null || CurrentClass == new HeroClass() || orphanItem.Item.AllowedClasses.Contains(CurrentClass)) && GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
-                        PutItemInSlot(orphanItem);
-                    else if (!orphanage.PreviousSlot.Merchant && Merchant && orphanItem.Item.CanSell) // if selling
+                    else if (orphanage.PreviousSlot.Merchant && !Merchant && CheckItemLevel(orphanItem) && CheckItemClasses(orphanItem)) // if purchasing and can afford it
                     {
-                        GameState.CurrentHero.SellItem(orphanItem.Item);
-                        PutItemInSlot(orphanItem);
+                        if (GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
+                            PutItemInSlot(orphanItem);
+                        else
+                            LblError.Text = "You cannot afford that item.";
+                    }
+                    else if (!orphanage.PreviousSlot.Merchant && Merchant) // if selling
+                    {
+                        if (orphanItem.Item.CanSell)
+                        {
+                            GameState.CurrentHero.SellItem(orphanItem.Item);
+                            PutItemInSlot(orphanItem);
+                        }
+                        else
+                            LblError.Text = "This item cannot be sold.";
                     }
                     else if (orphanage.PreviousSlot.Merchant && Merchant) // if moving Merchant item to different Merchant slot
                         PutItemInSlot(orphanItem);
-                    else if (MaximumItemLevel < orphanItem.Item.MinimumLevel)
+                    else if (!CheckItemLevel(orphanItem))
                         LblError.Text = "You are not high enough level to equip this item.";
-                    else if (CurrentClass != new HeroClass() && !orphanItem.Item.AllowedClasses.Contains(CurrentClass))
+                    else if (!CheckItemClasses(orphanItem))
                         LblError.Text = "You are unable to equip this item because you are not the correct class.";
-                    // TODO Put in more errors for why you can't do certain things.
                 }
+                else
+                    LblError.Text = "That is not a valid slot for this item.";
             }
         }
 
