@@ -1,0 +1,207 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/gambling/BlackjackScene.cs" type="Script" id=1]
+[ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/Button.tres" type="Theme" id=3]
+
+[sub_resource type="InputEventKey" id=1]
+scancode = 82
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[node name="BlackjackScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="SplitHand" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 80.0
+margin_top = 50.0
+margin_right = 440.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 360, 290 )
+custom_constants/separation = 10
+
+[node name="Hand" type="Container" parent="SplitHand"]
+margin_right = 360.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 360, 290 )
+
+[node name="CC" type="CenterContainer" parent="SplitHand"]
+margin_top = 300.0
+margin_right = 360.0
+margin_bottom = 485.0
+
+[node name="LblSplitTotal" type="Label" parent="SplitHand/CC"]
+margin_left = 180.0
+margin_top = 68.0
+margin_right = 180.0
+margin_bottom = 117.0
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="VB" type="VBoxContainer" parent="SplitHand/CC"]
+margin_left = 55.0
+margin_right = 305.0
+margin_bottom = 185.0
+custom_constants/separation = 10
+
+[node name="BtnHitSplit" type="Button" parent="SplitHand/CC/VB"]
+margin_right = 250.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 250, 55 )
+size_flags_horizontal = 0
+theme = ExtResource( 3 )
+disabled = true
+text = "Hit"
+
+[node name="BtnStaySplit" type="Button" parent="SplitHand/CC/VB"]
+margin_top = 65.0
+margin_right = 250.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 250, 55 )
+size_flags_horizontal = 0
+theme = ExtResource( 3 )
+disabled = true
+text = "Stay"
+
+[node name="BtnConvertAceSplit" type="Button" parent="SplitHand/CC/VB"]
+margin_top = 130.0
+margin_right = 250.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 250, 55 )
+size_flags_horizontal = 0
+theme = ExtResource( 3 )
+disabled = true
+text = "Convert Ace"
+
+[node name="MainHand" type="VBoxContainer" parent="."]
+margin_left = 450.0
+margin_top = 50.0
+margin_right = 810.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 360, 290 )
+custom_constants/separation = 10
+
+[node name="Hand" type="Container" parent="MainHand"]
+margin_right = 360.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 360, 290 )
+
+[node name="LblMainTotal" type="Label" parent="MainHand"]
+margin_top = 300.0
+margin_right = 360.0
+margin_bottom = 349.0
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="CC" type="CenterContainer" parent="MainHand"]
+editor/display_folded = true
+margin_top = 359.0
+margin_right = 360.0
+margin_bottom = 609.0
+
+[node name="VB" type="VBoxContainer" parent="MainHand/CC"]
+margin_left = 55.0
+margin_right = 305.0
+margin_bottom = 250.0
+custom_constants/separation = 10
+
+[node name="BtnHit" type="Button" parent="MainHand/CC/VB"]
+margin_right = 250.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 250, 55 )
+size_flags_horizontal = 0
+theme = ExtResource( 3 )
+disabled = true
+text = "Hit"
+
+[node name="BtnStay" type="Button" parent="MainHand/CC/VB"]
+margin_top = 65.0
+margin_right = 250.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 250, 55 )
+size_flags_horizontal = 0
+theme = ExtResource( 3 )
+disabled = true
+text = "Stay"
+
+[node name="BtnConvertAce" type="Button" parent="MainHand/CC/VB"]
+margin_top = 130.0
+margin_right = 250.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 250, 55 )
+size_flags_horizontal = 0
+theme = ExtResource( 3 )
+disabled = true
+text = "Convert Ace"
+
+[node name="BtnSplit" type="Button" parent="MainHand/CC/VB"]
+margin_top = 195.0
+margin_right = 250.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 250, 55 )
+size_flags_horizontal = 0
+theme = ExtResource( 3 )
+disabled = true
+text = "Split"
+
+[node name="DealerHand" type="Container" parent="."]
+margin_left = 1110.0
+margin_top = 50.0
+margin_right = 1470.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 360, 290 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 930.0
+margin_top = 400.0
+margin_right = 990.0
+margin_bottom = 449.0
+custom_fonts/font = ExtResource( 2 )
+text = "Bet:"
+
+[node name="TxtBet" type="LineEdit" parent="."]
+margin_left = 870.0
+margin_top = 459.0
+margin_right = 1050.0
+margin_bottom = 518.0
+rect_min_size = Vector2( 180, 59 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="BtnDealHand" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 528.0
+margin_right = 1085.0
+margin_bottom = 583.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
+shortcut = SubResource( 2 )
+text = "Deal Hand"
+
+[node name="TxtBlackjack" type="RichTextLabel" parent="."]
+margin_left = 360.0
+margin_top = 690.0
+margin_right = 1560.0
+margin_bottom = 940.0
+rect_min_size = Vector2( 1200, 250 )
+custom_fonts/normal_font = ExtResource( 2 )
+text = "You approach a table where Blackjack is being played. You take a seat.
+
+\"Care to place a bet?\" asks the dealer."
+scroll_following = true
+
+[node name="BtnReturn" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 950.0
+margin_right = 1085.0
+margin_bottom = 1005.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
+shortcut = SubResource( 2 )
+text = "Return"
+[connection signal="pressed" from="BtnDealHand" to="." method="_on_BtnReturn_pressed"]
+[connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

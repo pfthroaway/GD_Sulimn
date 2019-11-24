@@ -102,6 +102,7 @@
     <Compile Include="scenes\exploration\MyAcceptDialog.cs" />
     <Compile Include="scenes\exploration\FieldsScene.cs" />
     <Compile Include="scenes\exploration\Rect.cs" />
+    <Compile Include="scenes\gambling\BlackjackScene.cs" />
     <Compile Include="scenes\Info.cs" />
     <Compile Include="scenes\inventory\GridEquipment.cs" />
     <Compile Include="scenes\inventory\GridInventory.cs" />

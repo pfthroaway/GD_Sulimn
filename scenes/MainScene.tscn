@@ -33,7 +33,7 @@ align = 1
 margin_top = 64.0
 margin_right = 420.0
 margin_bottom = 123.0
-rect_min_size = Vector2( 365, 54 )
+rect_min_size = Vector2( 420, 59 )
 custom_fonts/font = ExtResource( 2 )
 align = 1
 
@@ -49,7 +49,7 @@ align = 1
 margin_top = 202.0
 margin_right = 420.0
 margin_bottom = 261.0
-rect_min_size = Vector2( 365, 54 )
+rect_min_size = Vector2( 420, 59 )
 custom_fonts/font = ExtResource( 2 )
 align = 1
 secret = true

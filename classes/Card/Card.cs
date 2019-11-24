@@ -1,15 +1,13 @@
-﻿using Sulimn.Classes.Enums;
+﻿using Godot;
+using Sulimn.Classes.Enums;
 using System;
 
 namespace Sulimn.Classes.Card
 {
     /// <summary>Represents a playing card.</summary>
-    internal class Card : IEquatable<Card>
+    internal class Card : TextureRect, IEquatable<Card>
     {
         #region Properties
-
-        /// <summary>The name of the card.</summary>
-        public string Name { get; set; }
 
         /// <summary>The suit of the card.</summary>
         public CardSuit Suit { get; set; }
@@ -21,9 +19,18 @@ namespace Sulimn.Classes.Card
         public bool Hidden { get; set; }
 
         /// <summary>Returns the name and suit of the card.</summary>
-        public string CardToString => Hidden ? "?? of ??" : $"{Name} of {Suit}";
+        public string CardToString => $"{Name}_of_{Suit}".ToLower();
 
         #endregion Properties
+
+        /// <summary>Hides the card and sets the texture.</summary>
+        public void HideCard()
+        {
+            Hidden = true;
+            SetTexture();
+        }
+
+        public void SetTexture() => Texture = Hidden ? (Texture)ResourceLoader.Load("res://assets/cards/back.png") : (Texture)ResourceLoader.Load($"res://assets/cards/{CardToString}.png");
 
         #region Override Operators
 
