@@ -9,17 +9,20 @@ namespace Sulimn.Classes.Card
     {
         #region Properties
 
-        /// <summary>The suit of the card.</summary>
+        /// <summary>Name of the <see cref="Card"/>.</summary>
+        public string CardName { get; set; }
+
+        /// <summary>The suit of the <see cref="Card"/>.</summary>
         public CardSuit Suit { get; set; }
 
-        /// <summary>The value of the card.</summary>
+        /// <summary>The value of the <see cref="Card"/>.</summary>
         public int Value { get; set; }
 
-        /// <summary>Should the Card be hidden from the player?</summary>
+        /// <summary>Should the <see cref="Card"/> be hidden from the player?</summary>
         public bool Hidden { get; set; }
 
         /// <summary>Returns the name and suit of the card.</summary>
-        public string CardToString => $"{Name}_of_{Suit}".ToLower();
+        public string CardToString => $"{CardName}_of_{Suit}".ToLower();
 
         #endregion Properties
 
@@ -38,7 +41,7 @@ namespace Sulimn.Classes.Card
         {
             if (left is null && right is null) return true;
             if (left is null ^ right is null) return false;
-            return string.Equals(left.Name, right.Name, StringComparison.OrdinalIgnoreCase)
+            return string.Equals(left.CardName, right.CardName, StringComparison.OrdinalIgnoreCase)
                    && left.Suit == right.Suit
                    && left.Value == right.Value && left.Hidden == right.Hidden;
         }
@@ -71,7 +74,7 @@ namespace Sulimn.Classes.Card
         /// <param name="hidden">Should the Card be hidden from the player?</param>
         internal Card(string name, CardSuit suit, int value, bool hidden)
         {
-            Name = name;
+            CardName = name;
             Suit = suit;
             Value = value;
             Hidden = hidden;
@@ -79,14 +82,14 @@ namespace Sulimn.Classes.Card
 
         /// <summary>Replaces this instance of Card with another instance.</summary>
         /// <param name="other">Instance to replace this instance</param>
-        internal Card(Card other) : this(other.Name, other.Suit, other.Value, other.Hidden)
+        internal Card(Card other) : this(other.CardName, other.Suit, other.Value, other.Hidden)
         {
         }
 
         /// <summary>Replaces this instance of Card with another instance.</summary>
         /// <param name="other">Instance to replace this instance</param>
         /// <param name="hidden">Should the Card be hidden from the player?</param>
-        internal Card(Card other, bool hidden) : this(other.Name, other.Suit, other.Value, hidden)
+        internal Card(Card other, bool hidden) : this(other.CardName, other.Suit, other.Value, hidden)
         {
         }
 

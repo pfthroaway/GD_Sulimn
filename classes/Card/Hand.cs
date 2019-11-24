@@ -36,6 +36,10 @@ namespace Sulimn.Classes.Card
             CardList.Add(newCard);
         }
 
+        /// <summary>Can the Hand be split?</summary>
+        /// <returns>True if Hand can be split</returns>
+        internal bool CanSplit() => (CardList.Count == 2 && CardList[0].CardName == CardList[1].CardName && CardList[0].Value == CardList[1].Value);
+
         /// <summary>Clears the Hidden state of all Cards in the Hand.</summary>
         internal void ClearHidden()
         {

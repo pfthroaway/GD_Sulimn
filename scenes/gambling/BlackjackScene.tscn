@@ -32,25 +32,24 @@ rect_min_size = Vector2( 360, 290 )
 [node name="CC" type="CenterContainer" parent="SplitHand"]
 margin_top = 300.0
 margin_right = 360.0
-margin_bottom = 485.0
-
-[node name="LblSplitTotal" type="Label" parent="SplitHand/CC"]
-margin_left = 180.0
-margin_top = 68.0
-margin_right = 180.0
-margin_bottom = 117.0
-custom_fonts/font = ExtResource( 2 )
-align = 1
+margin_bottom = 544.0
 
 [node name="VB" type="VBoxContainer" parent="SplitHand/CC"]
 margin_left = 55.0
 margin_right = 305.0
-margin_bottom = 185.0
+margin_bottom = 244.0
 custom_constants/separation = 10
 
-[node name="BtnHitSplit" type="Button" parent="SplitHand/CC/VB"]
+[node name="LblSplitTotal" type="Label" parent="SplitHand/CC/VB"]
 margin_right = 250.0
-margin_bottom = 55.0
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
+[node name="BtnHitSplit" type="Button" parent="SplitHand/CC/VB"]
+margin_top = 59.0
+margin_right = 250.0
+margin_bottom = 114.0
 rect_min_size = Vector2( 250, 55 )
 size_flags_horizontal = 0
 theme = ExtResource( 3 )
@@ -58,9 +57,9 @@ disabled = true
 text = "Hit"
 
 [node name="BtnStaySplit" type="Button" parent="SplitHand/CC/VB"]
-margin_top = 65.0
+margin_top = 124.0
 margin_right = 250.0
-margin_bottom = 120.0
+margin_bottom = 179.0
 rect_min_size = Vector2( 250, 55 )
 size_flags_horizontal = 0
 theme = ExtResource( 3 )
@@ -68,9 +67,9 @@ disabled = true
 text = "Stay"
 
 [node name="BtnConvertAceSplit" type="Button" parent="SplitHand/CC/VB"]
-margin_top = 130.0
+margin_top = 189.0
 margin_right = 250.0
-margin_bottom = 185.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 250, 55 )
 size_flags_horizontal = 0
 theme = ExtResource( 3 )
@@ -98,7 +97,6 @@ custom_fonts/font = ExtResource( 2 )
 align = 1
 
 [node name="CC" type="CenterContainer" parent="MainHand"]
-editor/display_folded = true
 margin_top = 359.0
 margin_right = 360.0
 margin_bottom = 609.0
@@ -155,6 +153,15 @@ margin_right = 1470.0
 margin_bottom = 340.0
 rect_min_size = Vector2( 360, 290 )
 
+[node name="LblDealerTotal" type="Label" parent="."]
+margin_left = 1110.0
+margin_top = 350.0
+margin_right = 1470.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 360, 55 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+
 [node name="Label" type="Label" parent="."]
 margin_left = 930.0
 margin_top = 400.0
@@ -162,6 +169,20 @@ margin_right = 990.0
 margin_bottom = 449.0
 custom_fonts/font = ExtResource( 2 )
 text = "Bet:"
+
+[node name="LblStatistics" type="Label" parent="."]
+margin_left = 1490.0
+margin_top = 400.0
+margin_right = 1890.0
+margin_bottom = 709.0
+rect_min_size = Vector2( 400, 250 )
+custom_fonts/font = ExtResource( 2 )
+text = "Wins:
+Losses:
+Draws:
+Gold Won:
+Gold Lost:
+"
 
 [node name="TxtBet" type="LineEdit" parent="."]
 margin_left = 870.0
@@ -203,5 +224,11 @@ rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
 shortcut = SubResource( 2 )
 text = "Return"
-[connection signal="pressed" from="BtnDealHand" to="." method="_on_BtnReturn_pressed"]
+[connection signal="pressed" from="SplitHand/CC/VB/BtnHitSplit" to="." method="_on_BtnHitSplit_pressed"]
+[connection signal="pressed" from="SplitHand/CC/VB/BtnConvertAceSplit" to="." method="_on_BtnConvertAceSplit_pressed"]
+[connection signal="pressed" from="MainHand/CC/VB/BtnHit" to="." method="_on_BtnHit_pressed"]
+[connection signal="pressed" from="MainHand/CC/VB/BtnStay" to="." method="_on_BtnStay_pressed"]
+[connection signal="pressed" from="MainHand/CC/VB/BtnConvertAce" to="." method="_on_BtnConvertAce_pressed"]
+[connection signal="pressed" from="MainHand/CC/VB/BtnSplit" to="." method="_on_BtnSplit_pressed"]
+[connection signal="pressed" from="BtnDealHand" to="." method="_on_BtnDealHand_pressed"]
 [connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

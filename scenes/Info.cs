@@ -6,7 +6,9 @@ namespace Sulimn.Scenes
 {
     public class Info : CanvasLayer
     {
+        private Button BtnCharacter, BtnHelp;
         private Label LblLevel, LblExperience, LblGold, LblText;
+		private TextureButton BtnSettings;
         private TextureProgress TPHealth, TPMagic;
 
         // Called when the node enters the scene tree for the first time.
@@ -15,6 +17,9 @@ namespace Sulimn.Scenes
         /// <summary>Assigns all controls to local variables for easy use.</summary>
         private void AssignControls()
         {
+            BtnCharacter = (Button)FindNode("BtnCharacter");
+            BtnSettings = (TextureButton)FindNode("BtnSettings");
+            BtnHelp = (Button)FindNode("BtnHelp");
             LblLevel = (Label)GetNode("LblLevel");
             LblExperience = (Label)GetNode("LblExperience");
             LblGold = (Label)GetNode("LblGold");
@@ -22,6 +27,21 @@ namespace Sulimn.Scenes
             TPHealth = (TextureProgress)GetNode("TPHealth");
             TPMagic = (TextureProgress)GetNode("TPMagic");
         }
+
+        /// <summary>Toggles all the Buttons on the scene.</summary>
+        /// <param name="disabled">Should the buttons be disabled?</param>
+        private void ToggleButtons(bool disabled)
+        {
+            BtnCharacter.Disabled = disabled;
+            BtnHelp.Disabled = disabled;
+            BtnSettings.Disabled = disabled;
+        }
+
+        /// <summary>Disables all the Buttons on the scene.</summary>
+        public void DisableButtons() => ToggleButtons(true);
+
+        /// <summary>Enables all the Buttons on the scene.</summary>
+        public void EnableButtons() => ToggleButtons(false);
 
         private void _on_BtnCharacter_pressed()
         {

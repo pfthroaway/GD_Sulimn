@@ -117,6 +117,16 @@ namespace Sulimn.Scenes.City
                 Player.Move("up");
         }
 
+        private void _on_TavernArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+            {
+                Player.Move("down");
+                GameState.AddSceneToHistory(GetTree().CurrentScene);
+                GetTree().ChangeScene("res://scenes/gambling/BlackjackScene.tscn");
+            }
+        }
+
         private void _on_TrainingArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
