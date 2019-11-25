@@ -16,11 +16,12 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="SplitHand" type="VBoxContainer" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 80.0
-margin_top = 50.0
+margin_top = 10.0
 margin_right = 440.0
-margin_bottom = 600.0
+margin_bottom = 560.0
 rect_min_size = Vector2( 360, 290 )
 custom_constants/separation = 10
 
@@ -37,7 +38,7 @@ margin_bottom = 544.0
 [node name="VB" type="VBoxContainer" parent="SplitHand/CC"]
 margin_left = 55.0
 margin_right = 305.0
-margin_bottom = 244.0
+margin_bottom = 309.0
 custom_constants/separation = 10
 
 [node name="LblSplitTotal" type="Label" parent="SplitHand/CC/VB"]
@@ -51,6 +52,7 @@ margin_top = 59.0
 margin_right = 250.0
 margin_bottom = 114.0
 rect_min_size = Vector2( 250, 55 )
+hint_tooltip = "\"Hit\" means add another card to the hand. If your cards' total value exceeds 21, you \"bust\", meaning you lose."
 size_flags_horizontal = 0
 theme = ExtResource( 3 )
 disabled = true
@@ -61,6 +63,7 @@ margin_top = 124.0
 margin_right = 250.0
 margin_bottom = 179.0
 rect_min_size = Vector2( 250, 55 )
+hint_tooltip = "To \"stay\" means you do not want to add any more cards to this hand. If your current cards' total value is more than the dealer's, or the dealer busts, you win."
 size_flags_horizontal = 0
 theme = ExtResource( 3 )
 disabled = true
@@ -71,16 +74,29 @@ margin_top = 189.0
 margin_right = 250.0
 margin_bottom = 244.0
 rect_min_size = Vector2( 250, 55 )
+hint_tooltip = "You can convert an 11-valued Ace to be valued at 1, to keep you in play if you would have busted, or give you a better chance at getting closer to 21."
 size_flags_horizontal = 0
 theme = ExtResource( 3 )
 disabled = true
 text = "Convert Ace"
 
+[node name="BtnDoubleDownSplit" type="Button" parent="SplitHand/CC/VB"]
+margin_top = 189.0
+margin_right = 250.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 250, 55 )
+hint_tooltip = "You can double your bet and only get one hit. It's best to only do this on a freshly dealt 11."
+size_flags_horizontal = 0
+theme = ExtResource( 3 )
+disabled = true
+text = "Double Down"
+
 [node name="MainHand" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 450.0
-margin_top = 50.0
+margin_top = 10.0
 margin_right = 810.0
-margin_bottom = 600.0
+margin_bottom = 684.0
 rect_min_size = Vector2( 360, 290 )
 custom_constants/separation = 10
 
@@ -99,18 +115,19 @@ align = 1
 [node name="CC" type="CenterContainer" parent="MainHand"]
 margin_top = 359.0
 margin_right = 360.0
-margin_bottom = 609.0
+margin_bottom = 674.0
 
 [node name="VB" type="VBoxContainer" parent="MainHand/CC"]
 margin_left = 55.0
 margin_right = 305.0
-margin_bottom = 250.0
+margin_bottom = 315.0
 custom_constants/separation = 10
 
 [node name="BtnHit" type="Button" parent="MainHand/CC/VB"]
 margin_right = 250.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 250, 55 )
+hint_tooltip = "\"Hit\" means add another card to the hand. If your cards' total value exceeds 21, you \"bust\", meaning you lose."
 size_flags_horizontal = 0
 theme = ExtResource( 3 )
 disabled = true
@@ -121,6 +138,7 @@ margin_top = 65.0
 margin_right = 250.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 250, 55 )
+hint_tooltip = "To \"stay\" means you do not want to add any more cards to this hand. If your current cards' total value is more than the dealer's, or the dealer busts, you win."
 size_flags_horizontal = 0
 theme = ExtResource( 3 )
 disabled = true
@@ -131,6 +149,7 @@ margin_top = 130.0
 margin_right = 250.0
 margin_bottom = 185.0
 rect_min_size = Vector2( 250, 55 )
+hint_tooltip = "You can convert an 11-valued Ace to be valued at 1, to keep you in play if you would have busted, or give you a better chance at getting closer to 21."
 size_flags_horizontal = 0
 theme = ExtResource( 3 )
 disabled = true
@@ -141,23 +160,35 @@ margin_top = 195.0
 margin_right = 250.0
 margin_bottom = 250.0
 rect_min_size = Vector2( 250, 55 )
+hint_tooltip = "If you have two of the same card, two 3s or two Jacks, for example, you can choose to split your cards into two separate hands for an additional bet."
 size_flags_horizontal = 0
 theme = ExtResource( 3 )
 disabled = true
 text = "Split"
 
+[node name="BtnDoubleDown" type="Button" parent="MainHand/CC/VB"]
+margin_top = 260.0
+margin_right = 250.0
+margin_bottom = 315.0
+rect_min_size = Vector2( 250, 55 )
+hint_tooltip = "You can double your bet and only get one hit. It's best to only do this on a freshly dealt 11."
+size_flags_horizontal = 0
+theme = ExtResource( 3 )
+disabled = true
+text = "Double Down"
+
 [node name="DealerHand" type="Container" parent="."]
 margin_left = 1110.0
-margin_top = 50.0
+margin_top = 10.0
 margin_right = 1470.0
-margin_bottom = 340.0
+margin_bottom = 300.0
 rect_min_size = Vector2( 360, 290 )
 
 [node name="LblDealerTotal" type="Label" parent="."]
 margin_left = 1110.0
-margin_top = 350.0
+margin_top = 310.0
 margin_right = 1470.0
-margin_bottom = 405.0
+margin_bottom = 365.0
 rect_min_size = Vector2( 360, 55 )
 custom_fonts/font = ExtResource( 2 )
 align = 1
@@ -190,8 +221,20 @@ margin_top = 459.0
 margin_right = 1050.0
 margin_bottom = 518.0
 rect_min_size = Vector2( 180, 59 )
+hint_tooltip = "You can bet up to your current total gold value."
 custom_fonts/font = ExtResource( 2 )
 align = 1
+
+[node name="TxtInsurance" type="LineEdit" parent="."]
+margin_left = 1140.0
+margin_top = 460.67
+margin_right = 1320.0
+margin_bottom = 519.67
+rect_min_size = Vector2( 180, 59 )
+hint_tooltip = "Insurance is a side bet made when the dealer's exposed card is an Ace. You're betting that the hidden card is valued at 10. It pays 2:1. The maximum bet you can make is half your original wager."
+custom_fonts/font = ExtResource( 2 )
+align = 1
+editable = false
 
 [node name="BtnDealHand" type="Button" parent="."]
 margin_left = 835.0
@@ -200,8 +243,20 @@ margin_right = 1085.0
 margin_bottom = 583.0
 rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
+disabled = true
 shortcut = SubResource( 2 )
 text = "Deal Hand"
+
+[node name="BtnInsurance" type="Button" parent="."]
+margin_left = 1105.0
+margin_top = 528.0
+margin_right = 1355.0
+margin_bottom = 583.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 3 )
+disabled = true
+shortcut = SubResource( 2 )
+text = "Insurance"
 
 [node name="TxtBlackjack" type="RichTextLabel" parent="."]
 margin_left = 360.0
@@ -225,10 +280,16 @@ theme = ExtResource( 3 )
 shortcut = SubResource( 2 )
 text = "Return"
 [connection signal="pressed" from="SplitHand/CC/VB/BtnHitSplit" to="." method="_on_BtnHitSplit_pressed"]
+[connection signal="pressed" from="SplitHand/CC/VB/BtnStaySplit" to="." method="_on_BtnStaySplit_pressed"]
 [connection signal="pressed" from="SplitHand/CC/VB/BtnConvertAceSplit" to="." method="_on_BtnConvertAceSplit_pressed"]
+[connection signal="pressed" from="SplitHand/CC/VB/BtnDoubleDownSplit" to="." method="_on_BtnDoubleDownSplit_pressed"]
 [connection signal="pressed" from="MainHand/CC/VB/BtnHit" to="." method="_on_BtnHit_pressed"]
 [connection signal="pressed" from="MainHand/CC/VB/BtnStay" to="." method="_on_BtnStay_pressed"]
 [connection signal="pressed" from="MainHand/CC/VB/BtnConvertAce" to="." method="_on_BtnConvertAce_pressed"]
 [connection signal="pressed" from="MainHand/CC/VB/BtnSplit" to="." method="_on_BtnSplit_pressed"]
+[connection signal="pressed" from="MainHand/CC/VB/BtnDoubleDown" to="." method="_on_BtnDoubleDown_pressed"]
+[connection signal="text_changed" from="TxtBet" to="." method="_on_TxtBet_text_changed"]
+[connection signal="text_changed" from="TxtInsurance" to="." method="_on_TxtInsurance_text_changed"]
 [connection signal="pressed" from="BtnDealHand" to="." method="_on_BtnDealHand_pressed"]
+[connection signal="pressed" from="BtnInsurance" to="." method="_on_BtnInsurance_pressed"]
 [connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]

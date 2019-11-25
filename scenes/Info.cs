@@ -8,7 +8,7 @@ namespace Sulimn.Scenes
     {
         private Button BtnCharacter, BtnHelp;
         private Label LblLevel, LblExperience, LblGold, LblText;
-		private TextureButton BtnSettings;
+        private TextureButton BtnSettings;
         private TextureProgress TPHealth, TPMagic;
 
         // Called when the node enters the scene tree for the first time.
@@ -30,18 +30,12 @@ namespace Sulimn.Scenes
 
         /// <summary>Toggles all the Buttons on the scene.</summary>
         /// <param name="disabled">Should the buttons be disabled?</param>
-        private void ToggleButtons(bool disabled)
+        public void ToggleButtons(bool disabled)
         {
             BtnCharacter.Disabled = disabled;
             BtnHelp.Disabled = disabled;
             BtnSettings.Disabled = disabled;
         }
-
-        /// <summary>Disables all the Buttons on the scene.</summary>
-        public void DisableButtons() => ToggleButtons(true);
-
-        /// <summary>Enables all the Buttons on the scene.</summary>
-        public void EnableButtons() => ToggleButtons(false);
 
         private void _on_BtnCharacter_pressed()
         {
