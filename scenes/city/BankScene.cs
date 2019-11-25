@@ -6,7 +6,7 @@ namespace Sulimn.Scenes.City
 {
     public class BankScene : Control
     {
-        private Button BtnReturn, BtnDeposit, BtnWithdraw, BtnTakeOutLoan, BtnRepayLoan;
+        private Button BtnDeposit, BtnWithdraw, BtnTakeOutLoan, BtnRepayLoan;
         private Label LblGoldOnHand, LblGoldInBank, LblLoanAvailable, LblLoanOwed, LblError;
         private LineEdit TxtGold;
         private RichTextLabel TxtBank;
@@ -28,7 +28,6 @@ namespace Sulimn.Scenes.City
             LblGoldInBank = (Label)GetNode("Gold/LblGoldInBank");
             LblLoanAvailable = (Label)GetNode("Gold/LblLoanAvailable");
             LblLoanOwed = (Label)GetNode("Gold/LblLoanOwed");
-            BtnReturn = (Button)GetNode("BtnReturn");
             BtnDeposit = (Button)GetNode("Buttons/BtnDeposit");
             BtnWithdraw = (Button)GetNode("Buttons/BtnWithdraw");
             BtnTakeOutLoan = (Button)GetNode("Buttons/BtnTakeOutLoan");
@@ -56,6 +55,11 @@ namespace Sulimn.Scenes.City
             LblGoldInBank.Text = GameState.CurrentHero.Bank.GoldInBankToStringWithText;
             LblLoanAvailable.Text = GameState.CurrentHero.Bank.LoanAvailableToStringWithText;
             LblLoanOwed.Text = GameState.CurrentHero.Bank.LoanTakenToStringWithText;
+            GameState.Info.DisplayStats();
+            TxtGold.Text = "";
+            _on_TxtGold_text_changed("");
+            TxtGold.GrabFocus();
+            TxtGold.GrabClickFocus();
         }
 
         #region Transaction Methods

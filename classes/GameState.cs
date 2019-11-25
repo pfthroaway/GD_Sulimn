@@ -53,8 +53,6 @@ namespace Sulimn.Classes
         internal static MainLoop MainLoop { get; set; }
 
         // TODO Add Tavern
-        // TODO Move Market into main city.
-        // TODO Add Castle in center of city.
         // TODO Gear and ? Buttons on the info bar
         // TODO Set up textures for enemies and players. Use default until getting new.
         // TODO Random generation rooms top left corner of room 1, add stairs entity which calls GameState.GoBack(). Add Player entity one tile to the right.

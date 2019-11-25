@@ -11,7 +11,6 @@ namespace Sulimn.Scenes.Gambling
 {
     public class BlackjackScene : Control
     {
-        private bool previousStateOfBtnReturn;
         private Button BtnDealHand, BtnReturn, BtnHit, BtnStay, BtnConvertAce, BtnSplit, BtnHitSplit, BtnStaySplit, BtnConvertAceSplit, BtnInsurance, BtnDoubleDown, BtnDoubleDownSplit;
         private Container mainHandContainer, splitHandContainer, dealerHandContainer;
         private Hand MainHand, SplitHand, DealerHand;
@@ -571,18 +570,9 @@ namespace Sulimn.Scenes.Gambling
                 AddTextToTextBox(MainBet > GameState.CurrentHero.Gold ? "You can't bet more gold than you have!" : "Please enter a valid bet.");
         }
 
-        private void _on_BtnHelp_pressed()
-        {
-            PnlHelp.Visible = true;
-            previousStateOfBtnReturn = BtnReturn.Disabled;
-            BtnReturn.Disabled = true;
-        }
+        private void _on_BtnHelp_pressed() => PnlHelp.Visible = true;
 
-        private void _on_BtnHideHelp_pressed()
-        {
-            PnlHelp.Visible = false;
-            BtnReturn.Disabled = previousStateOfBtnReturn;
-        }
+        private void _on_BtnHideHelp_pressed() => PnlHelp.Visible = false;
 
         private void _on_BtnInsurance_pressed()
         {

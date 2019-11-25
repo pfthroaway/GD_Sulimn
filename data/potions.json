@@ -89,7 +89,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/P_Red05.png"
+    "Texture": "res://assets/inventory/P_Red03.png"
   },
   {
     "Name": "Light Healing Potion",
@@ -112,7 +112,7 @@
     "CanSell": true,
     "IsSold": true,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/P_Red03.png"
+    "Texture": "res://assets/inventory/P_Red02.png"
   },
   {
     "Name": "Light Magic Potion",

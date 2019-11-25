@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/city/BankScene.cs" type="Script" id=1]
 [ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=2]
 [ext_resource path="res://resources/Button.tres" type="Theme" id=3]
+[ext_resource path="res://resources/LineEdit.tres" type="Theme" id=4]
 
 [sub_resource type="InputEventKey" id=1]
 scancode = 68
@@ -44,6 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Gold" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 540.0
 margin_top = 200.0
 margin_right = 940.0
@@ -77,15 +79,8 @@ margin_bottom = 226.0
 rect_min_size = Vector2( 400, 49 )
 custom_fonts/font = ExtResource( 2 )
 
-[node name="TxtGold" type="LineEdit" parent="."]
-margin_left = 1100.0
-margin_top = 200.0
-margin_right = 1350.0
-margin_bottom = 259.0
-rect_min_size = Vector2( 250, 59 )
-custom_fonts/font = ExtResource( 2 )
-
 [node name="Buttons" type="GridContainer" parent="."]
+editor/display_folded = true
 margin_left = 970.0
 margin_top = 275.0
 margin_right = 1480.0
@@ -160,9 +155,18 @@ rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
 shortcut = SubResource( 10 )
 text = "Return"
-[connection signal="text_changed" from="TxtGold" to="." method="_on_TxtGold_text_changed"]
+
+[node name="TxtGold" type="LineEdit" parent="."]
+margin_left = 1100.0
+margin_top = 200.0
+margin_right = 1350.0
+margin_bottom = 259.0
+rect_min_size = Vector2( 250, 59 )
+theme = ExtResource( 4 )
+align = 1
 [connection signal="pressed" from="Buttons/BtnDeposit" to="." method="_on_BtnDeposit_pressed"]
 [connection signal="pressed" from="Buttons/BtnWithdraw" to="." method="_on_BtnWithdraw_pressed"]
 [connection signal="pressed" from="Buttons/BtnTakeOutLoan" to="." method="_on_BtnTakeOutLoan_pressed"]
 [connection signal="pressed" from="Buttons/BtnRepayLoan" to="." method="_on_BtnRepayLoan_pressed"]
 [connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]
+[connection signal="text_changed" from="TxtGold" to="." method="_on_TxtGold_text_changed"]

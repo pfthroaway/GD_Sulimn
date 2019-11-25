@@ -39,7 +39,7 @@ namespace Sulimn.Scenes.Shopping
             GridInventory = (GridInventory)GetNode("GridInventory");
             MerchantInventory = (MerchantInventory)GetNode("MerchantInventory");
             GridEquipment = (GridEquipment)GetNode("GridEquipment");
-            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory.Where(itm => itm.CanSell).ToList());
+            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
             GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
             MerchantInventory.SetUpInventory(GameState.MerchantInventory.Where(itm => itm.IsSold).ToList());
         }

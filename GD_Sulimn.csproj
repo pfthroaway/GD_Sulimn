@@ -115,7 +115,6 @@
     <Compile Include="scenes\character\NewHeroScene.cs" />
     <Compile Include="scenes\shopping\ItemMerchantScene.cs" />
     <Compile Include="scenes\shopping\MagickShoppeScene.cs" />
-    <Compile Include="scenes\shopping\MarketScene.cs" />
     <Compile Include="scenes\shopping\SmithScene.cs" />
   </ItemGroup>
   <ItemGroup>
