@@ -67,15 +67,19 @@ namespace Sulimn.Classes.Card
         }
 
         /// <summary>Checks whether a <see cref="Hand"/> has an Ace valued at eleven in it.</summary>
-        /// <returns>Returns true if <see cref="Hand"/> has an Ace valued at eleven in it.</returns>
+        /// <returns>Returns true if <see cref="Hand"/> has an Ace valued at eleven in it</returns>
         internal bool HasAceEleven() => CardList.Any(card => card.Value == 11);
 
         /// <summary>Checks whether a <see cref="Hand"/> has reached Blackjack.</summary>
-        /// <returns>Returns true if the <see cref="Hand"/>'s value is 21.</returns>
+        /// <returns>Returns true if the <see cref="Hand"/>'s value is 21</returns>
         internal bool HasBlackjack() => TotalValue == 21;
 
+        /// <summary>Checks whether the <see cref="Hand"/> has a Five Card Charlie.</summary>
+        /// <returns>Returns true if the <see cref="Hand"/> has a Five Card Charlie</returns>
+        internal bool HasFiveCardCharlie() => Count == 5 && (TotalValue < 21 || (HasAceEleven() && TotalValue <= 31));
+
         /// <summary>Checks whether the current <see cref="Hand"/> has gone Bust.</summary>
-        /// <returns>Returns true if <see cref="Hand"/> has gone Bust.</returns>
+        /// <returns>Returns true if <see cref="Hand"/> has gone Bust</returns>
         internal bool IsBust() => !HasAceEleven() && TotalValue > 21;
 
         #endregion Hand Management
