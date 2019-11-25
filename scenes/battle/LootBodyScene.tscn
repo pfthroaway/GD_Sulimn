@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/inventory/Orphanage.tscn" type="PackedScene" id=6]
 
 [sub_resource type="InputEventKey" id=1]
-scancode = 82
+scancode = 76
 
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
@@ -52,6 +52,16 @@ theme = ExtResource( 4 )
 shortcut = SubResource( 2 )
 text = "Return"
 
+[node name="BtnLootGold" type="Button" parent="."]
+margin_left = 835.0
+margin_top = 660.0
+margin_right = 1085.0
+margin_bottom = 715.0
+rect_min_size = Vector2( 250, 55 )
+theme = ExtResource( 4 )
+shortcut = SubResource( 2 )
+text = "Loot Gold"
+
 [node name="LblError" type="Label" parent="."]
 margin_left = 10.0
 margin_top = 941.0
@@ -63,5 +73,16 @@ custom_colors/font_color = Color( 1, 0, 0, 1 )
 align = 1
 autowrap = true
 
+[node name="LblGold" type="Label" parent="."]
+margin_left = 835.0
+margin_top = 601.0
+margin_right = 1085.0
+margin_bottom = 650.0
+rect_min_size = Vector2( 250, 49 )
+custom_fonts/font = ExtResource( 5 )
+align = 1
+autowrap = true
+
 [node name="Orphanage" parent="." instance=ExtResource( 6 )]
 [connection signal="pressed" from="BtnReturn" to="." method="_on_BtnReturn_pressed"]
+[connection signal="pressed" from="BtnLootGold" to="." method="_on_BtnLootGold_pressed"]
