@@ -54,7 +54,7 @@ namespace Sulimn.Scenes.Inventory
             if (@event is InputEventMouseButton button && button.Pressed)
             {
                 ItemSlot slot = (ItemSlot)GetParent();
-                if (button.ButtonIndex == 1)
+                if (button.ButtonIndex == 1 && !Input.IsKeyPressed((int)KeyList.Control))
                 {
                     if (!Drag)
                     {
@@ -66,22 +66,9 @@ namespace Sulimn.Scenes.Inventory
                                 if (!orphanage.PreviousSlot.Merchant && !slot.Merchant && CheckItemLevel(slot, orphanItem) && CheckItemClasses(slot, orphanItem)) // if not buying nor selling, and is a valid slot
                                     SwapItems(slot, orphanItem);
                                 else if (orphanage.PreviousSlot.Merchant && !slot.Merchant && CheckItemLevel(slot, orphanItem) && CheckItemClasses(slot, orphanItem))
-                                {
-                                    if (GameState.CurrentHero.PurchaseItem(orphanItem.Item)) // if purchasing and can afford it
-                                        SwapItems(slot, orphanItem);
-                                    else
-                                        slot.LblError.Text = "You cannot afford that item.";
-                                }
+                                    PurchaseItem(slot, orphanItem, true);
                                 else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if selling
-                                {
-                                    if (orphanItem.Item.CanSell)
-                                    {
-                                        GameState.CurrentHero.SellItem(orphanItem.Item);
-                                        SwapItems(slot, orphanItem);
-                                    }
-                                    else
-                                        slot.LblError.Text = "This item cannot be sold.";
-                                }
+                                    SellItem(slot, orphanItem, true);
                                 else if (orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
                                     SwapItems(slot, orphanItem);
                                 else if (!CheckItemLevel(slot, orphanItem))
@@ -97,10 +84,32 @@ namespace Sulimn.Scenes.Inventory
                             Drag = true;
                             TextureRect rect = (TextureRect)GetChild(0);
                             rect.MouseFilter = MouseFilterEnum.Ignore;
-                            GetParent().RemoveChild(this);
-                            slot.Item = new InventoryItem();
-                            orphanage.AddChild(this);
-                            orphanage.PreviousSlot = slot;
+                            PutItemInOrphanage(slot);
+                        }
+                    }
+                }
+                else if (button.ButtonIndex == 1 && Input.IsKeyPressed((int)KeyList.Control))
+                {
+                    if (GetTree().CurrentScene.Name == "ItemMerchant")
+                    {
+                        Node container = GetParent().GetParent().GetParent();
+                        if (container.Name == "GridInventory")
+                        {
+                            GridInventory gridInventory = (GridInventory)container;
+                            MerchantInventory merchantInventory = (MerchantInventory)GetTree().CurrentScene.FindNode("MerchantInventory");
+                            if (merchantInventory != null)
+                            {
+                                PutItemInOrphanage(slot);
+                                SellItem(merchantInventory.FindFirstEmptySlot(), this, false);
+                            }
+                        }
+                        else if (container.Name == "MerchantInventory")
+                        {
+                            MerchantInventory merchantInventory = (MerchantInventory)container;
+                            GridInventory gridInventory = (GridInventory)GetTree().CurrentScene.FindNode("GridInventory");
+                            PutItemInOrphanage(slot);
+                            PurchaseItem(gridInventory.FindFirstEmptySlot(), this, false);
+                            GD.Print("This is a MerchantInventory!");
                         }
                     }
                 }
@@ -111,6 +120,41 @@ namespace Sulimn.Scenes.Inventory
                     _contextMenu.LoadSlot(slot);
                 }
             }
+        }
+
+        private void PutItemInOrphanage(ItemSlot slot)
+        {
+            GetParent().RemoveChild(this);
+            slot.Item = new InventoryItem();
+            orphanage.AddChild(this);
+            orphanage.PreviousSlot = slot;
+        }
+
+        private void PurchaseItem(ItemSlot slot, InventoryItem purchaseItem, bool swap)
+        {
+            if (GameState.CurrentHero.PurchaseItem(purchaseItem.Item)) // if purchasing and can afford it
+            {
+                if (swap)
+                    SwapItems(slot, purchaseItem);
+                else
+                    slot.PutItemInSlot(purchaseItem);
+            }
+            else
+                slot.LblError.Text = "You cannot afford that item.";
+        }
+
+        private void SellItem(ItemSlot slot, InventoryItem sellItem, bool swap)
+        {
+            if (sellItem.Item.CanSell)
+            {
+                GameState.CurrentHero.SellItem(sellItem.Item);
+                if (swap)
+                    SwapItems(slot, sellItem);
+                else
+                    slot.PutItemInSlot(sellItem);
+            }
+            else
+                slot.LblError.Text = "This item cannot be sold.";
         }
 
         /// <summary>Swaps the Item currently in the <see cref="ItemSlot"/> with the <see cref="InventoryItem"/> from the <see cref="Orphanage"/>.</summary>

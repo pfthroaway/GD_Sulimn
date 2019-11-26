@@ -20,6 +20,17 @@ namespace Sulimn.Scenes.Inventory
             }
         }
 
+        public ItemSlot FindFirstEmptySlot()
+        {
+            GridContainer container = (GridContainer)GetNode("GridInventory");
+            foreach (ItemSlot slot in container.GetChildren())
+            {
+                if (slot.GetChildren().Count == 1)
+                    return slot;
+            }
+            return new ItemSlot();
+        }
+
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
