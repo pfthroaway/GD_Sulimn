@@ -7,8 +7,8 @@ namespace Sulimn.Classes.Shopping
     public class SmithScene : Control
     {
         private Button BtnRepair, BtnRepairAll;
-        private GridEquipment GridEquipment;
-        private GridInventory GridInventory;
+        private GridEquipment HeroEquipment;
+        private GridInventory HeroInventory;
         private ItemSlot RepairSlot;
         private Label LblRepair, LblRepairAll;
         private Orphanage Orphanage;
@@ -24,15 +24,15 @@ namespace Sulimn.Classes.Shopping
         {
             BtnRepair = (Button)GetNode("BtnRepair");
             BtnRepairAll = (Button)GetNode("BtnRepairAll");
-            GridInventory = (GridInventory)GetNode("GridInventory");
-            GridEquipment = (GridEquipment)GetNode("GridEquipment");
+            HeroInventory = (GridInventory)GetNode("HeroInventory");
+            HeroEquipment = (GridEquipment)GetNode("HeroEquipment");
             LblRepair = (Label)GetNode("LblRepair");
             LblRepairAll = (Label)GetNode("LblRepairAll");
             Orphanage = (Orphanage)GetNode("Orphanage");
             RepairSlot = (ItemSlot)GetNode("RepairSlot");
 
-            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
-            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
+            HeroInventory.SetUpInventory(GameState.CurrentHero.Inventory);
+            HeroEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
         }
 
         public override void _Ready()
@@ -66,9 +66,9 @@ namespace Sulimn.Classes.Shopping
             SaveEquipment();
         }
 
-        private void SaveInventory() => GameState.SetInventoryFromGrid(GridInventory);
+        private void SaveInventory() => GameState.SetInventoryFromGrid(HeroInventory);
 
-        private void SaveEquipment() => GameState.SetEquipmentFromGrid(GridEquipment);
+        private void SaveEquipment() => GameState.SetEquipmentFromGrid(HeroEquipment);
 
         #endregion Save
 
@@ -82,7 +82,7 @@ namespace Sulimn.Classes.Shopping
             GameState.CurrentHero.Gold -= item.Item.RepairCost;
             item.Item.CurrentDurability = item.Item.MaximumDurability;
             item.SetItem(item.Item);
-            ItemSlot slot = GridInventory.FindFirstEmptySlot();
+            ItemSlot slot = HeroInventory.FindFirstEmptySlot();
             if (slot != new ItemSlot())
             {
                 RepairSlot.RemoveChild(item);
@@ -99,8 +99,8 @@ namespace Sulimn.Classes.Shopping
             GameState.CurrentHero.Gold -= GameState.CurrentHero.TotalRepairCost;
             GameState.CurrentHero.Inventory.ForEach(itm => itm.CurrentDurability = itm.MaximumDurability);
             GameState.CurrentHero.Equipment.AllEquipment.ForEach(itm => itm.CurrentDurability = itm.MaximumDurability);
-            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
-            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
+            HeroInventory.SetUpInventory(GameState.CurrentHero.Inventory);
+            HeroEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
             GameState.UpdateDisplay = true;
         }
 

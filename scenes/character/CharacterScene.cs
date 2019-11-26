@@ -9,8 +9,8 @@ namespace Sulimn.Scenes.CharacterScenes
     {
         private Button BtnStrengthMinus, BtnStrengthPlus, BtnVitalityMinus, BtnVitalityPlus, BtnDexterityMinus, BtnDexterityPlus, BtnWisdomMinus, BtnWisdomPlus;
         private Label LblName, LblLevel, LblExperience, LblSkillPoints, LblHardcore, LblGold, LblStrength, LblVitality, LblDexterity, LblWisdom, LblHealth, LblMagic, LblWeight;
-        private GridEquipment GridEquipment;
-        private GridInventory GridInventory;
+        private GridEquipment HeroEquipment;
+        private GridInventory HeroInventory;
         private Hero _copyOfHero = new Hero();
 
         public override void _UnhandledInput(InputEvent @event)
@@ -32,16 +32,16 @@ namespace Sulimn.Scenes.CharacterScenes
             AssignControls();
             _copyOfHero = new Hero(GameState.CurrentHero);
             UpdateLabels();
-            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
-            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
+            HeroInventory.SetUpInventory(GameState.CurrentHero.Inventory);
+            HeroEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
             CheckSkillPoints();
         }
 
         /// <summary>Assigns all controls to something usable in code.</summary>
         private void AssignControls()
         {
-            GridInventory = (GridInventory)GetNode("GridInventory");
-            GridEquipment = (GridEquipment)GetNode("GridEquipment");
+            HeroInventory = (GridInventory)GetNode("HeroInventory");
+            HeroEquipment = (GridEquipment)GetNode("HeroEquipment");
 
             LblName = (Label)GetNode("Info/LblName");
             LblLevel = (Label)GetNode("Info/LblLevel");
@@ -81,9 +81,9 @@ namespace Sulimn.Scenes.CharacterScenes
             SaveEquipment();
         }
 
-        private void SaveInventory() => GameState.SetInventoryFromGrid(GridInventory);
+        private void SaveInventory() => GameState.SetInventoryFromGrid(HeroInventory);
 
-        private void SaveEquipment() => GameState.SetEquipmentFromGrid(GridEquipment);
+        private void SaveEquipment() => GameState.SetEquipmentFromGrid(HeroEquipment);
 
         #endregion Save
 

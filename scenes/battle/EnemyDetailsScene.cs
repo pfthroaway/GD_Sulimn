@@ -7,8 +7,8 @@ namespace Sulimn.Scenes.Battle
     public class EnemyDetailsScene : Control
     {
         private Label LblName, LblLevel, LblExperience, LblGold, LblStrength, LblVitality, LblDexterity, LblWisdom, LblHealth, LblMagic;
-        private GridEquipment GridEquipment;
-        private GridInventory GridInventory;
+        private GridEquipment EnemyEquipment;
+        private GridInventory EnemyInventory;
 
         public override void _UnhandledInput(InputEvent @event)
         {
@@ -19,8 +19,8 @@ namespace Sulimn.Scenes.Battle
         /// <summary>Assigns all controls to something usable in code.</summary>
         private void AssignControls()
         {
-            GridInventory = (GridInventory)GetNode("GridInventory");
-            GridEquipment = (GridEquipment)GetNode("GridEquipment");
+            EnemyInventory = (GridInventory)GetNode("EnemyInventory");
+            EnemyEquipment = (GridEquipment)GetNode("EnemyEquipment");
 
             LblName = (Label)GetNode("Info/LblName");
             LblLevel = (Label)GetNode("Info/LblLevel");
@@ -35,8 +35,8 @@ namespace Sulimn.Scenes.Battle
             LblMagic = (Label)GetNode("Info/LblMagic");
 
             LblGold = (Label)GetNode("Info/LblGold");
-            GridInventory.SetUpInventory(GameState.CurrentEnemy.Inventory, true);
-            GridEquipment.SetUpEquipment(GameState.CurrentEnemy.Equipment, 0, null, true);
+            EnemyInventory.SetUpInventory(GameState.CurrentEnemy.Inventory, true);
+            EnemyEquipment.SetUpEquipment(GameState.CurrentEnemy.Equipment, 0, null, true);
         }
 
         /// <summary>Updates all the labels.</summary>

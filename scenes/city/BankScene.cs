@@ -101,7 +101,7 @@ namespace Sulimn.Scenes.City
                 GameState.CurrentHero.Bank.LoanTaken += Gold + (Gold / 20);
                 GameState.CurrentHero.Bank.LoanAvailable -= Gold + (Gold / 20);
                 GameState.CurrentHero.Gold += Gold;
-                AddTextToTextBox($"You take out a loan for {Gold:N0} gold.");
+                AddTextToTextBox($"You take out a loan for {Gold:N0} gold. There is a 5% interest charge.");
                 DisplayGold();
             }
             else

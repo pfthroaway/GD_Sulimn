@@ -99,7 +99,7 @@ margin_bottom = 625.0
 rect_min_size = Vector2( 425, 49 )
 custom_fonts/font = ExtResource( 2 )
 
-[node name="GridEquipment" parent="." instance=ExtResource( 3 )]
+[node name="EnemyEquipment" parent="." instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1247.5
@@ -108,7 +108,7 @@ margin_right = 1247.5
 margin_bottom = 10.0
 rect_min_size = Vector2( 640, 640 )
 
-[node name="GridInventory" parent="." instance=ExtResource( 4 )]
+[node name="EnemyInventory" parent="." instance=ExtResource( 4 )]
 margin_left = 1225.0
 margin_top = 660.0
 margin_right = 1910.0

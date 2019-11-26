@@ -7,8 +7,8 @@ namespace Sulimn.Scenes.Shopping
 {
     public class ItemMerchantScene : Control
     {
-        private GridEquipment GridEquipment;
-        private GridInventory GridInventory;
+        private GridEquipment HeroEquipment;
+        private GridInventory HeroInventory;
         private MerchantInventory MerchantInventory;
 
         public override void _UnhandledInput(InputEvent @event)
@@ -29,18 +29,18 @@ namespace Sulimn.Scenes.Shopping
             SaveEquipment();
         }
 
-        private void SaveInventory() => GameState.SetInventoryFromGrid(GridInventory);
+        private void SaveInventory() => GameState.SetInventoryFromGrid(HeroInventory);
 
-        private void SaveEquipment() => GameState.SetEquipmentFromGrid(GridEquipment);
+        private void SaveEquipment() => GameState.SetEquipmentFromGrid(HeroEquipment);
 
         /// <summary>Assigns all controls to something usable in code.</summary>
         private void AssignControls()
         {
-            GridInventory = (GridInventory)GetNode("GridInventory");
+            HeroInventory = (GridInventory)GetNode("HeroInventory");
             MerchantInventory = (MerchantInventory)GetNode("MerchantInventory");
-            GridEquipment = (GridEquipment)GetNode("GridEquipment");
-            GridInventory.SetUpInventory(GameState.CurrentHero.Inventory);
-            GridEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
+            HeroEquipment = (GridEquipment)GetNode("HeroEquipment");
+            HeroInventory.SetUpInventory(GameState.CurrentHero.Inventory);
+            HeroEquipment.SetUpEquipment(GameState.CurrentHero.Equipment, GameState.CurrentHero.Level, GameState.CurrentHero.Class);
             MerchantInventory.SetUpInventory(GameState.MerchantInventory.Where(itm => itm.IsSold).ToList());
         }
 

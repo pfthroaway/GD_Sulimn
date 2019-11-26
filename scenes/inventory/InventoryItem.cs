@@ -90,26 +90,62 @@ namespace Sulimn.Scenes.Inventory
                 }
                 else if (button.ButtonIndex == 1 && Input.IsKeyPressed((int)KeyList.Control))
                 {
+                    slot.LblError.Text = "";
                     if (GetTree().CurrentScene.Name == "ItemMerchant")
                     {
                         Node container = GetParent().GetParent().GetParent();
-                        if (container.Name == "GridInventory")
+                        if (container.Name == "HeroInventory")
                         {
-                            GridInventory gridInventory = (GridInventory)container;
                             MerchantInventory merchantInventory = (MerchantInventory)GetTree().CurrentScene.FindNode("MerchantInventory");
-                            if (merchantInventory != null)
+                            if (merchantInventory.GetItemsInInventory() < 80 && Item.CanSell)
                             {
                                 PutItemInOrphanage(slot);
                                 SellItem(merchantInventory.FindFirstEmptySlot(), this, false);
                             }
+                            else if (merchantInventory.GetItemsInInventory() >= 80)
+                                slot.LblError.Text = "The merchant's inventory is full.";
+                            else if (!Item.CanSell)
+                                slot.LblError.Text = "This item cannot be sold.";
                         }
                         else if (container.Name == "MerchantInventory")
                         {
-                            MerchantInventory merchantInventory = (MerchantInventory)container;
-                            GridInventory gridInventory = (GridInventory)GetTree().CurrentScene.FindNode("GridInventory");
-                            PutItemInOrphanage(slot);
-                            PurchaseItem(gridInventory.FindFirstEmptySlot(), this, false);
-                            GD.Print("This is a MerchantInventory!");
+                            GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
+                            if (GameState.CurrentHero.Inventory.Count < 40 && GameState.CurrentHero.Gold >= Item.Value)
+                            {
+                                PutItemInOrphanage(slot);
+                                PurchaseItem(heroInventory.FindFirstEmptySlot(), this, false);
+                            }
+                            else if (GameState.CurrentHero.Inventory.Count >= 40)
+                                slot.LblError.Text = "Your inventory is full.";
+                            else if (GameState.CurrentHero.Gold < Item.Value)
+                                slot.LblError.Text = "You cannot afford that item.";
+                        }
+                    }
+                    else if (GetTree().CurrentScene.Name == "LootBody")
+                    {
+                        Node container = GetParent().GetParent().GetParent();
+                        if (container.Name == "HeroInventory")
+                        {
+                            GridInventory enemyInventory = (GridInventory)GetTree().CurrentScene.FindNode("EnemyInventory");
+
+                            if (GameState.CurrentEnemy.Inventory.Count < 40)
+                            {
+                                PutItemInOrphanage(slot);
+                                enemyInventory.FindFirstEmptySlot().PutItemInSlot(this);
+                            }
+                            else if (GameState.CurrentEnemy.Inventory.Count >= 40)
+                                slot.LblError.Text = $"The {GameState.CurrentEnemy.Name}'s inventory is full.";
+                        }
+                        else if (container.Name == "EnemyInventory")
+                        {
+                            GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
+                            if (GameState.CurrentHero.Inventory.Count < 40)
+                            {
+                                PutItemInOrphanage(slot);
+                                heroInventory.FindFirstEmptySlot().PutItemInSlot(this);
+                            }
+                            else if (GameState.CurrentHero.Inventory.Count >= 40)
+                                slot.LblError.Text = "Your inventory is full.";
                         }
                     }
                 }
