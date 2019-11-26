@@ -5,7 +5,6 @@ using Sulimn.Classes.Enums;
 using Sulimn.Classes.Extensions;
 using Sulimn.Classes.Extensions.DataTypeHelpers;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Sulimn.Scenes.Gambling
 {

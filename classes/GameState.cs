@@ -53,6 +53,8 @@ namespace Sulimn.Classes
         internal static MainLoop MainLoop { get; set; }
 
         // TODO Add Tavern
+        // TODO Basic quests like go kill 5 wolves for 500 gold from tavern.
+        // TODO Make dude walk around tavern. Go up to bar, go to quests tables, blackjack, etc.
         // TODO Gear and ? Buttons on the info bar
         // TODO Set up textures for enemies and players. Use default until getting new.
         // TODO Random generation rooms top left corner of room 1, add stairs entity which calls GameState.GoBack(). Add Player entity one tile to the right.

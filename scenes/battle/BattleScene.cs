@@ -23,6 +23,7 @@ namespace Sulimn.Scenes.Battle
         private Label LblHeroName, LblHeroHealth, LblHeroMagic, LblHeroShield, LblEnemyName, LblEnemyHealth, LblEnemyMagic, LblEnemyShield, LblSpellTypeAmount, LblSpellCost;
         private RichTextLabel TxtBattle;
         private string _previousPage;
+        private float timer = 0f;
 
         #region Modifying Properties
 
@@ -753,10 +754,15 @@ namespace Sulimn.Scenes.Battle
 
         #endregion Button-Click Methods
 
-        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-        //  public override void _Process(float delta)
-        //  {
-        //
-        //  }
+        // Called every frame. 'delta' is the elapsed time since the previous frame.
+        public override void _Process(float delta)
+        {
+            timer += delta;
+            if (timer > 0.15f && Input.IsKeyPressed(65) && !BattleEnded)
+            {
+                NewRound(BattleAction.Attack);
+                timer = 0;
+            }
+        }
     }
 }

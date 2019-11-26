@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/battle/BattleScene.cs" type="Script" id=1]
 [ext_resource path="res://resources/SegoeUI.tres" type="DynamicFont" id=2]
@@ -17,28 +17,22 @@ scancode = 76
 shortcut = SubResource( 3 )
 
 [sub_resource type="InputEventKey" id=5]
-scancode = 65
+scancode = 67
 
 [sub_resource type="ShortCut" id=6]
 shortcut = SubResource( 5 )
 
 [sub_resource type="InputEventKey" id=7]
-scancode = 67
+scancode = 70
 
 [sub_resource type="ShortCut" id=8]
 shortcut = SubResource( 7 )
 
 [sub_resource type="InputEventKey" id=9]
-scancode = 70
+scancode = 82
 
 [sub_resource type="ShortCut" id=10]
 shortcut = SubResource( 9 )
-
-[sub_resource type="InputEventKey" id=11]
-scancode = 82
-
-[sub_resource type="ShortCut" id=12]
-shortcut = SubResource( 11 )
 
 [node name="BattleScene" type="Panel"]
 anchor_right = 1.0
@@ -168,7 +162,6 @@ margin_bottom = 615.0
 rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
-shortcut = SubResource( 6 )
 text = "Attack"
 
 [node name="BtnCastSpell" type="Button" parent="."]
@@ -180,7 +173,7 @@ rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
-shortcut = SubResource( 8 )
+shortcut = SubResource( 6 )
 text = "Cast Spell"
 
 [node name="BtnFlee" type="Button" parent="."]
@@ -191,7 +184,7 @@ margin_bottom = 615.0
 rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
-shortcut = SubResource( 10 )
+shortcut = SubResource( 8 )
 text = "Flee"
 
 [node name="LblSpellTypeAmount" type="Label" parent="."]
@@ -221,7 +214,7 @@ rect_min_size = Vector2( 250, 55 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 disabled = true
-shortcut = SubResource( 12 )
+shortcut = SubResource( 10 )
 text = "Return"
 
 [node name="TxtBattle" type="RichTextLabel" parent="."]
