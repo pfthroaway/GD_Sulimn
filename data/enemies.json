@@ -5865,7 +5865,7 @@
         "CanSell": false,
         "IsSold": false,
         "AllowedClassesJson": "",
-        "Texture": "res://assets/inventory/Ac_06.png"
+        "Texture": "res://assets/inventory/fangs.png"
       },
       "Head": {
         "Name": null,

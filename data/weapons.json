@@ -204,7 +204,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/Ac_Necklace06.png"
+    "Texture": "res://assets/inventory/fangs.png"
   },
   {
     "Name": "Fists",
@@ -526,7 +526,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/Ac_Necklace06.png"
+    "Texture": "res://assets/inventory/fangs.png"
   },
   {
     "Name": "Short Sword",
@@ -595,7 +595,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/Ac_Necklace06.png"
+    "Texture": "res://assets/inventory/fangs.png"
   },
   {
     "Name": "Starter Bow",
@@ -756,7 +756,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/Ac_Necklace06.png"
+    "Texture": "res://assets/inventory/fangs.png"
   },
   {
     "Name": "Tusks",
@@ -779,6 +779,6 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/Ac_Necklace06.png"
+    "Texture": "res://assets/inventory/fangs.png"
   }
 ]
