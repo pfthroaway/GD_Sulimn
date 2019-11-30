@@ -11,7 +11,7 @@ namespace Sulimn.Classes.Shopping
         private GridInventory HeroInventory;
         private ItemSlot RepairSlot;
         private Label LblRepair, LblRepairAll;
-        private Orphanage Orphanage;
+        private Orphanage orphanage;
 
         public override void _UnhandledInput(InputEvent @event)
         {
@@ -28,7 +28,7 @@ namespace Sulimn.Classes.Shopping
             HeroEquipment = (GridEquipment)GetNode("HeroEquipment");
             LblRepair = (Label)GetNode("LblRepair");
             LblRepairAll = (Label)GetNode("LblRepairAll");
-            Orphanage = (Orphanage)GetNode("Orphanage");
+            orphanage = (Orphanage)GetNode("Orphanage");
             RepairSlot = (ItemSlot)GetNode("RepairSlot");
 
             HeroInventory.SetUpInventory(GameState.CurrentHero.Inventory);
@@ -86,8 +86,7 @@ namespace Sulimn.Classes.Shopping
             if (slot != new ItemSlot())
             {
                 RepairSlot.RemoveChild(item);
-                Orphanage.AddChild(item);
-                slot.Item = item;
+                orphanage.AddChild(item);
                 slot.PutItemInSlot(item);
                 RepairSlot.Item = new InventoryItem();
             }

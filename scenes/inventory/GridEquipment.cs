@@ -9,7 +9,7 @@ namespace Sulimn.Scenes.Inventory
     /// <summary>Represents a grid of equipment.</summary>
     public class GridEquipment : Panel
     {
-        private ItemSlot WeaponSlot, HeadSlot, BodySlot, HandsSlot, LegsSlot, FeetSlot, LeftRingSlot, RightRingSlot;
+        public ItemSlot WeaponSlot, HeadSlot, BodySlot, HandsSlot, LegsSlot, FeetSlot, LeftRingSlot, RightRingSlot;
 
         public void SetUpEquipment(Equipment equipment, int level = 0, HeroClass currentClass = null, bool enemy = false)
         {

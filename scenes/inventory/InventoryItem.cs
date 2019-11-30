@@ -54,7 +54,7 @@ namespace Sulimn.Scenes.Inventory
             if (@event is InputEventMouseButton button && button.Pressed)
             {
                 ItemSlot slot = (ItemSlot)GetParent();
-                if (button.ButtonIndex == 1 && !Input.IsKeyPressed((int)KeyList.Control))
+                if (button.ButtonIndex == 1 && !Input.IsKeyPressed((int)KeyList.Control) && !Input.IsKeyPressed((int)KeyList.Shift))
                 {
                     if (!Drag)
                     {
@@ -149,6 +149,103 @@ namespace Sulimn.Scenes.Inventory
                         }
                     }
                 }
+                else if (button.ButtonIndex == 1 && Input.IsKeyPressed((int)KeyList.Shift))
+                {
+                    slot.LblError.Text = "";
+                    if (GetTree().CurrentScene.Name == "ItemMerchant")
+                    {
+                        Node container = GetParent().GetParent().GetParent();
+                        if (container.Name == "HeroInventory")
+                        {
+                            MerchantInventory merchantInventory = (MerchantInventory)GetTree().CurrentScene.FindNode("MerchantInventory");
+                            if (merchantInventory.GetItemsInInventory() < 80 && Item.CanSell)
+                            {
+                                PutItemInOrphanage(slot);
+                                SellItem(merchantInventory.FindFirstEmptySlot(), this, false);
+                            }
+                            else if (merchantInventory.GetItemsInInventory() >= 80)
+                                slot.LblError.Text = "The merchant's inventory is full.";
+                            else if (!Item.CanSell)
+                                slot.LblError.Text = "This item cannot be sold.";
+                        }
+                        else if (container.Name == "MerchantInventory")
+                        {
+                            GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
+                            if (GameState.CurrentHero.Inventory.Count < 40 && GameState.CurrentHero.Gold >= Item.Value)
+                            {
+                                PutItemInOrphanage(slot);
+                                PurchaseItem(heroInventory.FindFirstEmptySlot(), this, false);
+                            }
+                            else if (GameState.CurrentHero.Inventory.Count >= 40)
+                                slot.LblError.Text = "Your inventory is full.";
+                            else if (GameState.CurrentHero.Gold < Item.Value)
+                                slot.LblError.Text = "You cannot afford that item.";
+                        }
+                    }
+                    else if (GetTree().CurrentScene.Name == "LootBody")
+                    {
+                        Node container = GetParent().GetParent().GetParent();
+                        if (container.Name == "HeroInventory")
+                        {
+                            GridInventory enemyInventory = (GridInventory)GetTree().CurrentScene.FindNode("EnemyInventory");
+
+                            if (GameState.CurrentEnemy.Inventory.Count < 40)
+                            {
+                                PutItemInOrphanage(slot);
+                                enemyInventory.FindFirstEmptySlot().PutItemInSlot(this);
+                            }
+                            else if (GameState.CurrentEnemy.Inventory.Count >= 40)
+                                slot.LblError.Text = $"The {GameState.CurrentEnemy.Name}'s inventory is full.";
+                        }
+                        else if (container.Name == "EnemyInventory")
+                        {
+                            GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
+                            if (GameState.CurrentHero.Inventory.Count < 40)
+                            {
+                                PutItemInOrphanage(slot);
+                                heroInventory.FindFirstEmptySlot().PutItemInSlot(this);
+                            }
+                            else if (GameState.CurrentHero.Inventory.Count >= 40)
+                                slot.LblError.Text = "Your inventory is full.";
+                        }
+                    }
+                    else if (GetTree().CurrentScene.Name == "CharacterScene")
+                    {
+                        Node container = GetParent().GetParent().GetParent();
+                        if (container.Name == "HeroInventory")
+                        {
+                            GridEquipment heroEquipment = (GridEquipment)GetTree().CurrentScene.FindNode("HeroEquipment");
+                            switch (Item.Type)
+                            {
+                                case ItemType.MeleeWeapon:
+                                case ItemType.RangedWeapon:
+                                    if (heroEquipment.WeaponSlot.Item != new InventoryItem() && CheckItemLevel(heroEquipment.WeaponSlot, this) && CheckItemClasses(heroEquipment.WeaponSlot, this))
+                                        SwapSlotContents(slot, heroEquipment.WeaponSlot);
+                                    else if (heroEquipment.WeaponSlot.Item == new InventoryItem() && CheckItemLevel(heroEquipment.WeaponSlot, this) && CheckItemClasses(heroEquipment.WeaponSlot, this))
+                                    {
+                                        PutItemInOrphanage(slot);
+                                        heroEquipment.WeaponSlot.PutItemInSlot(orphanage.GetItem());
+                                    }
+                                    else if (!CheckItemLevel(slot, this))
+                                        slot.LblError.Text = "You are not high enough level to equip this item.";
+                                    else if (!CheckItemClasses(slot, this))
+                                        slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
+                                    break;
+                            }
+                        }
+                        else if (GetParent().GetParent().Name == "EquipmentScene")
+                        {
+                            GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
+                            if (GameState.CurrentHero.Inventory.Count < 40)
+                            {
+                                PutItemInOrphanage(slot);
+                                heroInventory.FindFirstEmptySlot().PutItemInSlot(this);
+                            }
+                            else if (GameState.CurrentHero.Inventory.Count >= 40)
+                                slot.LblError.Text = "Your inventory is full.";
+                        }
+                    }
+                }
                 else if (button.ButtonIndex == 2)
                 {
                     _contextMenu.PopupCentered();
@@ -213,6 +310,14 @@ namespace Sulimn.Scenes.Inventory
 
             GameState.UpdateDisplay = true;
             Drag = true;
+        }
+
+        private void SwapSlotContents(ItemSlot thisSlot, ItemSlot swapSlot)
+        {
+            InventoryItem tempItem = swapSlot.Item;
+            swapSlot.Item.SetItem(Item);
+            thisSlot.Item.SetItem(tempItem.Item);
+            GameState.UpdateDisplay = true;
         }
 
         public override void _Process(float delta)
