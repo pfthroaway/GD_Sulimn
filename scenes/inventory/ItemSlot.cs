@@ -14,6 +14,8 @@ namespace Sulimn.Scenes.Inventory
         private Orphanage orphanage;
         public Label LblError;
 
+        #region Properties
+
         public List<ItemType> ItemTypes { get; set; } = new List<ItemType>(Enum.GetValues(typeof(ItemType)).Cast<ItemType>().ToList());
 
         /// <summary>Current <see cref="HeroClass"/> of Items allowed in the <see cref="ItemSlot"/> </summary>
@@ -34,11 +36,28 @@ namespace Sulimn.Scenes.Inventory
         /// <summary>Is this <see cref="ItemSlot"/> part of a merchant's inventory?</summary>
         public bool Merchant { get; set; }
 
-        public override void _Ready()
+        #endregion Properties
+
+        #region Item Manipulation
+
+        /// <summary>Puts the currently held <see cref="Inventory"/> into the <see cref="ItemSlot"/>.</summary>
+        /// <param name="item"><see cref="InventoryItem"/> to be put into the <see cref="ItemSlot"/></param>
+        public void PutItemInSlot(InventoryItem item)
         {
-            orphanage = (Orphanage)GetTree().CurrentScene.FindNode("Orphanage");
-            LblError = (Label)GetTree().CurrentScene.FindNode("LblError");
+            item.Drag = false;
+            item.RectGlobalPosition = Vector2.Zero;
+            orphanage.RemoveChild(item);
+            GameState.UpdateDisplay = true;
+            orphanage.PreviousSlot = null;
+            AddChild(item);
+            Item = item;
+            TextureRect rect = (TextureRect)GetChild(1).GetChild(0);
+            rect.MouseFilter = MouseFilterEnum.Pass;
         }
+
+        #endregion Item Manipulation
+
+        #region Item Checking
 
         /// <summary>Checks whether the item held in an <see cref="InventoryItem"/> is an appropriate level to be equipped in a particular <see cref="ItemSlot"/>.</summary>
         /// <param name="item"><see cref="InventoryItem"/> attempting to be equipped</param>
@@ -49,6 +68,8 @@ namespace Sulimn.Scenes.Inventory
         /// <param name="item"><see cref="InventoryItem"/> attempting to be equipped</param>
         /// <returns>True if it is an appropriate <see cref="HeroClass"/>returns>
         private bool CheckItemClasses(InventoryItem item) => item.Item.AllowedClasses.Count == 0 || CurrentClass == null || CurrentClass == new HeroClass() || item.Item.AllowedClasses.Contains(CurrentClass);
+
+        #endregion Item Checking
 
         private void _on_TextureRect_gui_input(InputEvent @event)
         {
@@ -89,19 +110,10 @@ namespace Sulimn.Scenes.Inventory
             }
         }
 
-        /// <summary>Puts the currently held <see cref="Inventory"/> into the <see cref="ItemSlot"/>.</summary>
-        /// <param name="item"><see cref="InventoryItem"/> to be put into the <see cref="ItemSlot"/></param>
-        public void PutItemInSlot(InventoryItem item)
+        public override void _Ready()
         {
-            item.Drag = false;
-            item.RectGlobalPosition = Vector2.Zero;
-            orphanage.RemoveChild(item);
-            GameState.UpdateDisplay = true;
-            orphanage.PreviousSlot = null;
-            AddChild(item);
-            Item = item;
-            TextureRect rect = (TextureRect)GetChild(1).GetChild(0);
-            rect.MouseFilter = MouseFilterEnum.Pass;
+            orphanage = (Orphanage)GetTree().CurrentScene.FindNode("Orphanage");
+            LblError = (Label)GetTree().CurrentScene.FindNode("LblError");
         }
     }
 }

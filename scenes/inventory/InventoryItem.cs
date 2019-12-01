@@ -20,22 +20,7 @@ namespace Sulimn.Scenes.Inventory
             set => SetItem(value);
         }
 
-        public override void _Ready()
-        {
-            orphanage = (Orphanage)GetTree().CurrentScene.FindNode("Orphanage");
-            _contextMenu = (ItemContextMenu)GetNode("ItemContextMenu");
-            MouseDefaultCursorShape = CursorShape.PointingHand;
-        }
-
-        /// <summary>Repairs the Item.</summary>
-        public void RepairItem()
-        {
-            if (Item != new Item())
-            {
-                Item.CurrentDurability = Item.MaximumDurability;
-                GameState.UpdateDisplay = true;
-            }
-        }
+        #region Item Checking
 
         /// <summary>Checks whether the item held in an <see cref="InventoryItem"/> is an appropriate level to be equipped in a particular <see cref="ItemSlot"/>.</summary>
         /// <param name="slot"><see cref="ItemSlot"/> where the <see cref="InventoryItem"/> is attempting to be equipped</param>
@@ -49,245 +34,259 @@ namespace Sulimn.Scenes.Inventory
         /// <returns>True if it is an appropriate <see cref="HeroClass"/></returns>
         private bool CheckItemClasses(ItemSlot slot, InventoryItem item) => item.Item.AllowedClasses.Count == 0 || slot.CurrentClass == null || slot.CurrentClass == new HeroClass() || item.Item.AllowedClasses.Contains(slot.CurrentClass);
 
-        private void _on_TextureRect_gui_input(InputEvent @event)
+        #endregion Item Checking
+
+        #region Item Clicks
+
+        /// <summary>Control click an <see cref="InventoryItem"/>.</summary>
+        /// <param name="slot"><see cref="ItemSlot"/> which contains the <see cref="InventoryItem"/></param>
+        private void ControlClick(ItemSlot slot)
         {
-            if (@event is InputEventMouseButton button && button.Pressed)
+            slot.LblError.Text = "";
+            if (GetTree().CurrentScene.Name == "ItemMerchant")
             {
-                ItemSlot slot = (ItemSlot)GetParent();
-                if (button.ButtonIndex == 1 && !Input.IsKeyPressed((int)KeyList.Control) && !Input.IsKeyPressed((int)KeyList.Shift))
+                Node container = GetParent().GetParent().GetParent();
+                if (container.Name == "HeroInventory")
                 {
-                    if (!Drag)
+                    MerchantInventory merchantInventory = (MerchantInventory)GetTree().CurrentScene.FindNode("MerchantInventory");
+                    if (merchantInventory.GetItemsInInventory() < 80 && Item.CanSell)
                     {
-                        if (orphanage.GetChildCount() > 0)
-                        {
-                            InventoryItem orphanItem = (InventoryItem)orphanage.GetChild(0);
-                            if (slot.ItemTypes.Contains(orphanItem.Item.Type))
-                            {
-                                if (!orphanage.PreviousSlot.Merchant && !slot.Merchant && CheckItemLevel(slot, orphanItem) && CheckItemClasses(slot, orphanItem)) // if not buying nor selling, and is a valid slot
-                                    SwapItems(slot, orphanItem);
-                                else if (orphanage.PreviousSlot.Merchant && !slot.Merchant && CheckItemLevel(slot, orphanItem) && CheckItemClasses(slot, orphanItem))
-                                    PurchaseItem(slot, orphanItem, true);
-                                else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if selling
-                                    SellItem(slot, orphanItem, true);
-                                else if (orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
-                                    SwapItems(slot, orphanItem);
-                                else if (!CheckItemLevel(slot, orphanItem))
-                                    slot.LblError.Text = "You are not high enough level to equip this item.";
-                                else if (!CheckItemClasses(slot, orphanItem))
-                                    slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
-                            }
-                            else
-                                slot.LblError.Text = "That is not a valid slot for this item.";
-                        }
-                        else if (orphanage.GetChildCount() == 0)
-                        {
-                            Drag = true;
-                            TextureRect rect = (TextureRect)GetChild(0);
-                            rect.MouseFilter = MouseFilterEnum.Ignore;
-                            PutItemInOrphanage(slot);
-                        }
+                        PutItemInOrphanage(slot);
+                        SellItem(merchantInventory.FindFirstEmptySlot(), this, false);
                     }
+                    else if (merchantInventory.GetItemsInInventory() >= 80)
+                        slot.LblError.Text = "The merchant's inventory is full.";
+                    else if (!Item.CanSell)
+                        slot.LblError.Text = "This item cannot be sold.";
                 }
-                else if (button.ButtonIndex == 1 && Input.IsKeyPressed((int)KeyList.Control))
+                else if (container.Name == "MerchantInventory")
                 {
-                    slot.LblError.Text = "";
-                    if (GetTree().CurrentScene.Name == "ItemMerchant")
+                    GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
+                    if (GameState.CurrentHero.Inventory.Count < 40 && GameState.CurrentHero.Gold >= Item.Value)
                     {
-                        Node container = GetParent().GetParent().GetParent();
-                        if (container.Name == "HeroInventory")
-                        {
-                            MerchantInventory merchantInventory = (MerchantInventory)GetTree().CurrentScene.FindNode("MerchantInventory");
-                            if (merchantInventory.GetItemsInInventory() < 80 && Item.CanSell)
-                            {
-                                PutItemInOrphanage(slot);
-                                SellItem(merchantInventory.FindFirstEmptySlot(), this, false);
-                            }
-                            else if (merchantInventory.GetItemsInInventory() >= 80)
-                                slot.LblError.Text = "The merchant's inventory is full.";
-                            else if (!Item.CanSell)
-                                slot.LblError.Text = "This item cannot be sold.";
-                        }
-                        else if (container.Name == "MerchantInventory")
-                        {
-                            GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
-                            if (GameState.CurrentHero.Inventory.Count < 40 && GameState.CurrentHero.Gold >= Item.Value)
-                            {
-                                PutItemInOrphanage(slot);
-                                PurchaseItem(heroInventory.FindFirstEmptySlot(), this, false);
-                            }
-                            else if (GameState.CurrentHero.Inventory.Count >= 40)
-                                slot.LblError.Text = "Your inventory is full.";
-                            else if (GameState.CurrentHero.Gold < Item.Value)
-                                slot.LblError.Text = "You cannot afford that item.";
-                        }
+                        PutItemInOrphanage(slot);
+                        PurchaseItem(heroInventory.FindFirstEmptySlot(), this, false);
                     }
-                    else if (GetTree().CurrentScene.Name == "LootBody")
-                    {
-                        Node container = GetParent().GetParent().GetParent();
-                        if (container.Name == "HeroInventory")
-                        {
-                            GridInventory enemyInventory = (GridInventory)GetTree().CurrentScene.FindNode("EnemyInventory");
-
-                            if (GameState.CurrentEnemy.Inventory.Count < 40)
-                            {
-                                PutItemInOrphanage(slot);
-                                enemyInventory.FindFirstEmptySlot().PutItemInSlot(this);
-                            }
-                            else if (GameState.CurrentEnemy.Inventory.Count >= 40)
-                                slot.LblError.Text = $"The {GameState.CurrentEnemy.Name}'s inventory is full.";
-                        }
-                        else if (container.Name == "EnemyInventory")
-                        {
-                            GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
-                            if (GameState.CurrentHero.Inventory.Count < 40)
-                            {
-                                PutItemInOrphanage(slot);
-                                heroInventory.FindFirstEmptySlot().PutItemInSlot(this);
-                            }
-                            else if (GameState.CurrentHero.Inventory.Count >= 40)
-                                slot.LblError.Text = "Your inventory is full.";
-                        }
-                    }
+                    else if (GameState.CurrentHero.Inventory.Count >= 40)
+                        slot.LblError.Text = "Your inventory is full.";
+                    else if (GameState.CurrentHero.Gold < Item.Value)
+                        slot.LblError.Text = "You cannot afford that item.";
                 }
-                else if (button.ButtonIndex == 1 && Input.IsKeyPressed((int)KeyList.Shift))
+            }
+            else if (GetTree().CurrentScene.Name == "LootBody")
+            {
+                Node container = GetParent().GetParent().GetParent();
+                if (container.Name == "HeroInventory")
                 {
-                    slot.LblError.Text = "";
-                    string scene = GetTree().CurrentScene.Name;
-                    if (scene == "ItemMerchant" || scene == "LootBody" || scene == "CharacterScene")
+                    GridInventory enemyInventory = (GridInventory)GetTree().CurrentScene.FindNode("EnemyInventory");
+
+                    if (GameState.CurrentEnemy.Inventory.Count < 40)
                     {
-                        Node container = GetParent().GetParent().GetParent();
-                        if (container.Name == "HeroInventory")
-                        {
-                            GridEquipment heroEquipment = (GridEquipment)GetTree().CurrentScene.FindNode("HeroEquipment");
-                            switch (Item.Type)
-                            {
-                                case ItemType.MeleeWeapon:
-                                case ItemType.RangedWeapon:
-                                    if (heroEquipment.WeaponSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.WeaponSlot, this) && CheckItemClasses(heroEquipment.WeaponSlot, this))
-                                        SwapSlotContents(slot, heroEquipment.WeaponSlot);
-                                    else if (heroEquipment.WeaponSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.WeaponSlot, this) && CheckItemClasses(heroEquipment.WeaponSlot, this))
-                                    {
-                                        PutItemInOrphanage(slot);
-                                        heroEquipment.WeaponSlot.PutItemInSlot(orphanage.GetItem());
-                                    }
-                                    else if (!CheckItemLevel(heroEquipment.WeaponSlot, this))
-                                        slot.LblError.Text = "You are not high enough level to equip this item.";
-                                    else if (!CheckItemClasses(heroEquipment.WeaponSlot, this))
-                                        slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
-                                    break;
-
-                                case ItemType.HeadArmor:
-                                    if (heroEquipment.HeadSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.HeadSlot, this) && CheckItemClasses(heroEquipment.HeadSlot, this))
-                                        SwapSlotContents(slot, heroEquipment.HeadSlot);
-                                    else if (heroEquipment.HeadSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.HeadSlot, this) && CheckItemClasses(heroEquipment.HeadSlot, this))
-                                    {
-                                        PutItemInOrphanage(slot);
-                                        heroEquipment.HeadSlot.PutItemInSlot(orphanage.GetItem());
-                                    }
-                                    else if (!CheckItemLevel(heroEquipment.HeadSlot, this))
-                                        slot.LblError.Text = "You are not high enough level to equip this item.";
-                                    else if (!CheckItemClasses(heroEquipment.HeadSlot, this))
-                                        slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
-                                    break;
-
-                                case ItemType.BodyArmor:
-                                    if (heroEquipment.BodySlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.BodySlot, this) && CheckItemClasses(heroEquipment.BodySlot, this))
-                                        SwapSlotContents(slot, heroEquipment.BodySlot);
-                                    else if (heroEquipment.BodySlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.BodySlot, this) && CheckItemClasses(heroEquipment.BodySlot, this))
-                                    {
-                                        PutItemInOrphanage(slot);
-                                        heroEquipment.BodySlot.PutItemInSlot(orphanage.GetItem());
-                                    }
-                                    else if (!CheckItemLevel(heroEquipment.BodySlot, this))
-                                        slot.LblError.Text = "You are not high enough level to equip this item.";
-                                    else if (!CheckItemClasses(heroEquipment.BodySlot, this))
-                                        slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
-                                    break;
-
-                                case ItemType.HandArmor:
-                                    if (heroEquipment.HandsSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.HandsSlot, this) && CheckItemClasses(heroEquipment.HandsSlot, this))
-                                        SwapSlotContents(slot, heroEquipment.HandsSlot);
-                                    else if (heroEquipment.HandsSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.HandsSlot, this) && CheckItemClasses(heroEquipment.HandsSlot, this))
-                                    {
-                                        PutItemInOrphanage(slot);
-                                        heroEquipment.HandsSlot.PutItemInSlot(orphanage.GetItem());
-                                    }
-                                    else if (!CheckItemLevel(heroEquipment.HandsSlot, this))
-                                        slot.LblError.Text = "You are not high enough level to equip this item.";
-                                    else if (!CheckItemClasses(heroEquipment.HandsSlot, this))
-                                        slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
-                                    break;
-
-                                case ItemType.LegArmor:
-                                    if (heroEquipment.LegsSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.LegsSlot, this) && CheckItemClasses(heroEquipment.LegsSlot, this))
-                                        SwapSlotContents(slot, heroEquipment.LegsSlot);
-                                    else if (heroEquipment.LegsSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.LegsSlot, this) && CheckItemClasses(heroEquipment.LegsSlot, this))
-                                    {
-                                        PutItemInOrphanage(slot);
-                                        heroEquipment.LegsSlot.PutItemInSlot(orphanage.GetItem());
-                                    }
-                                    else if (!CheckItemLevel(heroEquipment.LegsSlot, this))
-                                        slot.LblError.Text = "You are not high enough level to equip this item.";
-                                    else if (!CheckItemClasses(heroEquipment.LegsSlot, this))
-                                        slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
-                                    break;
-
-                                case ItemType.FeetArmor:
-                                    if (heroEquipment.FeetSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.FeetSlot, this) && CheckItemClasses(heroEquipment.FeetSlot, this))
-                                        SwapSlotContents(slot, heroEquipment.FeetSlot);
-                                    else if (heroEquipment.FeetSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.FeetSlot, this) && CheckItemClasses(heroEquipment.FeetSlot, this))
-                                    {
-                                        PutItemInOrphanage(slot);
-                                        heroEquipment.FeetSlot.PutItemInSlot(orphanage.GetItem());
-                                    }
-                                    else if (!CheckItemLevel(heroEquipment.FeetSlot, this))
-                                        slot.LblError.Text = "You are not high enough level to equip this item.";
-                                    else if (!CheckItemClasses(heroEquipment.FeetSlot, this))
-                                        slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
-                                    break;
-
-                                case ItemType.Ring:
-                                    if (heroEquipment.LeftRingSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.LeftRingSlot, this) && CheckItemClasses(heroEquipment.LeftRingSlot, this))
-                                    {
-                                        PutItemInOrphanage(slot);
-                                        heroEquipment.LeftRingSlot.PutItemInSlot(orphanage.GetItem());
-                                    }
-                                    else if (heroEquipment.RightRingSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.RightRingSlot, this) && CheckItemClasses(heroEquipment.RightRingSlot, this))
-                                    {
-                                        PutItemInOrphanage(slot);
-                                        heroEquipment.RightRingSlot.PutItemInSlot(orphanage.GetItem());
-                                    }
-                                    else if (heroEquipment.LeftRingSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.LeftRingSlot, this) && CheckItemClasses(heroEquipment.LeftRingSlot, this))
-                                        SwapSlotContents(slot, heroEquipment.LeftRingSlot);
-                                    else if (!CheckItemLevel(heroEquipment.LeftRingSlot, this))
-                                        slot.LblError.Text = "You are not high enough level to equip this item.";
-                                    else if (!CheckItemClasses(heroEquipment.LeftRingSlot, this))
-                                        slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
-                                    break;
-                            }
-                        }
-                        else if (GetParent().GetParent().Name == "HeroEquipment" || GetParent().GetParent().Name == "EnemyEquipment")
-                        {
-                            GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
-                            if (GameState.CurrentHero.Inventory.Count < 40)
-                            {
-                                PutItemInOrphanage(slot);
-                                heroInventory.FindFirstEmptySlot().PutItemInSlot(this);
-                            }
-                            else if (GameState.CurrentHero.Inventory.Count >= 40)
-                                slot.LblError.Text = "Your inventory is full.";
-                        }
+                        PutItemInOrphanage(slot);
+                        enemyInventory.FindFirstEmptySlot().PutItemInSlot(this);
                     }
+                    else if (GameState.CurrentEnemy.Inventory.Count >= 40)
+                        slot.LblError.Text = $"The {GameState.CurrentEnemy.Name}'s inventory is full.";
                 }
-                else if (button.ButtonIndex == 2)
+                else if (container.Name == "EnemyInventory")
                 {
-                    _contextMenu.PopupCentered();
-                    _contextMenu.SetGlobalPosition(new Vector2(button.GetGlobalPosition().x + 32, button.GetGlobalPosition().y - 32));
-                    _contextMenu.LoadSlot(slot);
+                    GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
+                    if (GameState.CurrentHero.Inventory.Count < 40)
+                    {
+                        PutItemInOrphanage(slot);
+                        heroInventory.FindFirstEmptySlot().PutItemInSlot(this);
+                    }
+                    else if (GameState.CurrentHero.Inventory.Count >= 40)
+                        slot.LblError.Text = "Your inventory is full.";
                 }
             }
         }
 
+        /// <summary>Regular click an <see cref="InventoryItem"/>.</summary>
+        /// <param name="slot"><see cref="ItemSlot"/> which contains the <see cref="InventoryItem"/></param>
+        private void RegularClick(ItemSlot slot)
+        {
+            if (!Drag)
+            {
+                if (orphanage.GetChildCount() > 0)
+                {
+                    InventoryItem orphanItem = (InventoryItem)orphanage.GetChild(0);
+                    if (slot.ItemTypes.Contains(orphanItem.Item.Type))
+                    {
+                        if (!orphanage.PreviousSlot.Merchant && !slot.Merchant && CheckItemLevel(slot, orphanItem) && CheckItemClasses(slot, orphanItem)) // if not buying nor selling, and is a valid slot
+                            SwapItems(slot, orphanItem);
+                        else if (orphanage.PreviousSlot.Merchant && !slot.Merchant && CheckItemLevel(slot, orphanItem) && CheckItemClasses(slot, orphanItem))
+                            PurchaseItem(slot, orphanItem, true);
+                        else if (!orphanage.PreviousSlot.Merchant && slot.Merchant) // if selling
+                            SellItem(slot, orphanItem, true);
+                        else if (orphanage.PreviousSlot.Merchant && slot.Merchant) // if moving Merchant item to different Merchant slot
+                            SwapItems(slot, orphanItem);
+                        else if (!CheckItemLevel(slot, orphanItem))
+                            slot.LblError.Text = "You are not high enough level to equip this item.";
+                        else if (!CheckItemClasses(slot, orphanItem))
+                            slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
+                    }
+                    else
+                        slot.LblError.Text = "That is not a valid slot for this item.";
+                }
+                else if (orphanage.GetChildCount() == 0)
+                {
+                    Drag = true;
+                    TextureRect rect = (TextureRect)GetChild(0);
+                    rect.MouseFilter = MouseFilterEnum.Ignore;
+                    PutItemInOrphanage(slot);
+                }
+            }
+        }
+
+        /// <summary>Right click an <see cref="InventoryItem"/>.</summary>
+        /// <param name="slot"><see cref="ItemSlot"/> which contains the <see cref="InventoryItem"/></param>
+        private void RightClick(ItemSlot slot, InputEventMouseButton button)
+        {
+            _contextMenu.PopupCentered();
+            _contextMenu.SetGlobalPosition(new Vector2(button.GetGlobalPosition().x + 32, button.GetGlobalPosition().y - 32));
+            _contextMenu.LoadSlot(slot);
+        }
+
+        /// <summary>Shift click an <see cref="InventoryItem"/>.</summary>
+        /// <param name="slot"><see cref="ItemSlot"/> which contains the <see cref="InventoryItem"/></param>
+        private void ShiftClick(ItemSlot slot)
+        {
+            slot.LblError.Text = "";
+            string scene = GetTree().CurrentScene.Name;
+            if (scene == "ItemMerchant" || scene == "LootBody" || scene == "CharacterScene")
+            {
+                Node container = GetParent().GetParent().GetParent();
+                if (container.Name == "HeroInventory")
+                {
+                    GridEquipment heroEquipment = (GridEquipment)GetTree().CurrentScene.FindNode("HeroEquipment");
+                    switch (Item.Type)
+                    {
+                        case ItemType.MeleeWeapon:
+                        case ItemType.RangedWeapon:
+                            if (heroEquipment.WeaponSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.WeaponSlot, this) && CheckItemClasses(heroEquipment.WeaponSlot, this))
+                                SwapSlotContents(slot, heroEquipment.WeaponSlot);
+                            else if (heroEquipment.WeaponSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.WeaponSlot, this) && CheckItemClasses(heroEquipment.WeaponSlot, this))
+                            {
+                                PutItemInOrphanage(slot);
+                                heroEquipment.WeaponSlot.PutItemInSlot(orphanage.GetItem());
+                            }
+                            else if (!CheckItemLevel(heroEquipment.WeaponSlot, this))
+                                slot.LblError.Text = "You are not high enough level to equip this item.";
+                            else if (!CheckItemClasses(heroEquipment.WeaponSlot, this))
+                                slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
+                            break;
+
+                        case ItemType.HeadArmor:
+                            if (heroEquipment.HeadSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.HeadSlot, this) && CheckItemClasses(heroEquipment.HeadSlot, this))
+                                SwapSlotContents(slot, heroEquipment.HeadSlot);
+                            else if (heroEquipment.HeadSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.HeadSlot, this) && CheckItemClasses(heroEquipment.HeadSlot, this))
+                            {
+                                PutItemInOrphanage(slot);
+                                heroEquipment.HeadSlot.PutItemInSlot(orphanage.GetItem());
+                            }
+                            else if (!CheckItemLevel(heroEquipment.HeadSlot, this))
+                                slot.LblError.Text = "You are not high enough level to equip this item.";
+                            else if (!CheckItemClasses(heroEquipment.HeadSlot, this))
+                                slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
+                            break;
+
+                        case ItemType.BodyArmor:
+                            if (heroEquipment.BodySlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.BodySlot, this) && CheckItemClasses(heroEquipment.BodySlot, this))
+                                SwapSlotContents(slot, heroEquipment.BodySlot);
+                            else if (heroEquipment.BodySlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.BodySlot, this) && CheckItemClasses(heroEquipment.BodySlot, this))
+                            {
+                                PutItemInOrphanage(slot);
+                                heroEquipment.BodySlot.PutItemInSlot(orphanage.GetItem());
+                            }
+                            else if (!CheckItemLevel(heroEquipment.BodySlot, this))
+                                slot.LblError.Text = "You are not high enough level to equip this item.";
+                            else if (!CheckItemClasses(heroEquipment.BodySlot, this))
+                                slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
+                            break;
+
+                        case ItemType.HandArmor:
+                            if (heroEquipment.HandsSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.HandsSlot, this) && CheckItemClasses(heroEquipment.HandsSlot, this))
+                                SwapSlotContents(slot, heroEquipment.HandsSlot);
+                            else if (heroEquipment.HandsSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.HandsSlot, this) && CheckItemClasses(heroEquipment.HandsSlot, this))
+                            {
+                                PutItemInOrphanage(slot);
+                                heroEquipment.HandsSlot.PutItemInSlot(orphanage.GetItem());
+                            }
+                            else if (!CheckItemLevel(heroEquipment.HandsSlot, this))
+                                slot.LblError.Text = "You are not high enough level to equip this item.";
+                            else if (!CheckItemClasses(heroEquipment.HandsSlot, this))
+                                slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
+                            break;
+
+                        case ItemType.LegArmor:
+                            if (heroEquipment.LegsSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.LegsSlot, this) && CheckItemClasses(heroEquipment.LegsSlot, this))
+                                SwapSlotContents(slot, heroEquipment.LegsSlot);
+                            else if (heroEquipment.LegsSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.LegsSlot, this) && CheckItemClasses(heroEquipment.LegsSlot, this))
+                            {
+                                PutItemInOrphanage(slot);
+                                heroEquipment.LegsSlot.PutItemInSlot(orphanage.GetItem());
+                            }
+                            else if (!CheckItemLevel(heroEquipment.LegsSlot, this))
+                                slot.LblError.Text = "You are not high enough level to equip this item.";
+                            else if (!CheckItemClasses(heroEquipment.LegsSlot, this))
+                                slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
+                            break;
+
+                        case ItemType.FeetArmor:
+                            if (heroEquipment.FeetSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.FeetSlot, this) && CheckItemClasses(heroEquipment.FeetSlot, this))
+                                SwapSlotContents(slot, heroEquipment.FeetSlot);
+                            else if (heroEquipment.FeetSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.FeetSlot, this) && CheckItemClasses(heroEquipment.FeetSlot, this))
+                            {
+                                PutItemInOrphanage(slot);
+                                heroEquipment.FeetSlot.PutItemInSlot(orphanage.GetItem());
+                            }
+                            else if (!CheckItemLevel(heroEquipment.FeetSlot, this))
+                                slot.LblError.Text = "You are not high enough level to equip this item.";
+                            else if (!CheckItemClasses(heroEquipment.FeetSlot, this))
+                                slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
+                            break;
+
+                        case ItemType.Ring:
+                            if (heroEquipment.LeftRingSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.LeftRingSlot, this) && CheckItemClasses(heroEquipment.LeftRingSlot, this))
+                            {
+                                PutItemInOrphanage(slot);
+                                heroEquipment.LeftRingSlot.PutItemInSlot(orphanage.GetItem());
+                            }
+                            else if (heroEquipment.RightRingSlot.Item.Item == new Item() && CheckItemLevel(heroEquipment.RightRingSlot, this) && CheckItemClasses(heroEquipment.RightRingSlot, this))
+                            {
+                                PutItemInOrphanage(slot);
+                                heroEquipment.RightRingSlot.PutItemInSlot(orphanage.GetItem());
+                            }
+                            else if (heroEquipment.LeftRingSlot.Item.Item != new Item() && CheckItemLevel(heroEquipment.LeftRingSlot, this) && CheckItemClasses(heroEquipment.LeftRingSlot, this))
+                                SwapSlotContents(slot, heroEquipment.LeftRingSlot);
+                            else if (!CheckItemLevel(heroEquipment.LeftRingSlot, this))
+                                slot.LblError.Text = "You are not high enough level to equip this item.";
+                            else if (!CheckItemClasses(heroEquipment.LeftRingSlot, this))
+                                slot.LblError.Text = "You are unable to equip this item because you are not the correct class.";
+                            break;
+                    }
+                }
+                else if (GetParent().GetParent().Name == "HeroEquipment" || GetParent().GetParent().Name == "EnemyEquipment")
+                {
+                    GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
+                    if (GameState.CurrentHero.Inventory.Count < 40)
+                    {
+                        PutItemInOrphanage(slot);
+                        heroInventory.FindFirstEmptySlot().PutItemInSlot(this);
+                    }
+                    else if (GameState.CurrentHero.Inventory.Count >= 40)
+                        slot.LblError.Text = "Your inventory is full.";
+                }
+            }
+        }
+
+        #endregion Item Clicks
+
+        #region Item Manipulation
+
+        /// <summary>Puts the <see cref="InventoryItem"/> in the selected <see cref="ItemSlot"/> into the orphanage.</summary>
+        /// <param name="slot"><see cref="ItemSlot"/> from where the <see cref="InventoryItem"/> is to be removed</param>
         private void PutItemInOrphanage(ItemSlot slot)
         {
             GetParent().RemoveChild(this);
@@ -296,6 +295,10 @@ namespace Sulimn.Scenes.Inventory
             orphanage.PreviousSlot = slot;
         }
 
+        /// <summary>Purchases an <see cref="InventoryItem"/> from a merchant.</summary>
+        /// <param name="slot"><see cref="ItemSlot"/> where the <see cref="InventoryItem"/> is to be placed</param>
+        /// <param name="purchaseItem"><see cref="InventoryItem"/> being purchased</param>
+        /// <param name="swap">Are you swapping the <see cref="InventoryItem"/>?</param>
         private void PurchaseItem(ItemSlot slot, InventoryItem purchaseItem, bool swap)
         {
             if (GameState.CurrentHero.PurchaseItem(purchaseItem.Item)) // if purchasing and can afford it
@@ -309,6 +312,20 @@ namespace Sulimn.Scenes.Inventory
                 slot.LblError.Text = "You cannot afford that item.";
         }
 
+        /// <summary>Repairs the Item.</summary>
+        public void RepairItem()
+        {
+            if (Item != new Item())
+            {
+                Item.CurrentDurability = Item.MaximumDurability;
+                GameState.UpdateDisplay = true;
+            }
+        }
+
+        /// <summary>Sells an <see cref="InventoryItem"/> to a merchant.</summary>
+        /// <param name="slot"><see cref="ItemSlot"/> where the <see cref="InventoryItem"/> is to be placed</param>
+        /// <param name="sellItem"><see cref="InventoryItem"/> being sold</param>
+        /// <param name="swap">Are you swapping the <see cref="InventoryItem"/>?</param>
         private void SellItem(ItemSlot slot, InventoryItem sellItem, bool swap)
         {
             if (sellItem.Item.CanSell)
@@ -321,6 +338,19 @@ namespace Sulimn.Scenes.Inventory
             }
             else
                 slot.LblError.Text = "This item cannot be sold.";
+        }
+
+        /// <summary>Sets the Item in the <see cref="InventoryItem"/>.</summary>
+        /// <param name="item">Item to be set</param>
+        public void SetItem(Item item)
+        {
+            if (item != null && item != new Item())
+            {
+                _item = item;
+                TextureRect rect = (TextureRect)GetNode("TextureRect");
+                SetTooltip(item.TooltipText);
+                rect.Texture = (Texture)ResourceLoader.Load(item.Texture);
+            }
         }
 
         /// <summary>Swaps the Item currently in the <see cref="ItemSlot"/> with the <see cref="InventoryItem"/> from the <see cref="Orphanage"/>.</summary>
@@ -345,6 +375,9 @@ namespace Sulimn.Scenes.Inventory
             Drag = true;
         }
 
+        /// <summary>Swaps the contents of two <see cref="ItemSlot"/>s.</summary>
+        /// <param name="thisSlot">The <see cref="ItemSlot"/> being clicked on</param>
+        /// <param name="swapSlot">The <see cref="ItemSlot"/> whose contents are being swapped with the other <see cref="ItemSlot"/></param>
         private void SwapSlotContents(ItemSlot thisSlot, ItemSlot swapSlot)
         {
             Item tempItem = new Item(swapSlot.Item.Item);
@@ -354,23 +387,35 @@ namespace Sulimn.Scenes.Inventory
             GameState.UpdateDisplay = true;
         }
 
+        #endregion Item Manipulation
+
+        private void _on_TextureRect_gui_input(InputEvent @event)
+        {
+            if (@event is InputEventMouseButton button && button.Pressed)
+            {
+                ItemSlot slot = (ItemSlot)GetParent();
+                if (button.ButtonIndex == 1 && !Input.IsKeyPressed((int)KeyList.Control) && !Input.IsKeyPressed((int)KeyList.Shift))
+                    RegularClick(slot);
+                else if (button.ButtonIndex == 1 && Input.IsKeyPressed((int)KeyList.Control))
+                    ControlClick(slot);
+                else if (button.ButtonIndex == 1 && Input.IsKeyPressed((int)KeyList.Shift))
+                    ShiftClick(slot);
+                else if (button.ButtonIndex == 2)
+                    RightClick(slot, button);
+            }
+        }
+
         public override void _Process(float delta)
         {
             if (Drag)
                 RectGlobalPosition = GetViewport().GetMousePosition() + new Vector2(1, 1);
         }
 
-        /// <summary>Sets the Item in the <see cref="InventoryItem"/>.</summary>
-        /// <param name="item">Item to be set</param>
-        public void SetItem(Item item)
+        public override void _Ready()
         {
-            if (item != null && item != new Item())
-            {
-                _item = item;
-                TextureRect rect = (TextureRect)GetNode("TextureRect");
-                SetTooltip(item.TooltipText);
-                rect.Texture = (Texture)ResourceLoader.Load(item.Texture);
-            }
+            orphanage = (Orphanage)GetTree().CurrentScene.FindNode("Orphanage");
+            _contextMenu = (ItemContextMenu)GetNode("ItemContextMenu");
+            MouseDefaultCursorShape = CursorShape.PointingHand;
         }
     }
 }
