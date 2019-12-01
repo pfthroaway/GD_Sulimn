@@ -266,7 +266,7 @@ namespace Sulimn.Scenes.Inventory
                                     break;
                             }
                         }
-                        else if (GetParent().GetParent().Name == "HeroEquipment")
+                        else if (GetParent().GetParent().Name == "HeroEquipment" || GetParent().GetParent().Name == "EnemyEquipment")
                         {
                             GridInventory heroInventory = (GridInventory)GetTree().CurrentScene.FindNode("HeroInventory");
                             if (GameState.CurrentHero.Inventory.Count < 40)
