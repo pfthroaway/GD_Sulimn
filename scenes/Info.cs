@@ -6,9 +6,8 @@ namespace Sulimn.Scenes
 {
     public class Info : CanvasLayer
     {
-        private Button BtnCharacter, BtnHelp;
+        private Button BtnCharacter, BtnHelp, BtnSettings;
         private Label LblLevel, LblExperience, LblGold, LblText;
-        private TextureButton BtnSettings;
         private TextureProgress TPHealth, TPMagic;
 
         // Called when the node enters the scene tree for the first time.
@@ -18,7 +17,7 @@ namespace Sulimn.Scenes
         private void AssignControls()
         {
             BtnCharacter = (Button)FindNode("BtnCharacter");
-            BtnSettings = (TextureButton)FindNode("BtnSettings");
+            BtnSettings = (Button)FindNode("BtnSettings");
             BtnHelp = (Button)FindNode("BtnHelp");
             LblLevel = (Label)GetNode("LblLevel");
             LblExperience = (Label)GetNode("LblExperience");
