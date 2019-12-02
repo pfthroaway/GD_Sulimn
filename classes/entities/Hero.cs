@@ -49,6 +49,10 @@ namespace Sulimn.Classes.Entities
         [JsonProperty(Order = 9)]
         public Bank Bank { get; set; } = new Bank();
 
+        /// <summary>The <see cref="Hero"/>'s current <see cref="Quest"/>s. </summary>
+        [JsonProperty(Order = 12)]
+        public List<Quest> Quests { get; set; } = new List<Quest>();
+
         #endregion Modifying Properties
 
         #region Helper Properties
@@ -393,7 +397,7 @@ namespace Sulimn.Classes.Entities
         /// <param name="bank">Bank of the <see cref="Hero"/></param>
         /// <param name="progression">The progress the <see cref="Hero"/> has made</param>
         /// <param name="hardcore">Will the <see cref="Hero"/> be deleted on death?</param>
-        internal Hero(string name, string password, HeroClass heroClass, int level, int experience, int skillPoints, int gold, Attributes attributes, Statistics statistics, Equipment equipment, Spellbook spellbook, List<Item> inventory, Bank bank, Progression progression, bool hardcore)
+        internal Hero(string name, string password, HeroClass heroClass, int level, int experience, int skillPoints, int gold, Attributes attributes, Statistics statistics, Equipment equipment, Spellbook spellbook, List<Item> inventory, Bank bank, Progression progression, bool hardcore, List<Quest> quests)
         {
             Name = name;
             Password = password;
@@ -410,11 +414,12 @@ namespace Sulimn.Classes.Entities
             Bank = bank;
             Progression = progression;
             Hardcore = hardcore;
+            Quests = quests;
         }
 
         /// <summary>Replaces this instance of <see cref="Hero"/> with another instance.</summary>
         /// <param name="other">Instance of <see cref="Hero"/> to replace this one</param>
-        internal Hero(Hero other) : this(other.Name, other.Password, other.Class, other.Level, other.Experience, other.SkillPoints, other.Gold, new Attributes(other.Attributes), new Statistics(other.Statistics), new Equipment(other.Equipment), new Spellbook(other.Spellbook), new List<Item>(other.Inventory), other.Bank, other.Progression, other.Hardcore)
+        internal Hero(Hero other) : this(other.Name, other.Password, other.Class, other.Level, other.Experience, other.SkillPoints, other.Gold, new Attributes(other.Attributes), new Statistics(other.Statistics), new Equipment(other.Equipment), new Spellbook(other.Spellbook), new List<Item>(other.Inventory), other.Bank, other.Progression, other.Hardcore, other.Quests)
         {
         }
 
