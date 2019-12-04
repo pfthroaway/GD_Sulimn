@@ -227,7 +227,7 @@
     "CanSell": false,
     "IsSold": false,
     "AllowedClassesJson": "",
-    "Texture": "res://assets/inventory/S_Earth02.png"
+    "Texture": "res://assets/inventory/HANDS.png"
   },
   {
     "Name": "Great Sword",
