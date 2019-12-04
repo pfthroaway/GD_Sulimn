@@ -301,7 +301,8 @@ namespace Sulimn.Scenes.CharacterScenes
                         new List<Item>(),
                         new Bank(0, 0, 250),
                         new Progression(),
-                        ChkHardcore.IsPressed());
+                        ChkHardcore.IsPressed(),
+                        new List<Quest>());
 
                         GameState.NewHero(newHero);
                         GameState.CurrentHero = GameState.AllHeroes.Find(hero => hero.Name == newHero.Name);
