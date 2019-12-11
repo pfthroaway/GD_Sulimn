@@ -193,7 +193,7 @@ namespace Sulimn.Scenes.City
             {
                 Player.Move("down");
                 GameState.AddSceneToHistory(GetTree().CurrentScene);
-                GetTree().ChangeScene("res://scenes/gambling/BlackjackScene.tscn");
+                GetTree().ChangeScene("res://scenes/city/TavernScene.tscn");
             }
         }
 

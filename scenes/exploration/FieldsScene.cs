@@ -12,7 +12,6 @@ namespace Sulimn.Scenes.Exploration
         private MyAcceptDialog acceptDialog;
         private int MovesSinceLastEvent;
         private int BonusChance;
-        private Area2D CottageArea;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
@@ -20,7 +19,6 @@ namespace Sulimn.Scenes.Exploration
             Player = (Player)GetTree().CurrentScene.FindNode("Player");
             acceptDialog = (MyAcceptDialog)GetNode("MyAcceptDialog");
             PreviousPosition = Player.GetGlobalPosition();
-            CottageArea = (Area2D)GetNode("CottageArea");
         }
 
         public override void _Process(float delta)
