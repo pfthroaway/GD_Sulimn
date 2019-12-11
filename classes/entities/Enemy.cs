@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Sulimn.Classes.HeroParts;
+using Sulimn.Classes.Items;
 using System;
+using System.Collections.Generic;
 
 namespace Sulimn.Classes.Entities
 {
-    /// <summary>Represents an Enemy who opposes the Hero.</summary>
+    /// <summary>Represents an <see cref="Enemy"/> who opposes the <see cref="Hero"/>.</summary>
     internal class Enemy : Character
     {
         #region Health Manipulation
@@ -23,9 +25,9 @@ namespace Sulimn.Classes.Entities
             return $"The {Name} heals for {healAmount:N0} health.";
         }
 
-        /// <summary>The Enemy takes Damage.</summary>
+        /// <summary>The <see cref="Enemy"/> takes Damage.</summary>
         /// <param name="damage">Amount damaged</param>
-        /// <returns>Text saying the Enemy took damage</returns>
+        /// <returns>Text saying the <see cref="Enemy"/> took damage</returns>
         internal string TakeDamage(int damage)
         {
             Statistics.CurrentHealth -= damage;
@@ -41,7 +43,7 @@ namespace Sulimn.Classes.Entities
 
         #region Modifying Properties
 
-        /// <summary>Type of the Enemy</summary>
+        /// <summary>Type of the <see cref="Enemy"/>.</summary>
         [JsonProperty(Order = -4)]
         public string Type { get; set; }
 
@@ -73,23 +75,22 @@ namespace Sulimn.Classes.Entities
 
         #region Constructors
 
-        /// <summary>Initializes a default instance of Enemy.</summary>
+        /// <summary>Initializes a default instance of <see cref="Enemy"/>.</summary>
         internal Enemy()
         {
         }
 
-        /// <summary>Initializes an instance of Enemy by assigning Properties.</summary>
-        /// <param name="name">Name of Enemy</param>
-        /// <param name="type">Type of Enemy</param>
-        /// <param name="level">Level of Enemy</param>
-        /// <param name="experience">Experience Enemy can provide</param>
-        /// <param name="gold">Gold carried by Enemy</param>
-        /// <param name="attributes">Attributes of Enemy</param>
-        /// <param name="statistics">Statistics of Enemy</param>
-        /// <param name="equipment">Equipment of Enemy</param>
-        /// <param name="inventory">Inventory of Enemy</param>
-        internal Enemy(string name, string type, int level, int experience, int gold, Attributes attributes, Statistics statistics,
-        Equipment equipment)
+        /// <summary>Initializes an instance of <see cref="Enemy"/> by assigning Properties.</summary>
+        /// <param name="name">Name of <see cref="Enemy"/></param>
+        /// <param name="type">Type of <see cref="Enemy"/></param>
+        /// <param name="level">Level of <see cref="Enemy"/></param>
+        /// <param name="experience">Experience <see cref="Enemy"/> can provide</param>
+        /// <param name="gold">Gold carried by <see cref="Enemy"/></param>
+        /// <param name="attributes">Attributes of <see cref="Enemy"/></param>
+        /// <param name="statistics">Statistics of <see cref="Enemy"/></param>
+        /// <param name="equipment">Equipment of <see cref="Enemy"/></param>
+        /// <param name="inventory">Inventory of <see cref="Enemy"/></param>
+        internal Enemy(string name, string type, int level, int experience, int gold, Attributes attributes, Statistics statistics, Equipment equipment, List<Item> inventory)
         {
             Name = name;
             Type = type;
@@ -99,11 +100,12 @@ namespace Sulimn.Classes.Entities
             Attributes = new Attributes(attributes);
             Statistics = new Statistics(statistics);
             Equipment = new Equipment(equipment);
+            Inventory = inventory;
         }
 
-        /// <summary>Replaces this instance of Enemy with another instance.</summary>
-        /// <param name="other">Instance of Enemy that replaces this one</param>
-        internal Enemy(Enemy other) : this(other.Name, other.Type, other.Level, other.Experience, other.Gold, new Attributes(other.Attributes), new Statistics(other.Statistics), new Equipment(other.Equipment))
+        /// <summary>Replaces this instance of <see cref="Enemy"/> with another instance.</summary>
+        /// <param name="other">Instance of <see cref="Enemy"/> that replaces this one</param>
+        internal Enemy(Enemy other) : this(other.Name, other.Type, other.Level, other.Experience, other.Gold, new Attributes(other.Attributes), new Statistics(other.Statistics), new Equipment(other.Equipment), new List<Item>(other.Inventory))
         {
         }
 

@@ -2,7 +2,7 @@
 
 namespace Sulimn.Classes.HeroParts
 {
-    /// <summary>Represents the attributes an entity has.</summary>
+    /// <summary>Represents the <see cref="Attributes"/> an entity has.</summary>
     internal class Attributes
     {
         #region Modifying Properties
@@ -84,12 +84,12 @@ namespace Sulimn.Classes.HeroParts
 
         #region Constructors
 
-        /// <summary>Initializes a default instance of Attributes.</summary>
+        /// <summary>Initializes a default instance of <see cref="Attributes"/>.</summary>
         public Attributes()
         {
         }
 
-        /// <summary>Initializes an instance of Attributes by assigning Properties.</summary>
+        /// <summary>Initializes an instance of <see cref="Attributes"/> by assigning Properties.</summary>
         /// <param name="strength">Strength</param>
         /// <param name="vitality">Vitality</param>
         /// <param name="dexterity">Dexterity</param>
@@ -102,8 +102,8 @@ namespace Sulimn.Classes.HeroParts
             Wisdom = wisdom;
         }
 
-        /// <summary>Replaces this instance of Attributes with another instance.</summary>
-        /// <param name="other">Instance to replace this instance</param>
+        /// <summary>Replaces this instance of <see cref="Attributes"/> with another instance.</summary>
+        /// <param name="other">Instance of <see cref="Attributes"/> to replace this instance</param>
         public Attributes(Attributes other) : this(other.Strength, other.Vitality, other.Dexterity, other.Wisdom)
         {
         }

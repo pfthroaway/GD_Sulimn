@@ -83,12 +83,6 @@ namespace Sulimn.Scenes.Shopping
 
         private void _on_BtnReturn_pressed() => GetTree().ChangeSceneTo(GameState.GoBack());
 
-        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-        //  public override void _Process(float delta)
-        //  {
-        //
-        //  }
-
         private void _on_LstSpells_item_selected(int index)
         {
             if (index >= 0)

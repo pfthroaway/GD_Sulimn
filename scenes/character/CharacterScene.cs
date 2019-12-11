@@ -75,14 +75,17 @@ namespace Sulimn.Scenes.CharacterScenes
 
         #region Save
 
+        /// <summary>Saves the current state of the on-screen inventory and equipment.</summary>
         private void Save()
         {
             SaveInventory();
             SaveEquipment();
         }
 
+        /// <summary>Saves the current state of the on-screen inventory.</summary>
         private void SaveInventory() => GameState.SetInventoryFromGrid(HeroInventory);
 
+        /// <summary>Saves the current state of the on-screen equipment.</summary>
         private void SaveEquipment() => GameState.SetEquipmentFromGrid(HeroEquipment);
 
         #endregion Save

@@ -1,5 +1,6 @@
 using Godot;
 using Sulimn.Classes;
+using Sulimn.Classes.Entities;
 using Sulimn.Classes.HeroParts;
 using Sulimn.Classes.Items;
 using System.Collections.Generic;
@@ -11,6 +12,11 @@ namespace Sulimn.Scenes.Inventory
     {
         public ItemSlot WeaponSlot, HeadSlot, BodySlot, HandsSlot, LegsSlot, FeetSlot, LeftRingSlot, RightRingSlot;
 
+        /// <summary>Sets up the <see cref="Equipment"/> in the Grid.</summary>
+        /// <param name="equipment"><see cref="Equipment"/> to be set up</param>
+        /// <param name="level">Maximum level of <see cref="Item"/>s to be allowed in the Grid</param>
+        /// <param name="currentClass">Required <see cref="HeroClass"/> of <see cref="Item"/>s allowed in the Grid</param>
+        /// <param name="enemy">Is this Grid for an <see cref="Enemy"/>?</param>
         public void SetUpEquipment(Equipment equipment, int level = 0, HeroClass currentClass = null, bool enemy = false)
         {
             if (currentClass != null)
@@ -70,6 +76,7 @@ namespace Sulimn.Scenes.Inventory
                 GameState.AddItemInstanceToSlot(RightRingSlot, equipment.RightRing);
         }
 
+        /// <summary>Assigns all controls.</summary>
         private void AssignControls()
         {
             WeaponSlot = (ItemSlot)GetNode("WeaponSlot");
@@ -99,9 +106,6 @@ namespace Sulimn.Scenes.Inventory
         }
 
         // Called when the node enters the scene tree for the first time.
-        public override void _Ready()
-        {
-            AssignControls();
-        }
+        public override void _Ready() => AssignControls();
     }
 }

@@ -101,7 +101,7 @@ namespace Sulimn.Scenes.City
                 GameState.CurrentHero.Bank.LoanTaken += Gold + (Gold / 20);
                 GameState.CurrentHero.Bank.LoanAvailable -= Gold + (Gold / 20);
                 GameState.CurrentHero.Gold += Gold;
-                AddTextToTextBox($"You take out a loan for {Gold:N0} gold. There is a 5% interest charge.");
+                AddTextToTextBox($"You take out a loan for {Gold:N0} gold. There is a 5% interest charge. You now owe {GameState.CurrentHero.Bank.LoanTakenToString}.");
                 DisplayGold();
             }
             else
@@ -166,12 +166,5 @@ namespace Sulimn.Scenes.City
             Gold = Int32Helper.Parse(TxtGold.Text);
             ToggleButtons(Gold == 0);
         }
-
-        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-
-        //  public override void _Process(float delta)
-        //  {
-        //
-        //  }
     }
 }

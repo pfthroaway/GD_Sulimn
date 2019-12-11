@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Sulimn.Classes.Items
 {
-    /// <summary>Represents an <see cref="Item"/> that a <see cref="Hero"/> can interact with in the game.</summary>
+    /// <summary>Represents an <see cref="Item"/> that an entity can interact with in the game.</summary>
     public class Item
     {
         #region Modifying Properties
@@ -25,7 +25,7 @@ namespace Sulimn.Classes.Items
         [JsonProperty(Order = 3)]
         public ItemType Type { get; set; }
 
-        /// <summary>Amount of  the <see cref="Item"/> inflicts.</summary>
+        /// <summary>Amount of damage the <see cref="Item"/> inflicts.</summary>
         [JsonProperty(Order = 4)]
         public int Damage { get; set; }
 
@@ -65,11 +65,11 @@ namespace Sulimn.Classes.Items
         [JsonProperty(Order = 13)]
         public int Wisdom { get; set; }
 
-        /// <summary>Amount of health this <see cref="Item"/> restores.</summary>
+        /// <summary>Amount of Health this <see cref="Item"/> restores.</summary>
         [JsonProperty(Order = 14)]
         public int RestoreHealth { get; set; }
 
-        /// <summary>Amount of health this <see cref="Item"/> restores.</summary>
+        /// <summary>Amount of Magic this <see cref="Item"/> restores.</summary>
         [JsonProperty(Order = 15)]
         public int RestoreMagic { get; set; }
 

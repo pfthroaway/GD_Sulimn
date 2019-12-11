@@ -61,6 +61,8 @@ namespace Sulimn.Scenes
             LblGold.Text = GameState.CurrentHero.GoldToStringWithText;
         }
 
+        #region Mouse Enter/Exit
+
         private void _on_TPHealth_mouse_entered()
         {
             LblText.Text = GameState.CurrentHero.Statistics.HealthToStringWithText;
@@ -76,5 +78,7 @@ namespace Sulimn.Scenes
         }
 
         private void _on_TPMagic_mouse_exited() => LblText.Text = "";
+
+        #endregion Mouse Enter/Exit
     }
 }

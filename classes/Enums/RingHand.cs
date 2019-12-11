@@ -1,8 +1,5 @@
 ﻿namespace Sulimn.Classes.Enums
 {
-    internal enum RingHand
-    {
-        Left,
-        Right
-    }
+    /// <summary>Represents a which hand a Ring is being word.</summary>
+    internal enum RingHand { Left, Right }
 }

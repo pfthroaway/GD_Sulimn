@@ -1,11 +1,12 @@
 ﻿using Sulimn.Classes.Enums;
 using Sulimn.Classes.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Sulimn.Classes.HeroParts
 {
-    /// <summary>Represents a quest that is being undertaken.</summary>
+    /// <summary>Represents a <see cref="Quest"/> that is being undertaken.</summary>
     public class Quest
     {
         #region Modifying Properties
@@ -30,9 +31,39 @@ namespace Sulimn.Classes.HeroParts
 
         #endregion Modifying Properties
 
+        #region Override Operators
+
+        public static bool Equals(Quest left, Quest right)
+        {
+            if (left is null && right is null) return true;
+            if (left is null ^ right is null) return false;
+            return string.Equals(left.Name, right.Name, StringComparison.OrdinalIgnoreCase)
+                && string.Equals(left.Description, right.Description, StringComparison.OrdinalIgnoreCase)
+                   && left.QuestType == right.QuestType
+                   && left.RewardGold == right.RewardGold
+                   && !left.QuestItems.Except(right.QuestItems).Any()
+                   && !right.QuestItems.Except(left.QuestItems).Any()
+                   && !left.RewardItems.Except(right.RewardItems).Any()
+                   && !right.RewardItems.Except(left.RewardItems).Any();
+        }
+
+        public sealed override bool Equals(object obj) => Equals(this, obj as Quest);
+
+        public bool Equals(Quest other) => Equals(this, other);
+
+        public static bool operator ==(Quest left, Quest right) => Equals(left, right);
+
+        public static bool operator !=(Quest left, Quest right) => !Equals(left, right);
+
+        public sealed override int GetHashCode() => base.GetHashCode() ^ 17;
+
+        public sealed override string ToString() => Name;
+
+        #endregion Override Operators
+
         #region Helper Properties
 
-        /// <summary>Are all the requirements of the quest complete?</summary>
+        /// <summary>Are all the requirements of the <see cref="Quest"/> complete?</summary>
         public bool IsComplete => QuestItems.All(quest => quest.IsComplete);
 
         #endregion Helper Properties

@@ -84,6 +84,7 @@ namespace Sulimn.Classes
             return last;
         }
 
+        /// <summary>Writes the current scene history to disk.</summary>
         internal static void WriteSceneHistory() => JSONInteraction.WriteSceneHistory(History, CurrentHero.Name);
 
         #endregion Scene Navigation

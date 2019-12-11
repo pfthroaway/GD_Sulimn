@@ -143,8 +143,7 @@ namespace Sulimn.Classes.HeroParts
         /// <param name="minimumLevel">Required Level to learn <see cref="Spell"/></param>
         /// <param name="magicCost">Magic cost of <see cref="Spell"/></param>
         /// <param name="amount">Amount of <see cref="Spell"/></param>
-        internal Spell(string name, SpellType spellType, string description, List<HeroClass> allowedClasses, int minimumLevel,
-        int magicCost, int amount)
+        internal Spell(string name, SpellType spellType, string description, List<HeroClass> allowedClasses, int minimumLevel, int magicCost, int amount)
         {
             Name = name;
             Type = spellType;

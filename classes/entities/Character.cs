@@ -59,7 +59,7 @@ namespace Sulimn.Classes.Entities
             }
         }
 
-        /// <summary>List of <see cref="Item"/>s in the inventory.</summary>
+        /// <summary>List of <see cref="Item"/>s in the <see cref="Character"/>'s inventory.</summary>
         [JsonProperty(Order = 11)]
         public List<Item> Inventory { get; set; } = new List<Item>();
 
@@ -67,7 +67,7 @@ namespace Sulimn.Classes.Entities
 
         #region Helper Properties
 
-        /// <summary>Returns the Enemy's level with preceding text.</summary>
+        /// <summary>Returns the <see cref="Character"/>'s level with preceding text.</summary>
         [JsonIgnore]
         public string LevelToString => $"Level {Level}";
 
@@ -87,19 +87,19 @@ namespace Sulimn.Classes.Entities
         [JsonIgnore]
         public string GoldToStringWithText => $"Gold: {GoldToString}";
 
-        /// <summary>List of <see cref="Item"/>s in the inventory, formatted.</summary>
+        /// <summary>List of <see cref="Item"/>s in the <see cref="Character"/>'s inventory, formatted.</summary>
         [JsonIgnore]
         public string InventoryToString => string.Join(",", Inventory);
 
-        /// <summary>Combined weight of all <see cref="Item"/>s in a <see cref="Character"/>'s Inventory.</summary>
+        /// <summary>Combined weight of all <see cref="Item"/>s in a <see cref="Character"/>'s inventory.</summary>
         [JsonIgnore]
         public int CarryingWeight => Inventory.Count > 0 ? Inventory.Sum(itm => itm.Weight) : 0;
 
-        /// <summary>Combined weight of all <see cref="Item"/>s in a <see cref="Character"/>'s Inventory and all the Equipment currently equipped.</summary>
+        /// <summary>Combined weight of all <see cref="Item"/>s in a <see cref="Character"/>'s inventory and all the Equipment currently equipped.</summary>
         [JsonIgnore]
         public int TotalWeight => CarryingWeight + Equipment.TotalWeight;
 
-        /// <summary>Combined weight of all <see cref="Items"/>s in a <see cref="Character"/>'s Inventory and all the Equipment currently equipped, formatted.</summary>
+        /// <summary>Combined weight of all <see cref="Items"/>s in a <see cref="Character"/>'s inventory and all the Equipment currently equipped, formatted.</summary>
         [JsonIgnore]
         public string TotalWeightToString => TotalWeight.ToString("N0");
 
@@ -147,17 +147,17 @@ namespace Sulimn.Classes.Entities
 
         #region Inventory Management
 
-        /// <summary>Adds an Item to the inventory.</summary>
-        /// <param name="item">Item to be removed</param>
-        internal void AddItem(Item item)
+        /// <summary>Adds an <see cref="Item"/> to the inventory.</summary>
+        /// <param name="item"><see cref="Item"/> to be removed</param>
+        public void AddItem(Item item)
         {
             Inventory.Add(item);
             Inventory = Inventory.OrderBy(itm => itm.Name).ToList();
         }
 
-        /// <summary>Removes an Item from the inventory.</summary>
-        /// <param name="item">Item to be removed</param>
-        internal void RemoveItem(Item item) => Inventory.Remove(item);
+        /// <summary>Removes an <see cref="Item"/> from the inventory.</summary>
+        /// <param name="item"><see cref="Item"/> to be removed</param>
+        public void RemoveItem(Item item) => Inventory.Remove(item);
 
         #endregion Inventory Management
     }

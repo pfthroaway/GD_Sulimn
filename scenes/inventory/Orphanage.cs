@@ -5,6 +5,7 @@ namespace Sulimn.Scenes.Inventory
     /// <summary>Represents a place where orphan <see cref="InventoryItem"/>s are stored temporarily.</summary>
     public class Orphanage : Control
     {
+        /// <summary>The <see cref="ItemSlot"/> in which the <see cref="InventoryItem"/> was previously located.</summary>
         public ItemSlot PreviousSlot { get; set; }
 
         /// <summary>Gets the <see cref="InventoryItem"/> currently stored in the <see cref="Orphanage"/>, if any.</summary>
@@ -20,11 +21,5 @@ namespace Sulimn.Scenes.Inventory
         public override void _Ready()
         {
         }
-
-        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-        //  public override void _Process(float delta)
-        //  {
-        //
-        //  }
     }
 }

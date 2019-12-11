@@ -31,7 +31,7 @@ namespace Sulimn.Classes.Card
         #region Hand Management
 
         /// <summary>Adds a <see cref="Card"/> to the <see cref="Hand"/>.</summary>
-        /// <param name="newCard">Card to be added.</param>
+        /// <param name="newCard"><see cref="Card"/> to be added.</param>
         internal void AddCard(Card newCard)
         {
             newCard.Name = newCard.CardToString;
@@ -45,7 +45,7 @@ namespace Sulimn.Classes.Card
         internal bool CanSplit() => CardList.Count == 2 && CardList[0].CardName == CardList[1].CardName && CardList[0].Value == CardList[1].Value;
 
         /// <summary>Checks whether the <see cref="Hand"/> can be Doubled Down.</summary>
-        /// <returns>Returns true if <see cref="Hand"/> can be Doubled Down.</returns>
+        /// <returns>Returns true if <see cref="Hand"/> can be Doubled Down</returns>
         internal bool CanDoubleDown() => CardList.Count == 2 && TotalValue >= 9 && TotalValue <= 11;
 
         /// <summary>Clears the Hidden state of all <see cref="Card"/>s in the <see cref="Hand"/>.</summary>
@@ -86,13 +86,13 @@ namespace Sulimn.Classes.Card
 
         #region Constructors
 
-        /// <summary>Initializes a default instance of Hand.</summary>
+        /// <summary>Initializes a default instance of <see cref="Hand"/>.</summary>
         internal Hand()
         {
         }
 
-        /// <summary>Initializes an instance of Hand by assigning the list of Cards.</summary>
-        /// <param name="cardList">List of Cards</param>
+        /// <summary>Initializes an instance of <see cref="Hand"/> by assigning the list of <see cref="Card"/>s.</summary>
+        /// <param name="cardList">List of <see cref="Card"/>s</param>
         internal Hand(List<Card> cardList) => CardList = cardList;
 
         #endregion Constructors

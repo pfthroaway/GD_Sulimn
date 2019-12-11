@@ -2,12 +2,12 @@
 
 namespace Sulimn.Classes.HeroParts
 {
-    /// <summary>Represents the statistics of an entity.</summary>
+    /// <summary>Represents the <see cref="Statistics"/> of an entity.</summary>
     internal class Statistics
     {
-        /// <summary>Restores magic to the Hero.</summary>
-        /// <param name="restoreAmount">Amount of Magic to be restored.</param>
-        /// <returns>String saying magic was restored</returns>
+        /// <summary>Restores Magic to the entity.</summary>
+        /// <param name="restoreAmount">Amount of Magic to be restored</param>
+        /// <returns>String saying Magic was restored</returns>
         internal string RestoreMagic(int restoreAmount)
         {
             CurrentMagic += restoreAmount;
@@ -21,19 +21,19 @@ namespace Sulimn.Classes.HeroParts
 
         #region Modifying Properties
 
-        /// <summary>Amount of current health the character has.</summary>
+        /// <summary>Amount of current Health the entity has.</summary>
         [JsonProperty(Order = 1)]
         public int CurrentHealth { get; set; }
 
-        /// <summary>Amount of maximum health the character has.</summary>
+        /// <summary>Amount of maximum Health the entity has.</summary>
         [JsonProperty(Order = 2)]
         public int MaximumHealth { get; set; }
 
-        /// <summary>Amount of current magic the character has.</summary>
+        /// <summary>Amount of current Magic the entity has.</summary>
         [JsonProperty(Order = 3)]
         public int CurrentMagic { get; set; }
 
-        /// <summary>Amount of maximum magic the character has.</summary>
+        /// <summary>Amount of maximum Magic the entity has.</summary>
         [JsonProperty(Order = 4)]
         public int MaximumMagic { get; set; }
 
@@ -41,27 +41,27 @@ namespace Sulimn.Classes.HeroParts
 
         #region Helper Properties
 
-        /// <summary>Amount of health the Class has, formatted.</summary>
+        /// <summary>Amount of Health the entity has, formatted.</summary>
         [JsonIgnore]
         public string HealthToString => $"{CurrentHealth:N0} / {MaximumHealth:N0}";
 
-        /// <summary>Amount of health the Class has, formatted.</summary>
+        /// <summary>Amount of Health the entity has, formatted.</summary>
         [JsonIgnore]
         public string HealthToStringWithText => $"Health: {HealthToString}";
 
-        /// <summary>The amount of current health in relation to the maximum health.</summary>
+        /// <summary>The amount of current Health in relation to the maximum Health.</summary>
         [JsonIgnore]
         public decimal HealthRatio => CurrentHealth * 1m / MaximumHealth;
 
-        /// <summary>Amount of magic the Class has, formatted with preceding text.</summary>
+        /// <summary>Amount of Magic the entity has, formatted with preceding text.</summary>
         [JsonIgnore]
         public string MagicToString => $"{CurrentMagic:N0} / {MaximumMagic:N0}";
 
-        /// <summary>Amount of magic the Class has, formatted with preceding text.</summary>
+        /// <summary>Amount of Magic the entity has, formatted with preceding text.</summary>
         [JsonIgnore]
         public string MagicToStringWithText => $"Magic: {MagicToString}";
 
-        /// <summary>The amount of current magic in relation to the maximum magic.</summary>
+        /// <summary>The amount of current Magic in relation to the maximum Magic.</summary>
         [JsonIgnore]
         public decimal MagicRatio => CurrentMagic * 1m / MaximumMagic;
 
@@ -90,12 +90,12 @@ namespace Sulimn.Classes.HeroParts
 
         #region Constructors
 
-        /// <summary>Initializes a default instance of Statistics.</summary>
+        /// <summary>Initializes a default instance of <see cref="Statistics"/>.</summary>
         public Statistics()
         {
         }
 
-        /// <summary>Initializes an instance of Statistics by assigning Properties.</summary>
+        /// <summary>Initializes an instance of <see cref="Statistics"/> by assigning Properties.</summary>
         /// <param name="currentHealth">Current Health</param>
         /// <param name="maximumHealth">Maximum Health</param>
         /// <param name="currentMagic">Current Magic</param>
@@ -108,8 +108,8 @@ namespace Sulimn.Classes.HeroParts
             MaximumMagic = maximumMagic;
         }
 
-        /// <summary>Replaces this instance of Statistics with another instance.</summary>
-        /// <param name="other">Instance to replace this instance</param>
+        /// <summary>Replaces this instance of <see cref="Statistics"/> with another instance.</summary>
+        /// <param name="other">Instance of <see cref="Statistics"/> to replace this instance</param>
         public Statistics(Statistics other) : this(other.CurrentHealth, other.MaximumHealth, other.CurrentMagic,
             other.MaximumMagic)
         {

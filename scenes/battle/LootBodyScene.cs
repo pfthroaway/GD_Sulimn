@@ -1,5 +1,6 @@
 using Godot;
 using Sulimn.Classes;
+using Sulimn.Classes.Entities;
 using Sulimn.Scenes.Inventory;
 
 namespace Sulimn.Scenes.Battle
@@ -25,6 +26,7 @@ namespace Sulimn.Scenes.Battle
 
         #endregion Button Click
 
+        /// <summary>Displays the <see cref="Enemy"/>'s current gold and whether the Loot Gold Button should be enabled.</summary>
         private void ToggleLootGold()
         {
             LblGold.Text = GameState.CurrentEnemy.GoldToStringWithText;
@@ -33,26 +35,30 @@ namespace Sulimn.Scenes.Battle
 
         #region Save
 
+        /// <summary>Saves the current state of the on-screen inventories and equipment.</summary>
         private void Save()
         {
             SaveInventory();
             SaveEquipment();
         }
 
-        private void SaveInventory()
-        {
-            GameState.SetInventoryFromGrid(HeroInventory);
-            GameState.SetInventoryFromGrid(EnemyInventory, false);
-        }
-
+        /// <summary>Saves the current state of the on-screenequipment.</summary>
         private void SaveEquipment()
         {
             GameState.SetEquipmentFromGrid(HeroEquipment);
             GameState.SetEquipmentFromGrid(EnemyEquipment, false);
         }
 
+        /// <summary>Saves the current state of the on-screen inventories.</summary>
+        private void SaveInventory()
+        {
+            GameState.SetInventoryFromGrid(HeroInventory);
+            GameState.SetInventoryFromGrid(EnemyInventory, false);
+        }
+
         #endregion Save
 
+        /// <summary>Assigns all controls.</summary>
         private void AssignControls()
         {
             HeroInventory = (GridInventory)GetNode("HeroInventory");

@@ -2,20 +2,20 @@
 
 namespace Sulimn.Classes.HeroParts
 {
-    /// <summary>Represents an account at the Bank.</summary>
+    /// <summary>Represents an account at the <see cref="Bank"/>.</summary>
     public class Bank
     {
         #region Modifying Properties
 
-        /// <summary>Gold the Hero has in the bank.</summary>
+        /// <summary>Gold the <see cref="Hero"/> has in the cref="Bank"/>.</summary>
         [JsonProperty(Order = 1)]
         public int GoldInBank { get; set; }
 
-        /// <summary>Gold the Hero has available on loan.</summary>
+        /// <summary>Gold the <see cref="Hero"/> has available on loan.</summary>
         [JsonProperty(Order = 2)]
         public int LoanAvailable { get; set; }
 
-        /// <summary>Gold the Hero has taken out on loan.</summary>
+        /// <summary>Gold the <see cref="Hero"/> has taken out on loan.</summary>
         [JsonProperty(Order = 3)]
         public int LoanTaken { get; set; }
 
@@ -51,7 +51,7 @@ namespace Sulimn.Classes.HeroParts
 
         #region Constructors
 
-        /// <summary>Initializes a default instance of Bank.</summary>
+        /// <summary>Initializes a default instance of <see cref="Bank"/>.</summary>
         public Bank()
         {
             GoldInBank = 0;
@@ -59,8 +59,8 @@ namespace Sulimn.Classes.HeroParts
             LoanTaken = 0;
         }
 
-        /// <summary>Initializes an instance of Bank by assigning Properties.</summary>
-        /// <param name="goldInBank">Gold in the bank</param>
+        /// <summary>Initializes an instance of <see cref="Bank"/> by assigning Properties.</summary>
+        /// <param name="goldInBank">Gold in the <see cref="Bank"/></param>
         /// <param name="loanTaken">Loan already taken out</param>
         /// <param name="loanAvailable">Loan available to be taken out</param>
         public Bank(int goldInBank, int loanTaken, int loanAvailable)
@@ -70,8 +70,8 @@ namespace Sulimn.Classes.HeroParts
             LoanAvailable = loanAvailable;
         }
 
-        /// <summary>Replaces this instance of Bank with another instance.</summary>
-        /// <param name="other">Instance of Bank to replace this instance</param>
+        /// <summary>Replaces this instance of <see cref="Bank"/> with another instance.</summary>
+        /// <param name="other">Instance of <see cref="Bank"/> to replace this instance</param>
         public Bank(Bank other) : this(other.GoldInBank, other.LoanTaken, other.LoanAvailable)
         {
         }

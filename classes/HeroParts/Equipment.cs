@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Sulimn.Classes.HeroParts
 {
-    /// <summary>Represents pieces of equipment an entity is using.</summary>
+    /// <summary>Represents pieces of <see cref="Equipment"/> an entity is using.</summary>
     public class Equipment
     {
         #region Modifying Properties
@@ -136,12 +136,12 @@ namespace Sulimn.Classes.HeroParts
 
         #region Constructors
 
-        /// <summary>Initializes a default instance of Equipment.</summary>
+        /// <summary>Initializes a default instance of <see cref="Equipment"/>.</summary>
         public Equipment()
         {
         }
 
-        /// <summary>Initializes an instance of Equipment by assigning Properties.</summary>
+        /// <summary>Initializes an instance of <see cref="Equipment"/> by assigning Properties.</summary>
         /// <param name="weapon">Weapon</param>
         /// <param name="head">Head Armor</param>
         /// <param name="body">Body Armor</param>
@@ -163,8 +163,8 @@ namespace Sulimn.Classes.HeroParts
             RightRing = new Item(rightRing);
         }
 
-        /// <summary>Replaces this instance of Equipment with another instance.</summary>
-        /// <param name="other">Instance of Equipment to replace this instance</param>
+        /// <summary>Replaces this instance of <see cref="Equipment"/> with another instance.</summary>
+        /// <param name="other">Instance of <see cref="Equipment"/> to replace this instance</param>
         public Equipment(Equipment other) : this(new Item(other.Weapon), new Item(other.Head),
             new Item(other.Body), new Item(other.Hands), new Item(other.Legs), new Item(other.Feet),
             new Item(other.LeftRing), new Item(other.RightRing))

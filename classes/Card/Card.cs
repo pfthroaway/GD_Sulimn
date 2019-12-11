@@ -21,12 +21,12 @@ namespace Sulimn.Classes.Card
         /// <summary>Should the <see cref="Card"/> be hidden from the player?</summary>
         public bool Hidden { get; set; }
 
-        /// <summary>Returns the name and suit of the card.</summary>
+        /// <summary>Returns the name and suit of the <see cref="Card"/>.</summary>
         public string CardToString => $"{CardName}_of_{Suit}".ToLower();
 
         #endregion Properties
 
-        /// <summary>Hides the card and sets the texture.</summary>
+        /// <summary>Hides the <see cref="Card"/> and sets the texture.</summary>
         public void HideCard()
         {
             Hidden = true;
@@ -62,16 +62,16 @@ namespace Sulimn.Classes.Card
 
         #region Constructors
 
-        /// <summary>Initializes a default instance of Card.</summary>
+        /// <summary>Initializes a default instance of <see cref="Card"/>.</summary>
         internal Card()
         {
         }
 
-        /// <summary>Initializes an instance of Card by assigning Properties.</summary>
-        /// <param name="name">Name of Card</param>
-        /// <param name="suit">Suit of Card</param>
-        /// <param name="value">Value of Card</param>
-        /// <param name="hidden">Should the Card be hidden from the player?</param>
+        /// <summary>Initializes an instance of <see cref="Card"/> by assigning Properties.</summary>
+        /// <param name="name">Name of <see cref="Card"/></param>
+        /// <param name="suit">Suit of <see cref="Card"/></param>
+        /// <param name="value">Value of <see cref="Card"/></param>
+        /// <param name="hidden">Should the <see cref="Card"/> be hidden from the player?</param>
         internal Card(string name, CardSuit suit, int value, bool hidden)
         {
             CardName = name;
@@ -80,15 +80,15 @@ namespace Sulimn.Classes.Card
             Hidden = hidden;
         }
 
-        /// <summary>Replaces this instance of Card with another instance.</summary>
+        /// <summary>Replaces this instance of <see cref="Card"/> with another instance.</summary>
         /// <param name="other">Instance to replace this instance</param>
         internal Card(Card other) : this(other.CardName, other.Suit, other.Value, other.Hidden)
         {
         }
 
-        /// <summary>Replaces this instance of Card with another instance.</summary>
-        /// <param name="other">Instance to replace this instance</param>
-        /// <param name="hidden">Should the Card be hidden from the player?</param>
+        /// <summary>Replaces this instance of <see cref="Card"/> with another instance.</summary>
+        /// <param name="other">Instance of <see cref="Card"/> to replace this instance</param>
+        /// <param name="hidden">Should the <see cref="Card"/> be hidden from the player?</param>
         internal Card(Card other, bool hidden) : this(other.CardName, other.Suit, other.Value, hidden)
         {
         }

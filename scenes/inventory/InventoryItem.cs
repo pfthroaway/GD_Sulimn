@@ -49,12 +49,12 @@ namespace Sulimn.Scenes.Inventory
                 if (container.Name == "HeroInventory")
                 {
                     MerchantInventory merchantInventory = (MerchantInventory)GetTree().CurrentScene.FindNode("MerchantInventory");
-                    if (merchantInventory.GetItemsInInventory() < 80 && Item.CanSell)
+                    if (merchantInventory.ItemCount() < 80 && Item.CanSell)
                     {
                         PutItemInOrphanage(slot);
                         SellItem(merchantInventory.FindFirstEmptySlot(), this, false);
                     }
-                    else if (merchantInventory.GetItemsInInventory() >= 80)
+                    else if (merchantInventory.ItemCount() >= 80)
                         slot.LblError.Text = "The merchant's inventory is full.";
                     else if (!Item.CanSell)
                         slot.LblError.Text = "This item cannot be sold.";

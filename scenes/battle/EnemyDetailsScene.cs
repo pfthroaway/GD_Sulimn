@@ -62,11 +62,5 @@ namespace Sulimn.Scenes.Battle
         }
 
         private void _on_BtnReturn_pressed() => GetTree().ChangeSceneTo(GameState.GoBack());
-
-        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-        //  public override void _Process(float delta)
-        //  {
-        //
-        //  }
     }
 }

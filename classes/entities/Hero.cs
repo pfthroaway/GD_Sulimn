@@ -13,15 +13,15 @@ namespace Sulimn.Classes.Entities
     {
         #region Modifying Properties
 
-        /// <summary>The hashed password of the Hero</summary>
+        /// <summary>The hashed password of the <see cref="Hero"/>.</summary>
         [JsonProperty(Order = -4)]
         public string Password { get; set; }
 
-        /// <summary>The HeroClass of the <see cref="Hero"/>, set up to import from JSON.</summary>
+        /// <summary>The <see cref="HeroClass"/> of the <see cref="Hero"/>, set up to import from JSON.</summary>
         [JsonIgnore]
         public HeroClass Class { get; set; } = new HeroClass();
 
-        /// <summary>The <see cref="HeroClass"/> of the <see cref="Hero"/></summary>
+        /// <summary>The <see cref="HeroClass"/> of the <see cref="Hero"/>.</summary>
         [JsonProperty(Order = -3)]
         public string ClassString
         {
@@ -37,7 +37,7 @@ namespace Sulimn.Classes.Entities
         [JsonProperty(Order = -2)]
         public bool Hardcore { get; set; }
 
-        /// <summary>The amount of available skill points the <see cref="Hero"/> has</summary>
+        /// <summary>The amount of available skill points the <see cref="Hero"/> has.</summary>
         [JsonProperty(Order = -1)]
         public int SkillPoints { get; set; }
 
@@ -45,11 +45,11 @@ namespace Sulimn.Classes.Entities
         [JsonProperty(Order = 7)]
         public Progression Progression { get; set; } = new Progression();
 
-        /// <summary>The <see cref="Hero"/>'s Bank. </summary>
+        /// <summary>The <see cref="Hero"/>'s Bank.</summary>
         [JsonProperty(Order = 9)]
         public Bank Bank { get; set; } = new Bank();
 
-        /// <summary>The <see cref="Hero"/>'s current <see cref="Quest"/>s. </summary>
+        /// <summary>The <see cref="Hero"/>'s current <see cref="Quest"/>s.</summary>
         [JsonProperty(Order = 12)]
         public List<Quest> Quests { get; set; } = new List<Quest>();
 
@@ -95,7 +95,7 @@ namespace Sulimn.Classes.Entities
 
         #endregion Helper Properties
 
-        /// <summary>Updates the Hero's Statistics.</summary>
+        /// <summary>Updates the <see cref="Hero"/>'s Statistics.</summary>
         internal void UpdateStatistics()
         {
             if (Statistics.MaximumHealth != (TotalVitality + Level - 1) * 5)
@@ -190,9 +190,9 @@ namespace Sulimn.Classes.Entities
             return restoreText;
         }
 
-        /// <summary>Equips an Item into a Hero's Equipment.</summary>
-        /// <param name="item">Item to be equipped</param>
-        /// <param name="side">If Item is a Ring, which side is it?</param>
+        /// <summary>Equips an <see cref="Item"/> into a <see cref="Hero"/>'s Equipment.</summary>
+        /// <param name="item"><see cref="Item"/> to be equipped</param>
+        /// <param name="side">If <see cref="Item"/> is a Ring, which side is it?</param>
         internal void Equip(Item item, RingHand side = RingHand.Left)
         {
             switch (item.Type)
@@ -259,9 +259,9 @@ namespace Sulimn.Classes.Entities
             RemoveItem(item);
         }
 
-        /// <summary>Unequips an Item from a Hero's Equipment.</summary>
-        /// <param name="item">Item to be unequipped</param>
-        /// <param name="side">If Item is a Ring, which side is it?</param>
+        /// <summary>Unequips an <see cref="Item"/> from a <see cref="Hero"/>'s Equipment.</summary>
+        /// <param name="item"><see cref="Item"/> to be unequipped</param>
+        /// <param name="side">If <see cref="Item"/> is a Ring, which side is it?</param>
         internal void Unequip(Item item, RingHand side = RingHand.Left)
         {
             switch (item.Type)
@@ -314,12 +314,12 @@ namespace Sulimn.Classes.Entities
             }
         }
 
-        /// <summary>Gets all Items of specified Type.</summary>
+        /// <summary>Gets all <see cref="Item"/>s of specified Type.</summary>
         /// <typeparam name="T">Type</typeparam>
         /// <returns>Items of specified Type</returns>
         internal List<T> GetItemsOfType<T>() => Inventory.OfType<T>().ToList();
 
-        /// <summary>If the <see cref="Hero"/> can purchase the <see cref="Item"/>, purchase it and return true. If not, return false;</summary>
+        /// <summary>If the <see cref="Hero"/> can purchase the <see cref="Item"/>, purchase it and return true. If not, return false.</summary>
         /// <param name="item"><see cref="Item"/> to be purchased.</param>
         /// <returns>Whether or not the <see cref="Item"/> was purchased</returns>
         internal bool PurchaseItem(Item item)
@@ -332,7 +332,7 @@ namespace Sulimn.Classes.Entities
             return false;
         }
 
-        /// <summary>Sells an <see cref="Item"/></summary>
+        /// <summary>Sells an <see cref="Item"/>.</summary>
         /// <param name="item"><see cref="Item"/> to be sold</param>
         internal void SellItem(Item item) => Gold += item.SellValue;
 

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Sulimn.Classes.Items
 {
@@ -27,6 +29,33 @@ namespace Sulimn.Classes.Items
         public bool IsComplete => CurrentCount >= RequiredCount;
 
         #endregion Helper Properties
+
+        #region Override Operators
+
+        public static bool Equals(QuestItem left, QuestItem right)
+        {
+            if (left is null && right is null) return true;
+            if (left is null ^ right is null) return false;
+            return string.Equals(left.Name, right.Name, StringComparison.OrdinalIgnoreCase)
+                   && left.RequiredCount == right.RequiredCount
+                   && left.CurrentCount == right.CurrentCount
+                   && !left.AvailableLocations.Except(right.AvailableLocations).Any()
+                   && !right.AvailableLocations.Except(left.AvailableLocations).Any();
+        }
+
+        public sealed override bool Equals(object obj) => Equals(this, obj as QuestItem);
+
+        public bool Equals(QuestItem other) => Equals(this, other);
+
+        public static bool operator ==(QuestItem left, QuestItem right) => Equals(left, right);
+
+        public static bool operator !=(QuestItem left, QuestItem right) => !Equals(left, right);
+
+        public sealed override int GetHashCode() => base.GetHashCode() ^ 17;
+
+        public sealed override string ToString() => Name;
+
+        #endregion Override Operators
 
         #region Constructors
 

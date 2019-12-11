@@ -16,6 +16,7 @@ namespace Sulimn.Scenes.Inventory
 
         #region Properties
 
+        /// <summary><see cref="ItemType"/>s available for use in the <see cref="ItemSlot"/>.</summary>
         public List<ItemType> ItemTypes { get; set; } = new List<ItemType>(Enum.GetValues(typeof(ItemType)).Cast<ItemType>().ToList());
 
         /// <summary>Current <see cref="HeroClass"/> of Items allowed in the <see cref="ItemSlot"/> </summary>

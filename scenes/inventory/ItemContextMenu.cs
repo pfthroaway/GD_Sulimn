@@ -9,13 +9,18 @@ namespace Sulimn.Scenes.Inventory
         public ItemSlot CurrentSlot { get; set; }
         private Button BtnConsume, BtnDrop;
 
-        // Called when the node enters the scene tree for the first time.
-        public override void _Ready()
+        #region Item/Slot Manipulation
+
+        /// <summary>Drops the <see cref="InventoryItem"/> in the <see cref="ItemSlot"/>.</summary>
+        private void Drop()
         {
-            BtnConsume = (Button)GetNode("BtnConsume");
-            BtnDrop = (Button)GetNode("BtnDrop");
+            CurrentSlot.RemoveChild(CurrentSlot.Item);
+            CurrentSlot.Item = new InventoryItem();
+            GameState.UpdateDisplay = true;
         }
 
+        /// <summary>Loads the current <see cref="ItemSlot"/>.</summary>
+        /// <param name="slot"><see cref="ItemSlot"/> to be loaded</param>
         public void LoadSlot(ItemSlot slot)
         {
             CurrentSlot = slot;
@@ -41,12 +46,16 @@ namespace Sulimn.Scenes.Inventory
             }
         }
 
-        private void Drop()
+        #endregion Item/Slot Manipulation
+
+        // Called when the node enters the scene tree for the first time.
+        public override void _Ready()
         {
-            CurrentSlot.RemoveChild(CurrentSlot.Item);
-            CurrentSlot.Item = new InventoryItem();
-            GameState.UpdateDisplay = true;
+            BtnConsume = (Button)GetNode("BtnConsume");
+            BtnDrop = (Button)GetNode("BtnDrop");
         }
+
+        #region Click
 
         private void _on_BtnConsume_pressed()
         {
@@ -55,5 +64,7 @@ namespace Sulimn.Scenes.Inventory
         }
 
         private void _on_BtnDrop_pressed() => Drop();
+
+        #endregion Click
     }
 }

@@ -7,6 +7,24 @@ namespace Sulimn.Scenes.Inventory
 {
     public class MerchantInventory : Panel
     {
+        /// <summary>The count of all the <see cref="Item"/>s in the inventory.</summary>
+        public int ItemCount
+        {
+            get
+            {
+                int items = 0;
+                GridContainer container = (GridContainer)GetNode("GridInventory");
+                foreach (ItemSlot slot in container.GetChildren())
+                {
+                    if (slot.GetChildren().Count == 1)
+                        items++;
+                }
+                return items;
+            }
+        }
+
+        #region Inventory Manipulation
+
         /// <summary>Finds the first empty slot in the inventory.</summary>
         /// <returns>The first empty slot in the inventory</returns>
         public ItemSlot FindFirstEmptySlot()
@@ -18,20 +36,6 @@ namespace Sulimn.Scenes.Inventory
                     return slot;
             }
             return new ItemSlot();
-        }
-
-        /// <summary>Gets the count of all the items in the inventory.</summary>
-        /// <returns>The count of all the items in the inventory</returns>
-        public int GetItemsInInventory()
-        {
-            int items = 0;
-            GridContainer container = (GridContainer)GetNode("GridInventory");
-            foreach (ItemSlot slot in container.GetChildren())
-            {
-                if (slot.GetChildren().Count == 1)
-                    items++;
-            }
-            return items;
         }
 
         /// <summary>Sets up an inventory.</summary>
@@ -46,6 +50,8 @@ namespace Sulimn.Scenes.Inventory
                     GameState.AddItemInstanceToSlot(slot, inventory[i]);
             }
         }
+
+        #endregion Inventory Manipulation
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
