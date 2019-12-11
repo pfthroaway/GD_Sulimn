@@ -8,22 +8,6 @@ namespace Sulimn.Scenes.Inventory
 {
     public class GridInventory : Panel
     {
-        /// <summary>The count of all the <see cref="Item"/>s in the inventory.</summary>
-        public int ItemCount
-        {
-            get
-            {
-                int items = 0;
-                GridContainer container = (GridContainer)GetNode("GridInventory");
-                foreach (ItemSlot slot in container.GetChildren())
-                {
-                    if (slot.GetChildren().Count == 1)
-                        items++;
-                }
-                return items;
-            }
-        }
-
         /// <summary>Finds the first empty slot available in the Grid.</summary>
         /// <returns>Returns the first empty slot available in the Grid</returns>
         public ItemSlot FindFirstEmptySlot()
