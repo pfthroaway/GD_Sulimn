@@ -205,7 +205,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Bear",
@@ -413,7 +413,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Beggar",
@@ -621,7 +621,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Butcher",
@@ -829,7 +829,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Chicken",
@@ -1037,7 +1037,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Crazed Miner",
@@ -1245,7 +1245,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Dark Priest",
@@ -1455,7 +1455,7 @@
       "SpellsString": "Fire Bolt,Fireball,Heal Medium Wounds,Heal Self,Shield"
     },
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Dion the Necromancer",
@@ -1663,7 +1663,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Evil Knight",
@@ -1871,7 +1871,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Giant Bat",
@@ -2079,7 +2079,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Giant Spider",
@@ -2287,7 +2287,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Gladiator",
@@ -2495,7 +2495,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "John the Priest",
@@ -2703,7 +2703,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Knave",
@@ -2911,7 +2911,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Knight",
@@ -3119,7 +3119,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Leon the Knave",
@@ -3327,7 +3327,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Lion",
@@ -3535,7 +3535,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Mangy Dog",
@@ -3743,7 +3743,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Minotaur",
@@ -3951,7 +3951,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Monk",
@@ -4159,7 +4159,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Necromancer",
@@ -4367,7 +4367,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Priest",
@@ -4575,7 +4575,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Rabbit",
@@ -4783,7 +4783,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Snake",
@@ -4991,7 +4991,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Squire",
@@ -5199,7 +5199,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Tennyson the Dark Priest",
@@ -5407,7 +5407,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Theon the Squire",
@@ -5615,7 +5615,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Thief",
@@ -5823,7 +5823,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Wild Boar",
@@ -6031,7 +6031,7 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   },
   {
     "Name": "Wolf",
@@ -6239,6 +6239,6 @@
     },
     "Spellbook": null,
     "CurrentSpellString": null,
-    "Inventory": null
+    "Inventory": []
   }
 ]
