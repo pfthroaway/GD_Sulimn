@@ -13,6 +13,18 @@ namespace Sulimn.Scenes.City
 
         #region Areas Entered
 
+        private void _on_BarArea_area_entered(object area)
+        {
+            if (area is Node player && player.IsInGroup("Player"))
+            {
+                Player.Move("left");
+                GameState.MerchantInventory.Clear();
+                GameState.MerchantInventory.AddRange(GameState.AllDrinks);
+                GameState.AddSceneToHistory(GetTree().CurrentScene);
+                GetTree().ChangeScene("res://scenes/shopping/ItemMerchantScene.tscn");
+            }
+        }
+
         private void _on_BlackjackArea_area_entered(object area)
         {
             if (area is Node player && player.IsInGroup("Player"))
@@ -24,6 +36,11 @@ namespace Sulimn.Scenes.City
         }
 
         private void _on_CityArea_area_entered(object area) => GetTree().ChangeSceneTo(GameState.GoBack());
+
+        private void _on_JobsArea_area_entered(object area)
+        {
+            // Replace with function body.
+        }
 
         #endregion Areas Entered
     }

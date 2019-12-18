@@ -67,7 +67,7 @@ namespace Sulimn.Scenes.City
         private void _on_GeneralStoreArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
         {
             if (area is Node player && player.IsInGroup("Player"))
-                EnterMerchantArea(GameState.AllFood, GameState.AllDrinks, GameState.AllPotions);
+                EnterMerchantArea(GameState.AllFood, GameState.AllPotions);
         }
 
         private void _on_MagickShoppeArea_area_shape_entered(int area_id, object area, int area_shape, int self_shape)
