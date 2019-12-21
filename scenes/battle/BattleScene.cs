@@ -107,11 +107,10 @@ namespace Sulimn.Scenes.Battle
             LblSpellTypeAmount.Text = GameState.CurrentHero.CurrentSpell.TypeAmount;
             LblSpellCost.Text = GameState.CurrentHero.CurrentSpell.MagicCostToString;
             LblWeight.Text = GameState.CurrentHero.WeightToString;
-            GD.Print(LblWeight.GetColor("font_color"));
             if (!GameState.CurrentHero.Overweight)
                 LblWeight.AddColorOverride("font_color", new Color(1, 1, 1, 1));
             else
-                LblWeight.AddColorOverride("font_color", new Color(255, 0, 0, 1));
+                LblWeight.AddColorOverride("font_color", new Color(255, 1, 1, 1));
             DisplaySpell();
             CheckButtons();
         }

@@ -18,8 +18,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Info" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 150.0
 margin_top = 289.0
 margin_right = 575.0
@@ -163,7 +169,6 @@ margin_bottom = 286.0
 custom_constants/separation = 20
 
 [node name="TextLabels" type="VBoxContainer" parent="Vitals/Attributes"]
-editor/display_folded = true
 margin_right = 143.0
 margin_bottom = 286.0
 custom_constants/separation = 28
@@ -208,7 +213,6 @@ align = 1
 valign = 1
 
 [node name="MinusButtons" type="VBoxContainer" parent="Vitals/Attributes"]
-editor/display_folded = true
 margin_left = 163.0
 margin_right = 213.0
 margin_bottom = 286.0
@@ -345,7 +349,6 @@ text = "Hold Shift to change by up to 5."
 align = 2
 
 [node name="Statistics" type="CenterContainer" parent="Vitals"]
-editor/display_folded = true
 margin_top = 354.0
 margin_right = 363.0
 margin_bottom = 561.0

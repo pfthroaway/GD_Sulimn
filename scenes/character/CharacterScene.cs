@@ -124,6 +124,10 @@ namespace Sulimn.Scenes.CharacterScenes
             LblHardcore.Text = GameState.CurrentHero.HardcoreToString;
             LblGold.Text = GameState.CurrentHero.GoldToStringWithText;
             LblWeight.Text = GameState.CurrentHero.WeightToString;
+            if (!GameState.CurrentHero.Overweight)
+                LblWeight.AddColorOverride("font_color", new Color(1, 1, 1, 1));
+            else
+                LblWeight.AddColorOverride("font_color", new Color(1, 0, 0, 1));
             UpdateAttributeLabels();
 
             GameState.Info.DisplayStats();
