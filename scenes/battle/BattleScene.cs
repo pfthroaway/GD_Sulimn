@@ -20,7 +20,7 @@ namespace Sulimn.Scenes.Battle
         private bool _progress;
         private Button BtnAttack, BtnCastSpell, BtnEnemyDetails, BtnFlee, BtnLootBody, BtnReturn;
         private ItemList LstSpells;
-        private Label LblHeroName, LblHeroHealth, LblHeroMagic, LblHeroShield, LblEnemyName, LblEnemyHealth, LblEnemyMagic, LblEnemyShield, LblSpellTypeAmount, LblSpellCost;
+        private Label LblHeroName, LblHeroHealth, LblHeroMagic, LblHeroShield, LblEnemyName, LblEnemyHealth, LblEnemyMagic, LblEnemyShield, LblSpellTypeAmount, LblSpellCost, LblWeight;
         private RichTextLabel TxtBattle;
         private string _previousPage;
         private float timer = 0f;
@@ -82,6 +82,7 @@ namespace Sulimn.Scenes.Battle
             LblEnemyShield = (Label)GetNode("Enemy/LblShield");
             LblSpellTypeAmount = (Label)GetNode("LblSpellTypeAmount");
             LblSpellCost = (Label)GetNode("LblSpellCost");
+            LblWeight = (Label)GetNode("Hero/LblWeight");
             TxtBattle = (RichTextLabel)GetNode("TxtBattle");
 
             LstSpells.Clear();
@@ -105,6 +106,12 @@ namespace Sulimn.Scenes.Battle
             LblEnemyShield.Text = EnemyShieldToString;
             LblSpellTypeAmount.Text = GameState.CurrentHero.CurrentSpell.TypeAmount;
             LblSpellCost.Text = GameState.CurrentHero.CurrentSpell.MagicCostToString;
+            LblWeight.Text = GameState.CurrentHero.WeightToString;
+            GD.Print(LblWeight.GetColor("font_color"));
+            if (!GameState.CurrentHero.Overweight)
+                LblWeight.AddColorOverride("font_color", new Color(1, 1, 1, 1));
+            else
+                LblWeight.AddColorOverride("font_color", new Color(255, 0, 0, 1));
             DisplaySpell();
             CheckButtons();
         }

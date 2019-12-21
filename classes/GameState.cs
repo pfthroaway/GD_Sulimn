@@ -52,7 +52,6 @@ namespace Sulimn.Classes
         internal static SceneTree SceneTree { get; set; }
         internal static MainLoop MainLoop { get; set; }
 
-        // TODO Add Tavern
         // TODO Basic quests like go kill 5 wolves for 500 gold from tavern.
         // TODO Make dude walk around tavern. Go up to bar, go to quests tables, blackjack, etc.
         // TODO Gear and ? Buttons on the info bar
@@ -220,7 +219,6 @@ namespace Sulimn.Classes
             //JSONInteraction.WriteAll(AllClasses, AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllWeapons, AllDrinks, AllFood, AllPotions, AllSpells, AllEnemies);
 
             // TODO Save scene history on application exit and load back when the same player logs in.
-            // TODO Display current weight on any relevant scenes: battle/inventory for sure.
 
             AllItems.AddRanges(AllHeadArmor, AllBodyArmor, AllHandArmor, AllLegArmor, AllFeetArmor, AllRings, AllFood, AllDrinks, AllPotions, AllWeapons);
 
