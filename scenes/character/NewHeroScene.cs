@@ -301,7 +301,7 @@ namespace Sulimn.Scenes.CharacterScenes
                         new List<Item>(),
                         new Bank(0, 0, 250),
                         new Progression(),
-                        ChkHardcore.IsPressed(),
+                        ChkHardcore.Pressed,
                         new List<Quest>());
 
                         GameState.NewHero(newHero);

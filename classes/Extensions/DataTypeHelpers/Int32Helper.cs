@@ -1,4 +1,5 @@
 ﻿//using Extensions.Enums;
+using Godot;
 using System;
 using System.Globalization;
 
@@ -24,7 +25,7 @@ namespace Sulimn.Classes.Extensions.DataTypeHelpers
             }
             catch (InvalidCastException ex)
             {
-                //new Notification(ex.Message, "Error Parsing Integer", NotificationButton.OK).ShowDialog();
+                GD.Print("Error Parsing Integer: " + ex.Message);
             }
 
             return temp;
@@ -42,7 +43,7 @@ namespace Sulimn.Classes.Extensions.DataTypeHelpers
             }
             catch (InvalidCastException ex)
             {
-                //new Notification(ex.Message, "Error Parsing Integer", NotificationButton.OK).ShowDialog();
+                GD.Print("Error Parsing Integer: " + ex.Message);
             }
             return temp;
         }
@@ -59,11 +60,11 @@ namespace Sulimn.Classes.Extensions.DataTypeHelpers
             }
             catch (FormatException ex)
             {
-                //new Notification(ex.Message, "Error Parsing Integer", NotificationButton.OK).ShowDialog();
+                GD.Print("Error Parsing Integer: " + ex.Message);
             }
             catch (InvalidCastException ex)
             {
-                //new Notification(ex.Message, "Error Parsing Integer", NotificationButton.OK).ShowDialog();
+                GD.Print("Error Parsing Integer: " + ex.Message);
             }
             return temp;
         }

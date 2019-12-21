@@ -53,9 +53,9 @@ namespace Sulimn.Scenes
         public void DisplayStats()
         {
             TPHealth.Value = (float)GameState.CurrentHero.Statistics.HealthRatio * 100;
-            TPHealth.SetTooltip(GameState.CurrentHero.Statistics.HealthToStringWithText);
+            TPHealth.HintTooltip = GameState.CurrentHero.Statistics.HealthToStringWithText;
             TPMagic.Value = (float)GameState.CurrentHero.Statistics.MagicRatio * 100;
-            TPMagic.SetTooltip(GameState.CurrentHero.Statistics.MagicToStringWithText);
+            TPMagic.HintTooltip = GameState.CurrentHero.Statistics.MagicToStringWithText;
             LblLevel.Text = GameState.CurrentHero.LevelAndClassToString;
             LblExperience.Text = GameState.CurrentHero.ExperienceToStringWithText;
             LblGold.Text = GameState.CurrentHero.GoldToStringWithText;
@@ -66,7 +66,7 @@ namespace Sulimn.Scenes
         private void _on_TPHealth_mouse_entered()
         {
             LblText.Text = GameState.CurrentHero.Statistics.HealthToStringWithText;
-            LblText.RectGlobalPosition = new Vector2(TPHealth.GetGlobalPosition().x, TPHealth.GetGlobalPosition().y - 5);
+            LblText.RectGlobalPosition = new Vector2(TPHealth.RectGlobalPosition.x, TPHealth.RectGlobalPosition.y - 5);
         }
 
         private void _on_TPHealth_mouse_exited() => LblText.Text = "";
@@ -74,7 +74,7 @@ namespace Sulimn.Scenes
         private void _on_TPMagic_mouse_entered()
         {
             LblText.Text = GameState.CurrentHero.Statistics.MagicToStringWithText;
-            LblText.RectGlobalPosition = new Vector2(TPMagic.GetGlobalPosition().x, TPMagic.GetGlobalPosition().y - 5);
+            LblText.RectGlobalPosition = new Vector2(TPMagic.RectGlobalPosition.x, TPMagic.RectGlobalPosition.y - 5);
         }
 
         private void _on_TPMagic_mouse_exited() => LblText.Text = "";

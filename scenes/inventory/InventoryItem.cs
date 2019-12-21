@@ -144,7 +144,7 @@ namespace Sulimn.Scenes.Inventory
         private void RightClick(ItemSlot slot, InputEventMouseButton button)
         {
             _contextMenu.PopupCentered();
-            _contextMenu.SetGlobalPosition(new Vector2(button.GetGlobalPosition().x + 32, button.GetGlobalPosition().y - 32));
+            _contextMenu.SetGlobalPosition(new Vector2(button.GlobalPosition.x + 32, button.GlobalPosition.y - 32));
             _contextMenu.LoadSlot(slot);
         }
 
@@ -348,7 +348,7 @@ namespace Sulimn.Scenes.Inventory
             {
                 _item = item;
                 TextureRect rect = (TextureRect)GetNode("TextureRect");
-                SetTooltip(item.TooltipText);
+                HintTooltip = item.TooltipText;
                 rect.Texture = (Texture)ResourceLoader.Load(item.Texture);
             }
         }

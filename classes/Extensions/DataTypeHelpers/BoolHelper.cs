@@ -1,4 +1,5 @@
 ﻿//using Extensions.Enums;
+using Godot;
 using System;
 using System.Globalization;
 
@@ -24,11 +25,11 @@ namespace Sulimn.Classes.Extensions.DataTypeHelpers
             }
             catch (FormatException ex)
             {
-                //new Notification(ex.Message, "Error Parsing Boolean", NotificationButton.OK).ShowDialog();
+                GD.Print("Error Parsing Boolean: " + ex.Message);
             }
             catch (InvalidCastException ex)
             {
-                //new Notification(ex.Message, "Error Parsing Boolean", NotificationButton.OK).ShowDialog();
+                GD.Print("Error Parsing Boolean: " + ex.Message);
             }
             return temp;
         }

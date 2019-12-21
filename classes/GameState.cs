@@ -366,7 +366,7 @@ namespace Sulimn.Classes
             acceptDialog.SetExpiration(displayTime);
             acceptDialog.DialogText = text;
             acceptDialog.SetSize(new Vector2(84f, 128f));
-            acceptDialog.SetGlobalPosition(new Vector2(player.GetGlobalPosition().x + 32, player.GetGlobalPosition().y - 32));
+            acceptDialog.SetGlobalPosition(new Vector2(player.GlobalPosition.x + 32, player.GlobalPosition.y - 32));
             Info.DisplayStats();
         }
 

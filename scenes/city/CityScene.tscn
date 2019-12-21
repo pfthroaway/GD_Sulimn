@@ -246,7 +246,6 @@ position = Vector2( 128, 288 )
 shape = SubResource( 6 )
 
 [node name="ForestArea" type="Area2D" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForestArea"]
 position = Vector2( 32, 512 )

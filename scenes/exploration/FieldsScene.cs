@@ -18,7 +18,7 @@ namespace Sulimn.Scenes.Exploration
         {
             Player = (Player)GetTree().CurrentScene.FindNode("Player");
             acceptDialog = (MyAcceptDialog)GetNode("MyAcceptDialog");
-            PreviousPosition = Player.GetGlobalPosition();
+            PreviousPosition = Player.GlobalPosition;
         }
 
         public override void _Process(float delta)
@@ -28,9 +28,9 @@ namespace Sulimn.Scenes.Exploration
         // Called every frame. 'delta' is the elapsed time since the previous frame.
         public override void _PhysicsProcess(float delta)
         {
-            if (PreviousPosition != Player.GetGlobalPosition())
+            if (PreviousPosition != Player.GlobalPosition)
             {
-                PreviousPosition = Player.GetGlobalPosition();
+                PreviousPosition = Player.GlobalPosition;
                 MovesSinceLastEvent++;
                 CheckForEvents();
             }

@@ -39,7 +39,7 @@ namespace Sulimn.Classes.Database
             if (list.Count > 0)
             {
                 File newFile = new File();
-                newFile.Open(path, 2);
+                newFile.Open(path, File.ModeFlags.Write);
                 newFile.StoreLine(JsonConvert.SerializeObject(list, Formatting.Indented));
                 newFile.Close();
             }
@@ -51,7 +51,7 @@ namespace Sulimn.Classes.Database
         internal static void WriteSceneHistory(List<PackedScene> history, string username)
         {
             File newFile = new File();
-            newFile.Open($"user://save/{username}History.json", 2);
+            newFile.Open($"user://save/{username}History.json", File.ModeFlags.Write);
             newFile.StoreLine(JsonConvert.SerializeObject(history, Formatting.Indented));
             newFile.Close();
         }
@@ -69,7 +69,7 @@ namespace Sulimn.Classes.Database
             File jsonFile = new File();
             if (jsonFile.FileExists(path))
             {
-                jsonFile.Open(path, 1);
+                jsonFile.Open(path, File.ModeFlags.Read);
                 data = jsonFile.GetAsText();
                 jsonFile.Close();
             }
@@ -155,7 +155,7 @@ namespace Sulimn.Classes.Database
                     if (!dir.CurrentIsDir())
                     {
                         File newFile = new File();
-                        newFile.Open(dirPath + file, 1);
+                        newFile.Open(dirPath + file, File.ModeFlags.Read);
                         string contents = newFile.GetAsText();
                         newFile.Close();
                         heroes.Add(JsonConvert.DeserializeObject<Hero>(contents));
@@ -175,7 +175,7 @@ namespace Sulimn.Classes.Database
             if (!dir.DirExists("user://save/"))
                 dir.MakeDir("user://save/");
             File newFile = new File();
-            newFile.Open($"user://save/{saveHero.Name}.json", 2);
+            newFile.Open($"user://save/{saveHero.Name}.json", File.ModeFlags.Write);
             string text = JsonConvert.SerializeObject(saveHero, Formatting.Indented);
             newFile.StoreLine(text);
             newFile.Close();
