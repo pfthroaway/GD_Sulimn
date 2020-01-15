@@ -9,6 +9,14 @@ namespace Sulimn.Classes.Entities
     /// <summary>Represents an <see cref="Enemy"/> who opposes the <see cref="Hero"/>.</summary>
     internal class Enemy : Character
     {
+        #region Modifying Properties
+
+        /// <summary>Type of the <see cref="Enemy"/>.</summary>
+        [JsonProperty(Order = -4)]
+        public string Type { get; set; }
+
+        #endregion Modifying Properties
+
         #region Health Manipulation
 
         /// <summary>Heals the <see cref="Enemy"/> for a specified amount.</summary>
@@ -40,14 +48,6 @@ namespace Sulimn.Classes.Entities
         }
 
         #endregion Health Manipulation
-
-        #region Modifying Properties
-
-        /// <summary>Type of the <see cref="Enemy"/>.</summary>
-        [JsonProperty(Order = -4)]
-        public string Type { get; set; }
-
-        #endregion Modifying Properties
 
         #region Override Operators
 

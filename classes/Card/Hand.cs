@@ -7,6 +7,15 @@ namespace Sulimn.Classes.Card
     /// <summary>Represents a hand of playing cards.</summary>
     internal class Hand
     {
+        #region Modifying Properties
+
+        /// <summary>List of <see cref="Card"/>s in the <see cref="Hand"/>.</summary>
+        public List<Card> CardList { get; set; } = new List<Card>();
+
+        #endregion Modifying Properties
+
+        #region Helper Properties
+
         /// <summary>Actual value of <see cref="Card"/>s in <see cref="Hand"/>.</summary>
         /// <returns>Actual value</returns>
         internal int ActualValue => CardList.Sum(card => card.Value);
@@ -14,19 +23,14 @@ namespace Sulimn.Classes.Card
         /// <summary>Count of <see cref="Card"/>s in the <see cref="Hand"/>.</summary>
         internal int Count => CardList.Count;
 
-        /// <summary>Total value of <see cref="Card"/>s in <see cref="Hand"/>.</summary>
+        /// <summary>Total value of <see cref="Card"/>s in <see cref="Hand"/>, exluding Hidden <see cref="Card"/>s.</summary>
         /// <returns>Total value</returns>
         internal int TotalValue => CardList.Where(card => !card.Hidden).Sum(card => card.Value);
 
-        #region Properties
-
-        /// <summary>List of <see cref="Card"/>s in the <see cref="Hand"/>.</summary>
-        public List<Card> CardList { get; set; } = new List<Card>();
-
-        /// <summary>Current value of the <see cref="Hand"/>.</summary>
+        /// <summary>Current total value of the <see cref="Hand"/>, with preceding text.</summary>
         public string Value => $"Total: {TotalValue}";
 
-        #endregion Properties
+        #endregion Helper Properties
 
         #region Hand Management
 
@@ -80,7 +84,7 @@ namespace Sulimn.Classes.Card
 
         /// <summary>Checks whether the current <see cref="Hand"/> has gone Bust.</summary>
         /// <returns>Returns true if <see cref="Hand"/> has gone Bust</returns>
-        internal bool IsBust() => !HasAceEleven() && TotalValue > 21;
+        internal bool IsBust() => !HasAceEleven() && ActualValue > 21;
 
         #endregion Hand Management
 

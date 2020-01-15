@@ -17,11 +17,11 @@ namespace Sulimn.Classes.Entities
         [JsonProperty(Order = -4)]
         public string Password { get; set; }
 
-        /// <summary>The <see cref="HeroClass"/> of the <see cref="Hero"/>, set up to import from JSON.</summary>
+        /// <summary>The <see cref="HeroClass"/> of the <see cref="Hero"/>.</summary>
         [JsonIgnore]
         public HeroClass Class { get; set; } = new HeroClass();
 
-        /// <summary>The <see cref="HeroClass"/> of the <see cref="Hero"/>.</summary>
+        /// <summary>The <see cref="HeroClass"/> of the <see cref="Hero"/>, set up to import from JSON.</summary>
         [JsonProperty(Order = -3)]
         public string ClassString
         {
